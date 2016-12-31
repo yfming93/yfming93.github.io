@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Mingo的个人博客今天开始啦
-date: 2016-12-02 
+date: 2016-12-31 
 tag: 随笔
 ---
 
