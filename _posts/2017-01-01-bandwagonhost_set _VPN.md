@@ -98,6 +98,7 @@ tag: 实用技术
  <img src="/images/posts/bandwagonhost/image03.png" height="250" width="600"> 
  
   **说明几点：**
+  
    * `Promotional Code `： 如果你有优惠码就填上去。。没有的话这里有 [优惠码](http://www.cmsky.com/bandwagonhost-promo/) 。我擦，日了🐩了，我当初就木有想到去网上找优惠码。后来闲逛论坛时发现的，不确定是否有用。你们可以试试。优惠码可以减免   `5%` 的大洋，后期买一整年的要是也可以用就爽了。
    * 然后 `check out` 进入支付环节了。确认支付信息，选择 `Complete Oreder` 选择支付宝进行扫码支付吧。
    * 也可以选择 `PayPal` 进行支付。`PayPal` 分国内版和国际版，国内版是不支持美元支付的，而且两者的账户是不通的，所以你注册了国内版是无法支付的，国际版的地址是：[https://www.paypal.com](https://www.paypal.com)，虽然是中文，但是货币是USD美元，绑定一张银联的卡就可以购物了。
