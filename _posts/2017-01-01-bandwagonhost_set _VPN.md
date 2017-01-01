@@ -39,7 +39,7 @@ tag: 实用技术
 
 ## [DigitalOcean](https://www.digitalocean.com/)
 　　这是一家成立于 2012 年的总部设置在纽约的云主机商家，采用 KVM 虚拟，配置高性能的 SSD 做储存。
-　　
+
 #### `优点`
 1. 价格便宜
 2. 高性能配置，搭载 SSD
