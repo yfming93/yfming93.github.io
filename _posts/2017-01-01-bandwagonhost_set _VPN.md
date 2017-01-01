@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 搬瓦工VPS自建高速VPN
+title: 利用搬瓦工VPS自建高速丝滑VPN
 date: 2017-01-01 
-tag: 随笔
+tag: 实用技术
 ---
 
 >## 一 、前言：
