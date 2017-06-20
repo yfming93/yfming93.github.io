@@ -1,46 +1,45 @@
 # Basic
-title: 袁凤鸣
-subtitle: 欢迎来到我的个人站~
-description: 最好的学习时间是十年前，其次是现在！
+title: Mingoy
+subtitle: Front-end Dev Engineer
+description: 欢迎来到我的个人网站~
 # 头像里面的标题
-avatarTitle: Mingo
+avatarTitle: RobotKang
 # 头像里面的描述
-avatarDesc: iOS / 个人笔记
-url: "http://yfmingo.top"
-#"http://baixin.io"
+avatarDesc: iOS//设计师
+url: "https://yfmingo.cn"
 
 # Comment
 comment:
-    # disqus: leopard
-    duoshuo: yfmingo#leopard 
+    provider: duoshuo
+    duoshuo:
+     short_name: yfmingo
 
 # Social
 social:
-    weibo: 3414294504 
+    weibo: 123456789
+    weixing: 13720187713 
     github: yfming93
     # twitter: 
     mail: yfmingo@163.com
+    csdn: yfming93
 
 # 百度统计 
 # 使用博客模板请去掉或者更换 id 
 baidu:
-    id: 9241bf337f3366ee1aea666f56466cf1
-       #8ba1c6be0953b6f9c2ba38e57f615421   原来模板
+    id: 1b99a6addc30aac294cc600d2664427c 
 
 # Google Analytics
 # 使用博客模板请去掉或者更换 id
-ga:
-    id: UA-89635745-1
-       #UA-84134159-3 原来模板
-
-    host: auto  
+ga: yfmingo.cn
+id: UA-89635745-1   
+#  host: auto  
 
 
 # 《----------------- 上面的信息修改成你自己的 ---------------------------》
 #
 #
 #  _post/ 下的文章更换成你自己的文章
-#  帮忙star一下，感谢~😆 地址： https://github.com/leopardpan/leopardpan.github.io
+#  帮忙star一下，感谢~😆 地址： https://github.com/MengZheK/kangblog.github.io
 #
 #
 # 《--------------- 下面的信息可以自行选择是否修改 ------------------------》
@@ -50,8 +49,10 @@ permalink: /:year/:month/:title/
 # Format
 highlighter: rouge
 
+textColor: #FF0000
+
 # supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: clear
+cover_color: 
 
 # The blog button should not be removed.
 blog_button:
@@ -59,12 +60,17 @@ blog_button:
 
 # Navigation buttons in the front page.s
 nav:
-    - {title: 所有文章, description: archive, url: '/archive'}
-    - {title: 标签, description: tags, url: '/tags'}
+    - {title: 所有文章, description: archive, url: '/archive'}   
+    - {title: 标签, description: tags, url: '/tags'}   
+    - {title: 留言, description: liuyan, url: '/liuyan'}
+    - {title: 资源, description: ziyuan, url: '/ziyuan'}
     - {title: 关于我, description: about, url: '/about'}
 
+          
+    
+
 # Pagination
-gems: [jekyll-paginate,jekyll-sitemap]  #[jekyll-paginate]
+gems: [jekyll-paginate]
 paginate: 20
 paginate_path: "page/:num/"
 

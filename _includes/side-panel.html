@@ -1,4 +1,9 @@
-<header class="panel-cover {% if page.layout == 'post' or page.layout == 'page' %}panel-cover--collapsed{% endif %}" style="background-image: url('/images/background-cover.jpg')">
+<header class="panel-cover {% if page.layout == 'post' or page.layout == 'page' %}panel-cover--collapsed{% endif %}">
+<style type="text/css">
+body {background-image:url(http://7sbmib.com1.z0.glb.clouddn.com/body_background1.png);}
+p.flower {background-image: url(http://7sbmib.com1.z0.glb.clouddn.com/body_background1.png); padding: 20px;}
+</style>
+  
   <div class="panel-main">
 
     <div class="panel-main__inner panel-inverted">
@@ -9,11 +14,11 @@
                 <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
                 <div class="info">
                     <div class="info-back">
-                        <h2> 
+                        <h1> 
                             {% if site.avatarTitle %}
                                 {{site.avatarTitle}}
                             {% endif %}
-                        </h2>
+                        </h1>
                         <p>
                            {% if site.avatarDesc %}
                                 {{site.avatarDesc}}
@@ -28,9 +33,9 @@
         {% if site.subtitle %}
         <span class="panel-cover__subtitle panel-subtitle">{{site.subtitle}}</span>
         {% endif %}
-        <hr class="panel-cover__divider" />
+        <hr class="panel-cover__divider" style="height:1px;border:none;border-top:1px solid #555555;"/>
         <p class="panel-cover__description">{{ site.description }}</p>
-        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        <hr class="panel-cover__divider panel-cover__divider--secondary" style="height:1px;border:none;border-top:1px solid #555555;"/>
         
         {% if site.welcome_message %}
         <p class="panel-cover__description">{{ site.welcome_message }}</p>

@@ -1,24 +1,81 @@
 ---
 layout: page
-title: 关于我 
+title: 关于我「ABOUT ME」 
+date: 2017-03-01 
 ---
-
-一个 iOS 开发者，喜欢研究一些新技术。
-<p>
-平时喜欢整理个人博客，逛逛技术论坛。喜欢在黑夜中钻研技术，时常夜深人静的时候，我的精力值视乎爆满。于是就穿梭在各个技术论坛之间。
+<a href="/photos/" target="_blank"><img src="http://omjh2j5h3.bkt.clouddn.com/%E5%A4%A9%E7%AD%96.jpg" width="150" height="150" alt="photos"/></a>
 
 <p>
+一个即将走出象牙塔的 Maker「未更新」<a href="{{ site.baseurl }}/jianli.pdf" target="_blank"> 「我的简历」 </a>    
 
-参与开发过的一些作品:<a target="_blank" href="https://itunes.apple.com/cn/app/yi-qi-yun-gou-quan-min-yi/id1147640197?mt=8"> 一起云购 </a>、<a target="_blank" href="https://itunes.apple.com/cn/app/nan-ning-tou-tiao/id863921247?mt=8"> 南宁头条 </a>、<a target="_blank" href="https://itunes.apple.com/cn/app/zai-ma-shan/id1184797652?mt=8"> 在马山 </a> 等等。
+
+<div style="color:#FF6633">
+<p>	三尺微命，一介书生。求学于卫星湖畔，黄瓜山下，欲潜心研究智能机器人开发应用之道。然所学颇杂，对诸多方面均有涉猎，喜欢研究一些新技术和关注一些最新的科技~
+</p>
+</div>
+<p>
+平时喜欢整理个人博客，逛逛技术论坛     
+<p>
+喜欢日本，想着如果有机会一定会去日本生活一段时间        
+<div style="color:#008B00">
+<p>
+喜欢Spoken English，虽然现在很渣，但一直在努力...        
+</p>
+</div>
+<p>
+现在可能苟且，但还是怀揣着诗和远方，       
+<p>
+同时喜欢老罗和晓松，虽然他俩还撕逼，罗跟谁不撕逼，爱听老罗的单口相声           
+<p>
+I’m a single-dog.  But codes and godgirl are my favorite.  Life is colorful, this website   is a window which used to present the color of my life.       
 
 <p>
-目前所在公司
-<a target="_blank" href="http://www.asia-cloud.com/"> 北京众思高远 </a>
-，主要关注于搭建区域性融合媒体平台，为传统媒体行业转型、商业企业的移动化建设，提供技术解决方案，同时提供平台服务和运营支持。
+
+<h3> PastTime</h3>   
+
 <p>
 
 
-{% include comments.html %}
+也许你听说过，「业余时间决定人生」；也许你还听说过，「听过很多道理，依然过不好这一生」。书籍、代码、博客、运动、电影、美剧、游戏，这就是我的业余生活。            
+
+
+<div style="color:#708090">
+<p>
+     我的能力就这么多。我若全心工作，则必然忽略生活；我若用心生活，则必然一事无成；我若两者兼顾，又难免平庸
+</p>
+</div>
+<p>
+趁我在还能看得进书写得动代码的年纪，努力一回，看看这平庸的资质究竟能发挥几分。
+
+<p>
+
+<h3> Ps </h3>   
+<p>
+如果你想搭建一个跟我一样的博客，可以看
+<a href="/2017/03/HowToCreateBlog/"> Jekyll+Github个人博客构建之路 </a>
+教程
+
+<p>
+
+有关于博客主题的建议和意见都可以提给我，让我们一起来打造一个精美的主题吧~ 
+
+<p> 
+
+博客源码在 <a target="_blank" href='https://github.com/MengZheK/kangblog.github.io/' target="_blank" >Github</a> 上，你的 Star 是我更新的动力，谢谢~
+
+<h3> 联系方式 </h3>         
+<script>
+	function mousemethod(op,imgid){
+	document.getElementById(imgid).style.display=op;
+	}
+</script>
+
+<p>邮箱：robotkang@foxmail.com &emsp;<a href="#" onmouseover="mousemethod('block','img1')" onmouseout="mousemethod('none','img1')" style="color:#FF4500;text-decoration:none">微信：kang1390305137</a><img id="img1" src="http://omjh2j5h3.bkt.clouddn.com/kangweix.png" style="display:none;"  width="128" height="128">&emsp;
+	<a href="#" onmouseover="mousemethod('block','img2')" onmouseout="mousemethod('none','img2')" style="color:#008B00;text-decoration:none">公众号：robotkang</a><img id="img2" src="http://omjh2j5h3.bkt.clouddn.com/kanggzh.png" style="display:none;" width="128" height="128" >
+ 
+<p>
+<a href="/lovekang/" style="color:#708090"  target="_blank"> <h5>Website Time</h5></a>  
+</p>
 
 
 
