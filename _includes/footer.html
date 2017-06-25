@@ -1,104 +1,162 @@
-<section class="footer">
-    <footer>
-        <div class = "footer_div">  
-        <nav class="cover-navigation navigation--social">
-          <ul class="navigation">
-
-          {% if site.social.weibo %}
-          <!-- Weibo -->
-          <li class="navigation__item_social">
-            <a href="http://weibo.com/{{site.social.weibo}}" title="@{{site.social.weibo}} 的微博" target="_blank">
-              <i class='social fa fa-weibo fa-2x'></i>
-              <span class="label">Weibo</span>
-            </a>
-          </li>
-          {% endif %}
-
-          {% if site.social.github %}
-          <!-- Github -->
-          <li class="navigation__item_social">
-            <a href="https://github.com/{{site.social.github}}" title="@{{site.social.github}} 的 Github" target="_blank">
-              <i class='social fa fa-github fa-2x'></i>
-              <span class="label">Github</span>
-            </a>
-          </li>
-          {% endif %}
-          
-          {% if site.social.twitter %}
-          <!-- Twitter -->
-          <li class="navigation__item_social">
-            <a href="http://twitter.com/{{site.social.twitter}}" title="@{{site.social.twitter}}" target="_blank">
-              <i class='social fa fa-twitter fa-2x'></i>
-              <span class="label">Twitter</span>
-            </a>
-          </li>
-          {% endif %}
-
-          {% if site.social.gplus %}
-          <!-- Google Plus -->
-          <li class="navigation__item_social">
-            <a href="https://plus.google.com/{{site.social.gplus}}" rel="author" title="Google+" target="_blank">
-              <i class='social fa fa-google-plus-square fa-2x'></i>
-              <span class="label">Google Plus</span>
-            </a>
-          </li>
-          {% endif %}
-
-          <!-- RSS -->
-          <li class="navigation__item_social">
-            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
-              <i class='social fa fa-rss fa-2x'></i>
-              <span class="label">RSS</span>
-            </a>
-          </li>
-
-          {% if site.social.mail %}
-          <!-- Email -->
-          <li class="navigation__item_social">
-            <a href="mailto:{{site.social.mail}}" title="Contact me">
-              <i class='social fa fa-envelope fa-2x'></i>
-              <span class="label">Email</span>
-            </a>
-          </li>
-          {% endif %}
-
-          </ul>
-        </nav>
-
-        </div>
+<footer class="site-footer">
 
 
+    <div class="wrapper">
 
-        <div class = "footer_div">  
-           <p class="copyright text-muted">
-            Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }} Theme by <a href="http://robotkang.cc/">robotkang</a> |
-            <iframe
-                style="margin-left: 2px; margin-bottom:-5px;"
-                frameborder="0" scrolling="0" width="91px" height="20px"
-                src="https://ghbtns.com/github-btn.html?user=MengZheK&repo=kangblog.github.io&type=star&count=true" >
-            </iframe>|
+        <p class="description">
+            {% if site.description_footer %} {{site.description_footer}} {% endif %}
+        </p>
+       <!--  <p class="contact">
+            Contact me at: {% if site.github_username %}
+            <a href="https://github.com/{{site.github_username}}" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a> {% endif %} {% if site.email %}
+            <a href="mailto:{{site.email}}" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> {% endif %} {% if site.weibo_username %}
+            <a href="http://weibo.com/{{site.weibo_username}}" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a> {% endif %} {% if site.zhihu_username %}
+            <a href="https://www.zhihu.com/people/{{site.zhihu_username}}" title="Zhihu"><i class="iconfont icon-daoruzhihu"></i></a> {% endif %} {% if site.twitter_username %}
+            <a href="https://twitter.com/{{site.twitter_username}}" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a> {% endif %} {% if site.facebook_username %}
+            <a href="https://www.facebook.com/{{site.facebook_username}}" title="Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a> {% endif %}  {% if site.linkedIn_username %}
+            <a href="https://www.linkedin.com/in/{{site.linkedIn_username}}" title="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a> {% endif %} {% if site.dribbble_username %}
+            <a href=" https://dribbble.com/{{site.dribbble_username}}" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a> {% endif %}
+        </p> -->
+       
+       <!--  <div class="container">
+         <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"> -->
+                
+         
             
-<!-- cnzz -->
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261874359'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261874359%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-</p>
-        	<div align="right">
-    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+                <!--     </div>
+                </div>
+            </div> -->
 
-<!-- 访问统计 -->
- 
-      Total <span id="busuanzi_value_site_pv"></span> views.
-您是我的第<span id="busuanzi_value_site_uv"></span> 个访客..
-<span id="busuanzi_value_page_pv"></span> Hits
+        <p>
+            <!-- 本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次 -->
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        
+            <span>
+
+                 
+           
+                        
+                            {% if site.url %}
+                            <!-- <li> -->
+                                <a target="_blank" href={{site.url}}>
+
+
+                                    <span style="color:#003399;" class="fa-stack fa-lg" >
+
+                                        <i class="fa fa-circle fa-stack-2x" > </i>
+                                        <i class="fa fa-home fa-stack-1x fa-inverse"></i>
+                                    </span>
+
+                                    <!-- <span ><i class="fa fa-link"></i> 链接</span> -->
+                                </a>
+                            <!-- </li> -->
+                            {% endif %}
+                            {% if site.RSS %}
+                            <!-- <li> -->
+                                <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                            {% endif %}
+                            {% if site.twitter_username %}
+                            <!-- <li> -->
+                                <a href="https://twitter.com/{{ site.twitter_username }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                            {% endif %}
+
+                            <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                            {% if site.zhihu_username %}
+                            <!-- <li> -->
+                                <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
+                                    <span style="color:#003399;" class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                            {% endif %}
+                            {% if site.weibo_username %}
+                            <!-- <li> -->
+                                <a target="_blank" href="http://weibo.com/{{ site.weibo_username }}">
+                                    <span style="color:#003399;" class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                            {% endif %}
+
+
+                            {% if site.facebook_username %}
+                            <!-- <li> -->
+                                <a target="_blank" href="https://www.facebook.com/{{ site.facebook_username }}">
+                                    <span style="color:#003399;" class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                            {% endif %}
+                            {% if site.github_username %}
+                            <!-- <li> -->
+                                <a target="_blank" href="https://github.com/{{ site.github_username }}">
+                                    <span style="color:#003399;" class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                            {% endif %}
+                            {% if site.linkedin_username %}
+                            <!-- <li> -->
+                                <a target="_blank" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
+                                    <span style="color:#003399;" class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                            {% endif %}
+                            {% if site.wangyiyun_username %}
+                            <!-- <li> -->
+                                <a target="_blank" href="http://music.163.com/#/user/home?id={{  site.wangyiyun_username }}">
+                                    <span style="color:#003399;" class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa  fa-stack-1x fa-inverse"><marquee>网易云音乐</marquee></i>
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                            {% endif %}
+
+                <!-- Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>. -->
+            <!-- <p class="power"> -->
+                <p class="copyright text-muted">
+                    
+
+                    <div class="text" style=" text-align:center;">
+                        Copyright &copy; 袁凤鸣 {{ site.time | date: '%Y' }}
+                    </div>
+
+                    <br>
+                    Powered by <a href="https://jekyllrb.com/" style="font-weight: bold"> <font color="#f4cccc">Jekyll</font> </a> | 
+                    Hosted by <a href="https://pages.coding.me" style="font-weight: bold"> <font color="#f4cccc">Coding</font> </a> |  
+                    Photos in <a href="https://github.com/Suxiaogang/WeiboPicBed" style="font-weight: bold"> <font color="#f4cccc">Sina</font> </a> | 
+                    Theme by <a href="https://github.com/Gaohaoyang" style="font-weight: bold"> <font color="#f4cccc"> HyG </font> </a> |
+                    Write by <a href="https://www.zybuluo.com/mdeditor#618767" style="font-weight: bold"> <font color="#f4cccc">Markdown</font></a>
+                </p>
+            </span>
   
-          </span>
-        </div>
-        <div>
-    </footer>
-</section>
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-
-
-
+        <!-- </p> -->
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

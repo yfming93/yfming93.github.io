@@ -1,77 +1,64 @@
-# Basic
-title: Mingoy
-subtitle: Front-end Dev Engineer
-description: 欢迎来到我的个人网站~
-# 头像里面的标题
-avatarTitle: 袁凤鸣
-# 头像里面的描述
-avatarDesc: iOS/H5/设计师
-url: "http://yfmingo.cn"
-
-# Comment
-comment:
-    provider: duoshuo
-    duoshuo:
-     short_name: yfmingo
-
-# Social
-social:
-    weibo: 123456789
-    weixing: 13720187713 
-    github: yfming93
-    # twitter: 
-    mail: yfmingo@163.com
-    csdn: yfming93
-
-# 百度统计 
-# 使用博客模板请去掉或者更换 id 
-baidu:
-    id: 1b99a6addc30aac294cc600d2664427c 
-
-# Google Analytics
-# 使用博客模板请去掉或者更换 id
-ga: yfmingo.cn
-id: UA-89635745-1   
-#  host: auto  
-
-
-# 《----------------- 上面的信息修改成你自己的 ---------------------------》
+# Welcome to Jekyll!
 #
-#
-#  _post/ 下的文章更换成你自己的文章
-#  帮忙star一下，感谢~😆 地址： https://github.com/MengZheK/kangblog.github.io
-#
-#
-# 《--------------- 下面的信息可以自行选择是否修改 ------------------------》
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
+# Site settings
+title: 袁凤鸣的博客 | Mingoy Blog
+SEOTitle: 袁凤鸣的博客 | Mingoy Blog
+description: "关于前端开发与设计 | 袁凤鸣，Web & Mobile Lover，Front-End Engineer | 这里是 @Mingoy袁凤鸣 的个人博客，与你一起发现更大的世界。"
+keyword: "袁凤鸣, Mingoy袁凤鸣, Mingoy, @Mingoy, 袁凤鸣的博客, Mingoy Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品"
+brief-intro: Front-end Dev Engineer
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://www.yfmingo.cn" # the base hostname & protocol for your site
 
-permalink: /:year/:month/:title/
-# Format
-highlighter: rouge
+permalink: /:year/:month/:day/:title/
 
-textColor: #FF0000
+# other links
+twitter_username: #gaohaoyang126
+facebook_username: #gaohaoyang.water
+github_username:  yfming93
+email: yfmingo@163.com
+weibo_username: yfming
+zhihu_username: yfmingo
+wangyiyun_username: "278546999"
+linkedIn_username: #gaohaoyang
+dribbble_username:
 
-# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: 
+description_footer: 努力使自己足够优秀，才能保护好身边的一切！
 
-# The blog button should not be removed.
-blog_button:
-    title: 博客主页
+# comments
+# two ways to comment, only choose one, and use your own short name
+# 两种评论插件，选一个就好了，使用自己的 short_name
+duoshuo_shortname: #hygblog
+disqus_shortname: #fengmingyuan
 
-# Navigation buttons in the front page.s
-nav:
-    - {title: 所有文章, description: archive, url: '/archive'}   
-    - {title: 标签, description: tags, url: '/tags'}   
-    - {title: 留言, description: liuyan, url: '/liuyan'}
-    - {title: 资源, description: ziyuan, url: '/ziyuan'}
-    - {title: 关于我, description: about, url: '/about'}
+# statistic analysis 统计代码
+# 百度统计 id，将统计代码替换为自己的百度统计id，即
+# hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
+# xxxxx字符串
+baidu_tongji_id: 1b99a6addc30aac294cc600d2664427c
+google_analytics_id: UA-89635745-1 # google 分析追踪id
 
-          
-    
+# Build settings
+markdown: kramdown
 
-# Pagination
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# port
+# port: 1234
+
+# url
+category_dir: category/
+tag_dir: tag/
+
+# excerpt
+excerpt_separator: "\n\n\n\n"
+
+# paginate
 gems: [jekyll-paginate]
-paginate: 20
-paginate_path: "page/:num/"
-
-
+paginate: 6
