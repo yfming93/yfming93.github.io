@@ -108,8 +108,8 @@ function ancherPostion(anchorBtn, rightDiv) {
             anchorBtn.style.top = '20px'
             rightDiv.style.top = '20px'
         } else {
-            anchorBtn.style.top = '76px'
-            rightDiv.style.top = '76px'
+            anchorBtn.style.top = '120px'
+            rightDiv.style.top = '120px'
         }
     })
 }

@@ -6,10 +6,10 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: 袁凤鸣的博客 | Mingoy Blog
-SEOTitle: 袁凤鸣的博客 | Mingoy Blog
-description: "关于前端开发与设计 | 袁凤鸣，Web & Mobile Lover，Front-End Engineer | 这里是 @Mingoy袁凤鸣 的个人博客，与你一起发现更大的世界。"
-keyword: "袁凤鸣, Mingoy袁凤鸣, Mingoy, @Mingoy, 袁凤鸣的博客, Mingoy Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品"
+title: 袁凤鸣的博客 | Mingoy's Blog
+SEOTitle: 袁凤鸣的博客 | Mingoy's Blog
+description: "前端开发与设计 | 袁凤鸣，Web & Mobile Lover，Front-End Engineer | 这里是 @Mingoy袁凤鸣 的个人博客，与你一起发现更大的世界。"
+keyword: "袁凤鸣, Mingoy袁凤鸣, Mingoy, @Mingoy, 袁凤鸣的博客, Mingoy's Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品"
 brief-intro: Front-end Dev Engineer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.yfmingo.cn" # the base hostname & protocol for your site
@@ -44,10 +44,21 @@ google_analytics_id: UA-89635745-1 # google 分析追踪id
 
 # Build settings
 markdown: kramdown
-
+highlighter:    rouge
 kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+  input:                     GFM
+  auto_ids:                  true
+  footnote_nr:               1
+  entity_output:             as_char
+  toc_levels:                1..6
+  smart_quotes:              lsquo,rsquo,ldquo,rdquo
+  enable_coderay:            true
+  hard_wrap:                 true
+  syntax_highlighter:        rouge
+  transliterated_header_ids: true
+  footnote_backlink:         "&#8617;&#xfe0e;"
+
+ 
 
 # port
 # port: 1234

@@ -1,8 +1,8 @@
 ---
 layout: page
-title: About
+title:
 permalink: /about/
-icon: heart
+icon: user
 type: page
 ---
 
@@ -19,10 +19,10 @@ type: page
 <div class="zh post-container">
 
     <!--copied from markdown -->
-    <blockquote><p>努力使自己足够优秀，<br>
-    才能保护好身边的一切！</p></blockquote>
+    <blockquote><p>细节决定成败，<br>
+    心态造就未来！</p></blockquote>
 <br>
-    <p>Hey，我是<strong>袁凤鸣</strong>，iOS 开发者 &amp; 设计师，喜欢研究一些新技术。</p>
+    <p>Hey，我是<strong> 袁凤鸣</strong>，毕业于武汉纺织大学。iOS 开发者 &amp; 业余设计师，会一些 H5 基础。喜欢折腾一些新技术。</p>
 
 <br>
 
@@ -32,7 +32,7 @@ type: page
     <br>
     
 
-    <p>开发过的一些作品: <a href="https://itunes.apple.com/cn/app/yi-qi-yun-gou-quan-min-yi/id1147640197?mt=8">一起云购</a> 、 <a href="https://itunes.apple.com/cn/app/nan-ning-tou-tiao/id863921247?mt=8">南宁头条</a> 、<a href="https://itunes.apple.com/cn/app/zai-ma-shan/id1184797652?mt=8">在马山</a> 、<a href="https://itunes.apple.com/cn/app/fo-xue-yuan/id1179906438?mt=8">FO学院</a>等等。</p>
+    <p>开发过的一些作品: <a href="https://itunes.apple.com/cn/app/yi-qi-yun-gou-quan-min-yi/id1147640197?mt=8">一起云购</a> 、<a href="https://itunes.apple.com/cn/app/fo-xue-yuan/id1179906438?mt=8">FO学院</a>、<a href="https://itunes.apple.com/cn/app/zai-ma-shan/id1184797652?mt=8">在马山</a>、 <a href="https://itunes.apple.com/cn/app/nan-ning-tou-tiao/id863921247?mt=8">南宁头条</a> 、<a href="https://itunes.apple.com/cn/app/%E5%8D%97%E6%98%8C%E5%B9%BF%E6%92%AD%E7%94%B5%E8%A7%86%E5%8F%B0-%E6%8E%8C%E4%B8%8A%E5%8D%97%E6%98%8C/id780406619?mt=8">掌上南昌</a> 等等。</p>
 
     <p>目前所在公司 <a href="http://www.asia-cloud.com/">北京众思高远</a> ，主要关注于搭建区域性融合媒体平台，为传统媒体行业转型、商业企业的移动化建设，提供技术解决方案，同时提供平台服务和运营支持。</p>
     
@@ -46,9 +46,10 @@ type: page
       <br>
 
     <p><strong>联系方式:</strong>
-     <br>联系邮箱： yfmingo@163.com  
+     <br>联系邮箱：yfmingo@163.com  
+     <br>联系网站：<a href="https://www.yfmingo.cn/">www.yfmingo.cn</a>
      <br>联系  QQ：  928289877 
-     <br>联系手机： 13720187713 </p>
+     <br>联系手机：13720187713 </p>
     <!-- <h5>Talks</h5>
 
     <ul>
@@ -74,3 +75,5 @@ type: page
 ## Comments
 
 {% include comments.html %}
+
+

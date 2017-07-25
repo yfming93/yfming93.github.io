@@ -2,7 +2,7 @@
 layout:     	post
 title:       "利用搬瓦工VPS自建高速丝滑VPN"
 excerpt: 		自建的专属 VPN ，随心畅享自己的网络海洋！
-date:     	2017-01-01
+date:     	2016-11-05
 author:     	"袁凤鸣"
 categories:  实用技术
 tags:
@@ -206,3 +206,4 @@ shadowsocks 的交互模式 ：
 
 
 <b>好了。到此！！！ 我们自建 VPN 教程就完成了。鉴于本人也初次搭建 VPN ,各位看到的老大如果有什么不恰当还请轻喷。后续如有新问题我再继续更新此贴！</b>
+

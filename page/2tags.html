@@ -1,14 +1,25 @@
 ---
 layout: default
-title: Tags
+title: 
+description: 标签
 permalink: /tag/
 icon: tags
 type: page
 ---
 
+
+
 <div class="page clearfix">
     <div class="left">
-        <h1>{{page.title}}</h1>
+        <h1>{{page.description}}</h1><br>
+
+        <blockquote class="tag-comments">
+            标签命名规则：
+                <li>每一篇文章相关的领域都将打上一个或者多个标签</li>
+                <li>每一个标签下包含所有包含此标签领域的文章</li>
+                <li>标签偏向于更加详细的技术点划分</li>
+        </blockquote>
+        
         <hr>
         {% capture tags %}
           {% for tag in site.tags %}

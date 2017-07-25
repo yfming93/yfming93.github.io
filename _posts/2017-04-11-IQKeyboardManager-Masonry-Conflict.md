@@ -1,7 +1,7 @@
 ---
 layout:     	post
 title:       "IQKeyboardManager 和 Masonry 同时使用时，导航栏上移以及make.right失效"
-excerpt: 		 IQKeyboardManager 和 Masonry 同时使用时，导航栏上移以及make.right失效
+
 date:     	2017-04-11 
 author:     	"袁凤鸣"
 categories:  iOS
@@ -22,6 +22,11 @@ mathjax: true
 其实我们完美的效果应该是这样的：*（NO Pictures say \*8 ！O(∩_∩)O~）*
 
 ![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fgpu23t5oyg20aa0id7oa.gif)
+
+
+
+
+
 
 ## （二）、问题介绍：
  我们使用 [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager) 可以很好的处理键盘弹起输入框上移事件。但是当你的 backView 【底视图】不是 `tableView` 或者`scrollView` 时。你的导航栏会随着一起往上跑了。
@@ -158,3 +163,4 @@ mathjax: true
 
 
 完整的 demo 已经上传 github 中：<br>[https://github.com/yfming93/IQKeyboarManagerAndMasonryConflictDemo](https://github.com/yfming93/IQKeyboarManagerAndMasonryConflictDemo) 
+

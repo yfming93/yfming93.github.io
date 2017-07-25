@@ -1,12 +1,14 @@
 ---
 layout: demo
-title: Demo
+title:
 permalink: /demo/
 icon: play
 type: page
 ---
 
+<h1>Demo</h1><br>
 
+<!-- <h5>我有一个梦想,就是把这里填满几十页...</h5><br><br> -->
 
 <div class="grid">
     <!-- <div class="grid-item">
@@ -22,5 +24,10 @@ type: page
         </p>
     </div> -->
 </div>
- 
- {% include repos.html %}
+
+<script src="{{ " /js/masonry.pkgd.min.js " | prepend: site.baseurl }}" charset="utf-8"></script>
+<script src="{{ " /js/waterfall.js " | prepend: site.baseurl }}" charset="utf-8"></script>
+
+
+<!-- <h2 id="comments">Comments</h2> -->
+{% include comments.html %}
