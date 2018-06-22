@@ -28,6 +28,14 @@
       title: '左右分页按钮的集合视图控件。',
       core_tech: 'PagingButton Cocoapods 公有pods  OC ',
       description: '这是一个左右分页按钮的集合视图控件。用于快速编写出集合视图上分页多按钮点击事件！'
+    },
+    {
+      demo_link: 'https://yfming93.github.io/vuejs/VueShoppingCart/after/cart.html',
+      img_link: 'https://ws1.sinaimg.cn/large/cb81ffe8gy1fjz2btt2umg20sr0hxthk.gif',
+      code_link: 'https://github.com/yfming93/vuejs',
+      title: 'Vuejs2.0购物车和地址选配学习实践demo。',
+      core_tech: 'Vue2.0 Css Html  JavaScript ',
+      description: '按照慕课网的Vue2.0的学习视频零基础实践的一个demo'
     }
   ];
 

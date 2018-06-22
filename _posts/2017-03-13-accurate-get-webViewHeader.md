@@ -72,9 +72,19 @@ mathjax: true
 - 设置监听的 `KeyPath` ：
 
 		 static NSString  *kcontentSize = @"contentSize";
-- 初始化创建 `webView` 时设置 监听 **webView**.**scrollView** 的 **contentSize** 变化：
+- 在`webView`的回调方法`webViewDidFinishLoad`中设置 监听 **webView**.**scrollView** 的 **contentSize** 变化：
 
-		[self.webView.scrollView addObserver:self forKeyPath:kcontentSize options:NSKeyValueObservingOptionNew context:nil];
+    	- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    	
+    	    CGSize tempSize = [webView sizeThatFits:CGSizeZero];
+    	    _webView.frame = CGRectMake(0, 0, tempSize.width, tempSize.height);
+    	    [self.table beginUpdates];
+    	    [self.table setTableHeaderView:_webView];
+    	    [self.table endUpdates];
+    	    
+    	    [self.webView.scrollView addObserver:self forKeyPath:kcontentSize options:NSKeyValueObservingOptionNew context:nil];
+    	}
+		
 
 
 - 实现 `KVO` 回调方法，并判断如果  `KeyPath`  是 `contentSize`时再进行一次 `webViewDidFinishLoad` 中 `webView`高度的赋值操作。
@@ -85,7 +95,9 @@ mathjax: true
 		        
 		        CGSize tempSize = [_webView sizeThatFits:CGSizeZero];
 		        _webView.frame = CGRectMake(0, 0, tempSize.width, tempSize.height);
-		        self.table.tableHeaderView = _webView;
+		         [self.table beginUpdates];
+	             [self.table setTableHeaderView:_webView];
+	             [self.table endUpdates];
 		        
 		    }else {
 		        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -113,3 +125,4 @@ mathjax: true
 - 好了。这样之后。`webView`内容发生变化后。就会监听到 **webView.scrollView.contentSize** 也发生了变化。我们在监听方法里面及时再次设置高度即可。
 
 - 还有，在`cell`中使用`webView`获取高度不准确的解决办法跟上面一样，只不过需要注意`cell`中使用`webView`涉及到`cell`重用，会导致滑动列表时`webView`多次加载，影响性能，建议缓存高度。
+

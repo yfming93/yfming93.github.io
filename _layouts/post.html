@@ -64,14 +64,18 @@ layout: default
 
         {% include previousAndNext.html %}
 
-        <h2 id="comments">Comments</h2>
+        <h2 id="comments">请科学上网看评论 😂</h2>
         {% include comments.html %}
 
 
     </div>
+
     <button class="anchor"><i class="fa fa-anchor"></i></button>
     <div class="right">
         <div class="wrap">
+            <div class="side content" id="search-div">
+                {% include sidebar-search.html %}
+            </div>
 
             <!-- Content -->
             <div class="side content">
@@ -90,6 +94,7 @@ layout: default
         </div>
     </div>
 </div>
+
 <script>
 /**
  * target _blank

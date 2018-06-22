@@ -1,0 +1,277 @@
+---
+layout:     	post
+title:       "常用正则表达式和正则学法收集"
+date:     	2017-09-28
+author:     	"袁凤鸣"
+categories:  编程技能
+tags: 
+    正则 
+mathjax: true
+---
+
+* content
+{:toc}
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; 项目中经常要用到正在进行对业务的筛选验证。故整理了一些常用正则如下</p>
+
+
+
+
+
+<p><strong><span style="font-size: 14pt;">一、校验数字的表达式</span></strong></p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> 数字：<span style="color: #ff0000;">^[0-9]*$
+</span><span style="color: #008080;"> 2</span> n位的数字：<span style="color: #ff0000;">^\d{n}$
+</span><span style="color: #008080;"> 3</span> 至少n位的数字：<span style="color: #ff0000;">^\d{n,}$
+</span><span style="color: #008080;"> 4</span> m-n位的数字：<span style="color: #ff0000;">^\d{m,n}$
+</span><span style="color: #008080;"> 5</span> 零和非零开头的数字：<span style="color: #ff0000;">^(0|[1-9][0-9]*)$
+</span><span style="color: #008080;"> 6</span> 非零开头的最多带两位小数的数字：<span style="color: #ff0000;">^([1-9][0-9]*)+(.[0-9]{1,2})?$
+</span><span style="color: #008080;"> 7</span> 带1-2位小数的正数或负数：<span style="color: #ff0000;">^(\-)?\d+(\.\d{1,2})?$
+</span><span style="color: #008080;"> 8</span> 正数、负数、和小数：<span style="color: #ff0000;">^(\-|\+)?\d+(\.\d+)?$
+</span><span style="color: #008080;"> 9</span> 有两位小数的正实数：<span style="color: #ff0000;">^[0-9]+(.[0-9]{2})?$
+</span><span style="color: #008080;">10</span> 有1~3位小数的正实数：<span style="color: #ff0000;">^[0-9]+(.[0-9]{1,3})?$
+</span><span style="color: #008080;">11</span> 非零的正整数：<span style="color: #ff0000;">^[1-9]\d*$</span> 或 <span style="color: #ff0000;">^([1-9][0-9]*){1,3}$</span> 或 <span style="color: #ff0000;">^\+?[1-9][0-9]*$
+</span><span style="color: #008080;">12</span> 非零的负整数：<span style="color: #ff0000;">^\-[1-9][]0-9"</span><span style="color: #800000;"><span style="color: #ff0000;">*$</span> <span style="color: #000000;">或</span> <span style="color: #ff0000;">^-[1-9]\d*$</span></span>
+<span style="color: #008080;">13</span> 非负整数：<span style="color: #ff0000;">^\d+$</span> 或 <span style="color: #ff0000;">^[1-9]\d*|0$
+</span><span style="color: #008080;">14</span> 非正整数：<span style="color: #ff0000;">^-[1-9]\d*|0$</span> 或 <span style="color: #ff0000;">^((-\d+)|(0+))$
+</span><span style="color: #008080;">15</span> 非负浮点数：<span style="color: #ff0000;">^\d+(\.\d+)?$</span> 或 <span style="color: #ff0000;">^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$
+</span><span style="color: #008080;">16</span> 非正浮点数：<span style="color: #ff0000;">^((-\d+(\.\d+)?)|(0+(\.0+)?))$</span> 或 <span style="color: #ff0000;">^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$
+</span><span style="color: #008080;">17</span> 正浮点数：<span style="color: #ff0000;">^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$</span> 或 <span style="color: #ff0000;">^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$
+</span><span style="color: #008080;">18</span> 负浮点数：<span style="color: #ff0000;">^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$</span> 或 <span style="color: #ff0000;">^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$
+</span><span style="color: #008080;">19</span> 浮点数：<span style="color: #ff0000;">^(-?\d+)(\.\d+)?$</span> 或 <span style="color: #ff0000;">^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</span></pre>
+</div>
+ 
+<p><strong><span style="font-size: 14pt;">二、校验字符的表达式</span></strong></p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> 汉字：<span style="color: #ff0000;">^[\u4e00-\u9fa5]{0,}$
+</span><span style="color: #008080;"> 2</span> 英文和数字：<span style="color: #ff0000;">^[A-Za-z0-9]+$</span> 或 <span style="color: #ff0000;">^[A-Za-z0-9]{4,40}$
+</span><span style="color: #008080;"> 3</span> 长度为3-20的所有字符：<span style="color: #ff0000;">^.{3,20}$
+</span><span style="color: #008080;"> 4</span> 由26个英文字母组成的字符串：<span style="color: #ff0000;">^[A-Za-z]+$
+</span><span style="color: #008080;"> 5</span> 由26个大写英文字母组成的字符串：<span style="color: #ff0000;">^[A-Z]+$
+</span><span style="color: #008080;"> 6</span> 由26个小写英文字母组成的字符串：<span style="color: #ff0000;">^[a-z]+$
+</span><span style="color: #008080;"> 7</span> 由数字和26个英文字母组成的字符串：<span style="color: #ff0000;">^[A-Za-z0-9]+$
+</span><span style="color: #008080;"> 8</span> 由数字、26个英文字母或者下划线组成的字符串：<span style="color: #ff0000;">^\w+$ 或 ^\w{3,20}$
+</span><span style="color: #008080;"> 9</span> 中文、英文、数字包括下划线：<span style="color: #ff0000;">^[\u4E00-\u9FA5A-Za-z0-9_]+$
+</span><span style="color: #008080;">10</span> 中文、英文、数字但不包括下划线等符号：<span style="color: #ff0000;">^[\u4E00-\u9FA5A-Za-z0-9]+$</span> 或 <span style="color: #ff0000;">^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$
+</span><span style="color: #008080;">11</span> 可以输入含有<span style="color: #000000;">^%&amp;'</span><span style="color: #800000;"><span style="color: #000000;">,;=?$\"等字符：</span><span style="color: #ff0000;">[^%&amp;</span></span><span style="color: #ff0000;">',;=?$\x22]+
+</span><span style="color: #008080;">12</span> 禁止输入含有~的字符：<span style="color: #ff0000;">[^~\x22]+</span></pre>
+</div>
+ 
+<p><strong><span style="font-size: 14pt;">三、特殊需求表达式</span></strong></p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080;"> 1</span> Email地址：<span style="color: #ff0000;">^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+</span><span style="color: #008080;"> 2</span> 域名：<span style="color: #ff0000;">[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?
+</span><span style="color: #008080;"> 3</span> InternetURL：<span style="color: #ff0000;">[a-zA-z]+://</span><span style="color: #008000;"><span style="color: #ff0000;">[^\s]*</span> <span style="color: #000000;">或</span> <span style="color: #ff0000;">^http:</span></span><span style="color: #ff0000;">//([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$
+</span><span style="color: #008080;"> 4</span> 手机号码：<span style="color: #ff0000;">^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$
+</span><span style="color: #008080;"> 5</span> 电话号码(<span style="color: #800000;">"</span><span style="color: #800000;">XXX-XXXXXXX</span><span style="color: #800000;">"</span>、<span style="color: #800000;">"</span><span style="color: #800000;">XXXX-XXXXXXXX</span><span style="color: #800000;">"</span>、<span style="color: #800000;">"</span><span style="color: #800000;">XXX-XXXXXXX</span><span style="color: #800000;">"</span>、<span style="color: #800000;">"</span><span style="color: #800000;">XXX-XXXXXXXX</span><span style="color: #800000;">"</span>、<span style="color: #800000;">"</span><span style="color: #800000;">XXXXXXX</span><span style="color: #800000;">"</span>和<span style="color: #800000;">"</span><span style="color: #800000;">XXXXXXXX)：<span style="color: #ff0000;">^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$ </span></span>
+<span style="color: #008080;"> 6</span> 国内电话号码(<span style="color: #800080;">0511</span>-<span style="color: #800080;">4405222</span>、<span style="color: #800080;">021</span>-<span style="color: #800080;">87888822</span>)：<span style="color: #ff0000;">\d{3}-\d{8}|\d{4}-\d{7}
+</span><span style="color: #008080;"> 7</span> 身份证号(15位、18位数字)：<span style="color: #ff0000;">^\d{15}|\d{18}$
+</span><span style="color: #008080;"> 8</span> 短身份证号码(数字、字母x结尾)：<span style="color: #ff0000;">^([0-9]){7,18}(x|X)?$</span> 或 <span style="color: #ff0000;">^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$
+</span><span style="color: #008080;"> 9</span> 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：<span style="color: #ff0000;">^[a-zA-Z][a-zA-Z0-9_]{4,15}$
+</span><span style="color: #008080;">10</span> 密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<span style="color: #ff0000;">^[a-zA-Z]\w{5,17}$
+</span><span style="color: #008080;">11</span> 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：<span style="color: #ff0000;">^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$  
+</span><span style="color: #008080;">12</span> 日期格式：<span style="color: #ff0000;">^\d{4}-\d{1,2}-\d{1,2}
+</span><span style="color: #008080;">13</span> 一年的12个月(<span style="color: #800080;">01</span>～09和1～<span style="color: #800080;">12</span>)：<span style="color: #ff0000;">^(0?[1-9]|1[0-2])$
+</span><span style="color: #008080;">14</span> 一个月的31天(<span style="color: #800080;">01</span>～09和1～<span style="color: #800080;">31</span>)：<span style="color: #ff0000;">^((0?[1-9])|((1|2)[0-9])|30|31)$ 
+</span><span style="color: #008080;">15</span> <span style="color: #000000;">钱的输入格式：
+</span><span style="color: #008080;">16</span>    1.有四种钱的表示形式我们可以接受:<span style="color: #800000;">"</span><span style="color: #800000;">10000.00</span><span style="color: #800000;">"</span> 和 <span style="color: #800000;">"</span><span style="color: #800000;">10,000.00</span><span style="color: #800000;">"</span>, 和没有 <span style="color: #800000;">"</span><span style="color: #800000;">分</span><span style="color: #800000;">"</span> 的 <span style="color: #800000;">"</span><span style="color: #800000;">10000</span><span style="color: #800000;">"</span> 和 <span style="color: #800000;">"</span><span style="color: #800000;">10,000</span><span style="color: #800000;">"</span>：<span style="color: #ff0000;">^[1-9][0-9]*$ 
+</span><span style="color: #008080;">17</span>    2.这表示任意一个不以0开头的数字,但是,这也意味着一个字符<span style="color: #800000;">"</span><span style="color: #800000;">0</span><span style="color: #800000;">"</span>不通过,所以我们采用下面的形式：<span style="color: #ff0000;">^(0|[1-9][0-9]*)$ 
+</span><span style="color: #008080;">18</span>    3.一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：<span style="color: #ff0000;">^(0|-?[1-9][0-9]*)$ 
+</span><span style="color: #008080;">19</span>    4.这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：<span style="color: #ff0000;">^[0-9]+(.[0-9]+)?$ 
+</span><span style="color: #008080;">20</span>    5.必须说明的是,小数点后面至少应该有1位数,所以<span style="color: #800000;">"</span><span style="color: #800000;">10.</span><span style="color: #800000;">"</span>是不通过的,但是 <span style="color: #800000;">"</span><span style="color: #800000;">10</span><span style="color: #800000;">"</span> 和 <span style="color: #800000;">"</span><span style="color: #800000;">10.2</span><span style="color: #800000;">"</span> 是通过的：<span style="color: #ff0000;">^[0-9]+(.[0-9]{2})?$ 
+</span><span style="color: #008080;">21</span>    6.这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：<span style="color: #ff0000;">^[0-9]+(.[0-9]{1,2})?$ 
+</span><span style="color: #008080;">22</span>    7.这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：<span style="color: #ff0000;">^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$ 
+</span><span style="color: #008080;">23</span>    8.1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：<span style="color: #ff0000;">^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$ 
+</span><span style="color: #008080;">24</span>    备注：这就是最终结果了,别忘了<span style="color: #800000;">"</span><span style="color: #800000;">+</span><span style="color: #800000;">"</span>可以用<span style="color: #800000;">"</span><span style="color: #800000;">*</span><span style="color: #800000;">"</span>替代如果你觉得空字符串也可以接受的话(奇怪,为什么?<span style="color: #000000;">)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里
+</span><span style="color: #008080;">25</span> xml文件：<span style="color: #ff0000;">^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$
+</span><span style="color: #008080;">26</span> 中文字符的正则表达式：<span style="color: #ff0000;">[\u4e00-\u9fa5]
+</span><span style="color: #008080;">27</span> 双字节字符：<span style="color: #ff0000;">[^\x00-\xff]    <span style="color: #808080;">(包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</span><br /></span><span style="color: #008080;">28</span> 空白行的正则表达式：<span style="color: #ff0000;">\n\s*\r    <span style="color: #808080;">(可以用来删除空白行)
+</span></span><span style="color: #008080;">29</span> HTML标记的正则表达式：<span style="color: #ff0000;">&lt;(\S*?)[^&gt;]*&gt;.*?&lt;/\1&gt;|&lt;.*? /&gt;    <span style="color: #808080;">(网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</span><br /></span><span style="color: #008080;">30 </span>首尾空白字符的正则表达式：<span style="color: #ff0000;">^\s*|\s*$或(^\s*)|(\s*$)    <span style="color: #808080;">(可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)
+</span></span><span style="color: #008080;">31</span> 腾讯QQ号：<span style="color: #ff0000;">[1-9][0-9]{4,}    <span style="color: #808080;">(<span style="background-color: #f5f5f5; font-family: Courier New;">腾讯QQ号从10000开始</span>)
+</span></span><span style="color: #008080;">32</span> 中国邮政编码：<span style="color: #ff0000;">[1-9]\d{5}(?!\d)    <span style="color: #808080;">(中国邮政编码为6位数字)
+</span></span><span style="color: #008080;">33</span> IP地址：<span style="color: #ff0000;">\d+\.\d+\.\d+\.\d+    <span style="color: #808080;">(提取IP地址时有用)<br /><span style="color: #008080;">34</span> <span style="color: #000000;">IP地址：<span style="color: #ff0000;">((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))</span></span><span style="color: #ff0000;">&nbsp;&nbsp;&nbsp; <span style="color: #808080;">(由@<span style="background-color: #f5f5f5; font-family: Courier New;">飞龙三少 提供,感谢共享</span>)</span></span></span></span></pre>
+</div>
+
+<p class="zxin_copyright">以上内容收集于：<a href="http://www.cnblogs.com/zxin/">http://www.cnblogs.com/zxin/</a>&nbsp;（作者：<a href="http://www.cnblogs.com/zxin/">zxin</a>）</p>
+
+
+-------------------
+
+<h1>正则语法</h1>
+<table class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <td width="100px">字符</td>
+                    <td>描述</td>
+                </tr>
+                <tr>
+                    <td>\</td>
+                    <td>将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符。例如，“<code>n</code>”匹配字符“<code>n</code>”。“<code>\n</code>”匹配一个换行符。串行“<code>\\</code>”匹配“<code>\</code>”而“<code>\(</code>”则匹配“<code>(</code>”。</td>
+                </tr>
+                <tr>
+                    <td>^</td>
+                    <td>匹配输入字符串的开始位置。如果设置了RegExp对象的Multiline属性，^也匹配“<code>\n</code>”或“<code>\r</code>”之后的位置。</td>
+                </tr>
+                <tr>
+                    <td>$</td>
+                    <td>匹配输入字符串的结束位置。如果设置了RegExp对象的Multiline属性，$也匹配“<code>\n</code>”或“<code>\r</code>”之前的位置。</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>匹配前面的子表达式零次或多次。例如，zo*能匹配“<code>z</code>”以及“<code>zoo</code>”。*等价于{0,}。</td>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>匹配前面的子表达式一次或多次。例如，“<code>zo+</code>”能匹配“<code>zo</code>”以及“<code>zoo</code>”，但不能匹配“<code>z</code>”。+等价于{1,}。</td>
+                </tr>
+                <tr>
+                    <td>?</td>
+                    <td>匹配前面的子表达式零次或一次。例如，“<code>do(es)?</code>”可以匹配“<code>does</code>”或“<code>does</code>”中的“<code>do</code>”。?等价于{0,1}。</td>
+                </tr>
+                <tr>
+                    <td>{<span style="font-family:Times New Roman; font-style:italic;">n</span>}</td>
+                    <td><span style="font-family:Times New Roman; font-style:italic;">n</span>是一个非负整数。匹配确定的<span style="font-family:Times New Roman; font-style:italic;">n</span>次。例如，“<code>o{2}</code>”不能匹配“<code>Bob</code>”中的“<code>o</code>”，但是能匹配“<code>food</code>”中的两个o。</td>
+                </tr>
+                <tr>
+                    <td>{<span style="font-family:Times New Roman; font-style:italic;">n</span>,}</td>
+                    <td><span style="font-family:Times New Roman; font-style:italic;">n</span>是一个非负整数。至少匹配<span style="font-family:Times New Roman; font-style:italic;">n</span>次。例如，“<code>o{2,}</code>”不能匹配“<code>Bob</code>”中的“<code>o</code>”，但能匹配“<code>foooood</code>”中的所有o。“<code>o{1,}</code>”等价于“<code>o+</code>”。“<code>o{0,}</code>”则等价于“<code>o*</code>”。</td>
+                </tr>
+                <tr>
+                    <td>{<span style="font-family:Times New Roman; font-style:italic;">n</span>,<span style="font-family:Times New Roman; font-style:italic;">m</span>}</td>
+                    <td><span style="font-family:Times New Roman; font-style:italic;">m</span>和<span style="font-family:Times New Roman; font-style:italic;">n</span>均为非负整数，其中<span style="font-family:Times New Roman; font-style:italic;">n</span>&lt;=<span style="font-family:Times New Roman; font-style:italic;">m</span>。最少匹配<span style="font-family:Times New Roman; font-style:italic;">n</span>次且最多匹配<span style="font-family:Times New Roman; font-style:italic;">m</span>次。例如，“<code>o{1,3}</code>”将匹配“<code>fooooood</code>”中的前三个o。“<code>o{0,1}</code>”等价于“<code>o?</code>”。请注意在逗号和两个数之间不能有空格。</td>
+                </tr>
+                <tr>
+                    <td>?</td>
+                    <td>当该字符紧跟在任何一个其他限制符（*,+,?，{<span style="font-family:Times New Roman; font-style:italic;">n</span>}，{<span style="font-family:Times New Roman; font-style:italic;">n</span>,}，{<span style="font-family:Times New Roman; font-style:italic;">n</span>,<span style="font-family:Times New Roman; font-style:italic;">m</span>}）后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串“<code>oooo</code>”，“<code>o+?</code>”将匹配单个“<code>o</code>”，而“<code>o+</code>”将匹配所有“<code>o</code>”。</td>
+                </tr>
+                <tr>
+                    <td>.</td>
+                    <td>匹配除“<code>\</code><span style="font-family:Times New Roman; font-style:italic;"><code>n</code></span>”之外的任何单个字符。要匹配包括“<code>\</code><span style="font-family:Times New Roman; font-style:italic;"><code>n</code></span>”在内的任何字符，请使用像“<code>(.|\n)</code>”的模式。</td>
+                </tr>
+                <tr>
+                    <td>(pattern)</td>
+                    <td>匹配pattern并获取这一匹配。所获取的匹配可以从产生的Matches集合得到，在VBScript中使用SubMatches集合，在JScript中则使用$0…$9属性。要匹配圆括号字符，请使用“<code>\(</code>”或“<code>\)</code>”。</td>
+                </tr>
+                <tr>
+                    <td>(?:pattern)</td>
+                    <td>匹配pattern但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用或字符“<code>(|)</code>”来组合一个模式的各个部分是很有用。例如“<code>industr(?:y|ies)</code>”就是一个比“<code>industry|industries</code>”更简略的表达式。</td>
+                </tr>
+                <tr>
+                    <td>(?=pattern)</td>
+                    <td>正向肯定预查，在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，“<code>Windows(?=95|98|NT|2000)</code>”能匹配“<code>Windows2000</code>”中的“<code>Windows</code>”，但不能匹配“<code>Windows3.1</code>”中的“<code>Windows</code>”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+                </tr>
+                <tr>
+                    <td>(?!pattern)</td>
+                    <td>正向否定预查，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如“<code>Windows(?!95|98|NT|2000)</code>”能匹配“<code>Windows3.1</code>”中的“<code>Windows</code>”，但不能匹配“<code>Windows2000</code>”中的“<code>Windows</code>”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始</td>
+                </tr>
+                <tr>
+                    <td>(?&lt;=pattern)</td>
+                    <td>反向肯定预查，与正向肯定预查类拟，只是方向相反。例如，“<code>(?&lt;=95|98|NT|2000)Windows</code>”能匹配“<code>2000Windows</code>”中的“<code>Windows</code>”，但不能匹配“<code>3.1Windows</code>”中的“<code>Windows</code>”。</td>
+                </tr>
+                <tr>
+                    <td>(?&lt;!pattern)</td>
+                    <td>反向否定预查，与正向否定预查类拟，只是方向相反。例如“<code>(?&lt;!95|98|NT|2000)Windows</code>”能匹配“<code>3.1Windows</code>”中的“<code>Windows</code>”，但不能匹配“<code>2000Windows</code>”中的“<code>Windows</code>”。</td>
+                </tr>
+                <tr>
+                    <td>x|y</td>
+                    <td>匹配x或y。例如，“<code>z|food</code>”能匹配“<code>z</code>”或“<code>food</code>”。“<code>(z|f)ood</code>”则匹配“<code>zood</code>”或“<code>food</code>”。</td>
+                </tr>
+                <tr>
+                    <td>[xyz]</td>
+                    <td>字符集合。匹配所包含的任意一个字符。例如，“<code>[abc]</code>”可以匹配“<code>plain</code>”中的“<code>a</code>”。</td>
+                </tr>
+                <tr>
+                    <td>[^xyz]</td>
+                    <td>负值字符集合。匹配未包含的任意字符。例如，“<code>[^abc]</code>”可以匹配“<code>plain</code>”中的“<code>p</code>”。</td>
+                </tr>
+                <tr>
+                    <td>[a-z]</td>
+                    <td>字符范围。匹配指定范围内的任意字符。例如，“<code>[a-z]</code>”可以匹配“<code>a</code>”到“<code>z</code>”范围内的任意小写字母字符。</td>
+                </tr>
+                <tr>
+                    <td>[^a-z]</td>
+                    <td>负值字符范围。匹配任何不在指定范围内的任意字符。例如，“<code>[^a-z]</code>”可以匹配任何不在“<code>a</code>”到“<code>z</code>”范围内的任意字符。</td>
+                </tr>
+                <tr>
+                    <td>\b</td>
+                    <td>匹配一个单词边界，也就是指单词和空格间的位置。例如，“<code>er\b</code>”可以匹配“<code>never</code>”中的“<code>er</code>”，但不能匹配“<code>verb</code>”中的“<code>er</code>”。</td>
+                </tr>
+                <tr>
+                    <td>\B</td>
+                    <td>匹配非单词边界。“<code>er\B</code>”能匹配“<code>verb</code>”中的“<code>er</code>”，但不能匹配“<code>never</code>”中的“<code>er</code>”。</td>
+                </tr>
+                <tr>
+                    <td>\cx</td>
+                    <td>匹配由x指明的控制字符。例如，\cM匹配一个Control-M或回车符。x的值必须为A-Z或a-z之一。否则，将c视为一个原义的“<code>c</code>”字符。</td>
+                </tr>
+                <tr>
+                    <td>\d</td>
+                    <td>匹配一个数字字符。等价于[0-9]。</td>
+                </tr>
+                <tr>
+                    <td>\D</td>
+                    <td>匹配一个非数字字符。等价于[^0-9]。</td>
+                </tr>
+                <tr>
+                    <td>\f</td>
+                    <td>匹配一个换页符。等价于\x0c和\cL。</td>
+                </tr>
+                <tr>
+                    <td>\n</td>
+                    <td>匹配一个换行符。等价于\x0a和\cJ。</td>
+                </tr>
+                <tr>
+                    <td>\r</td>
+                    <td>匹配一个回车符。等价于\x0d和\cM。</td>
+                </tr>
+                <tr>
+                    <td>\s</td>
+                    <td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于[ \f\n\r\t\v]。</td>
+                </tr>
+                <tr>
+                    <td>\S</td>
+                    <td>匹配任何非空白字符。等价于[^ \f\n\r\t\v]。</td>
+                </tr>
+                <tr>
+                    <td>\t</td>
+                    <td>匹配一个制表符。等价于\x09和\cI。</td>
+                </tr>
+                <tr>
+                    <td>\v</td>
+                    <td>匹配一个垂直制表符。等价于\x0b和\cK。</td>
+                </tr>
+                <tr>
+                    <td>\w</td>
+                    <td>匹配包括下划线的任何单词字符。等价于“<code>[A-Za-z0-9_]</code>”。</td>
+                </tr>
+                <tr>
+                    <td>\W</td>
+                    <td>匹配任何非单词字符。等价于“<code>[^A-Za-z0-9_]</code>”。</td>
+                </tr>
+                <tr>
+                    <td>\x<span style="font-family:Times New Roman; font-style:italic;">n</span></td>
+                    <td>匹配<span style="font-family:Times New Roman; font-style:italic;">n</span>，其中<span style="font-family:Times New Roman; font-style:italic;">n</span>为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，“<code>\x41</code>”匹配“<code>A</code>”。“<code>\x041</code>”则等价于“<code>\x04&amp;1</code>”。正则表达式中可以使用ASCII编码。.</td>
+                </tr>
+                <tr>
+                    <td>\<span style="font-family:Times New Roman; font-style:italic;">num</span></td>
+                    <td>匹配<span style="font-family:Times New Roman; font-style:italic;">num</span>，其中<span style="font-family:Times New Roman; font-style:italic;">num</span>是一个正整数。对所获取的匹配的引用。例如，“<code>(.)\1</code>”匹配两个连续的相同字符。</td>
+                </tr>
+                <tr>
+                    <td>\<span style="font-family:Times New Roman; font-style:italic;">n</span></td>
+                    <td>标识一个八进制转义值或一个向后引用。如果\<span style="font-family:Times New Roman; font-style:italic;">n</span>之前至少<span style="font-family:Times New Roman; font-style:italic;">n</span>个获取的子表达式，则<span style="font-family:Times New Roman; font-style:italic;">n</span>为向后引用。否则，如果<span style="font-family:Times New Roman; font-style:italic;">n</span>为八进制数字（0-7），则<span style="font-family:Times New Roman; font-style:italic;">n</span>为一个八进制转义值。</td>
+                </tr>
+                <tr>
+                    <td>\<span style="font-family:Times New Roman; font-style:italic;">nm</span></td>
+                    <td>标识一个八进制转义值或一个向后引用。如果\<span style="font-family:Times New Roman; font-style:italic;">nm</span>之前至少有<span style="font-family:Times New Roman; font-style:italic;">nm</span>个获得子表达式，则<span style="font-family:Times New Roman; font-style:italic;">nm</span>为向后引用。如果\<span style="font-family:Times New Roman; font-style:italic;">nm</span>之前至少有<span style="font-family:Times New Roman; font-style:italic;">n</span>个获取，则<span style="font-family:Times New Roman; font-style:italic;">n</span>为一个后跟文字<span style="font-family:Times New Roman; font-style:italic;">m</span>的向后引用。如果前面的条件都不满足，若<span style="font-family:Times New Roman; font-style:italic;">n</span>和<span style="font-family:Times New Roman; font-style:italic;">m</span>均为八进制数字（0-7），则\<span style="font-family:Times New Roman; font-style:italic;">nm</span>将匹配八进制转义值<span style="font-family:Times New Roman; font-style:italic;">nm</span>。</td>
+                </tr>
+                <tr>
+                    <td>\<span style="font-family:Times New Roman; font-style:italic;">nml</span></td>
+                    <td>如果<span style="font-family:Times New Roman; font-style:italic;">n</span>为八进制数字（0-3），且<span style="font-family:Times New Roman; font-style:italic;">m和l</span>均为八进制数字（0-7），则匹配八进制转义值<span style="font-family:Times New Roman; font-style:italic;">nm</span>l。</td>
+                </tr>
+                <tr>
+                    <td>\u<span style="font-family:Times New Roman; font-style:italic;">n</span></td>
+                    <td>匹配<span style="font-family:Times New Roman; font-style:italic;">n</span>，其中<span style="font-family:Times New Roman; font-style:italic;">n</span>是一个用四个十六进制数字表示的Unicode字符。例如，\u00A9匹配版权符号（©）。</td>
+                </tr>
+            </tbody>
+        </table>
+

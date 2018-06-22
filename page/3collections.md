@@ -18,7 +18,8 @@ type: page
 
 <a href="/photos/" target="_blank"><img src="http://omjh2j5h3.bkt.clouddn.com/tupian.png" width="967" height="195" alt="photos" display="block"/></a>
 
-
+* [知道创宇研发技能表v3.0](http://blog.knownsec.com/Knownsec_RD_Checklist/v3.0.html)
+* [提问的智慧]([](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md))
 * [box-shadow generator](http://www.cssmatic.com/box-shadow)
 
     生成 box-shadow 的工具。
@@ -301,3 +302,5 @@ Syntax Theme: Atom Dark or One Dark
 ## Comments
 
 {% include comments.html %}
+
+

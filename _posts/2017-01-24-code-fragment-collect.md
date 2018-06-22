@@ -15,6 +15,8 @@ mathjax: true
 {:toc}
 
 ## Xcode 相关：
+##### Xcdoe真机测试文件地址：
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport
 
 ##### 查看Xcode的UUID方式，在终端执行 ：
 - `defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID`
@@ -59,3 +61,4 @@ mathjax: true
 
 #### OS X 下打印文件夹的目录结构:
 	find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+
