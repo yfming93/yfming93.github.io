@@ -4,7 +4,7 @@ title:       "UIWebView 不自动全屏播放视频 "
 date:     	2017-08-24
 author:     	"袁凤鸣"
 categories:  iOS
-tags:  UIWebView 视频
+tags:  UIWebView
 mathjax: true
 ---
 

@@ -2,11 +2,14 @@
 layout: post
 title:  "微信小程序入门与实战(5-3)"
 date:   2018-01-29
-categories: 微信小技术
-tags: 微信小技术
+author: "袁凤鸣"
+categories: 微信小程序
+tags: 微信小程序
 excerpt: 5-3 template模板的使用
 mathjax: true
 ---
+* content
+{:toc}
 
 
 [微信小程序入门与实战 常用组件API开发技巧项目实战](https://coding.imooc.com/class/75.html)

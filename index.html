@@ -78,7 +78,7 @@ layout: default
         <div class="pagination">
           {% if paginator.previous_page %}
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
-            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous"><i class="fa fa-angle-left"></i></a>
+            <a href="{{ paginator.previous_page_path }}" class="previous"><i class="fa fa-angle-left"></i></a>
           {% else %}
             <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
             <span class="previous disable"><i class="fa fa-angle-left"></i></span>
@@ -86,11 +86,12 @@ layout: default
           <span class="page_number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
           {% if paginator.next_page %}
             <a href="{{ paginator.next_page_path }}" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="{{ site.baseurl }}/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
           {% else %}
             <span class="next disable"><i class="fa fa-angle-right"></i></span>
             <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
           {% endif %}
+          共 {{ paginator.total_pages }} 页，有 {{ paginator.total_posts }} 篇文章
         </div>
         <br>
         
@@ -176,6 +177,16 @@ layout: default
                       <a href="{{ root_url }}/{{ site.tag_dir }}#{{ tag[0] }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};">{{ tag[0] }}</a>
                     {% endfor %}
                 </div>
+            </div>
+
+             <div class="side">
+                <div>
+                    <i class="fa fa-external-link"></i>
+                    喂下小松鼠吧
+                </div>
+                <ul  class="content-ul" style="padding-left: 3px;padding-right: 0px;">
+                    <object type="application/x-shockwave-flash" style="outline:none;" data="https://cdn.abowman.com/widgets/hamster/hamster.swf?" width="260" height="205"><param name="movie" value="https://cdn.abowman.com/widgets/hamster/hamster.swf?"></param><param name="AllowScriptAccess" value="always"></param><param name="wmode" value="opaque"></param></object>
+                </ul>
             </div>
 
             <!-- <div class="side">

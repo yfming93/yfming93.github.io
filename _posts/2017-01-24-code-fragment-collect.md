@@ -6,8 +6,7 @@ date:     	2017-01-24
 author:     	"袁凤鸣"
 categories:  开发效率
 tags:
-    - 开发效率
-    - 代码片段收集
+    - 代码片段
 mathjax: true
 ---
 

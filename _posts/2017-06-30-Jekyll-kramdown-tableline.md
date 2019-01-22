@@ -4,8 +4,10 @@ title:       "Jekyll 的 kramdown 解释器对表格不友好"
 excerpt: 		Jekyll 的 kramdown 解释器在解析表格语法时没有把表格线解析出来。此文针对这个问题的解答。而且介绍下表格设置列宽度的技巧。
 date:     	2017-06-30
 author:     	"袁凤鸣"
-categories:  jekyll
-tags:  markdown jekyll
+categories:  实用技术
+tags:  
+    - markdown 
+    - jekyll
 mathjax: true
 ---
 

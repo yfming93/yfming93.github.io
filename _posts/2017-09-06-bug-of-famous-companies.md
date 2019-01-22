@@ -3,8 +3,8 @@ layout:     	post
 title:       "那些年，我发现的那些大厂 APP 的 Bug"
 date:     	2017-09-06
 author:     	"袁凤鸣"
-categories:  Bug
-tags:   Bug 
+categories:  报错调试
+tags:   大厂Bug 
 mathjax: true
 ---
 

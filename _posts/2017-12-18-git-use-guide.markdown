@@ -2,12 +2,14 @@
 layout: post
 title:  " Git 常用命令使用指南"
 date:   2017-12-18
-categories: git
+author: "袁凤鸣"
+categories: 开发效率
 tags: git
 excerpt: Git 常用命令使用指南。
 mathjax: true
 ---
-
+* content
+{:toc}
 
 
 ## 首先附上神图

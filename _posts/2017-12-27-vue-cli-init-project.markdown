@@ -2,11 +2,14 @@
 layout: post
 title:  "Vue-cli 初始化 Vue 项目"
 date:   2017-12-27
+author: "袁凤鸣"
 categories: vue
 tags: vue
 excerpt: 利用 Vue-cli 脚手架 初始化我们的 vue 项目代码
 mathjax: true
 ---
+* content
+{:toc}
 
 ## 利用 Vue-cli 脚手架 初始化我们的 vue 项目代码
 

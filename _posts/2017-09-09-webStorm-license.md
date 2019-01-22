@@ -3,9 +3,9 @@ layout:     	post
 title:       "WebStorm 注册码"
 date:     	2017-09-08
 author:     	"袁凤鸣"
-categories:  注册码
+categories:  实用技术
 tags: 
-    WebStorm 
+    - 注册码
 mathjax: true
 ---
 

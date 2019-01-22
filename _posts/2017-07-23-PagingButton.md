@@ -1,17 +1,17 @@
 ---
 layout:     	post
-title:       "这是一个左右分页按钮的集合视图控件。用于快速编写出集合视图上分页多按钮点击事件！"
+title:       "PagingButton 这是一个左右分页按钮的集合视图控件。用于快速编写出集合视图上分页多按钮点击事件！"
 date:     	2017-07-23
 author:     	"袁凤鸣"
 categories:  iOS
-tags:  PagingButton 开源库
+tags:  
+    - 开源库
 mathjax: true
 ---
 
 * content
 {:toc} 
 
-# PagingButton
 
 ## 一、介绍：
 #### 这是一个左右分页按钮的集合视图控件。用于快速编写出集合视图上分页多按钮点击事件！

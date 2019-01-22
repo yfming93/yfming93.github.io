@@ -2,11 +2,14 @@
 layout: post
 title:  "Mac 系统百度网盘下载限速破解"
 date:   2018-01-02
+author: "袁凤鸣"
 categories: 实用技术
-tags: 实用技术 百度云
+tags: 百度云
 excerpt: 解除 Mac 系统百度网盘下载限速，还原真实下载速度
 mathjax: true
 ---
+* content
+{:toc}
 
 
 ###  实质：

@@ -2,7 +2,7 @@
 layout:     post
 title:      "Mingoy的个人博客今天开始啦"
 excerpt: 今天开始我将要在这里写博客了。自己的一片净土，随心畅享
-date:       2016-10-01 
+date:       2015-10-01 
 author:     "袁凤鸣"
 categories: 随笔
 tags: 随笔

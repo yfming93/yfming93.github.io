@@ -1,13 +1,15 @@
 ---
 layout: post
-title:  "cocoapods errors"
+title:  "cocoapods errors about pod search"
 date:   2017-11-06 
-categories: cocoapods
+author: "袁凤鸣"
+categories: 开发效率
 tags: cocoapods
 excerpt: pod search 出现  You need at least git version 1.8.5 to use CocoaPods
 mathjax: true
 ---
-
+* content
+{:toc}
 
 ### pod search 出现  You need at least git version 1.8.5 to use CocoaPods
 

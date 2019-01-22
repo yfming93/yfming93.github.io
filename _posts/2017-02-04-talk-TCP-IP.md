@@ -6,7 +6,6 @@ date:     	2017-02-04
 author:     	"袁凤鸣"
 categories:  转载
 tags:
-    - 转载
     - TCP/IP
 mathjax: true
 ---

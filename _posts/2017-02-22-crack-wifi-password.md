@@ -6,9 +6,7 @@ date:     	2017-02-22
 author:     	"袁凤鸣"
 categories:  实用技术
 tags:
-    - WiFi
-    - 实用技术
-    
+    - WiFi    
 mathjax: true
 ---
  

@@ -3,7 +3,7 @@ layout:     	post
 title:       "常用正则表达式和正则学法收集"
 date:     	2017-09-28
 author:     	"袁凤鸣"
-categories:  编程技能
+categories:  开发效率
 tags: 
     正则 
 mathjax: true

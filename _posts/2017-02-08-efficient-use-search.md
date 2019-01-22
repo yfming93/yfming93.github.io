@@ -4,10 +4,8 @@ title:       "其实好多人根本不会用百度和谷歌搜索"
 excerpt: 		其实好多人根本不会用百度和谷歌搜索 
 date:     	2017-02-08 
 author:     	"袁凤鸣"
-categories:  转载
+categories:  转载 开发效率 实用技术
 tags:
-    - 转载
-    - 效率
     - 搜索
     
 mathjax: true

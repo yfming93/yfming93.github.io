@@ -4,8 +4,11 @@ title:       "iOS代码规范"
 excerpt: 		这篇iOS代码规范还是非常不错的。推荐iOS开发人员看
 date:     	2017-06-16
 author:     	"袁凤鸣"
-categories:  iOS
-tags: 转载 iOS代码规范 iOS
+categories:  
+    - iOS
+    - 转载
+tags:  
+    - 规范
 mathjax: true
 ---
 

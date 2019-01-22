@@ -2,11 +2,14 @@
 layout: post
 title:  "const，static，extern简介、作用和使用"
 date:   2017-12-21
+author: "袁凤鸣"
 categories: 转载
-tags: iOS
+tags: iOS基础
 excerpt: const，static，extern简介、作用和使用。
 mathjax: true
 ---
+* content
+{:toc}
 
 ## const，static，extern简介、作用和使用
 

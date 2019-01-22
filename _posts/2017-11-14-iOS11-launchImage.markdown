@@ -2,12 +2,14 @@
 layout: post
 title:  " iOS.11 Xcode9 时 iOS LaunchImage 规格变化"
 date:   2017-11-14
+author: "袁凤鸣"
 categories: iOS
-tags: iOS
+tags: iOS基础
 excerpt: 在iOS.11 Xcode9 后， iOS LaunchImage 规格发生变化，新增了iPhone X 版的 LaunchImage
 mathjax: true
 ---
-
+* content
+{:toc}
 
 #  iOS.11后的 iOS LaunchImage 发生变化了，在此备注记录下。
 

@@ -4,8 +4,8 @@ title:       "Font Awesome 开源图标库"
 excerpt: 		Font Awesome 是一款开源的字体图标库，拥有大量简洁优雅的图标(Version 4.3.0已经拥有519个图标)，是一款强大、丰富、简单、好用的字体图标库。在项目中使用Font Awesome可以大大提高项目的进度。 
 date:     	2017-03-28 
 author:     	"袁凤鸣"
-categories:  转载
-tags: FontAwesome 开源图标 实用技术 转载
+categories: 转载
+tags: FontAwesome 开源图标
 mathjax: true
 ---
 
@@ -117,3 +117,4 @@ icon 作为提高用户体验的重要手段，在网页设计中早已被广泛
 ### 更详细的参考可以到官方网站: [Font Awesome](http://fontawesome.io/icons/) 查阅。
 
 原文 [Font Awesome 学习笔记](http://www.jianshu.com/p/ba0e7ebd045c)
+

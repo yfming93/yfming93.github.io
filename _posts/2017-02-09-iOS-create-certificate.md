@@ -4,9 +4,8 @@ title:       "iOS证书创建"
 excerpt: 		iOS证书创建 
 date:     	2017-02-09 
 author:     	"袁凤鸣"
-categories:  iOS
+categories:  iOS 报错调试
 tags:
-    - iOS
     - 证书
  
 mathjax: true

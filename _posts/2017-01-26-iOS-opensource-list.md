@@ -4,10 +4,9 @@ title:       "iOS各种学习资源列表汇总"
 excerpt: 		此篇主要汇总各种学习列表，分 OC、Swift、开源APP 的中文和英文以及 综合 七个列表模块。持续更新ing
 date:     	2017-01-26
 author:     	"袁凤鸣"
-categories:  学习资源
+categories:  学习资源 iOS
 tags:
-    - 学习资源
-    - iOS
+    - 资源
 mathjax: true
 ---
 
@@ -121,3 +120,4 @@ mathjax: true
 - [Github 搜索](https://github.com/search)
 - [爱迪生资源分享站](http://weibo.com/p/1005055713457429/home?pids=&profile_ftype=1&is_all=1#_0)
 - **[优质的简书专题：iOS Developer](http://www.jianshu.com/c/e84a7722d673)**
+

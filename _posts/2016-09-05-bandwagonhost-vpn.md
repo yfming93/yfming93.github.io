@@ -2,11 +2,10 @@
 layout:     	post
 title:       "利用搬瓦工VPS自建高速丝滑VPN"
 excerpt: 		自建的专属 VPN ，随心畅享自己的网络海洋！
-date:     	2016-11-05
+date:     	2016-09-05
 author:     	"袁凤鸣"
 categories:  实用技术
 tags:
-    - 实用技术
     - VPN
 mathjax: true
 ---

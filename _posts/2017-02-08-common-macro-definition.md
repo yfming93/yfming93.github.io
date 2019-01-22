@@ -4,11 +4,9 @@ title:       "iOS开发常用宏定义收集"
 excerpt: 		旨在收集开发过程中经常使用的一些宏定义 
 date:     	2017-02-08
 author:     	"袁凤鸣"
-categories:  iOS
+categories:  iOS 
 tags:
-    - 宏定义
-    - 学习资源
-    
+    - 宏定义    
 mathjax: true
 ---
 

@@ -4,12 +4,11 @@ title:       "关于代码家(干货集中营)共享知识点汇总系列——i
 excerpt: 		 关于代码家（干货集中营）共享的所有知识点iOS部分的汇总，后续每周会对其进行更新
 date:     	2017-04-26 
 author:     	"袁凤鸣"
-categories:  转载
-tags:
+categories:  
     - 转载
-    - 干货
-    - 学习资源
     - iOS
+tags:
+    - 学习资源
 mathjax: true
 ---
 

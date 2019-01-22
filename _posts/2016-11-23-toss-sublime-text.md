@@ -2,11 +2,10 @@
 layout:     	post
 title:       "如何优雅地使用Sublime Text3"
 excerpt: 		Sublime Text 使用者进阶攻略专题
-date:     	2017-01-23
+date:     	2016-11-23
 author:     	"袁凤鸣"
-categories:  实用技术
+categories: 开发效率
 tags:
-    - 实用技术
     - SublimeText3
 mathjax: true
 ---

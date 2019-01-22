@@ -44,9 +44,21 @@
  */
 function setContentMaxHeightInPC() {
     var windowHeight = window.innerHeight
-    var contentUl = document.querySelector('.content-ul')
-    var contentMaxHeight = windowHeight - 77 - 60
+    var contentUl = document.querySelector('#content-side')
+    // var contentMaxHeight = windowHeight - $('#top').height() - 240 - $('#search-div').height()
+    var contentMaxHeight 
+    if (windowHeight > 600) {
+        contentMaxHeight = 350
+    } else if(windowHeight > 500 & windowHeight <= 600) {
+        contentMaxHeight = 200
+    } else if(windowHeight > 350 & windowHeight <= 500) {
+        contentMaxHeight = 110
+    }else  {
+        contentMaxHeight = 70
+    }
+    
     contentUl.style.maxHeight = contentMaxHeight + 'px'
+
 }
 
 /**
@@ -108,8 +120,8 @@ function ancherPostion(anchorBtn, rightDiv) {
             anchorBtn.style.top = '20px'
             rightDiv.style.top = '20px'
         } else {
-            anchorBtn.style.top = '120px'
-            rightDiv.style.top = '120px'
+            anchorBtn.style.top = '76px'
+            rightDiv.style.top = '76px'
         }
     })
 }

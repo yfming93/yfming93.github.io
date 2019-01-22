@@ -5,7 +5,7 @@ excerpt: 		今天要用到 ABS（A） 取整数绝对值，遂直接 markdown �
 date:     	2017-03-29 
 author:     	"袁凤鸣"
 categories:  iOS
-tags: OC常用函数 函数对照表
+tags: iOS基础
  
 mathjax: true
 ---
@@ -72,3 +72,4 @@ mathjax: true
 |M_E	|=e
 |M_LOG2E	|log_2(e)
 |M_LOG10E	|log_10(e)
+

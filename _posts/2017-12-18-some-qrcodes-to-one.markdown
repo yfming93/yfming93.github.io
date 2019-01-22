@@ -2,12 +2,14 @@
 layout: post
 title:  "二维码多合一"
 date:   2017-12-18
+author: "袁凤鸣"
 categories: 实用技术
 tags: 二维码
 excerpt: 多个二维码合成一个二维码
 mathjax: true
 ---
-
+* content
+{:toc}
 
 
 ## 介绍：

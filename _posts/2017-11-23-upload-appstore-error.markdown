@@ -2,11 +2,13 @@
 layout: post
 title:  " 上传App Store 发布审核时遇到一个错误提示页面上有一个或多个错误"
 date:   2017-11-23
-categories: iOS
-tags: iOS
+categories: iOS 报错调试
+tags: iOS审核
 excerpt: 昨天上传 App Store 发布审核时遇到一个错误记录下，提示页面上有一个或多个错误
 mathjax: true
 ---
+* content
+{:toc}
 
 # 上传 App Store 发布审核时遇到页面上有一个或多个错误
 

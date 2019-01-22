@@ -4,8 +4,9 @@ title:       "金山直播云 和 七牛直播云 选择困难户的抉择"
 excerpt: 		直播云技术哪家强，中国山东找蓝翔!!! 
 date:     	2017-06-27
 author:     	"袁凤鸣"
-categories:  直播
-tags:  直播 iOS
+categories:  iOS
+tags:  
+    - 直播
 mathjax: true
 ---
 
@@ -229,3 +230,5 @@ mathjax: true
 但如果有具体的业务需求，可对比下图后按照具体业务偏向程度来选择。哪边需要的业务符合自己的需求更多就选择哪边。<br>（下图截取于各自官方 Github 仓库 功能点的描述部分。）
 
 ![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fh06f6gjpaj20y90mndrb.jpg)
+
+

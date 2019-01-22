@@ -7,8 +7,6 @@ author:     	"袁凤鸣"
 categories:  转载
 tags:
     - html
-    - H5标签总汇
-    - 转载   
 mathjax: true
 ---
 
@@ -1264,3 +1262,4 @@ mathjax: true
 	<DIV> 
 	<DIV style="WIDTH: 300px; POSITION: absolute; HEIGHT: 100px; BACKGROUND-COLOR: red">移动层</DIV> 
 	</DIV>
+

@@ -3,7 +3,7 @@ layout:     	post
 title:       "Xcode 中删除一整行代码的快捷键设置"
 date:     	2017-09-27
 author:     	"袁凤鸣"
-categories:  Xcode
+categories:  开发效率
 tags: 
     Xcode 
 mathjax: true

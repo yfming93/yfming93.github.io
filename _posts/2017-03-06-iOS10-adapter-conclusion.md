@@ -6,7 +6,7 @@ date:     	2017-03-06
 author:     	"袁凤鸣"
 categories:  iOS
 tags: 
-    - iOS10
+    - 适配
     
 mathjax: true
 ---

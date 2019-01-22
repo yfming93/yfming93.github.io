@@ -4,11 +4,9 @@ title:       "Apple Mach-O Linker Error Group & Lipo Error Group   错误 "
 excerpt: 		同时报  Apple Mach-O Linker Error Group 和 Lipo Error Group 错误时处理方法 
 date:     	2017-03-04 
 author:     	"袁凤鸣"
-categories:  编译错误
+categories:  报错调试
 tags:
     - error
-    - 编译
-    - Xcode
     
 mathjax: true
 ---

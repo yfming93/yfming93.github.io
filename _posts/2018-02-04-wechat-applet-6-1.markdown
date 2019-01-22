@@ -2,12 +2,15 @@
 layout: post
 title:  "微信小程序入门与实战(6-1)"
 date:   2018-02-04
-categories: 微信小技术
-tags: 微信小技术
+categories: 微信小程序
+author: "袁凤鸣"
+tags: 
+ - 微信小程序
 excerpt: 6-1 从文章列表跳转到新闻详情页面（组件自定义属性及获取属性）
 mathjax: true
 ---
-
+* content
+{:toc}
 
 
 [微信小程序入门与实战 常用组件API开发技巧项目实战](https://coding.imooc.com/class/75.html)
