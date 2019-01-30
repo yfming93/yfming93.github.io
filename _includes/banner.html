@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>jQuery多种百叶窗风格切换焦点图插件DEMO演示</title>
+
+<link rel="stylesheet" href="../css/shutter.css">
+
+</head>
+<body>
+
+<div class="shutter">
+<div class="shutter-img">
+    <a href="#" data-shutter-title="Iron Man"><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fznkoc09swj31hc0u0npf.jpg" alt="#"></a>
+    <a href="#" data-shutter-title="Super Man"><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzoj4aqobij31fn0u0e86.jpg" alt="#"></a>
+    <a href="#" data-shutter-title="The Hulk"><img src="../resources/shutter_1.jpg" alt="#"></a>
+   <a href="#" data-shutter-title="The your"><img src="../resources/shutter_2.jpg" alt="#"></a>
+</div>
+<ul class="shutter-btn">
+  <li class="prev"></li>
+  <li class="next"></li>
+</ul>
+<div class="shutter-desc">
+  <p>Iron Man</p>
+</div>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/velocity.js"></script>
+<script src="../js/shutter.js"></script>
+<script>
+$(function () {
+  $('.shutter').shutter({
+  shutterW: 800, // 容器宽度
+  shutterH: 450, // 容器高度
+  isAutoPlay: true, // 是否自动播放
+  playInterval: 3000, // 自动播放时间
+  curDisplay: 3, // 当前显示页
+  fullPage: false // 是否全屏展示
+  });
+});
+</script>
+
+<div style="text-align:center;clear:both">
+
+</div>
+</body>
+</html>

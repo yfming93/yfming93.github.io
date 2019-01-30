@@ -10,8 +10,11 @@ type: page
 {:toc}
 
 
+{% include banner.html %}
+
+
 <!-- ![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fgcq0s5cooj20np0hstdx.jpg)-->
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fznkoc09swj31hc0u0npf.jpg)
+<!-- ![](https://ws3.sinaimg.cn/large/006tNc79gy1fznkoc09swj31hc0u0npf.jpg) -->
 
 ### Write to myself：
 
