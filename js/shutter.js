@@ -12,7 +12,7 @@
       shutterW: 360,
       shutterH: 270,
       isAutoPlay: false,
-      playInterval: 3000,
+      playInterval: 5000,
       curDisplay: 0,
       fullPage: false
     };
