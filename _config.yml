@@ -14,6 +14,7 @@ brief-intro: Front-end Dev Engineer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.yfmingo.cn" # the base hostname & protocol for your site
 
+
 permalink: /:year/:month/:day/:title/
 
 # other links
@@ -26,7 +27,7 @@ zhihu_username: yfmingo
 wangyiyun_username: "278546999"
 linkedIn_username: #gaohaoyang
 dribbble_username:
-
+rss: feed.xml
 description_footer: 生命不息，折腾不止！细节决定成败，心态造就未来！
 
 # comments
