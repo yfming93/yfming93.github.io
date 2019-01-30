@@ -49,13 +49,17 @@
           this.gridWhole(index, 3);
         break;
         case 4:
-          this.gridTop(index, 0);
+          // this.gridTop(index, 0);
+        this.gridOpacity(index);
+
         break;
         case 5:
-          this.gridTop(index, 1);
+          // this.gridTop(index, 1);
+          this.gridOpacity(index);
         break;
         case 6:
-          this.gridTop(index, 2);
+          // this.gridTop(index, 2);
+          this.gridOpacity(index);
         break;
         case 7:
           this.gridLeft(index, 0);
@@ -79,7 +83,8 @@
           this.gridSwitch(index);
         break;
         default:
-          this.gridTop(index, 0);
+          // this.gridTop(index, 0);
+          this.gridOpacity(index);
         break;
       }
     },
