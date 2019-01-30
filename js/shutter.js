@@ -9,9 +9,9 @@
 
   var Shutter = function (elem, options) {
     this.defaults = {
-      shutterW: 800,
-      shutterH: 500,
-      isAutoPlay: false,
+      shutterW: 360,
+      shutterH: 290,
+      isAutoPlay: true,
       playInterval: 3000,
       curDisplay: 0,
       fullPage: false
@@ -242,19 +242,19 @@
       if (showNum === 0) {
         movingVal = this.shutterW;
 
-        $createElem.velocity({left: movingVal}, {duration: 1000});
+        $createElem.velocity({left: movingVal}, {duration: 1200});
       } else if (showNum === 1) {
         movingVal = -this.shutterW;
 
-        $createElem.velocity({left: movingVal}, {duration: 1000});
+        $createElem.velocity({left: movingVal}, {duration: 1200});
       } else if (showNum === 2) {
         movingVal = this.shutterH;
 
-        $createElem.velocity({top: movingVal}, {duration: 1000});
+        $createElem.velocity({top: movingVal}, {duration: 1200});
       } else if (showNum === 3) {
         movingVal = -this.shutterH;
 
-        $createElem.velocity({top: movingVal}, {duration: 1000});
+        $createElem.velocity({top: movingVal}, {duration: 1200});
       }
 
       $createElem.find('img').css({
@@ -309,7 +309,7 @@
             movingVal = -self.shutterH;
           }
 
-          $(this).velocity({top: movingVal}, {duration: 1000});
+          $(this).velocity({top: movingVal}, {duration: 1200});
         });
       } else if (showNum === 1) {
         $curElem.find('.created').each(function (i) {
@@ -325,7 +325,7 @@
         });
       }
 
-      this.recovery($targetElem, $curElem, index, backup, 1000);
+      this.recovery($targetElem, $curElem, index, backup, 1200);
     },
 
     gridLeft: function (index, showNum) {
@@ -371,7 +371,7 @@
             movingVal = -self.shutterW;
           }
 
-          $(this).velocity({left: movingVal}, {duration: 1000});
+          $(this).velocity({left: movingVal}, {duration: 1200});
         });
       } else if (showNum === 1) {
         $curElem.find('.created').each(function (i) {
@@ -387,7 +387,7 @@
         });
       }
 
-      this.recovery($targetElem, $curElem, index, backup, 1000);
+      this.recovery($targetElem, $curElem, index, backup, 1200);
     },
 
     gridOpacity: function (index) {
@@ -419,9 +419,9 @@
 
       $curElem.append($createElem);
 
-      $createElem.velocity({opacity: 0}, {duration: 1000});
+      $createElem.velocity({opacity: 0}, {duration: 1200});
 
-      this.recovery($targetElem, $curElem, index, backup, 1000);
+      this.recovery($targetElem, $curElem, index, backup, 1200);
     },
 
     gridAccordion: function (index) {

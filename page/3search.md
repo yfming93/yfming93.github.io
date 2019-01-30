@@ -5,36 +5,20 @@ permalink: /search/
 icon: search
 type: page
 ---
+
+
 <div class="page clearfix" index>
    <div class="left">
       <img src="/photos/assets/search-by-algolia.svg" style="height:2em;">
       <div id="search-searchbar">
       </div>
       <hr>
-
       <div id="search-hits"> </div>
       {% include algolia.html %}
    </div>
     <div class="right">
         <div class="wrap">
-
-            <div class="side">
-                {% include sidebar-search.html %}
-            </div>
-
-            <div class="side">
-                <div>
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    Recent Posts
-                </div>
-                <ul class="content-ul" recent>
-                    {% for post in site.posts offset: 0 limit: 10  %}
-                        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <!-- Content -->
+            <!-- Categories -->
             <div class="side ">
                 <div>
                     <i class="fa fa-th-list"></i>
@@ -60,7 +44,7 @@ type: page
                     Tags
                 </div>
                 <div class="tags-cloud">
-                    {% assign first = site.tags.first %}
+                  {% assign first = site.tags.first %}
                     {% assign max = first[1].size %}
                     {% assign min = max %}
                     {% for tag in site.tags offset:1 %}
@@ -97,16 +81,6 @@ type: page
                     {% endfor %}
                 </div>
             </div>
-
-            <!-- <div class="side">
-                <div>
-                    <i class="fa fa-external-link"></i>
-                    Links
-                </div>
-                <ul  class="content-ul">
-
-                </ul>
-            </div> -->
         </div>
     </div>
 </div>
