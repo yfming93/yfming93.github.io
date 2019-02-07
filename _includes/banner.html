@@ -1,42 +1,34 @@
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../css/shutter.css">
-
+<title>图片轮播代码</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0">
 </head>
+
+<style type="text/css">
+    body{margin: 0 auto;}
+    #lunbo ul li{width:100%;list-style: none; height:auto ;background-color: ;text-align: center;}
+    #lunbo ul li:not(:first-child){display: none;}
+</style>
+
 <body>
-
-<div class="shutter">
-    <div class="shutter-img">
-        <a href="#" data-shutter-title="20190124在保利国际中心自拍"><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzoq8n3conj30k00ex7r8.jpg" alt="#"></a>
-        <a href="#" data-shutter-title="20170716武汉东湖绿道日出"><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzoq8rgz6oj30k00f0doy.jpg" alt="#"></a>
-        <a href="#" data-shutter-title="20140326在武汉大学自拍"><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzoq8yjbi4j30k00f00u5.jpg" alt="#"></a>
-
-    </div>
-        <ul class="shutter-btn">
-          <li class="prev"></li>
-          <li class="next"></li>
-        </ul>
-    </div>
-
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/velocity.js"></script>
-    <script src="../js/shutter.js"></script>
-    <script>
-    $(function () {
-      $('.shutter').shutter({
-      shutterW: 360, // 容器宽度
-      shutterH: 270, // 容器高度
-      isAutoPlay: true, // 是否自动播放
-      playInterval: 5000, // 自动播放时间
-      curDisplay: 3, // 当前显示页
-      fullPage: false // 是否全屏展示
-      });
-    });
-    </script>
-
-    <div style="text-align:center;clear:both">
-
+<div id="lunbo">
+    <ul>
+        <li href="#" ><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzoq8n3conj30k00ex7r8.jpg" alt="#"> 20190124在保利国际中心自拍 </li>
+        <li href="#" ><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzoq8rgz6oj30k00f0doy.jpg" alt="#"> 20170716武汉东湖绿道日出 </li>
+        <li href="#" ><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzoq8yjbi4j30k00f00u5.jpg" alt="#"> 20140326在武汉大学自拍 </li>
+    </ul>
 </div>
+<script type="text/javascript">
+    //因为使用了document，所以js需要放在需要执行的代码下面生效才能生效
+    var li=document.getElementById('lunbo').getElementsByTagName("li");
+    var num=0;
+    var len=li.length;
+
+    setInterval(function(){
+        li[num].style.display="none";
+        num=++num==len?0:num;
+        li[num].style.display="inline-block";
+
+    },3000);//切换时间
+</script>
 </body>
-</html>
