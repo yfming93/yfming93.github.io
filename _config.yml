@@ -48,7 +48,7 @@ markdown: kramdown
 highlighter:    rouge
 kramdown:
   input:                     GFM
-  enable_coderay:               true
+  enable_coderay:            true
   auto_ids:                  true
   footnote_nr:               1
   entity_output:             as_char
