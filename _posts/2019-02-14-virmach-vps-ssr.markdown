@@ -18,13 +18,13 @@ mathjax: true
 ---
 
 ### 0x001 引言
-楼主我之前用的是 搬瓦工的`VPS`。两年前买的最低配的19.9美金一年。用的很酸爽。速度自行决定可以，看`YouTube`也行。
+楼主我之前用的是 搬瓦工的`VPS`。两年前买的最低配的19.9美金一年。用的很酸爽。速度自行感觉可以，看`YouTube`也行。
 
 之前也写过一篇搬瓦工自建梯子的帖子：[利用搬瓦工VPS自建高速丝滑VPN](https://www.yfmingo.cn/2016/09/05/bandwagonhost-vpn/)
 
 但是呀。。我擦，今年 2019.02.09 日。正在春节过年期间，我的搬瓦工那个最低配的套餐到期了忘记在到期之前续费。结果到期后想再次购买时发现搬瓦工早就下架了此套餐。
 
-不得已一顿百度找的了`virmach`。找这个原因主要是便宜，真是便宜。最低配的 1.25 美金一个月。我搭建后查谷歌是勉强正常的，但是看`YouTube`不行，完全没有之前的搬瓦工好。想到平时也就查查谷歌，很少看`YouTube`。就准备入手折腾这家了。
+不得已一顿百度找的了`virmach`。找这个原因主要是便宜，真是便宜。最低配的 1.25 美金一个月。我搭建后查谷歌是勉强正常的，但是看`YouTube`速度不太满意不行，没有之前的搬瓦工好。想到平时也就查查谷歌，很少看`YouTube`。就准备入手折腾这家了。
 
 
 
@@ -51,6 +51,7 @@ mathjax: true
 
 - 在`mac`电脑终端使用 `ssh` 登陆工具进行连接到远程`vps`
     - ssh root@vpsip (vpsip 是上面取到的ip)
+        - 输入密码，输入密码是完全没反应的状态，这是正常的。连接到`vps`成功后再如下操作。
     - 终端 输入如下 回车
 
             wget –no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
