@@ -66,7 +66,7 @@ mathjax: true
 ### 0x004  具体安装步骤
 终端全部的操作过程，已经制作成了一个漂亮的长长图。如下：
 
-![](https://ws2.sinaimg.cn/large/006tNc79ly1g058ztnhhpj30sgcg9b2d.jpg)
+![](https://ws3.sinaimg.cn/large/006tKfTcgy1g05rfccuwmj30sgcg9b2d.jpg)
 
 
 ### 0x005 关于 ss、ssr 服务端的的一些常用命令介绍
