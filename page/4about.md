@@ -16,10 +16,62 @@ type: page
 <!-- ![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fgcq0s5cooj20np0hstdx.jpg)-->
 <!-- ![](https://ws3.sinaimg.cn/large/006tNc79gy1fznkoc09swj31hc0u0npf.jpg) -->
 
+
+<br><br>
+
+
+> [New York is 3 hours ahead of California 🎬](https://video.tudou.com/v/XMzYwOTY4NDA0NA==.html?spm=a2h0k.8191414.0.0&from=s1.8-1-1.2),
+> 
+> but it does not make California slow.
+> 
+> Someone graduated at the age of 22,
+> 
+> but waited 5 years before securing a good job!
+> 
+> Someone became a CEO at 25,
+> 
+> and died at 50.
+> 
+> While another became a CEO at 50,
+> 
+> and lived to 90 years.
+> 
+> Someone is still single,
+> 
+> while someone else got married.
+> 
+> Obama retires at 55,
+> 
+> but Trump starts at 70.
+> 
+> Absolutely everyone in this world works based on their Time Zone.
+> 
+> People around you might seem to go ahead of you,
+> 
+> some might see to behind you
+> 
+> But everyone is running their own RACE, in their own TIME.
+> 
+> Don’t envy them or mock them.
+> 
+> They are in their TIME ZONE, and you are in yours!
+> 
+> Life is about waiting for the right moment to act.
+> 
+> So, RELAX.
+> 
+> You’re not LATE.
+> 
+> You’re not EARLY.
+> 
+> You are very much ON TIME, and in your TIME ZONE Destiny set up for you.
+
+
 ### Write to myself：
 
-> 生命不息，折腾不止！
-> 细节决定成败，心态造就未来！
+> Toss more than life.
+
+<br><br>
 
 Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。iOS 开发者 & 业余设计师，会一些 H5（HTML、CSS、JS、Vue） 基础。喜欢折腾一些新技术。
 
