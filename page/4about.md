@@ -82,8 +82,40 @@ Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。iOS 开发者 & 业�
 
 喜欢在黑夜中钻研技术，时常夜深人静的时候，我的精力值视乎爆满。于是就穿梭在各个技术论坛之间。同时喜欢听网易云里面的一些民谣歌曲和纯音乐，喜欢逛各大无损音乐论坛。每次找到一个自己的喜欢的音乐就会单曲循环好多天呃呃。
 
-**开发过的一些作品:**
-[蓝牙小精灵](https://itunes.apple.com/cn/app/id1241200980?mt=8)（智能语音助手类型）、[文化南宁](https://itunes.apple.com/cn/app/id1321310096?mt=8)([被实世界新媒体大会授予品牌潜力奖](https://ws2.sinaimg.cn/large/006tNc79gy1fr9ui8ov7lj313w0tztgo.jpg))、[FO学院](https://itunes.apple.com/cn/app/id1179906438?mt=8)、 [一起云购](https://itunes.apple.com/cn/app/id1147640197?mt=8)(因国家政策已下架)、 ARKVPN(因国家政策已下架)、[南宁问政](https://itunes.apple.com/cn/app/id977886800?mt=8)、 [南宁头条 ](https://itunes.apple.com/cn/app/id863921247?mt=8)、[在马山](https://itunes.apple.com/cn/app/id1184797652?mt=8)、 [掌上南昌](https://itunes.apple.com/cn/app/id780406619?mt=8) 等等。
+**开发过的一部分作品:**
+ 
+ - <a target="_blank" href="https://itunes.apple.com/cn/app/id1241200980?mt=8"> 蓝牙小精灵      </a>
+	 - 蓝牙小精灵是一个人工智能创造的机器人，她能陪你聊天，讲故事，帮你订机票，同时具备自主学习的能力，做你24小时的贴心助理。 支持32个领域，在App上以不同的形式进行展示，支持文本发送，单击发送语音，长按发送语音三种交互方式。
+ 
+ - <a target="_blank" href="ttps://itunes.apple.com/cn/app/id1241200980?mt=8"> 阿拉的小朋友      </a>
+	 - 阿拉的小朋友们是一款儿童智能早教启蒙APP，配套阿拉的小朋友们儿童智能早教玩具智能音箱使用。拥有海量优质内容，有儿童英语、故事、儿歌、国学、诗词、算术、翻译等诸多儿童早教内容，是0-6岁宝宝早教启蒙的好选择；囊括了教育、娱乐、小工具、生活服务、节目、电话短信等多项来自阿拉的，搜狗和飔拓智能语义提供的智能技能。
+
+ - <a target="_blank" href="https://itunes.apple.com/cn/app/id1321310096?mt=8"> 文化南宁       </a>
+	 - <a target="_blank" href="https://ws2.sinaimg.cn/large/006tNc79gy1fr9ui8ov7lj313w0tztgo.jpg"> 被世界新媒体大会授予品牌潜力奖 </a>
+	 - 文化南宁APP是南宁电视台旗下广西发扬传媒文化有限公司打造的一款，注重南宁本地文化生活娱乐的产品，用户可在本APP了解到当前，最热门的演出节目。游览景点等内容。
+ 
+ - <a target="_blank" href="https://itunes.apple.com/cn/app/id1179906438?mt=8"> F O 学院 </a>
+	 - FO学院主要定位为法律法规培训教学课堂，由直播、案例、订阅、FO资讯、知名讲师、积分兑换等功能模块构成。让用户通过FO学院移动客户端就能清晰的掌握直播信息，行业资讯，以及一系列真实案例。
+ 
+ - <a target="_blank" href="https://itunes.apple.com/cn/app/id1147640197?mt=8"> 一起云购		</a> 
+	 - 你与梦想只有一元的距离! 用一元获得梦想中的商品! 当下最流行的一元夺宝玩法!
+	 - 【因国家政策已下架】
+	 
+ - <a target="_blank" href="https://itunes.apple.com/cn/app/id977886800?mt=8"> 南宁问政 		</a> 
+	 - “南宁问政”APP是专门为《向人民承诺--电视问政》栏目打造的一款集直播、点播、问政新闻、我来问政、投票、在线调查等多功能于一身的手机客户端，旨在建立南宁市民与政府职能部门沟通的桥梁，促进实际问题的解决，加强政府为民务实的公共形象。
+ 
+ - <a target="_blank" href="https://itunes.apple.com/cn/app/id863921247?mt=8"> 南宁头条 		</a> 
+	 - 南宁头条新闻客户端是南宁电视台全媒体新闻中心官方客户端，重大新闻权威发布，突发事件及时报道，关心百姓，感受民生，见证南宁发展，给您身边最及时有用的新闻！丰富的新闻资讯直播、点播、预告、搜索、和分享服务，全天滚动更新，让你随时随地获取新闻资讯。
+ 
+ - <a target="_blank" href="https://itunes.apple.com/cn/app/id1184797652?mt=8"> 在   马   山 		</a> 
+	 - “在马山”手机应用是互联网+新常态下，通过移动互联网展示马山县扶贫攻坚、生态治理、旅游新线等全景化互联网应用，是整合新闻资讯、政府公共信息查询和市民服务的综合服务平台，成为马山政务宣传、政民互动、网上办事、生活服务、娱乐休闲的可拓展的移动智能化综合体。
+ 
+ - <a target="_blank" href="https://itunes.apple.com/cn/app/id780406619?mt=8"> 掌上南昌 		</a> 
+	 - 南昌市的新闻头条资讯APP。
+
+　
+
+<!-- [蓝牙小精灵](https://itunes.apple.com/cn/app/id1241200980?mt=8)（智能语音助手类型）、[文化南宁](https://itunes.apple.com/cn/app/id1321310096?mt=8)([被实世界新媒体大会授予品牌潜力奖](https://ws2.sinaimg.cn/large/006tNc79gy1fr9ui8ov7lj313w0tztgo.jpg))、[FO学院](https://itunes.apple.com/cn/app/id1179906438?mt=8)、 [一起云购](https://itunes.apple.com/cn/app/id1147640197?mt=8)(因国家政策已下架)、 ARKVPN(因国家政策已下架)、[南宁问政](https://itunes.apple.com/cn/app/id977886800?mt=8)、 [南宁头条 ](https://itunes.apple.com/cn/app/id863921247?mt=8)、[在马山](https://itunes.apple.com/cn/app/id1184797652?mt=8)、 [掌上南昌](https://itunes.apple.com/cn/app/id780406619?mt=8) 等等。 -->
 
 
 <!--**目前所在公司：** 
