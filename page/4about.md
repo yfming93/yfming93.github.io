@@ -87,10 +87,11 @@ Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。iOS 开发者 & 业�
  - <a target="_blank" href="https://itunes.apple.com/cn/app/id1241200980?mt=8"> 蓝牙小精灵      </a>
 	 - 蓝牙小精灵是一个人工智能创造的机器人，她能陪你聊天，讲故事，帮你订机票，同时具备自主学习的能力，做你24小时的贴心助理。 支持32个领域，在App上以不同的形式进行展示，支持文本发送，单击发送语音，长按发送语音三种交互方式。
  
- - <a target="_blank" href="https://itunes.apple.com/cn/app/id1241200980?mt=8"> 阿拉的小朋友      </a>
+ - <a target="_blank" href="https://itunes.apple.com/cn/app/id1442048976?mt=8"> 阿拉的小朋友      </a>
 	 - 阿拉的小朋友们是一款儿童智能早教启蒙APP，配套阿拉的小朋友们儿童智能早教玩具智能音箱使用。拥有海量优质内容，有儿童英语、故事、儿歌、国学、诗词、算术、翻译等诸多儿童早教内容，是0-6岁宝宝早教启蒙的好选择；囊括了教育、娱乐、小工具、生活服务、节目、电话短信等多项来自阿拉的，搜狗和飔拓智能语义提供的智能技能。
 
  - <a target="_blank" href="https://itunes.apple.com/cn/app/id1321310096?mt=8"> 文化南宁       </a>
+ 		<!-- - 授奖新闻 http://www.nntv.cn/news/m/2018-5-4/1525405241514.shtml  -->
 	 - <a target="_blank" href="https://ws2.sinaimg.cn/large/006tNc79gy1fr9ui8ov7lj313w0tztgo.jpg"> 被世界新媒体大会授予品牌潜力奖 </a>
 	 - 文化南宁APP是南宁电视台旗下广西发扬传媒文化有限公司打造的一款，注重南宁本地文化生活娱乐的产品，用户可在本APP了解到当前，最热门的演出节目。游览景点等内容。
  
