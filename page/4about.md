@@ -69,7 +69,7 @@ type: page
 
 ### Write to myself：
 
-> Toss more than life.
+> Cease to struggle and you cease to live.
 
 <br><br>
 
