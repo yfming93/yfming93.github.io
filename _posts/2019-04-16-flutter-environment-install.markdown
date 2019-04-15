@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Flutter开发环境的安装"
+title:  "Flutter 开发环境的安装"
 date:   2019-04-16
 author: "袁凤鸣"
-excerpt: Flutter开发环境的安装
+excerpt: Flutter 开发环境的安装
 
 categories: 
     - flutter
