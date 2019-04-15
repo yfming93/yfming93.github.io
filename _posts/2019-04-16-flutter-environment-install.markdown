@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Flutter 开发环境的安装"
+title:  "MAC 电脑 Flutter 开发环境的安装搭建"
 date:   2019-04-16
 author: "袁凤鸣"
-excerpt: Flutter 开发环境的安装
+excerpt: MAC 电脑 Flutter 开发环境的安装搭建
 
 categories: 
     - flutter
