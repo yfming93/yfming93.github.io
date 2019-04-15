@@ -274,7 +274,7 @@ $ brew install ios-deploy
 # mingo @ 192 in ~ [13:58:36] 
 ```
 
-在 检查依次环境
+在 检查环境
 
 
 ```
@@ -297,7 +297,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 ```
 
 
-因为不需要使用 `IntelliJ IDEA`来开发，所以可以先不管这个栏目的❗️和 ❌
+因为不需要使用 `IntelliJ IDEA`来开发，如果你电脑中没有安装`IntelliJ IDEA`是不会提示这个警告的，所以可以先不管这个栏目的❗️和 ❌
 ![](https://ws2.sinaimg.cn/large/006tNc79ly1g23u3amhzyj31940gw47p.jpg)
 
 到此，`Flutter` 环境搭建完成，可以用 `Android Studio`，新建第一个 `Flutter`项目了。
