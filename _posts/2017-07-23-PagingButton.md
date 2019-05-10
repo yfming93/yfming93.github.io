@@ -20,7 +20,7 @@ mathjax: true
 <br>
 效果图：<br>
 
-![](https://ws1.sinaimg.cn/mw690/cb81ffe8gy1fhuqt2bamlg20aa0igtjf.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/vpsso2.jpg)
 
 ## 二、 使用：
 支持 `cocoapods`，在你的 `Podfile` 文件中 加入 `pod 'PagingButton'` 然后终端`cd`到项目文件夹执行 `pod install` 即可：

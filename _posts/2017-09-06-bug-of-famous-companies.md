@@ -24,7 +24,7 @@ mathjax: true
 <br/>
 “不要嚣张，劳资之前幸好截图了。虽然现在复现不出来。但是有截图为证。非要下次再出现了然后拍个视频证实下？”，产品心中两万个草泥马正在这样思索着。
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fja8bg1153g20cm04w1kx.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/GZflxS.jpg)
 
 
 
@@ -46,16 +46,16 @@ mathjax: true
     <br/>
 #### **bug01：**和别人详细聊天的时候导航栏不见了。不能返回了。双击home退出再次进去又好了。
 <br/>
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fja8o57l8uj20hr0vkdjv.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/AVN8ug.jpg)
 <br/>
 
 此图是我司产品发现的。发现时我让他截图了，然后发我保存了。
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fja8r109qlj20n70jkgmj.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/XI4w6r.jpg)
 <br/>
 #### **bug02：**不知道怎么回事。如图页面下方出现了：`qq.android.qavgesture`
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fja8xllfxvj20yi1pcwok.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/GVVgTa.jpg)
 <br/>
 【时间：2017-07-18】
 
@@ -68,7 +68,7 @@ mathjax: true
 【以我iOS角度分析原因是：后面页面隐藏导航，当面页面需要导航。这期间的导航隐藏和不隐藏木有处理好导致前面页面有错落感。】
 
 <br/>
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fja973n5wpj20yi1pc1kx.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/YkfccV.jpg)
 
 <br/>
 当日下午发现的`bug`。但是也马上截图了。但是一般情况下也不好复现。
@@ -81,7 +81,7 @@ mathjax: true
 【时间： 2017-08-28】
 <br/>
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fja9efc7cvj20yi1pcgtj.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/InU5UP.jpg)
 
 
 ### 3.腾讯视频的`Bug`【20170917更新如下】
@@ -91,7 +91,7 @@ mathjax: true
 如图实时评论都跑到页面底部了。整个页面乱成狗了哈。。、O(∩_∩)O~
 
 （当时发现了就果断录了个gif存着）
-![](http://ww1.sinaimg.cn/large/cb81ffe8ly1fjmukgl008g213l0ldb2b.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/iIchMJ.jpg)
 
 ### 4.微信的`bug`【20170922跟新如下】
 #### **bug01：**隐私协议竟然弹出键盘
@@ -100,7 +100,7 @@ mathjax: true
 
 当时截屏如下：
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fjs4dyl7p8j20hs0vk78p.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/DnSPe5.jpg)
 
 ## 四、后记
 

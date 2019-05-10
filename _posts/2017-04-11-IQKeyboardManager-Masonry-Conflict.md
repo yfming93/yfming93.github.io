@@ -20,7 +20,7 @@ mathjax: true
 
 其实我们完美的效果应该是这样的：*（NO Pictures say \*8 ！O(∩_∩)O~）*
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fgpu23t5oyg20aa0id7oa.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/d9KYpi.jpg)
 
 
 
@@ -32,7 +32,7 @@ mathjax: true
 
  就像这样：
  
- ![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fgpu2n46fcg20aa0id4ge.gif)
+ ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/SwZBOK.jpg)
   
  如果是上图那种效果。你的产品经理会放过你这个逗比吗？
  
@@ -52,7 +52,7 @@ mathjax: true
  但是虽然不往上跑了。尼玛又出现了其他问题：
 
  像这样：
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fgpu3vvd98g20aa0id4co.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/8iGEyp.jpg)
  
  哎呀，我擦：
  

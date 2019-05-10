@@ -27,26 +27,26 @@ mathjax: true
 
 > ## **step 01 ：** 下载一个WiFi万能钥匙连接一个可用的WiFi。
 
-![](http://wx4.sinaimg.cn/mw690/cb81ffe8gy1fczpx1esbcj20u01hcaek.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/Wk5oF0.jpg)
 
 
 
 > ##  **step 02 ：** 去手机的通用WiFi列表。
 
 
-![](http://wx4.sinaimg.cn/mw690/cb81ffe8gy1fczpx20d5rj20u01hcq5t.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/9EIo5D.jpg)
 
 
 
 
 > ##  **step 03 ：** 点击查看详情会发现有二维码，并截图保存下。
 
-![](http://wx3.sinaimg.cn/mw690/cb81ffe8gy1fczpx31medj20u01hcgnv.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/YnB1FN.jpg)
 
 
 > ##  **step 04 ：** 用微信扫一扫刚才保存的图片就会出现密码。
 
-![](http://wx2.sinaimg.cn/mw690/cb81ffe8gy1fczpx3jkkrj20u01hc75g.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/e2mNGv.jpg)
 
 
  **其实这些步骤很简单，为毛网上说的天花乱坠还不管什么卵用。经过这几步直接可以把密码扫出来。。然后想给谁就给谁。在此做个备忘。**

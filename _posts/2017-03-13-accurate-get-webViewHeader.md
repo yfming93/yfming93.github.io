@@ -21,7 +21,7 @@ mathjax: true
 像下面这个内容的详情图。我们希望上面部分的详情内容做成 `H5` ，下面部分的评论列表做成原生的。。我们这个时候就想到了把 `H5` 嵌入到  `tableView` 的  `tableHeaderView` 上面。然后评论就用 `cell` 进行显示。
 
 如图：（ *NO Pictures Say G8  O(∩_∩)O~* ）
-![](http://wx2.sinaimg.cn/mw690/cb81ffe8gy1fdl7imgcxhj20ku1dan6h.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/nmWGd6.jpg)
 
 
 

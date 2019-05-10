@@ -23,7 +23,7 @@ mathjax: true
 
 # 第5章 ES6常用语法
 ## 5-1 ES6简介
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fkbrz9txmjj31cu0li42k.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/cu2Uuq.jpg)
 
 ## 5-2 ES6常用命令
 
@@ -146,7 +146,7 @@ mathjax: true
     - 回调函数  `function (parameter) {...}`
     
 ## 5-3 拓展参数讲解
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fkbzs42o0oj31340hewfw.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/cW3M11.jpg)
 
 `demo/ES6-2.html`:
 
@@ -345,10 +345,10 @@ mathjax: true
     - **答:** 这个问题问得很好，但是你忽略了一个问题，这是一个`.vue`文件，不是一个`js`文件，这种格式`Vue`和`es6`根本不认识，它需要通过`Vue-loader`进行加载解析，实际上`Vue loader`底层会按照你说的格式进行封装，最后扔给`Vue`解析。
 
 ## 5-6 AMD、CMD、CommonJS和ES6差异
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fkd01krqg2j311e0ng0ur.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/M2uXYA.jpg)
 ![](https://ws4.sinaimg.cn/large/006tNc79gy1fkd01unwwoj310m0na0v5.jpg)
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fkd024vbuoj30zi0kujt7.jpg)
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fkd02awp0aj30z20ogtak.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/4H04bK.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/uubCWY.jpg)
 
 - **AMD：**是`requirejs`在推广过程中对模块定义的规范化产出(异步模块) 特点：依赖前置,异步
 - **CMD：**是`seajs`在推广过程中对模块定义的规范化产出（同步模块） 特点：依赖就近，在什么时候使用就在时候时候引入

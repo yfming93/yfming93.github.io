@@ -19,7 +19,7 @@ mathjax: true
 # Vue2.0+Node.js+MongoDB全栈打造商城系统（第9章）
 # 第9章 基于Node.js开发商品列表接口
 ## 9-1 Node的启动和调试方式
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fkfleeszmpj310w0dggm1.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/SKMwiV.jpg)
 
 - **node 方式启动：**`node ./server/bin/www` 
     - (有时候 `node server/bin/www`启动报错)
@@ -29,7 +29,7 @@ mathjax: true
 
 
 ## 9-2 基于Express实现商品列表查询接口
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fkl051kgcoj30za0h6q3v.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HXCyCL.jpg)
 
 - **安装mongoose** ：`cnpm i mongoose --save`
 

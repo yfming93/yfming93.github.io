@@ -22,7 +22,7 @@ mathjax: true
 
 效果图：<br>
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fiuky58ni2g207m0ec4qv.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/mzD93k.jpg)
 
 <br>
 
@@ -31,7 +31,7 @@ mathjax: true
 不要自动全屏播放。要内嵌在网页里面播放。视频框可以跟随网页内容上下滚动。
 
 **理想效果图：**<br>
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fiul60w57jg207j0e8hdy.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/lJh1aD.jpg)
 
 
 
@@ -84,7 +84,7 @@ mathjax: true
         
     **此方法的弊端 ：**
     当当前`H5`页面不是单纯`H5`时，再次拿如下图来描述：
-    ![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fiul60w57jg207j0e8hdy.gif)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/lJh1aD.jpg)
     
     最新评论以上全部是`H5` ，评论列表是原生。底部四个按钮是原生。
     

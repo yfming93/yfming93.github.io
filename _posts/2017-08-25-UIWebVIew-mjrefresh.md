@@ -23,7 +23,7 @@ mathjax: true
 
 效果图：<br>
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fiw21qymttg207m0ecb2a.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/bUHCZz.jpg)
 
 <br>
 
@@ -135,7 +135,7 @@ mathjax: true
 经过上面的一大坨代码后。你的`H5`页面已经有比较好看的刷新功能了。但是我的会出现底部有一部分黑底的情况。你打开`Xcode`的调试视图会发现他在`UIWebBrowserView`上面。
 
 如图：
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fiw2csngr5g207m0ecx6r.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/iG9cxe.jpg)
 
 ##### 解决方法也相当简单：
 在`UIWebView`初始化的时候加一句代码：

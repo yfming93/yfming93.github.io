@@ -20,7 +20,7 @@ mathjax: true
 
 恶心的事情发生了。。
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fh33vdddx3j20ij0ktajc.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/YhWUFe.jpg)
 
  <br>
  
@@ -37,7 +37,7 @@ mathjax: true
 
 直接在Jekyll博客根目录下，  有个_includes 文件夹。官方介绍如下。
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fh31nfw9vqj20rl0idjx3.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HtwMcK.jpg)
 
 <br>
 **你可以加载这些包含部分到你的布局或者文章中以方便重用。然后再包含进来。** 
@@ -64,7 +64,7 @@ mathjax: true
 ### 就这样：
 我的表格终于有线了。O(∩_∩)O哈哈~
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fh33vt8qu5j20i10l1k10.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/AEC9V1.jpg)
 
 
 # 四、one more thing

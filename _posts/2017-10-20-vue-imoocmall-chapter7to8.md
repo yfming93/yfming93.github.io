@@ -23,7 +23,7 @@ mathjax: true
 **官网：**[http://nodejs.cn/](http://nodejs.cn/)
 ## 7-1 Linux环境下配置Node环境
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fkef8zlwxhj31f20ju41u.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/XVi74y.jpg)
 
 - wget https://npm.taobao.org/mirrors/node/v6.10.3/node-v6.10.3-linux-x64.tar.xz 
 - xz -d node-v6.10.3-linux-x64.tar.xz 
@@ -32,8 +32,8 @@ mathjax: true
 - ln -s/node-v6.10.3-linux-x64/bin/npm/usr/local/bin/npm
 
 ## 7-2 创建http Server容器
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fkeflse5ofj311m0iewfb.jpg)
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fkefnrxvgkj30yg0h875d.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/fJZa12.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/G5Nii8.jpg)
 
 **cd 到 server 运行 node Demo.js**
 `demo-server/Demo.js`:
@@ -111,7 +111,7 @@ mathjax: true
 - `url.parse(req.url)`得到的是一个`object`，可以直接`.pathname`
 
 ## 7-4 搭建基于Express框架的运行环境
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fkfg6r4zdrj315g0f0gmd.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/Zr9to8.jpg)
 
 **安装运行 express ：**
 
@@ -259,9 +259,9 @@ mathjax: true
 # 第8章 MongoDB介绍
 ## 8-1 window平台下MongoDB的安装和环境搭建
  **特点：**
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fkfi4n4nc5j31080gedg7.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/tXBPn5.jpg)
 **安装:**
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fkfi3pj68sj30y80eugmo.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HrnUv1.jpg)
 
 **安装配置 MongoDb 参考：**
 
@@ -510,7 +510,7 @@ mathjax: true
        
 ## 8-3 给MongoDB创建用户
  **说明:**细节看项目视频
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fkfk0qncbjj313e0cwdgn.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/vYlLCQ.jpg)
 ### Mac 端安装配置 MongoDB
 
 - `brew install mongodb` （如果安装了 brew 就执行）
@@ -615,11 +615,11 @@ mathjax: true
 8. **开启验证服务：** `mongod -f /mongodb/etc/mongo.conf --auth`
 9. **在mongohub链接刚才创建的dumall数据库:**
  (name为本地自定义昵称，database为数据库名称)
-    ![](https://ws1.sinaimg.cn/large/006tNc79gy1fknch393lvj30b70er0sw.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/wF8ZrC.jpg)
 
 ## 8-4 MongoDB基本语法
  **说明:**细节看项目视频
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fkfkb890wqj31fm0pkwgx.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/vW8zPg.jpg)
 
 - 查看数据库：**show dbs**  
 - 切换到某个数据库：**switches to db demo** 

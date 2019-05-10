@@ -30,7 +30,7 @@ mathjax: true
 
 ###  1、直播技术难度比点播更大，但不代表直播好的点播就一定好，因此需要根据视频业务的实际需求和自身技术实力进行决策。
  
- ![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fh08ac7przj20fe0b1gnc.jpg)
+ ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/m29bLc.jpg)
  
  不难发现，各个视频云产品在核心功能上大同小异，但因为分别和各自平台不同的云服务矩阵结合，这使得他们有着各自的特点。
  
@@ -49,14 +49,14 @@ mathjax: true
  
 
  
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fh08awb0isj20ej05kglk.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/s4PeCR.jpg)
  
  从一定程度上说，自建机房意味着具备专业的运维团队、更强的突发事件应对能力、更高效的突发事件响应速度，而这些因素恰恰是提供稳定服务的关键。此外，传输机制保证了数据的安全性，网络QoS策略则能够保障复杂网络下的流畅直播体验。而服务模式决定了是否能够快速响应客户的技术、服务诉求。
  
  
 ### 3、支持场景就前面的分析来看 
  
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fh08bajcehj20ek08774j.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/Yg1VmS.jpg)
  
  对比来看，网易视频云和腾讯直播云 基于开展本公司视频业务的技术积累研发，在综合实力上更有优势，比如说网易视频云针对在线教育场景的解决方案已经在网易云课堂、中国大学MOOC等行业知名产品上得到验证，比较具有说服力。
  
@@ -66,7 +66,7 @@ mathjax: true
  
 ###  4、 技术支持 。
  
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fh08cczvwgj20ef061jrh.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/pOcj0h.jpg)
  
  
  
@@ -229,6 +229,6 @@ mathjax: true
 
 但如果有具体的业务需求，可对比下图后按照具体业务偏向程度来选择。哪边需要的业务符合自己的需求更多就选择哪边。<br>（下图截取于各自官方 Github 仓库 功能点的描述部分。）
 
-![](https://ws1.sinaimg.cn/large/cb81ffe8gy1fh06f6gjpaj20y90mndrb.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/epa5X4.jpg)
 
 

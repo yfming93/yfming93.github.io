@@ -326,5 +326,5 @@ mathjax: true
 
 
 - 常见错误
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmkrel1ybxj30vk0da0ut.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/MI3oky.jpg)
 

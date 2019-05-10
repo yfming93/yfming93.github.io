@@ -50,7 +50,7 @@ mathjax: true
  
  （ *NO Pictures Say G8* ，O(∩_∩)O~）
  
- ![](http://wx3.sinaimg.cn/large/cb81ffe8gy1fda7ck05u9j21040n9ts9.jpg)
+ ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HJHixM.jpg)
 
 
 

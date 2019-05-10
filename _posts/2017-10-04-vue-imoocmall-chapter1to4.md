@@ -39,10 +39,10 @@ mathjax: true
     - 掌握 Vue+Node项目的线上部署
 
 - #### 前置知识：
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fk0kqldrhyj31kw0qi0u7.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/NKu7eJ.jpg)
 
 - **项目架构：**
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fk0krif64fj31120iwjsk.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/2LWZa8.jpg)
 
  
 # 1-2 前端框架回顾
@@ -59,7 +59,7 @@ mathjax: true
 ## 1-3-1 Vue介绍:
 Vue本身并不是一个框架，但结合周边生态构成一个灵活的、渐进式的框架 Vue核心思想：1.数据驱动 2.组件化
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fk0l3n6mdgj31kw0qkdhs.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/xH2U2A.jpg)
 
 **vue发展历程：** 
 
@@ -244,16 +244,16 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
 [https://www.npmjs.com/package](https://www.npmjs.com/package[]()) 将npm安装的插件放在这个网址后面就可以看到插件的对应信息，例如 [https://www.npmjs.com/package/vue](https://www.npmjs.com/package/vue)
 # 2-5 vue基础语法
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fk0l77j9vvj31d40u2jsh.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/L6AbSu.jpg)
 
 - **v-bind:class="{ active: isActive }"**  这里`active`是类名，`isActive`是`true`或者`false`
 - **v-bind:class="[activeClass,errorClass]"** 这里`activeClass`,`errorClass`是2个变量，具体的类名在`data`中定义
     
-    ![](https://ws2.sinaimg.cn/large/006tNc79gy1fk0l9d44k4j31fw0met9m.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/7xDXRD.jpg)
 - **v-cloak** 的作用是防止页面刷新太快，部分页面没有刷新出来，`v-cloak`可以进行隐
 - **.stop** 阻止冒泡，**.prevent** 阻止默认事件，**.self** 只给本身绑定事件（如果有子元素，点击子元素没有作用），**.once** 只给事件绑定一次
 
-    ![](https://ws3.sinaimg.cn/large/006tNc79gy1fk0lad88q4j31d80q20tg.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/neKvwm.jpg)
 
 - #### 父子组件通讯-数据传输
     - 组件往父组件传输。 通过`this.$emit("incre")`自定义了一个`incre`事件，在父组件中绑定`@incre="increment"`，而`increment`这个方法是写在父组件中的。也就是说父组件绑定了子组件的事件来控制父组件的方法来操作父组件的元素
@@ -279,7 +279,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
 - 路由模式可配置，默认`hash`，路由带`#`号，改为`history`后，可去掉`#`号，表现为常见的路由形式
 - 在`router`文件夹下的`index.js`修改路由 `src`里的`views`文件夹放页面，里面也是.vue结尾的文件，本质上一样的。 `router`里面配置默认渲染的组件，可以修改让它加载其他页面，`@`被配置成了一个别名，映射到了`src`文件夹目录 **{{$route.params.goodsId}}**拿到路径`path:'/goods/:goodsId'`,中的参数 **{{$route.params.name}}**`path: '/goods/:goodsId/user/:name'`, 路由是对`history`的封装 路由模式有`mode:'history' `和 `mode:'hash'`两种
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fjzb2o14njj31kw0w2jts.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/R1SrVE.jpg)
 演示代码：
 
 `index.js` ：
@@ -382,7 +382,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
     </script>
 
 # 3-4 编程式路由
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fjzcbazfg8j31fg0q0jtu.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/WjnWJF.jpg)
 
 编程路由常用方式方法总结（附已知路由间切换的2个方式）：
 
@@ -443,7 +443,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
 
 
 # 3-5 命名路由和命名视图
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fjzdauhv7oj31be0jmwgi.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/5e21em.jpg)
 
 - **app.vue**是路由的根文件
 - 动态路由参数：**$route.params.xxx** 
@@ -525,15 +525,15 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
 
 
 # 4-1 Vue-Resource使用（上）
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fk067ga426j31fi0g2myu.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/twit8U.jpg)
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fk06xh8ctdj319s0tytbc.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/CB79pL.jpg)
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fk06yfzo35j31aq0u0gqi.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/CRldjn.jpg)
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fk070lrdhbj316s0so770.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/PAWjY3.jpg)
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fk071ya8lpj311a0ig3zr.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HRagJ1.jpg)
 
 ### Get、Post、JsonP 、配置http参数  四种请求演示：
 `vue-resource.html`中代码:
@@ -642,19 +642,19 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
 
 **Get调试结果：**
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fk09rui66qj31kw0xhju3.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/xJh3k4.jpg)
 
 **Post调试结果：**
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fk0ar1z57uj31kw0xutbr.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/3tp6Md.jpg)
 
 **JsonP调试结果：**
 
 - jsonp: 跨域请求
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fk0atk0a1cj31cy0z80vt.jpg) 
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/VxFGX0.jpg) 
 
 **http配置参数请求调试结果：**
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fk0gi24hcxj31kw0rzqa8.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/bqD7b2.jpg)
 
 
 
@@ -746,7 +746,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
 
 
 **结果调试:**
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fk0fsk6tv9j315g0himyt.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/BLpDqU.jpg)
 
 **提取接口主域名头:**
     (使用可见上面演示代码)
@@ -759,10 +759,10 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
 - `axios.all`可一起调用和处理多个接口的返回
 - ` vue-resources`是挂在`vue`上的，而`axios`没有挂在`vue`
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fk0gqcetdaj317e0ewdh2.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/uYR3Hk.jpg)
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fk0grwmdphj31b00sead4.jpg)
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fk0guxr5nxj317c0lo412.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/OJfmKu.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/36qTCV.jpg)
 
 ### axios 中 GET、POST、HTTP配置参数 三种请求演示
 
@@ -851,9 +851,9 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
 
 
 **axios的GET调试：**
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fk0ino2xeyj31kw0xfwig.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/efws1E.jpg)
 **axios的POST调试：**
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fk0ivvsz7qj31kw0xxtci.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/9ccAYj.jpg)
 
 ### 全局拦截器
 

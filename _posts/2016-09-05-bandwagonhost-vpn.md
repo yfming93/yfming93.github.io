@@ -25,7 +25,7 @@ mathjax: true
 * 现在市面上的 VPN 产品满天飞，大多采用 `L2TP`、`PPTP`、`IP sec` 等协议， 那些卖家的 VPN 协议被限速，而且因为容易断线，以及只能全局代理。 。有不少是开张几个月就卷款跑路，然后重新弄个网站换个名字继续骗钱。
 * 于是乎我找到了亲爱的搬瓦工，自己购买主机搭建VPN服务器，不论是速度还是用户体验，不要太爽的好伐，关键是价格很亲民，最便宜的一年20刀，折合人民币才100多大洋。我了解深入的是搬瓦工（当然也许还有更好的提供商），价格亲民、速度快，大家可以在官网首页看到机型 [配置和价格](https://bandwagonhost.com/vps-hosting.php)，如下：
  
-![](http://wx1.sinaimg.cn/large/cb81ffe8gy1fbzc3fgoncj20c80c83zg.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/8BjZAK.jpg)
 
 最便宜的2.99刀一个月，一年20刀。接下来就给大家分享我搭建VPN的过程，搭建完成之后的VPN观看 `YouTube`高清那真的是无压力啊（当然还要取决于运营商给你的带宽）。
 
@@ -101,12 +101,12 @@ mathjax: true
  - 再说一个卑贱的小手段，听说搬瓦工是可以试用一个月退款的。我第一次购买的是一个月想试用下，后来查看了一些文章说首次使用一个月不满意可以全额退款。不过有实力的小伙伴还是不要这样猥琐了哈。。我只是单纯的科普下，。哈哈~~
  - 选择你想要的套餐后点击 `order` 下单，就会看到如图页面：
  
- ![](http://wx4.sinaimg.cn/large/cb81ffe8gy1fbzc3avytyj20rj0fhaey.jpg)
+ ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/aDuDem.jpg)
  
  位置：我选择的是默认的洛杉矶。我也不知道各个地区位置的 VPS 到底差异如何。
  - 然后来到下图：
  
- ![](http://wx3.sinaimg.cn/large/cb81ffe8gy1fbzc3b56rkj20sf0cz76o.jpg)
+ ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/Xn0A8x.jpg)
  
   **说明几点：**
   
@@ -118,7 +118,7 @@ mathjax: true
 -----
 
 - 我们付款成功之后，稍等片刻，可以看到购买的VPS已经激活。
-![](http://wx1.sinaimg.cn/large/cb81ffe8gy1fbzc3bj07zj20sk0c741w.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/uPLVm9.jpg)
 
 根据上图，我们可以找到已购搬瓦工VPS的方案，确定左边显示 `ACTIVE` 就可以用，如果是 `PENGDING` 需要等一会。点击 ``KiwiVM Control Panel`` 就可以进入面板管理。
 
@@ -126,10 +126,10 @@ mathjax: true
 （这里还是建议修改一下 ROOT 密码，免得每次需要密码操作时还要进入搬瓦工后台都要去看一下。）
 
 按照如图操作：
-![](http://wx1.sinaimg.cn/large/cb81ffe8gy1fbzc3cc93rj20gr042t99.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/0ynnm2.jpg)
 
 * 然后选择 `Install new OS `  安装一个系统。这系统默认就是 **centos-6-x86** 。你可以选择换其他的系统，也可以就用这默认的。。我就是用的这个默认的系统。反正我这菜逼也不知道其他各个系统的区别。
-![](http://wx4.sinaimg.cn/large/cb81ffe8gy1fbzc3c6q5ej20nt0i741x.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/NgqkDb.jpg)
 
 ## 五、安装Shadowsocks Server
 ------
@@ -140,14 +140,14 @@ mathjax: true
 其实这篇文章介绍的是 SS 的安装，它跟 VPN 的原理差不多，因为 SS 采用的是自由协议，一般被墙的可能性要小得多，所以更加稳定！其实我也不知道 SS 和 VPN 的具体差异，但能确定 SS 在稳定性上更有优势。简单给两张在网上找的图对比下：
 
 其他模式的VPN：
-![](http://wx1.sinaimg.cn/large/cb81ffe8gy1fbzc3d0uc8j20j303k3z6.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/19tyyG.jpg)
 
 shadowsocks 的交互模式 ：
-![](http://wx4.sinaimg.cn/mw690/cb81ffe8gy1fbzc3e0zlaj20i108kt9o.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/vU7feg.jpg)
 
 
 * 好了。我们现在在控制台的左侧菜单栏找到 `Shadowsocks Server`  并安装，安装好的Shadowsocks Server界面是这样的：
-![](http://wx4.sinaimg.cn/mw690/cb81ffe8gy1fbzc3e6yf6j20jj08bjsb.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/ciOZSb.jpg)
 
 * 这个时候就可以使用了。不过速度可能不是最理想的。
 网上很多版本的 `shadowsocksX` 不能跟新 `PAC` 。
@@ -155,7 +155,7 @@ shadowsocks 的交互模式 ：
 进行安装设置四个参数。
 
 * 其他用户可去 `Github` 下载 对比版本，这里给个能下载的链接。因为官方的仓库已经并墙了。[`shadowsocks ` 其他用户进去看 `README` 下载](https://github.com/ziggear/shadowsocks)
-![](http://wx2.sinaimg.cn/mw690/cb81ffe8gy1fbzc3cxcxuj20ul0gdqaq.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/9A6MZ0.jpg)
 
 ## 六、 使用 Speeder 给 VPN 加速。
 -----
@@ -193,7 +193,7 @@ shadowsocks 的交互模式 ：
 
 **（注意：加速端口这个命令每次重启主机都需要执行一次，因为这个脚本没有加到开机自启动！）**
 动了如下操作就要重新端口加速。不过我们也不会经常手贱去搞这个地方。最多只是登录进去操作其他的了。
-![](http://wx1.sinaimg.cn/mw690/cb81ffe8gy1fbzc3esx04j21130f6td2.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/nFUyzJ.jpg)
 
 网上有人说把 ：
 
