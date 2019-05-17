@@ -14,8 +14,8 @@
      */
   var demoContent = [
     {
-      demo_link: 'https://ws3.sinaimg.cn/large/006tNc79ly1fz7ly8x5feg30gx0dokjm.gif',
-      img_link: 'https://ws4.sinaimg.cn/large/006tNc79ly1fz7l0j3rk9g307j0de19z.gif',
+      demo_link: 'https://github.com/yfming93/FMListPlaceholder',
+      img_link: 'https://yfmingo.oss-cn-beijing.aliyuncs.com/images/006tNc79ly1fz7ly8x5feg30gx0dokjm.gif',
       code_link: 'https://github.com/yfming93/FMListPlaceholder',
       title: '空列表占位图逻辑超级封装',
       core_tech: 'Cocoapods 公有pods  OC',
@@ -23,7 +23,7 @@
     },
     {
       demo_link: 'https://github.com/yfming93/PagingButton',
-      img_link: 'https://ws1.sinaimg.cn/large/cb81ffe8gy1fhta3vy7esj20cx08raav.jpg',
+      img_link: 'https://yfmingo.oss-cn-beijing.aliyuncs.com/images/page.gif',
       code_link: 'https://github.com/yfming93/PagingButton',
       title: '左右分页按钮的集合视图控件。',
       core_tech: 'PagingButton Cocoapods 公有pods  OC ',
@@ -31,7 +31,7 @@
     },
     {
       demo_link: 'https://yfming93.github.io/vuejs/VueShoppingCart/after/cart.html',
-      img_link: 'https://ws1.sinaimg.cn/large/cb81ffe8gy1fjz2btt2umg20sr0hxthk.gif',
+      img_link: 'https://yfmingo.oss-cn-beijing.aliyuncs.com/images/vue.gif',
       code_link: 'https://github.com/yfming93/vuejs',
       title: 'Vuejs2.0购物车和地址选配学习实践demo。',
       core_tech: 'Vue2.0 Css Html  JavaScript ',

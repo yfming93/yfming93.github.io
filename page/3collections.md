@@ -231,7 +231,7 @@ Syntax Theme: Atom Dark or One Dark
 
     折叠左侧目录章节。
 
-    <!-- ![](http://ww4.sinaimg.cn/large/7011d6cfjw1f08kmplbj1j20gn05l0tk.jpg) -->
+    <!-- ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/slkWWK.jpg) -->
 
 ## Chrome 插件
 - [Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc)
