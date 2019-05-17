@@ -50,7 +50,7 @@ mathjax: true
 - 解除终端代理命令：`unproxy`
 
 **eg：**
-![](https://ws1.sinaimg.cn/large/006tKfTcly1fsrdm0azyaj30t20bcaeg.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/gTyi8F.jpg)
 
 **说明：**
 查看当前的`ip`地址：

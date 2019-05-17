@@ -72,7 +72,7 @@ mathjax: true
 在 `npm run dev` 之后兴奋地在浏览器贴上`http://localhost:8080/`。
 
 但是始终显示错误如下：
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fmvb0935ayj30lo0a50sq.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/m61EXr.jpg)
 
 后来看了[这篇文章](https://github.com/vuejs/vue-hackernews-2.0/issues/98)才反应过来自己挂载着全局 `VPN`才使得不能正常访问。关闭全局`VPN`后就正常了。
 

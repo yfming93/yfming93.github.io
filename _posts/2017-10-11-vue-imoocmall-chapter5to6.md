@@ -346,7 +346,7 @@ mathjax: true
 
 ## 5-6 AMD、CMD、CommonJS和ES6差异
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/M2uXYA.jpg)
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fkd01unwwoj310m0na0v5.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HmT1Rc.jpg)
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/4H04bK.jpg)
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/uubCWY.jpg)
 

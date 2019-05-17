@@ -14,7 +14,7 @@ mathjax: true
 
 ### 问题如图：
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1flru5icahfj313f0i30tp.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/VdNszx.jpg)
 
 ### 解决方法：
 **找到媒体管理，勾选右边的框子**
@@ -23,7 +23,7 @@ mathjax: true
 
 以前发布审核木有这回事的，应该最近苹果政策变了要求要三个尺寸的APP预览图组了。
 ###### BTW: 同时在 xcode9 之后项目中APPicon 也要一个 1024px 的logo图了
-![](https://ws1.sinaimg.cn/large/006tNc79gy1flru91z2jjj313e0ht74z.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/GgFLg4.jpg)
 
 
 

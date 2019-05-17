@@ -23,21 +23,21 @@ mathjax: true
 
 ### 0x002 成型效果
 【大 gif 若加载不出来，重新刷新下网页】
-![](https://ws4.sinaimg.cn/large/006tNc79ly1fzk1g7cfjyg30aj0i07wm.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/akYtAu.jpg)
 
 ### 0x003 详细步骤
 
 - 在 `coding` 上新开一个`git` 仓库 并开启 `coding page` 服务。
-    - ![](https://ws1.sinaimg.cn/large/006tNc79ly1fzk23fz4mbj31kb0u0162.jpg)
+    - ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/rvDUhS.jpg)
 
 - 然后 进入 设置 
-    - ![](https://ws4.sinaimg.cn/large/006tNc79ly1fzk248v100j31ge0u07g1.jpg)
+    - ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/zd6tbW.jpg)
 - 开启 强制 `HTTPS` 访问
-    - ![](https://ws1.sinaimg.cn/large/006tNc79ly1fzk252ki5ej31ge0u07jg.jpg)
+    - ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/oBYeAn.jpg)
 
 - 使用 `git` 命令 把仓库 克隆 到本地。
     - 新建 如图 几个文件
-        - ![](https://ws1.sinaimg.cn/large/006tNc79ly1fzk28kedgoj30vo0icac1.jpg)
+        - ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/2NktPp.jpg)
 
     - **index.html** 文件内容
                 
@@ -116,26 +116,26 @@ mathjax: true
 ### 0x004 重点注意：如上需要修改之处文件路径的正确获取姿势
 
 - 上传的 ipa 文件路径 获取
-    ![](https://ws1.sinaimg.cn/large/006tNc79ly1fzk2gnsdbyj31g60u0nbx.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/qnxJxL.jpg)
 
 - 上传的 图标 文件路径 获取
 
-![](https://ws2.sinaimg.cn/large/006tNc79ly1fzk2hdcu0hj325g0u07ei.jpg)
-![](https://ws1.sinaimg.cn/large/006tNc79ly1fzk2huohwvj31vp0u079f.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/OO0NLJ.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/49PKVQ.jpg)
 
 
 - 上传的 **manifest.plist** 文件路径 获取
 
-![](https://ws3.sinaimg.cn/large/006tNc79ly1fzk2j35371j31nk0u0tls.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/0pLVyG.jpg)
 
-![](https://ws2.sinaimg.cn/large/006tNc79ly1fzk2jau6nbj31ge0u0k6t.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/XpnNuH.jpg)
 
 ### 0x005 结语
  - 获取到正确姿势的文件路径后，然后修改如上那些【修改这里】标签中内容。重新`push`一次。
  
  - 然后查看你 仓库 `page `服务的地址
  
-    ![](https://ws4.sinaimg.cn/large/006tNc79ly1fzk2no2tgqj31ge0u0drr.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/eXhJ35.jpg)
  
 
 - 发给别人用手机的 `Safari`浏览器 就可以安装了。（阔以把下载引导页做漂亮点，如上就下载网页就一个按钮太`low`）

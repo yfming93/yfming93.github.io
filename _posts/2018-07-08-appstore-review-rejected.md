@@ -277,7 +277,7 @@ mathjax: true
     - 后台蓝牙连接权限
     - 所有后台权限一共才8个，`APP`就占了4个。🤣
     
-    ![](https://ws4.sinaimg.cn/large/006tNc79gy1fswuib1j5xj315g0dujtp.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/TlsTv4.jpg)
 
 
 ### ②、马甲APP开发需谨慎

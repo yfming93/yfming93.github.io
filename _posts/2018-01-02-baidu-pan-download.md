@@ -18,7 +18,7 @@ mathjax: true
 
 这里推荐一个获取百度云资源真实下载链接的 谷歌浏览器插件：**baidudI**
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fn2dh78jjcj31kw0wagss.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/zDY5rE.jpg)
 
 ### 使用：
 
@@ -31,5 +31,5 @@ mathjax: true
 这里推荐我自己在用的下载器：[FreeDownloadManager](链接: https://pan.baidu.com/s/1bpxyESJ 密码: yt7e)
 
 下载界面如下图：
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fn2dlimi02j30pa0ge0tr.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/z9Xg6t.jpg)
 

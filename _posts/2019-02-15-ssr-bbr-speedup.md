@@ -97,9 +97,9 @@ CentOS 7的4.9内核合并了Google研发的BBR TCP阻塞算法，使用效果�
 ### 0x004 终端详细步骤
 楼主我是 virmach 的 vps ， Centos 6.5 操作系统，用方法二安装的加速。
 
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1g079dj0ohkj30u00y0trh.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/zHWxm6.jpg)
 
 ### 0x005 最终效果如下图
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1g0bkybg16mj31g00u01ky.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/6qluJO.jpg)
 
 

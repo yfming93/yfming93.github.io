@@ -18,35 +18,35 @@ mathjax: true
 
 
 #### 0x01-1、2-1 Flutter开发环境的安装-01：
-![](https://ws1.sinaimg.cn/large/006tNc79ly1g23spkggssj31920p0793.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/QZeVIS.jpg)
 
 #### 0x01-2、2-1 Flutter开发环境的安装-02：
 
-![](https://ws4.sinaimg.cn/large/006tNc79ly1g23sq3wibjj31ic0u010u.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/SYrvES.jpg)
 
 
 #### 0x02、JDK 安装：
 
 由于官网下载比较缓慢。可以下载我百度网盘的`JDK`：链接: https://pan.baidu.com/s/1ibnt4PnJgOwFjxNdI3l47Q 提取码: v2jj 复制这段内容后打开百度网盘手机App，操作更方便哦；
-![](https://ws4.sinaimg.cn/large/006tNc79ly1g23ssgykrbj31jk08w0tw.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/e56aQ8.jpg)
 
 **Mac下如何安装JDK**：详细过程可以参考：[https://www.cnblogs.com/quickcodes/p/5127101.html](https://www.cnblogs.com/quickcodes/p/5127101.html)
 **安装好JDK后需要配置JDK的环境变量**：请参考：[Mac下如何配置环境变量](http://www.cnblogs.com/quickcodes/p/5398709.html)
 
 #### 0x03、Flutter JDK 安装：
 由于官网下载比较缓慢。可以下载我百度网盘的`Flutter SDK`：[https://pan.baidu.com/s/1OQLCy44KBbd1IoBuUzz1eQ](https://pan.baidu.com/s/1OQLCy44KBbd1IoBuUzz1eQ)
-![](https://ws1.sinaimg.cn/large/006tNc79ly1g23t36yu4gj317e04w3zf.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/y3oxIR.jpg)
 
 <br>
 我的 `Flutter` 安装在了如下路径（`home`目录下载新建一个`app`文件夹中）
 
-![](https://ws1.sinaimg.cn/large/006tNc79ly1g23t6qad5wj318t0u0qfh.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/cQxGdn.jpg)
 
 - 配置环境变量:
  - 在终端执行 `opne ~/.bash_profile` ，加入 `Flutter` 的安装路径
      - `export PATH=/Users/mingo/app/flutter/bin:$PATH
 `
-    ![](https://ws1.sinaimg.cn/large/006tNc79ly1g23ta1lhlaj30zk0mwjtd.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/mCpVod.jpg)
 
     - 保存关闭 执行：`source ~/.bash_profile`
 
@@ -175,11 +175,11 @@ Doctor summary (to see all details, run flutter doctor -v):
 ##### 0x04-2、安装 Android Studio 和 VS Code
 
 打开`android studio`, 打开`plugins` ,安装`flutter`
-![](https://ws2.sinaimg.cn/large/006tNc79ly1g23uca2fkyj30zh0u07a0.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/0ZEIeT.jpg)
 
 输入flutter搜索，点击中间的 Search in repositories
 
-![](https://ws1.sinaimg.cn/large/006tNc79ly1g23udb33zbj310p0u04l7.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/elgpK7.jpg)
 
 点击`install`,顺利的话安装完毕之后重启`android studio`
 
@@ -258,7 +258,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 ##### 0x04-4、解决 iOS 环境
 
 按照如下截图，依次一个个执行如图命令。
-![](https://ws3.sinaimg.cn/large/006tNc79ly1g23ttuniycj312s0lcwqa.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/mYL6wB.jpg)
 
     
 第六个命令 `brew install ios-deploy` 安装完如下:
@@ -298,7 +298,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 
 因为不需要使用 `IntelliJ IDEA`来开发，如果你电脑中没有安装`IntelliJ IDEA`是不会提示这个警告的，所以可以先不管这个栏目的❗️和 ❌
-![](https://ws2.sinaimg.cn/large/006tNc79ly1g23u3amhzyj31940gw47p.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/uP4xfY.jpg)
 
 到此，`Flutter` 环境搭建完成，可以用 `Android Studio`，新建第一个 `Flutter`项目了。
 

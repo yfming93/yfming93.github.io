@@ -29,11 +29,11 @@ mathjax: true
 
 遂本能反应到 用我神器 `postman` 来试试。结果是了半天发现 在`Body`中的 `form-data`栏调试成功。得到如下`HTML`数据。
 
-![](https://ws3.sinaimg.cn/large/006tNc79ly1fsnto7xekoj31kw14ldv2.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/h2nBR0.jpg)
 
 然后将 拿到的数据写进一个本地的`index.html`文件，用浏览器打开如下：
 
-![](https://ws1.sinaimg.cn/large/006tNc79ly1fsnu5yc433j30n2148wwb.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/TAXwLI.jpg)
 
 Nice ！！！ 这就是我要的效果。
 

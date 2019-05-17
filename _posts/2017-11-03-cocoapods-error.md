@@ -15,7 +15,7 @@ mathjax: true
 
 如下图：
 
-![](https://ws2.sinaimg.cn/large/006tKfTcgy1fl8ker6bnlj31jm10kafh.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/ns6O9B.jpg)
 
 我的cocoapods版本是 1.2.0； 
 这个问题可能是由于没有链接到 xcode，或者链接到的xcode版本过低。 前几天刚安装了一个 xcode9-beta版本，我把新安装的xcode放到了Applications（应用程序）下，但是按原来的链接路径找不到xcode.app相应的目录； 

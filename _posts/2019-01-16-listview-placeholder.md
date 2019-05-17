@@ -17,7 +17,7 @@ mathjax: true
 ---
 
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fz8ipkdw88j30va0b4q48.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/wgbeoZ.jpg)
 GitHub Link ：[https://github.com/yfming93/FMListPlaceholder](https://github.com/yfming93/FMListPlaceholder)
 
 
@@ -42,7 +42,7 @@ A delightful Placeholder for List View (UITableView, UICollectionView).
 - Support custom views as the placeholder.
 
 ### 0x002 Renderings
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fz8jghf5d0g30hj0dsx6p.gif)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/JyORKz.jpg)
 
 
 ### 0x003 How to use
@@ -108,7 +108,7 @@ Instead of giving me star, it is better to throw a bug to me!
 - `[+]` Added some usage examples
 
 ### 0x007 QQ Chat Room
-![](https://ws3.sinaimg.cn/small/006tNc79gy1fz8aavckscj30f10kl0us.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/QYd7sI.jpg)
 
 ### 0x008 Requirements
 - iOS 9.0 or later

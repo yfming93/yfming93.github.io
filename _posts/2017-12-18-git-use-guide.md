@@ -13,9 +13,9 @@ mathjax: true
 
 
 ## 首先附上神图
-![](https://ws4.sinaimg.cn/large/006tKfTcgy1fmkpcop11lj30yg0oc46d.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/1EpjUI.jpg)
 
-![](https://ws1.sinaimg.cn/large/006tKfTcgy1fmkpnb6169j311l0k1wfl.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/WLsCep.jpg)
 
 ## 生成key
 安装好git后用以下命令生成key文件（注意不要输入密码，直接三次回车就可以了），并将key.pub文件发给管理员。
@@ -83,7 +83,7 @@ eclipse解决冲突后需要做remove from index 然后再次commit
 ## 补充
 Github PR 流程
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1fmkpxkcgsvj30qu0ekabh.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/qrYnc3.jpg)
 
 
 

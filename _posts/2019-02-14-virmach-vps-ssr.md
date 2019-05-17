@@ -35,19 +35,19 @@ mathjax: true
 - 自行购买 `virmach` 的`VPS`主机
     - `virmach`官网：[https://virmach.com/](https://virmach.com/)
     - 买`virmach`的原因是价格非常的优惠。
-    ![](https://ws3.sinaimg.cn/large/006tNc79ly1g058dlwbzqj31dc0u0ajl.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/d8moDR.jpg)
 - 安装 `Centos 6.5` 操作系统
 
 
 ### 0x003  相关信息获取
 - 后台获取 `ssh` 登陆信息
 在购买前首先需要你已经购买了对应的 `vps` 。登陆 `virmach` 后，首先获取你的 `vps` 登陆`ip`，在 `virmach` 后台选择 `Service` =》`My Services`：
-![](https://ws2.sinaimg.cn/large/006tNc79ly1g059294tnwj309k06zmxo.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/sCurWk.jpg)
 
 - 进入实例列表，然后点击你 vps ：
-![](https://ws2.sinaimg.cn/large/006tNc79ly1g0593ndbbxj30bu068mxk.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/woVw3Z.jpg)
 - 进入 `Manage Product` 页面后，往下拖动，会看到你具体的 `vps` 信息，比如 `ip` 地址、`root` 登陆密码等：
-![](https://ws4.sinaimg.cn/large/006tNc79ly1g0594ahocej30ft08ejrz.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/VumCbU.jpg)
 
 - 在`mac`电脑终端使用 `ssh` 登陆工具进行连接到远程`vps`
     - ssh root@vpsip (vpsip 是上面取到的ip)
@@ -66,7 +66,7 @@ mathjax: true
 ### 0x004  具体安装步骤
 终端全部的操作过程，已经制作成了一个漂亮的长长图。如下：
 
-![](https://ws3.sinaimg.cn/large/006tKfTcgy1g05rfccuwmj30sgcg9b2d.jpg)
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/szMMRg.jpg)
 
 
 ### 0x005 关于 ss、ssr 服务端的的一些常用命令介绍

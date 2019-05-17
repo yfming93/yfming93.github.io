@@ -26,7 +26,7 @@ mathjax: true
   - 如下图：这样交互就显得不够优雅，尽量减少多余的累赘交互，使得用户使用时候最大限度觉得简单而优雅。
   - （没必要多出一个这种页面。也没见过什么 `APP` 是这样登录的交互。完全可以把登录输入框页面和这个页面的登录注册按钮做在一个页面。）
        
-       ![](https://ws4.sinaimg.cn/large/006tNc79gy1g23dan3415j308o0e8gmi.jpg))
+       ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/u3wSGO.jpg))
          
        
 - 建议 学习 `Axure-原型图` 对设计的 `UE` 交互理解非常有利。
@@ -39,7 +39,7 @@ mathjax: true
 
 #### 0x2-1、效果图制作规范：
 - `iOS`的效果图建议统一采用 `750px` 像素宽度（`iPhone6` 系列`4.7`寸的宽度），长度按照业务多少自行累加。
-- 不要出现所给的效果图宽度像素，前后不一致。如错误的：![](https://ws4.sinaimg.cn/large/006tNc79gy1g23d3x8drej30iv0bzjti.jpg)
+- 不要出现所给的效果图宽度像素，前后不一致。如错误的：![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/kARLkl.jpg)
    - **在UI设计师没有给标注图时候， 开发人员都是手动测量效果图得知控件元素要布局多大多小，前后图规格都不一致 新增换算的工作量**。
 
 - 有多种业务状态的图要提供多种效果图。
@@ -51,7 +51,7 @@ mathjax: true
     - （给别人看的图就必须让人快速找到，让人快速理解图片是什么业务）
 - 较好的效果图命名如下下图：
 
-    ![](https://ws2.sinaimg.cn/large/006tNc79gy1g23bhd7v1vj30kk01g0sv.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/qPi69k.jpg)
     
     - 对上图解读：（**4**代表个人中心模块，**3**代表我的订单模块。**1**代表当前业务图片的某种状态；
     - 解释为：个人中心 第三个 业务模块的 第一张状态图。（有数字编号代表业务模块，后期图即使非常多也容易分类查看）
@@ -60,7 +60,7 @@ mathjax: true
 - 每个大业务的所有图标`icon`都归类到该业务的文件夹。
 - 必须切两套图标。**@2x** 和 **@3x**。
     - **注意：**`750px`宽度 `psd` 切出来的图标是 **@2x** 的。（自行把切出的 **@2x** 图标 和 `750px` 宽的 `psd`中该图标 对比一下。看看尺寸大小是否一样。）
-- 较好的`icon`图标命名规范如下图：![](https://ws2.sinaimg.cn/large/006tNc79gy1g23cgkovkoj30ke07e3zi.jpg)
+- 较好的`icon`图标命名规范如下图：![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/W8bqgl.jpg)
     - 对上图解读：
          - 命名只支持，小写英文字符、数字、下划线 和**@2x**，**@3x** 等标识符
         - 分了文件夹。找图非常方便
@@ -71,6 +71,6 @@ mathjax: true
         - 所有`icon`图标必须是 **png** 格式。
        
     - **错误命名**方式举例如下：
-    ![](https://ws4.sinaimg.cn/large/006tNc79ly1g23oe0dawbj30xk0t2n3d.jpg)
+    ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/TOzl0d.jpg)
 
 
