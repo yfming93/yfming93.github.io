@@ -16,7 +16,7 @@ type: page
 <a href="/photos/"  style="color:#272727" target="_blank"> <h1>相册「Photos」</h1></a>  
 </p>
 
-<a href="/photos/" target="_blank"><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fz2lkf8si5j30qv05fahn.jpg" width=  "100%" alt="photos" display="block"/></a>
+<a href="/photos/" target="_blank"><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/20190517173742.png" width=  "100%" alt="photos" display="block"/></a>
 
 
 * [ToDo 应用(移动端)](http://gaohaoyang.github.io/ToDo-WebApp/)
