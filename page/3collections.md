@@ -19,7 +19,7 @@ type: page
 <a href="/photos/" target="_blank"><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/20190517173742.png" width=  "100%" alt="photos" display="block"/></a>
 
 <p>
-<a href=""  style="color:#272727" > <h1>视频「VLog」</h1></a>  
+<a  style="color:#272727" > <h1>视频「VLog」</h1></a>  
 </p>
 
 <iframe  src="https://v.qq.com/txp/iframe/player.html?vid=u08763pmr6m" allowFullScreen="true" width="100%" height="540"></iframe>
