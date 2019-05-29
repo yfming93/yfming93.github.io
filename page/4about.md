@@ -11,12 +11,13 @@ type: page
 
 
 {% include banner.html %}
+
 <!-- <iframe frameborder="0" src="http://player.youku.com/embed/XNDE5NzY5MjYzNg==" frameborder="0" allowfullscreen="true" width="100%" height=600px ></iframe> -->
 
 
 <!-- <embed src='http://player.youku.com/player.php/sid/XNDE5NzY5MjYzNg==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed> -->
 
-<br><br>
+<!-- <iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=u08763pmr6m" frameborder="0" allowfullscreen="true" width="100%" height=600px ></iframe> -->
 
 
 > [New York is 3 hours ahead of California 🎬](https://video.tudou.com/v/XMzYwOTY4NDA0NA==.html?spm=a2h0k.8191414.0.0&from=s1.8-1-1.2),
