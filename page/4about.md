@@ -11,7 +11,10 @@ type: page
 
 
 {% include banner.html %}
+<!-- <iframe frameborder="0" src="http://player.youku.com/embed/XNDE5NzY5MjYzNg==" frameborder="0" allowfullscreen="true" width="100%" height=600px ></iframe> -->
 
+
+<!-- <embed src='http://player.youku.com/player.php/sid/XNDE5NzY5MjYzNg==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed> -->
 
 <br><br>
 
