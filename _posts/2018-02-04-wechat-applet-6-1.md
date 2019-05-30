@@ -12,20 +12,20 @@ mathjax: true
 * content
 {:toc}
 
+<!--{% raw %}-->
+
 
 [微信小程序入门与实战 常用组件API开发技巧项目实战](https://coding.imooc.com/class/75.html)
 
 ## 6-1 从文章列表跳转到新闻详情页面（组件自定义属性及获取属性）
 
-**说明：代码块中{% raw %}{{% endraw %}{XXX}} 识别不了,会将{% raw %}{{% endraw %}{XXX}}置为空白。故打成 {\{XXX}}**
-
 - 详情页面事件绑定
     
 
 ``` html
-<view wx:for="{\{postList}}" wx:key="idx" >
+<view wx:for="{{postList}}" wx:key="idx" >
   <view catchtap="onPostTap" >
-      <template is="postItem" data="{\{...item}}" />
+      <template is="postItem" data="{{...item}}" />
   </view>
 </view>
 ```
@@ -38,15 +38,15 @@ mathjax: true
  
 
     ``` html
-    <view wx:for="{\{postList}}" wx:key="idx" >
-      <view catchtap="onPostTap" data-postId="{\{item.postId}}">
-          <template is="postItem" data="{\{...item}}" />
+    <view wx:for="{{postList}}" wx:key="idx" >
+      <view catchtap="onPostTap" data-postId="{{item.postId}}">
+          <template is="postItem" data="{{...item}}" />
       </view>
     </view>
     ```
 
 
-    - `data-自定义变量名称="{% raw %}{{% endraw %}{要传入的值}}"`
+    - `data-自定义变量名称="{{要传入的值}}"`
     - 在自定义函数`onPostTap`中接收传过来的值：
     
       
@@ -66,4 +66,6 @@ mathjax: true
 - 出现问题：**VM2947:2 pages/posts/post-detail/post-detail.json 文件解析错误  SyntaxError: Unexpected end of JSON input**
     - 这是因为新建`post-detail.json`后为加入`{}`
 
+
+<!--  {% endraw %}-->
 

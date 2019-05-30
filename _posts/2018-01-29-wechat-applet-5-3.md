@@ -10,15 +10,13 @@ mathjax: true
 ---
 * content
 {:toc}
+<!--{% raw %}-->
 
 
 [微信小程序入门与实战 常用组件API开发技巧项目实战](https://coding.imooc.com/class/75.html)
 
 
 ## 5-3 template模板的使用
-
-**说明：代码块中{\{XXX}} 识别不了,会将{\{XXX}}置为空白。故打成 {\\{XXX}}**
-
 
 **模板只对`WXML`和`WXSS`文件有作用。对`JS`和`JSON`文件引用无效。**
 
@@ -29,17 +27,17 @@ mathjax: true
 <template name="postItem">
     <view class='post-container'>
         <view class='post-author-date'>
-            <image class='post-author' src='{\{headImgSrc}}'></image>
-            <text class='post-date'>{\{date}}</text>
+            <image class='post-author' src='{{headImgSrc}}'></image>
+            <text class='post-date'>{{date}}</text>
         </view>
-        <text class='post-title'>{\{title}}</text>
-        <image class='post-image' src='{% raw %}{{% endraw %}{imgSrc}}'></image>
-        <text class='post-content'>{\{content}}</text>
+        <text class='post-title'>{{title}}</text>
+        <image class='post-image' src='{{imgSrc}}'></image>
+        <text class='post-content'>{{content}}</text>
         <view post-like>
             <image class='post-like-image' src='../../images/icon/chat.png'></image>
-            <text class='post-like-font'>{\{collection}}</text>
+            <text class='post-like-font'>{{collection}}</text>
             <image class='post-like-image' src='../../images/icon/view.png'></image>
-            <text class='post-like-font'>{\{reading}}</text>
+            <text class='post-like-font'>{{reading}}</text>
         </view>
     </view>
  </template>
@@ -138,9 +136,9 @@ mathjax: true
 ``` html
 <import src="post-item/post-item-template.wxml" />
 
-<view wx:for="{% raw %}{{% endraw %}{postList}}" wx:key="idx" >
+<view wx:for="{{postList}}" wx:key="idx" >
    <view catchtap="onPostTap" >
-       <template is="postItem" data="{% raw %}{{% endraw %}{...item}}" />
+       <template is="postItem" data="{{...item}}" />
    </view>
 </view>
 ```
@@ -159,4 +157,6 @@ mathjax: true
         var postsData = require('../../data/posts-data.js')
 
  
+<!--  {% endraw %}-->
+
 

@@ -14,7 +14,7 @@ mathjax: true
 
 
 
-
+<!--{% raw %}-->
 # Vue2.0+Node.js+MongoDB全栈打造商城系统（1—4章）
 用前端技术开发的商城整站
 项目已部署上线，你可抢先体验：[http://imooc.51purse.com/](http://imooc.51purse.com/)
@@ -156,7 +156,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
     </head>
     <body>
         <div id="app">
-            <span>{% raw %}{{% endraw %}{message}}</span>
+            <span>{{message}}</span>
         </div>
         <script>
             new Vue ({
@@ -277,7 +277,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
 - `components`文件夹一般放复用的组件，同时可以新建一个 `views` 放单独的页面
 - 组件有且只有一个根元素
 - 路由模式可配置，默认`hash`，路由带`#`号，改为`history`后，可去掉`#`号，表现为常见的路由形式
-- 在`router`文件夹下的`index.js`修改路由 `src`里的`views`文件夹放页面，里面也是.vue结尾的文件，本质上一样的。 `router`里面配置默认渲染的组件，可以修改让它加载其他页面，`@`被配置成了一个别名，映射到了`src`文件夹目录 **{% raw %}{{% endraw %}{$route.params.goodsId}}**拿到路径`path:'/goods/:goodsId'`,中的参数 **{% raw %}{{% endraw %}{$route.params.name}}**`path: '/goods/:goodsId/user/:name'`, 路由是对`history`的封装 路由模式有`mode:'history' `和 `mode:'hash'`两种
+- 在`router`文件夹下的`index.js`修改路由 `src`里的`views`文件夹放页面，里面也是.vue结尾的文件，本质上一样的。 `router`里面配置默认渲染的组件，可以修改让它加载其他页面，`@`被配置成了一个别名，映射到了`src`文件夹目录 **{{$route.params.goodsId}}**拿到路径`path:'/goods/:goodsId'`,中的参数 **{{$route.params.name}}**`path: '/goods/:goodsId/user/:name'`, 路由是对`history`的封装 路由模式有`mode:'history' `和 `mode:'hash'`两种
 
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/R1SrVE.jpg)
 演示代码：
@@ -306,8 +306,8 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
     <template>
     	<div>
     		这个商品列表页面
-    		<span>{% raw %}{{% endraw %}{$route.params.goodsId}}</span><br>
-    		<span>{% raw %}{{% endraw %}{$route.params.name}}</span>
+    		<span>{{$route.params.goodsId}}</span><br>
+    		<span>{{$route.params.name}}</span>
     	</div>
     </template>
     
@@ -336,8 +336,8 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
     <template>
     	<div>
     		这个商品列表页面
-    		<span>{% raw %}{{% endraw %}{$route.params.goodsId}}</span><br>
-    		<span>{% raw %}{{% endraw %}{$route.params.name}}</span>
+    		<span>{{$route.params.goodsId}}</span><br>
+    		<span>{{$route.params.name}}</span>
     		<router-link to="/goods/Title">显示商品标题</router-link>
     		<router-link to="/goods/Img">显示商品图片</router-link>
     		<div>
@@ -410,7 +410,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
         <a href="javascript:;" class="btn btn-primary">Post请求</a>
         <a href="javascript:;" class="btn btn-primary">JSONP请求</a>
         <div>
-          <span>{% raw %}{{% endraw %}{msg}}</span>
+          <span>{{msg}}</span>
         </div>
       </div>
       <script>
@@ -490,8 +490,8 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
     <template>
     	<div>
     		这个商品列表页面
-    		<span>{% raw %}{{% endraw %}{$route.params.goodsId}}</span><br>
-    		<span>{% raw %}{{% endraw %}{$route.params.name}}</span>
+    		<span>{{$route.params.goodsId}}</span><br>
+    		<span>{{$route.params.name}}</span>
     		<router-link to="/goods/Title">显示商品标题</router-link>
     		<router-link to="/goods/Img">显示商品图片</router-link>
     		<div>
@@ -558,7 +558,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
         <a href="javascript:;" class="btn btn-primary" v-on:click="http">http配置参数请求</a>
     
         <div>
-          <span>{% raw %}{{% endraw %}{msg}}</span>
+          <span>{{msg}}</span>
         </div>
       </div>
       <script>
@@ -681,7 +681,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
         <a href="javascript:;" class="btn btn-primary" v-on:click="post">Post请求</a>
         <a href="javascript:;" class="btn btn-primary" v-on:click="jsonp">JSONP请求</a>
         <div>
-          <span>{% raw %}{{% endraw %}{msg}}</span>
+          <span>{{msg}}</span>
         </div>
       </div>
       <script>
@@ -785,7 +785,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
       <a href="javascript:;" class="btn btn-primary" v-on:click="http">http配置参数请求</a>
     
       <div>
-        <span>{% raw %}{{% endraw %}{msg}}</span>
+        <span>{{msg}}</span>
       </div>
     </div>
     <script>
@@ -871,7 +871,7 @@ Vue本身并不是一个框架，但结合周边生态构成一个灵活的、�
       })
     },
 
-
+<!--  {% endraw %}-->
 
 
 
