@@ -33,7 +33,7 @@ mathjax: true
             <text class='post-date'>{\{date}}</text>
         </view>
         <text class='post-title'>{\{title}}</text>
-        <image class='post-image' src='{{imgSrc}}'></image>
+        <image class='post-image' src='{% raw %}{{% endraw %}{imgSrc}}'></image>
         <text class='post-content'>{\{content}}</text>
         <view post-like>
             <image class='post-like-image' src='../../images/icon/chat.png'></image>
@@ -138,9 +138,9 @@ mathjax: true
 ``` html
 <import src="post-item/post-item-template.wxml" />
 
-<view wx:for="{{postList}}" wx:key="idx" >
+<view wx:for="{% raw %}{{% endraw %}{postList}}" wx:key="idx" >
    <view catchtap="onPostTap" >
-       <template is="postItem" data="{{...item}}" />
+       <template is="postItem" data="{% raw %}{{% endraw %}{...item}}" />
    </view>
 </view>
 ```

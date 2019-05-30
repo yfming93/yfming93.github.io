@@ -100,25 +100,25 @@ mathjax: true
                         <img v-bind:src="'static/'+item.productImage" v-bind:alt="item.productName">
                       </div>
                       <div class="cart-item-title">
-                        <div class="item-name">{{item.productName}}</div>
+                        <div class="item-name">{% raw %}{{% endraw %}{item.productName}}</div>
                       </div>
                     </div>
                     <div class="cart-tab-2">
-                      <div class="item-price">{{item.salePrice}}</div>
+                      <div class="item-price">{% raw %}{{% endraw %}{item.salePrice}}</div>
                     </div>
                     <div class="cart-tab-3">
                       <div class="item-quantity">
                         <div class="select-self select-self-open">
                           <div class="select-self-area">
                             <a class="input-sub">-</a>
-                            <span class="select-ipt">{{item.productNum}}</span>
+                            <span class="select-ipt">{% raw %}{{% endraw %}{item.productNum}}</span>
                             <a class="input-add">+</a>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="cart-tab-4">
-                      <div class="item-price-total">{{item.salePrice*item.productNum}}</div>
+                      <div class="item-price-total">{% raw %}{{% endraw %}{item.salePrice*item.productNum}}</div>
                     </div>
                     <div class="cart-tab-5">
                       <div class="cart-item-opration">
@@ -396,25 +396,25 @@ mathjax: true
                         <img v-bind:src="'static/'+item.productImage" v-bind:alt="item.productName">
                       </div>
                       <div class="cart-item-title">
-                        <div class="item-name">{{item.productName}}</div>
+                        <div class="item-name">{% raw %}{{% endraw %}{item.productName}}</div>
                       </div>
                     </div>
                     <div class="cart-tab-2">
-                      <div class="item-price">{{item.salePrice}}</div>
+                      <div class="item-price">{% raw %}{{% endraw %}{item.salePrice}}</div>
                     </div>
                     <div class="cart-tab-3">
                       <div class="item-quantity">
                         <div class="select-self select-self-open">
                           <div class="select-self-area">
                             <a class="input-sub">-</a>
-                            <span class="select-ipt">{{item.productNum}}</span>
+                            <span class="select-ipt">{% raw %}{{% endraw %}{item.productNum}}</span>
                             <a class="input-add">+</a>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="cart-tab-4">
-                      <div class="item-price-total">{{item.salePrice*item.productNum}}</div>
+                      <div class="item-price-total">{% raw %}{{% endraw %}{item.salePrice*item.productNum}}</div>
                     </div>
                     <div class="cart-tab-5">
                       <div class="cart-item-opration">

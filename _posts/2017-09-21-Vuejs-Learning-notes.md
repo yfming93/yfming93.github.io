@@ -165,11 +165,11 @@ mathjax: true
     - 使用图片 `v-bind:src=""`
     - `$index`已经删除 ` v-for(item,index)`使用索引
     - 2.0 不再支持用`$delete`删除
-    - 2.0 取消了标签内 `属性={{ }}`   功能
+    - 2.0 取消了标签内 `属性={% raw %}{{% endraw %}{ }}`   功能
 
-- 给图片动态绑定需要用 `v-bind：src=xx.xx`  在 `vue2.0` 里 `src：{{xx.xx}}` 是无效的
-    - `Mustache`既双大括号`{{}}` 不能在 `HTML` 属性中使用，应使用 `v-bind` 指令,相当于`html`的自定义属性。`v-bind:src=""`
-`Mustache`内部可以使用 JS 表达式，如`{{ number + 1 }}`
+- 给图片动态绑定需要用 `v-bind：src=xx.xx`  在 `vue2.0` 里 `src：{% raw %}{{% endraw %}{xx.xx}}` 是无效的
+    - `Mustache`既双大括号`{% raw %}{{% endraw %}{}}` 不能在 `HTML` 属性中使用，应使用 `v-bind` 指令,相当于`html`的自定义属性。`v-bind:src=""`
+`Mustache`内部可以使用 JS 表达式，如`{% raw %}{{% endraw %}{ number + 1 }}`
 。在方法里使用`this.$http.get().then()`可以使用`vue-resource`
 
 -----------
@@ -180,7 +180,7 @@ mathjax: true
     **使用for渲染商品时,若想加索引如下 （限vue2.0）**
      
          v-for="(item,index) in productList"
-          在商品名字处 {{item.productName+index}}
+          在商品名字处 {% raw %}{{% endraw %}{item.productName+index}}
               
 - ### **filter** 过滤器：
    过滤器，格式化数据。主要对接口返回的字段进行业务转换，数据进行格式化如后台返回金额19数字。页面显示：`￥19.00元`。
@@ -206,7 +206,7 @@ mathjax: true
      **注意: 全局的过滤器不要加s**
      
 - ### **v-text** 文本渲染
-和`{{}}`功能一样。但是`{{}}`在第一次页面`Vue`木有初始化完成会在页面上显示`{{}}`字符。故文本渲染多用`v-text`。
+和`{% raw %}{{% endraw %}{}}`功能一样。但是`{% raw %}{{% endraw %}{}}`在第一次页面`Vue`木有初始化完成会在页面上显示`{% raw %}{{% endraw %}{}}`字符。故文本渲染多用`v-text`。
     
     - **注意：**`v-text`里用过滤器`filter`会失效，原因是在`vue2.0`里 管道符`|`只能用在`mousetache`和`v-bind`中。
     
@@ -219,7 +219,7 @@ mathjax: true
    `v-model`是一个双向的功能。文本框输入以后，模型也会发生改变。反之模型改变了文本框也会改变。
 - ### **v-bind** 绑定属性
     **给一个dom元素添加属性 v-bind:class="" 等价于 :class=""**
-    绑定属性。给一个`dom`元素添加属性。【比如：在做图片的渲染过程中，如果图片的`src`地址是动态的，那么就需要`v-bind`去绑定`src`属性，去给这个`src`赋值。】。凡是样式变化的可用`v-bind`动态去操作`class` 【不要在原生的`class`里面去使用`{{}}`改变`class`】
+    绑定属性。给一个`dom`元素添加属性。【比如：在做图片的渲染过程中，如果图片的`src`地址是动态的，那么就需要`v-bind`去绑定`src`属性，去给这个`src`赋值。】。凡是样式变化的可用`v-bind`动态去操作`class` 【不要在原生的`class`里面去使用`{% raw %}{{% endraw %}{}}`改变`class`】
     `v-bind`添加`class`属性，属性值只能为`obj`或`arr`
     
     - 不同的绑定方式：
@@ -250,9 +250,9 @@ mathjax: true
 
 -----------        
 ## (五)、语法技巧
-- 自动计算： `v-model="item.b" ` 直接可以`{{item.a*item.b}}`
+- 自动计算： `v-model="item.b" ` 直接可以`{% raw %}{{% endraw %}{item.a*item.b}}`
 - `toFixed`有精度缺失（四舍五入），所以价格一般有后台传入
-- 这个`{{}}`花括号  页面刚出来的时候 会出现~~  这个怎么去掉呢？
+- 这个`{% raw %}{{% endraw %}{}}`花括号  页面刚出来的时候 会出现~~  这个怎么去掉呢？
     - 在整个控制模块上加 v-cloak 例如： `<div id="app"  v-cloak></div> `
 - `data`中没有需要使用的数据使，使用`set`注册。
 
@@ -268,7 +268,7 @@ mathjax: true
 - 删除: 通过`indexOf`获取索引,`var index = this.productList.indexOf(this.curProduct);`
 然后 `splice(index,1)`从当前位置开始删除一个元素
 - 对于文本框这样的值,是通过`v-model`绑定的,`v-model`具有双向数据绑定功能,通过`+`改变数量,那么文本框的值会相应的去发生变化
-但是变量`{{ }}`是不会实时改变的
+但是变量`{% raw %}{{% endraw %}{ }}`是不会实时改变的
 - 表达式使用`data`变量不要加`this`。`v-for 循环`可以控制循环的数量
 -  `computed`,`filters`区别是什么？什么时候使用`computed`，什么时候使用`filters`
     -  我个人理解：`computed`是主要对数据进行实时操作，比如删除，插入等。 而`filters`主要是格式化数据。
