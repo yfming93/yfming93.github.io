@@ -24,12 +24,12 @@ mathjax: true
 
 - 正常情况下 不管怎么 安装都报错如图一大堆。
 
-### 0x02 卸载 node npm 重装
-卸载 node npm  参考的教程： [nodejs在Mac下的卸载](https://www.cnblogs.com/kivenlv/p/6096171.html)
+### 0x02 于是乎，决定卸载 `node` `npm` 再重装
+卸载 `node` `npm`  参考的教程： [nodejs在Mac下的卸载](https://www.cnblogs.com/kivenlv/p/6096171.html)
 
 **重安装：**
 部分参考：[搭建智能合约开发环境Remix IDE及使用](https://cloud.tencent.com/developer/article/1194056)
-部分参考：[Mac OS 下 NVM 的安装与使用](https://www.jianshu.com/p/622ad36ee020)
+部分参考：[Mac OS 下 NVM 的安装与使用](https://www.jianshu.com/p/622ad36ee020)（注意 **oh my zsh** 部分）
 
 目的：安装 `node` `npm` `nvm` 为如下三个版本：
 
@@ -41,7 +41,7 @@ mathjax: true
     0.33.11
 
 
-达到如上前期要求开始安装。
+如上命令查不到版本号就是木有安装正确，达到如上前期要求开始安装。
 
 ### 0x03 开始安装 remix-ide
 

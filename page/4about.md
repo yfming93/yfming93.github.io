@@ -92,7 +92,7 @@ Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。iOS 开发者 & 业�
 
  - <a target="_blank" href="https://itunes.apple.com/cn/app/id1321310096?mt=8"> 文化南宁       </a>
  		<!-- - 授奖新闻 http://www.nntv.cn/news/m/2018-5-4/1525405241514.shtml  -->
-	 - <a target="_blank" href="https://ws2.sinaimg.cn/large/006tNc79gy1fr9ui8ov7lj313w0tztgo.jpg"> 被世界新媒体大会授予品牌潜力奖 </a>
+	 - <a target="_blank" href="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/20190610000213.png"> 被世界新媒体大会授予品牌潜力奖 </a>
 	 - 文化南宁APP是南宁电视台旗下广西发扬传媒文化有限公司打造的一款，注重南宁本地文化生活娱乐的产品，用户可在本APP了解到当前，最热门的演出节目。游览景点等内容。
  
  - <a target="_blank" href="https://itunes.apple.com/cn/app/id1179906438?mt=8"> F O 学院 </a>

@@ -61,5 +61,5 @@ mathjax: true
 
 参考资料：[https://github.com/mrdulin/blog/issues/18](https://github.com/mrdulin/blog/issues/18)
 
-
+[手把手配置终端代理，让终端走FQ的几种方法](https://www.cnblogs.com/sunsky303/p/8024445.html)
 
