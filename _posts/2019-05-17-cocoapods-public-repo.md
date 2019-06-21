@@ -162,7 +162,13 @@ For more information, see https://blog.cocoapods.org and the CHANGELOG for this 
 $
 
 ```
+**注意：**
 
+- xcode使用`CocoaPod`打包`framework`时，如果在.h文件中引入了其他第三方pod，打包时需要修改什么
+    - 加参数：`--use-libraries` [【参考】](https://segmentfault.com/q/1010000006885674)
+    
+         pod lib lint xxx.podspec --use-libraries
+         pod trunk push --use-libraries
 
 #### 0x04 操作记录截图
 

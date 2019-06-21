@@ -54,6 +54,9 @@ mathjax: true
 
 **说明：**
 查看当前的`ip`地址：
+- `curl cip.gs`
+- `curl cip.sb`
+
 - `curl ip.cn`
 - `curl cip.cc`
 
