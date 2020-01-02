@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "组件化之路 —— cocoapods 公有库搭建"
+title:  "iOS组件化之路 —— cocoapods 公有库搭建"
 date:   2019-05-17
 author: "袁凤鸣"
 excerpt: cocoapods 公有库搭建。将项目中的公共基础模块抽离出来。多项目共用。
