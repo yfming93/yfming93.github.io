@@ -63,6 +63,17 @@ mathjax: true
 - 编译导出：` cmd + k`先清除缓存，然后`cmd+b`编译。你发现`products`文件夹里的`framework`由红色变成实心灰黑色。
     - 编译成功，直接`option + 鼠标左键`拖出 `products`文件夹里的`framework`到桌面放着
     ![](https://tva1.sinaimg.cn/large/006tNbRwgy1gafzqt27aaj31na0u07wh.jpg)    
+
+- 注意：TARGETS —> Build Settings 中设置相关项 `Build Active Architecture Only` 设置为`NO`的意思是当前打包的`.framework`支持所有的设备.否则打包时只能用当前版本的模拟器或真机运行.
+
+    ![](https://tva1.sinaimg.cn/large/006tNbRwgy1gamnc2plx0j31ds0hgn1b.jpg)
+    
+- `Build Setting` 搜索`Dead Code Stripping` 设置为`NO`是编译选项优化,包瘦身,(可不改)
+    ![](https://tva1.sinaimg.cn/large/006tNbRwgy1gamnf488gej31cm0gctd2.jpg)
+    
+- 设置framework最低支持的版本
+
+    ![](https://tva1.sinaimg.cn/large/006tNbRwgy1gamngroqw1j31ci0eijve.jpg)
     
 ### 0x0003 使用
 
