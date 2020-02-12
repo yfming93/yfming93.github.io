@@ -1,19 +1,23 @@
 
-  <div class="side"> {% include cloud-music.html %}  </div> 
 
+
+    {% include cloud-music.html %}  
+
+
+<div class="link"></div> 
 
 <div>
     <i class="fa fa-search"></i>
     Search
 </div>
-
 <div id="site_search">
-    <input type="text" id="search_box" placeholder="Search..." style="width:100%;">
+    <input type="text" id="search_box" placeholder="Search..." style="width:100% ;">
+    <ul class="content-ul" id="search_results" recent ></ul>
+
 </div>
 
-<ul class="content-ul" id="search_results" recent ></ul>
 
-<link rel="stylesheet" type="text/css" href="{{ site.url }}/css/main.css">
+<!-- <link rel="stylesheet" type="text/css" href="{{ site.url }}/css/main.css"> -->
 <script type="text/javascript" src="{{ site.url }}/js/search.js"></script>
 <script src="{{ site.url }}/js/jekyll-search.min.js"></script>
 
