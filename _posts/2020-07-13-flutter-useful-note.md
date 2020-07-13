@@ -18,7 +18,7 @@ mathjax: true
 
 
 
-#### Flutter 技巧
+### Flutter 技巧
 ----
 - #### 网络请求返回，封装时候 直接返回 `Future` 
 
@@ -41,7 +41,7 @@ mathjax: true
     `color` 和 `decoration` 不能共存，同时写会报错，因为 `decoration` 中也有`color`
 
 ------
-- ####列表 `cell` 中，一个`item`底部的灰色小空白可以用如下
+- #### 列表 `cell` 中，一个`item`底部的灰色小空白可以用如下
 
         decoration: BoxDecoration(
             border: Border(
@@ -52,7 +52,7 @@ mathjax: true
         )),
 
 ------
-- ####数组数据处理技巧
+- #### 数组数据处理技巧
 
     `final castsString = movie.casts.map((item)=> item.name).join(" ");`
 
@@ -61,7 +61,7 @@ mathjax: true
  `.join(" ")`：用返回的新`map`，再用空格字符串拼接得到新字符串。
 
 ------
-- ####图片加载闪烁问题
+- #### 图片加载闪烁问题
 
     默认图片的`gaplessPlayback`属性为`false`，
     
