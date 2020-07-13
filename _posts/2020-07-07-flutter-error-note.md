@@ -31,6 +31,13 @@ mathjax: true
         Please correct the pubspec.yaml file at /Users/mingo/Desktop/AAAllGitRepos/flutter_douban/pubspec.yaml
 
     ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/20200707162257.png)
-    - 原因: `assets` 前面多了空格
-    - 解决: 去掉空格就好。
+    - **原因：** `assets` 前面多了空格
+    - **解决：** 去掉空格就好。
+
+--
+- Android Studio 不提示代码
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/final Color unselectedColor;.png)
+    - **原因：**可能是上一行使用了///注释导致的。
+    -  **解决：**使用//注释
+
 
