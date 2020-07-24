@@ -167,4 +167,9 @@ mathjax: true
               }
         
 
+----------
+- #### print打印
+
+    - `debugPrint` 打印会在每一行最前面多出很多`flutter: `，这样复制打印的数据很不方便。
+    
 
