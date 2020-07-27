@@ -50,4 +50,10 @@ mathjax: true
   -  点击红框加号添加 `Add Files` ， 在ios -> flutter -> 添加`App.framework`,`Flutter.framework`重新编译安装。
      ![](https://tva1.sinaimg.cn/middle/007S8ZIlgy1ggsx2sumbdj319o0se7af.jpg)
    
+--------------
+#### 0x004 使用非 Runner 名称 跑 flutter 项目
 
+- **原因：**使用非 Runner 名称 跑 flutter 项目。会报错如下：
+
+         Could not find the built application bundle at build/ios/iphoneos/Runner.app.
+- **解决：** 在`xcode`修改 项目名称为`Runner`再跑项目
