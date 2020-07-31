@@ -128,7 +128,7 @@ mathjax: true
                 ]));
               }
 
-
+------------
 - #### 富文本字符不自动换行
     如图 ：图标+电影名称+年份 是三个`WidgetSpan`，预期效果是文本接到图标后面。
     ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggphztvpn8j308r04vdgw.jpg)
@@ -171,5 +171,14 @@ mathjax: true
 - #### print打印
 
     - `debugPrint` 打印会在每一行最前面多出很多`flutter: `，这样复制打印的数据很不方便。
+    
+---------
+
+- #### flutterText 换行问题
+
+-  直接设置`maxLines` 发现有些场景会无效，解决方法 在`Text`外层级使用`Expanded`包一下
+
+-------
+
     
 
