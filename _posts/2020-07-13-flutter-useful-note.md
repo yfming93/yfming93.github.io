@@ -182,3 +182,12 @@ mathjax: true
 
     
 
+-------
+- 自定义dialog 点击框外背景自动消失无效
+    - **解决：**需要按照如下控件顺序布局
+    ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gh8djft9udj317n0u0n3k.jpg)
+
+----------
+
+
+
