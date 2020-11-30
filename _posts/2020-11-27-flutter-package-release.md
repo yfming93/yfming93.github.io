@@ -3,7 +3,7 @@ layout: post
 title:  "flutter 发布自己的 package 到 pub.dev "
 date:   2020-11-27
 author: "袁凤鸣"
-excerpt: flutter
+excerpt: flutter 发布自己的 package 到 pub.dev
 
 categories: 
     - flutter
