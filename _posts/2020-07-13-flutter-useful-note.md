@@ -189,5 +189,23 @@ mathjax: true
 
 ----------
 
+- #### flutter Text 文本点击
 
+        RichText(
+          text: TextSpan(
+              text: "我已认真阅读并同意",
+              style: TextStyle(color: Colors.red, fontSize: 24),
+              children: [
+                TextSpan(
+                    text: "《隐私协议》",
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 30,
+                        fontStyle: FontStyle.italic,
+                        decoration: TextDecoration.underline),
+                recognizer: TapGestureRecognizer()..onTap=(){
+                      print("点击了！！");
+                }),
+              ]),
+        )
 
