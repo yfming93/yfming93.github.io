@@ -13,6 +13,14 @@
      * 内容JSON
      */
   var demoContent = [
+  {
+      demo_link: 'https://pub.dev/packages/app_debug',
+      img_link: 'https://yfmingo.oss-cn-beijing.aliyuncs.com/images/app_debug.gif',
+      code_link: 'https://github.com/yfming93/app_debug',
+      title: 'Flutter app 内部调试工具。包含接口日志打印，版本环境切换等',
+      core_tech: 'flutter dart',
+      description: 'A useful debug tool for flutter developer. Easy to use. Show anywhere where to want. You will look over the request log without computer. It‘s a quick way to chose the api host.'
+    },
     {
       demo_link: 'https://github.com/yfming93/FMListPlaceholder',
       img_link: 'https://yfmingo.oss-cn-beijing.aliyuncs.com/images/006tNc79ly1fz7ly8x5feg30gx0dokjm.gif',
