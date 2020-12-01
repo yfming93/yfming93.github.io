@@ -15,7 +15,7 @@
   var demoContent = [
   {
       demo_link: 'https://pub.dev/packages/app_debug',
-      img_link: 'https://yfmingo.oss-cn-beijing.aliyuncs.com/images/app_debug.gif',
+      img_link: 'https://yfmingo.oss-cn-beijing.aliyuncs.com/images/app_debug2.gif',
       code_link: 'https://github.com/yfming93/app_debug',
       title: 'Flutter app 内部调试工具。包含接口日志打印，版本环境切换等',
       core_tech: 'flutter dart',
