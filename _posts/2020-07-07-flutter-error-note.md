@@ -57,3 +57,14 @@ mathjax: true
 
          Could not find the built application bundle at build/ios/iphoneos/Runner.app.
 - **解决：** 在`xcode`修改 项目名称为`Runner`再跑项目
+
+--------
+
+##### 0x005
+
+- **原因：**Flutter Entrypoint isn't within the current project
+- **解决：**
+    ```
+    as 打开  File -> Project Structure -> Module
+重新选择source 为你项目路径
+    ```

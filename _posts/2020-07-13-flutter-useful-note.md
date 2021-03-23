@@ -189,5 +189,43 @@ mathjax: true
 
 ----------
 
+- #### flutter Text 文本点击
 
+        RichText(
+          text: TextSpan(
+              text: "我已认真阅读并同意",
+              style: TextStyle(color: Colors.red, fontSize: 24),
+              children: [
+                TextSpan(
+                    text: "《隐私协议》",
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 30,
+                        fontStyle: FontStyle.italic,
+                        decoration: TextDecoration.underline),
+                recognizer: TapGestureRecognizer()..onTap=(){
+                      print("点击了！！");
+                }),
+              ]),
+        )
 
+--------------------
+- #### flutter 加载本地离线 package 包
+
+ - **问题：**开发自己的私有 package 时候。
+
+            dependencies:
+              app_debug:
+                path:/Users/imac/Desktop/AAAFleeming/MingoKit/FlutterAppDebug/app_debug
+                
+        报错：
+        ```
+        Error on line 54, column 5 of pubspec.yaml: Invalid version constraint: Could not parse version "path:/Users/imac/Desktop/AAAFleeming/MingoKit/FlutterAppDebug/app_debug". Unknown text at "path:/Users/imac/Desktop/AAAFleeming/MingoKit/FlutterAppDebug/app_debug".
+           ╷
+        54 │     path:/Users/imac/Desktop/AAAFleeming/MingoKit/FlutterAppDebug/app_debug
+           │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ╵
+        pub get failed (65;    ╵)
+        ```
+            
+ - **解决：**是因为 `path:` 后面没有空一格，空一格解决问题。path 使用绝对路径或者相对路径都行。
