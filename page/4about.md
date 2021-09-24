@@ -20,6 +20,9 @@ type: page
 <!-- <iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=u08763pmr6m" frameborder="0" allowfullscreen="true" width="100%" height=600px ></iframe> -->
 
 
+### 喜欢的一段话:
+
+
 > [New York is 3 hours ahead of California 🎬](https://video.tudou.com/v/XMzYwOTY4NDA0NA==.html?spm=a2h0k.8191414.0.0&from=s1.8-1-1.2),
 > 
 > but it does not make California slow.
@@ -69,7 +72,7 @@ type: page
 
 ## 关于我：
 
-Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。iOS开发者 & 业余设计师，会一些 H5（HTML、CSS、JS、Vue）基础。近一两年热衷于 flutter。 喜欢折腾一些新技术。
+Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。iOS开发者 & 业余设计师，会一些 H5（HTML、CSS、JS、Vue）基础。近两年热衷于 flutter，从事 flutter 移动端（安卓和iOS）开发。 喜欢折腾一些新技术。
 
 -------
 
