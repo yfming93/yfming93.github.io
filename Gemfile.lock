@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     algolia_html_extractor (2.6.4)
       json (~> 2.0)
@@ -52,7 +52,7 @@ GEM
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     json (2.5.1)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     liquid (4.0.3)
     listen (3.2.1)
@@ -66,12 +66,12 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     progressbar (1.9.0)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     racc (1.5.2)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    rexml (3.2.4)
+    rexml (3.2.5)
     rouge (3.21.0)
     safe_yaml (1.0.5)
     sass (3.7.4)
