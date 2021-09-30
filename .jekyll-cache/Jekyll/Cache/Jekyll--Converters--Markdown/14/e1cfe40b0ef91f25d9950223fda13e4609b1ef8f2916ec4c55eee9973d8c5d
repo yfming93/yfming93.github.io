@@ -1,0 +1,27 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#上传-app-store-发布审核时遇到页面上有一个或多个错误" id="markdown-toc-上传-app-store-发布审核时遇到页面上有一个或多个错误">上传 App Store 发布审核时遇到页面上有一个或多个错误</a>    <ul>
+      <li><a href="#问题如图" id="markdown-toc-问题如图">问题如图：</a></li>
+      <li><a href="#解决方法" id="markdown-toc-解决方法">解决方法：</a>        <ul>
+          <li><a href="#btw-同时在-xcode9-之后项目中appicon-也要一个-1024px-的logo图了" id="markdown-toc-btw-同时在-xcode9-之后项目中appicon-也要一个-1024px-的logo图了">BTW: 同时在 xcode9 之后项目中APPicon 也要一个 1024px 的logo图了</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="上传-app-store-发布审核时遇到页面上有一个或多个错误">上传 App Store 发布审核时遇到页面上有一个或多个错误</h1>
+
+<h3 id="问题如图">问题如图：</h3>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/VdNszx.jpg" alt="" /></p>
+
+<h3 id="解决方法">解决方法：</h3>
+<p><strong>找到媒体管理，勾选右边的框子</strong></p>
+
+<p>原因：是因为我只上传了一个5.5寸的APP预览图组。所以其他尺寸勾选也用这套。</p>
+
+<p>以前发布审核木有这回事的，应该最近苹果政策变了要求要三个尺寸的APP预览图组了。</p>
+<h6 id="btw-同时在-xcode9-之后项目中appicon-也要一个-1024px-的logo图了">BTW: 同时在 xcode9 之后项目中APPicon 也要一个 1024px 的logo图了</h6>
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/GgFLg4.jpg" alt="" /></p>
+
+:ET

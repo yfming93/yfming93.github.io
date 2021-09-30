@@ -1,0 +1,106 @@
+I"{<ul id="markdown-toc">
+  <li><a href="#首先附上神图" id="markdown-toc-首先附上神图">首先附上神图</a></li>
+  <li><a href="#生成key" id="markdown-toc-生成key">生成key</a></li>
+  <li><a href="#clone" id="markdown-toc-clone">clone</a></li>
+  <li><a href="#config" id="markdown-toc-config">config</a></li>
+  <li><a href="#branch" id="markdown-toc-branch">branch</a></li>
+  <li><a href="#commit" id="markdown-toc-commit">commit</a></li>
+  <li><a href="#merge" id="markdown-toc-merge">merge</a></li>
+  <li><a href="#pull" id="markdown-toc-pull">pull</a></li>
+  <li><a href="#新的迭代" id="markdown-toc-新的迭代">新的迭代</a></li>
+  <li><a href="#补充" id="markdown-toc-补充">补充</a></li>
+</ul>
+
+<h2 id="首先附上神图">首先附上神图</h2>
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/1EpjUI.jpg" alt="" /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/WLsCep.jpg" alt="" /></p>
+
+<h2 id="生成key">生成key</h2>
+<p>安装好git后用以下命令生成key文件（注意不要输入密码，直接三次回车就可以了），并将key.pub文件发给管理员。</p>
+<blockquote>
+  <p>ssh-keygen -t rsa</p>
+</blockquote>
+
+<h2 id="clone">clone</h2>
+<p>拿到代码地址后clone下来，如：</p>
+<blockquote>
+  <p>git clone git@192.168.199.229:TestGit.git</p>
+</blockquote>
+
+<h2 id="config">config</h2>
+<blockquote>
+  <p>git config user.name “…”<br />
+git config user.email “…”</p>
+</blockquote>
+
+<p>##版本回退</p>
+<blockquote>
+  <p>git reset — —hard HEAD  重置到当前版本,之前做了修改单没有提交的将会被删除<br />
+git reset — —hard HEAD ^回滚上一个版本<br />
+git reset — — hard HEAD ^3 回滚到前面3个版本<br />
+git reset — — hard [sha1生成的7位版本号]</p>
+</blockquote>
+
+<p>##查看日志</p>
+<blockquote>
+  <p>git log 查看详细日志<br />
+git reflog 查看引用日志,方便查看7位版本号</p>
+</blockquote>
+
+<h2 id="branch">branch</h2>
+<p>当我们要进行开发的时候，首先是从master基础上新建自己的分支,如：</p>
+<blockquote>
+  <p>git branch -d dev-yangxi-order  创建新的分支并直接切换到这个分支上<br />
+git branch 查看所有分支<br />
+git checkout [分支名字]切换到想要切换的分支</p>
+</blockquote>
+
+<p>##删除分支<br />
+git branch -d dev2删除dev2这个分支,前提是要切换到别的分支<br />
+git branch -D dev2强制删除这个分支<br />
+git branch -m oldname newname重命名分支<br />
+git branch -M oldname newname强制重命名分支,这样会覆盖已有的分支</p>
+
+<h2 id="commit">commit</h2>
+<p>这时候我们就可以在本地进行自己编码工作了，每次节点改动养成提交的习惯。<br />
+如果有新增加文件，需要加入到版本控制里面：</p>
+<blockquote>
+  <p>git add .<br />
+没有的话直接提交：<br />
+git commit -a -m “更新内容”</p>
+</blockquote>
+
+<h2 id="merge">merge</h2>
+<p>模块节点功能开发完成后，先在本地合并代码。<br />
+在此之前先切换到master：</p>
+<blockquote>
+  <p>git checkout master<br />
+然后合并刚刚开发好的内容：<br />
+git merge dev-yangxi-order</p>
+</blockquote>
+
+<h2 id="pull">pull</h2>
+<p>使用pull命令合并远程代码</p>
+<blockquote>
+  <p>git pull origin master<br />
+如果合并后有冲突，跟同事商量保留谁的代码，解决冲突。<br />
+eclipse解决冲突后需要做remove from index 然后再次commit<br />
+解决完后可以push代码<br />
+为了确保在保证代码冲突时没有人push代码，通常需要先再pull一次，确保没有冲突再做push操作<br />
+git push origin master</p>
+</blockquote>
+
+<h2 id="新的迭代">新的迭代</h2>
+<p>至此，一次开发周期就算是完成了，刚刚开发的本地分支就可以删掉了，要开发新的功能，继续做同样的操作过程即可</p>
+<blockquote>
+  <p>git tag -a v1.2.0 -m “…” 打标签,备份版本<br />
+git push origin v1.2.0  将打标签的版本推送到服务器</p>
+</blockquote>
+
+<h2 id="补充">补充</h2>
+<p>Github PR 流程</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/qrYnc3.jpg" alt="" /></p>
+
+:ET

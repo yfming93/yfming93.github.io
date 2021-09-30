@@ -1,0 +1,1245 @@
+I"��<ul id="markdown-toc">
+  <li><a href="#vue20nodejsmongodb全栈打造商城系统第10章" id="markdown-toc-vue20nodejsmongodb全栈打造商城系统第10章">Vue2.0+Node.js+MongoDB全栈打造商城系统（第10章）</a></li>
+  <li><a href="#第10章-登录模块实现" id="markdown-toc-第10章-登录模块实现">第10章 登录模块实现</a>    <ul>
+      <li><a href="#10-1-登录功能实现" id="markdown-toc-10-1-登录功能实现">10-1 登录功能实现</a>        <ul>
+          <li><a href="#imoocmallconfigindexjs中添加代理" id="markdown-toc-imoocmallconfigindexjs中添加代理"><code class="language-plaintext highlighter-rouge">ImoocMall/config/index.js</code>中添加代理：</a></li>
+          <li><a href="#imoocmallserverroutesusersjs登录接口" id="markdown-toc-imoocmallserverroutesusersjs登录接口"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code>登录接口:</a></li>
+          <li><a href="#imoocmallsrcviewsnavheadervue代码" id="markdown-toc-imoocmallsrcviewsnavheadervue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/NavHeader.vue</code>代码:</a></li>
+        </ul>
+      </li>
+      <li><a href="#10-2-登出功能实现" id="markdown-toc-10-2-登出功能实现">10-2 登出功能实现</a>        <ul>
+          <li><a href="#imoocmallserverroutesusersjs-登出接口" id="markdown-toc-imoocmallserverroutesusersjs-登出接口"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code> 登出接口:</a></li>
+          <li><a href="#imoocmallsrcviewsnavheadervue代码-1" id="markdown-toc-imoocmallsrcviewsnavheadervue代码-1"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/NavHeader.vue</code>代码:</a></li>
+        </ul>
+      </li>
+      <li><a href="#10-3-登录拦截" id="markdown-toc-10-3-登录拦截">10-3 登录拦截</a>        <ul>
+          <li><a href="#imoocmallserverappjs新增登录拦截" id="markdown-toc-imoocmallserverappjs新增登录拦截"><code class="language-plaintext highlighter-rouge">ImoocMall/server/app.js</code>新增登录拦截</a></li>
+          <li><a href="#imoocmallserverroutesusersjs新增检查登录接口" id="markdown-toc-imoocmallserverroutesusersjs新增检查登录接口"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code>新增检查登录接口:</a></li>
+          <li><a href="#imoocmallserverroutesgoodsjs修改" id="markdown-toc-imoocmallserverroutesgoodsjs修改"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/goods.js</code>修改：</a></li>
+          <li><a href="#imoocmallsrcviewsgoodslistvue修改" id="markdown-toc-imoocmallsrcviewsgoodslistvue修改"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/GoodsList.vue</code>修改:</a></li>
+          <li><a href="#imoocmallsrcviewsnavheadervue新增检查跟新方法" id="markdown-toc-imoocmallsrcviewsnavheadervue新增检查跟新方法"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/NavHeader.vue</code>新增检查跟新方法：</a></li>
+        </ul>
+      </li>
+      <li><a href="#10-4-全局模态框组件实现" id="markdown-toc-10-4-全局模态框组件实现">10-4 全局模态框组件实现</a>        <ul>
+          <li><a href="#imoocmallsrccomponentsmodalvue代码" id="markdown-toc-imoocmallsrccomponentsmodalvue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/components/Modal.vue</code>代码:</a></li>
+          <li><a href="#imoocmallsrcviewsgoodslistvue代码" id="markdown-toc-imoocmallsrcviewsgoodslistvue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/GoodsList.vue</code>代码:</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="vue20nodejsmongodb全栈打造商城系统第10章">Vue2.0+Node.js+MongoDB全栈打造商城系统（第10章）</h1>
+
+<h1 id="第10章-登录模块实现">第10章 登录模块实现</h1>
+<h2 id="10-1-登录功能实现">10-1 登录功能实现</h2>
+
+<h4 id="imoocmallconfigindexjs中添加代理"><code class="language-plaintext highlighter-rouge">ImoocMall/config/index.js</code>中添加代理：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proxyTable: {
+          '/goods': {
+            target: 'http://localhost:3000'
+          },
+          '/goods/*':{
+            target:'http://localhost:3000'
+          },
+          '/users/*':{
+            target:'http://localhost:3000'
+          }
+    },
+</code></pre></div></div>
+
+<h4 id="imoocmallserverroutesusersjs登录接口"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code>登录接口:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require('express');
+var router = express.Router();
+var User = require("./../models/user")  //获取模型
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
+});
+
+//登录接口
+router.post("/login", function (req,res,next) {
+  var param = {
+    userName:req.body.userName,
+    userPwd:req.body.userPwd
+  }
+  User.findOne(param, function (err,doc) {
+    if(err){
+      res.json({
+        status:"1",
+        msg:err.message
+      });
+    }else{
+      if(doc){
+        res.cookie("userId",doc.userId,{
+          path:'/',
+          maxAge:1000*60*60
+        });
+        res.json({
+          status:'0',
+          msg:'',
+          result:{
+            userName:doc.userName
+          }
+        });
+      }
+    }
+  });
+});
+
+module.exports = router;
+</code></pre></div></div>
+
+<h4 id="imoocmallsrcviewsnavheadervue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/NavHeader.vue</code>代码:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+  &lt;header class="header"&gt;
+    &lt;symbol id="icon-cart" viewBox="0 0 38 32"&gt;
+      &lt;title&gt;cart&lt;/title&gt;
+      &lt;path class="path1" d="M37.759 0h-4.133c-0.733 0.004-1.337 0.549-1.434 1.255l-0.546 4.342c-0.081 0.484-0.496 0.849-0.997 0.849-0.005 0-0.009-0-0.014-0h-27.604c-0.003 0-0.007-0-0.011-0-1.674 0-3.031 1.357-3.031 3.031 0 0.34 0.056 0.666 0.159 0.971l2.52 8.062c0.385 1.194 1.486 2.043 2.785 2.043 0.126 0 0.25-0.008 0.372-0.023l22.983 0.002c0.515 0.131 0.626 0.768 0.626 1.283 0.005 0.044 0.009 0.095 0.009 0.146 0 0.501-0.294 0.933-0.718 1.134l-22.439 0.003c-0.354 0-0.642 0.287-0.642 0.642s0.287 0.642 0.642 0.642h22.745l0.131-0.071c0.919-0.392 1.551-1.287 1.551-2.33 0-0.058-0.002-0.116-0.006-0.173 0.021-0.108 0.033-0.24 0.033-0.376 0-1.072-0.732-1.973-1.724-2.23l-23.357-0.004c-0.063 0.008-0.135 0.013-0.209 0.013-0.719 0-1.332-0.455-1.566-1.093l-2.53-8.095c-0.048-0.154-0.076-0.332-0.076-0.515 0-0.973 0.782-1.764 1.752-1.778h27.657c1.159-0.004 2.112-0.883 2.232-2.011l0.547-4.345c0.010-0.083 0.078-0.147 0.161-0.152l4.133-0c0.354 0 0.642-0.287 0.642-0.642s-0.287-0.642-0.642-0.642z"&gt;&lt;/path&gt;
+      &lt;path class="path2" d="M31.323 9.69c-0.022-0.003-0.048-0.004-0.074-0.004-0.328 0-0.598 0.248-0.633 0.567l-0.809 7.268c-0.003 0.022-0.004 0.048-0.004 0.074 0 0.328 0.248 0.598 0.567 0.633l0.074 0c0.001 0 0.003 0 0.004 0 0.327 0 0.596-0.246 0.632-0.563l0.809-7.268c0.003-0.022 0.004-0.048 0.004-0.074 0-0.328-0.248-0.598-0.567-0.633z"&gt;&lt;/path&gt;
+      &lt;path class="path3" d="M27.514 25.594c-1.769 0-3.203 1.434-3.203 3.203s1.434 3.203 3.203 3.203c1.769 0 3.203-1.434 3.203-3.203s-1.434-3.203-3.203-3.203zM27.514 30.717c-1.060 0-1.92-0.86-1.92-1.92s0.86-1.92 1.92-1.92c1.060 0 1.92 0.86 1.92 1.92s-0.86 1.92-1.92 1.92z"&gt;&lt;/path&gt;
+      &lt;path class="path4" d="M9.599 25.594c-1.769 0-3.203 1.434-3.203 3.203s1.434 3.203 3.203 3.203c1.769 0 3.203-1.434 3.203-3.203s-1.434-3.203-3.203-3.203zM9.599 30.717c-1.060 0-1.92-0.86-1.92-1.92s0.86-1.92 1.92-1.92c1.060 0 1.92 0.86 1.92 1.92s-0.86 1.92-1.92 1.92z"&gt;&lt;/path&gt;
+    &lt;/symbol&gt;
+    &lt;div class="navbar"&gt;
+      &lt;div class="navbar-left-container"&gt;
+        &lt;a href="/"&gt;
+          &lt;img class="navbar-brand-logo" src="static/logo.png"&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-right-container" style="display: flex;"&gt;
+        &lt;div class="navbar-menu-container"&gt;
+          &lt;!--&lt;a href="/" class="navbar-link"&gt;我的账户&lt;/a&gt;--&gt;
+          &lt;span class="navbar-link"&gt;&lt;/span&gt;
+          &lt;span v-text="nickName" v-if="nickName"&gt;&lt;/span&gt;
+          &lt;a href="javascript:void(0)" class="navbar-link" @click="loginModalFlag=true" v-if="!nickName"&gt;Login&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="navbar-link" @click="loginModalFlag=true" v-if="nickName" &gt;Logout&lt;/a&gt;
+          &lt;div class="navbar-cart-container"&gt;
+            &lt;span class="navbar-cart-count"&gt;&lt;/span&gt;
+            &lt;a class="navbar-link navbar-cart-link" href="/#/cart"&gt;
+              &lt;svg class="navbar-cart-logo"&gt;
+                &lt;use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cart"&gt;&lt;/use&gt;
+              &lt;/svg&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+      &lt;!--下面是登录弹框--&gt;
+    &lt;div class="md-modal modal-msg md-modal-transition " v-bind:class="{'md-show':loginModalFlag}"&gt;
+      &lt;div class="md-modal-inner"&gt;
+        &lt;div class="md-top"&gt;
+          &lt;div class="md-title"&gt;Login in&lt;/div&gt;
+          &lt;button class="md-close" @click="loginModalFlag=false"&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="md-content"&gt;
+          &lt;div class="confirm-tips"&gt;
+            &lt;div class="error-wrap"&gt;
+              &lt;span class="error error-show" v-show="errorTip"&gt;用户名或者密码错误&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;ul&gt;
+              &lt;li class="regi_form_input"&gt;
+                &lt;i class="icon IconPeople"&gt;&lt;/i&gt;
+                &lt;input type="text" tabindex="1" name="loginname" v-model="userName" class="regi_login_input regi_login_input_left" placeholder="User Name" data-type="loginname"&gt;
+              &lt;/li&gt;
+              &lt;li class="regi_form_input noMargin"&gt;
+                &lt;i class="icon IconPwd"&gt;&lt;/i&gt;
+                &lt;input type="password" tabindex="2"  name="password" v-model="userPwd" class="regi_login_input regi_login_input_left login-input-no input_text" placeholder="Password" @keyup.enter="login"&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class="login-wrap"&gt;
+            &lt;a href="javascript:;" class="btn-login" @click="login"&gt;登  录&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="md-overlay" v-if="loginModalFlag" @click="loginModalFlag=false"&gt;&lt;/div&gt;
+  &lt;/header&gt;
+&lt;/template&gt;
+
+&lt;style&gt;
+  .header {
+    width: 100%;
+    background-color: white;
+    font-family: "moderat",sans-serif;
+    font-size: 16px;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: 70px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 5px 20px 10px 20px;
+  }
+  .navbar-left-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: -20px;
+  }
+  .navbar-brand-logo {
+    /*width: 120px;*/
+  }
+  .header a, .footer a {
+    color: #666;
+    text-decoration: none;
+  }
+  a {
+    -webkit-transition: color .3s ease-out;
+    transition: color .3s ease-out;
+  }
+  .navbar-right-container {
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .navbar-menu-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 10px;
+  }
+  .navbar-link {
+    padding-left: 15px;
+  }
+  .navbar-cart-container {
+    position: relative;
+  }
+  .navbar-cart-count {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -9px;
+    right: -11px;
+    width: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: #eb767d;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .navbar-cart-logo {
+    width: 25px;
+    height: 25px;
+    transform: scaleX(-1);
+  }
+&lt;/style&gt;
+&lt;script&gt;
+  import './../assets/css/login.css'
+  import axios from 'axios'
+  import { mapState } from 'vuex'
+  export default{
+    data(){
+      return{
+        userName:'admin',
+        userPwd:'123456',
+        errorTip:false,
+        loginModalFlag:false,  //遮罩层开关
+        nickName:""
+      }
+    },
+    methods:{
+      login(){
+        if(!this.userName || !this.userPwd){  //没输入提示错误信息
+          this.errorTip = true;
+          return;
+        }
+        axios.post("/users/login",{
+          userName:this.userName,
+          userPwd:this.userPwd
+        }).then((response)=&gt;{
+          let res = response.data;
+          if(res.status=="0"){
+            this.errorTip = false;
+            this.loginModalFlag = false; //登录成功关闭遮罩
+            this.nickName = res.result.userName;
+//            this.$store.commit("updateUserInfo",res.result.userName);
+//            this.getCartCount();
+          }else{
+            this.errorTip = true;
+          }
+        });
+      },
+      logOut(){
+        axios.post("/users/logout").then((response)=&gt;{
+          let res = response.data;
+          if(res.status=="0"){
+//                        this.nickName = '';
+            this.$store.commit("updateUserInfo",res.result.userName);
+          }
+        })
+      },
+      getCartCount(){
+        axios.get("users/getCartCount").then(res=&gt;{
+          var res = res.data;
+          this.$store.commit("updateCartCount",res.result);
+        });
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h2 id="10-2-登出功能实现">10-2 登出功能实现</h2>
+
+<h4 id="imoocmallserverroutesusersjs-登出接口"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code> 登出接口:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require('express');
+var router = express.Router();
+
+var User = require("./../models/user")  //获取模型
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
+});
+
+//登录接口
+router.post("/login", function (req,res,next) {
+  var param = {
+    userName:req.body.userName,
+    userPwd:req.body.userPwd
+  }
+  User.findOne(param, function (err,doc) {
+    if(err){
+      res.json({
+        status:"1",
+        msg:err.message
+      });
+    }else{
+      if(doc){
+        res.cookie("userId",doc.userId,{
+          path:'/',
+          maxAge:1000*60*60
+        });
+        // res.cookie("userName",doc.userName,{
+        //   path:'/',
+        //   maxAge:1000*60*60
+        // });
+        // req.session.user = doc;
+        res.json({
+          status:'0',
+          msg:'',
+          result:{
+            userName:doc.userName
+          }
+        });
+      }
+    }
+  });
+});
+
+//登出接口
+router.post("/logout", function (req,res,next) {
+  res.cookie("userId","",{
+    path:"/",
+    maxAge:-1
+  });
+  res.json({
+    status:"0",
+    msg:'',
+    result:''
+  })
+});
+
+module.exports = router;
+</code></pre></div></div>
+
+<h4 id="imoocmallsrcviewsnavheadervue代码-1"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/NavHeader.vue</code>代码:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+  &lt;header class="header"&gt;
+    &lt;symbol id="icon-cart" viewBox="0 0 38 32"&gt;
+      &lt;title&gt;cart&lt;/title&gt;
+      &lt;path class="path1" d="M37.759 0h-4.133c-0.733 0.004-1.337 0.549-1.434 1.255l-0.546 4.342c-0.081 0.484-0.496 0.849-0.997 0.849-0.005 0-0.009-0-0.014-0h-27.604c-0.003 0-0.007-0-0.011-0-1.674 0-3.031 1.357-3.031 3.031 0 0.34 0.056 0.666 0.159 0.971l2.52 8.062c0.385 1.194 1.486 2.043 2.785 2.043 0.126 0 0.25-0.008 0.372-0.023l22.983 0.002c0.515 0.131 0.626 0.768 0.626 1.283 0.005 0.044 0.009 0.095 0.009 0.146 0 0.501-0.294 0.933-0.718 1.134l-22.439 0.003c-0.354 0-0.642 0.287-0.642 0.642s0.287 0.642 0.642 0.642h22.745l0.131-0.071c0.919-0.392 1.551-1.287 1.551-2.33 0-0.058-0.002-0.116-0.006-0.173 0.021-0.108 0.033-0.24 0.033-0.376 0-1.072-0.732-1.973-1.724-2.23l-23.357-0.004c-0.063 0.008-0.135 0.013-0.209 0.013-0.719 0-1.332-0.455-1.566-1.093l-2.53-8.095c-0.048-0.154-0.076-0.332-0.076-0.515 0-0.973 0.782-1.764 1.752-1.778h27.657c1.159-0.004 2.112-0.883 2.232-2.011l0.547-4.345c0.010-0.083 0.078-0.147 0.161-0.152l4.133-0c0.354 0 0.642-0.287 0.642-0.642s-0.287-0.642-0.642-0.642z"&gt;&lt;/path&gt;
+      &lt;path class="path2" d="M31.323 9.69c-0.022-0.003-0.048-0.004-0.074-0.004-0.328 0-0.598 0.248-0.633 0.567l-0.809 7.268c-0.003 0.022-0.004 0.048-0.004 0.074 0 0.328 0.248 0.598 0.567 0.633l0.074 0c0.001 0 0.003 0 0.004 0 0.327 0 0.596-0.246 0.632-0.563l0.809-7.268c0.003-0.022 0.004-0.048 0.004-0.074 0-0.328-0.248-0.598-0.567-0.633z"&gt;&lt;/path&gt;
+      &lt;path class="path3" d="M27.514 25.594c-1.769 0-3.203 1.434-3.203 3.203s1.434 3.203 3.203 3.203c1.769 0 3.203-1.434 3.203-3.203s-1.434-3.203-3.203-3.203zM27.514 30.717c-1.060 0-1.92-0.86-1.92-1.92s0.86-1.92 1.92-1.92c1.060 0 1.92 0.86 1.92 1.92s-0.86 1.92-1.92 1.92z"&gt;&lt;/path&gt;
+      &lt;path class="path4" d="M9.599 25.594c-1.769 0-3.203 1.434-3.203 3.203s1.434 3.203 3.203 3.203c1.769 0 3.203-1.434 3.203-3.203s-1.434-3.203-3.203-3.203zM9.599 30.717c-1.060 0-1.92-0.86-1.92-1.92s0.86-1.92 1.92-1.92c1.060 0 1.92 0.86 1.92 1.92s-0.86 1.92-1.92 1.92z"&gt;&lt;/path&gt;
+    &lt;/symbol&gt;
+    &lt;div class="navbar"&gt;
+      &lt;div class="navbar-left-container"&gt;
+        &lt;a href="/"&gt;
+          &lt;img class="navbar-brand-logo" src="static/logo.png"&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-right-container" style="display: flex;"&gt;
+        &lt;div class="navbar-menu-container"&gt;
+          &lt;!--&lt;a href="/" class="navbar-link"&gt;我的账户&lt;/a&gt;--&gt;
+          &lt;span class="navbar-link"&gt;&lt;/span&gt;
+          &lt;span v-text="nickName" v-if="nickName"&gt;&lt;/span&gt;
+          &lt;a href="javascript:void(0)" class="navbar-link" @click="loginModalFlag=true" v-if="!nickName"&gt;Login&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="navbar-link" @click="logOut" v-if="nickName" &gt;Logout&lt;/a&gt;
+          &lt;div class="navbar-cart-container"&gt;
+            &lt;span class="navbar-cart-count"&gt;&lt;/span&gt;
+            &lt;a class="navbar-link navbar-cart-link" href="/#/cart"&gt;
+              &lt;svg class="navbar-cart-logo"&gt;
+                &lt;use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cart"&gt;&lt;/use&gt;
+              &lt;/svg&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+      &lt;!--下面是登录弹框--&gt;
+    &lt;div class="md-modal modal-msg md-modal-transition " v-bind:class="{'md-show':loginModalFlag}"&gt;
+      &lt;div class="md-modal-inner"&gt;
+        &lt;div class="md-top"&gt;
+          &lt;div class="md-title"&gt;Login in&lt;/div&gt;
+          &lt;button class="md-close" @click="loginModalFlag=false"&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="md-content"&gt;
+          &lt;div class="confirm-tips"&gt;
+            &lt;div class="error-wrap"&gt;
+              &lt;span class="error error-show" v-show="errorTip"&gt;用户名或者密码错误&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;ul&gt;
+              &lt;li class="regi_form_input"&gt;
+                &lt;i class="icon IconPeople"&gt;&lt;/i&gt;
+                &lt;input type="text" tabindex="1" name="loginname" v-model="userName" class="regi_login_input regi_login_input_left" placeholder="User Name" data-type="loginname"&gt;
+              &lt;/li&gt;
+              &lt;li class="regi_form_input noMargin"&gt;
+                &lt;i class="icon IconPwd"&gt;&lt;/i&gt;
+                &lt;input type="password" tabindex="2"  name="password" v-model="userPwd" class="regi_login_input regi_login_input_left login-input-no input_text" placeholder="Password" @keyup.enter="login"&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class="login-wrap"&gt;
+            &lt;a href="javascript:;" class="btn-login" @click="login"&gt;登  录&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="md-overlay" v-if="loginModalFlag" @click="loginModalFlag=false"&gt;&lt;/div&gt;
+  &lt;/header&gt;
+&lt;/template&gt;
+
+&lt;style&gt;
+  .header {
+    width: 100%;
+    background-color: white;
+    font-family: "moderat",sans-serif;
+    font-size: 16px;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: 70px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 5px 20px 10px 20px;
+  }
+  .navbar-left-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: -20px;
+  }
+  .navbar-brand-logo {
+    /*width: 120px;*/
+  }
+  .header a, .footer a {
+    color: #666;
+    text-decoration: none;
+  }
+  a {
+    -webkit-transition: color .3s ease-out;
+    transition: color .3s ease-out;
+  }
+  .navbar-right-container {
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .navbar-menu-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 10px;
+  }
+  .navbar-link {
+    padding-left: 15px;
+  }
+  .navbar-cart-container {
+    position: relative;
+  }
+  .navbar-cart-count {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -9px;
+    right: -11px;
+    width: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: #eb767d;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .navbar-cart-logo {
+    width: 25px;
+    height: 25px;
+    transform: scaleX(-1);
+  }
+&lt;/style&gt;
+&lt;script&gt;
+  import './../assets/css/login.css'
+  import axios from 'axios'
+  import { mapState } from 'vuex'
+  export default{
+    data(){
+      return{
+        userName:'admin',
+        userPwd:'123456',
+        errorTip:false,
+        loginModalFlag:false,  //遮罩层开关
+        nickName:""
+      }
+    },
+//    computed:{
+//      ...mapState(['nickName','cartCount'])
+//    },
+    /*nickName(){
+      return this.$store.state.nickName;
+    },
+    cartCount(){
+      return this.$store.state.cartCount;
+    }*/
+    mounted(){
+//      this.checkLogin();
+    },
+    methods:{
+      login(){
+        if(!this.userName || !this.userPwd){  //没输入提示错误信息
+          this.errorTip = true;
+          return;
+        }
+        axios.post("/users/login",{
+          userName:this.userName,
+          userPwd:this.userPwd
+        }).then((response)=&gt;{
+          let res = response.data;
+          if(res.status=="0"){
+            this.errorTip = false;
+            this.loginModalFlag = false; //登录成功关闭遮罩
+            this.nickName = res.result.userName;
+//            this.$store.commit("updateUserInfo",res.result.userName);
+//            this.getCartCount();
+          }else{
+            this.errorTip = true;
+          }
+        });
+      },
+      logOut(){
+        axios.post("/users/logout").then((response)=&gt;{
+          let res = response.data;
+          if(res.status=="0"){
+            this.nickName = '';
+//            this.$store.commit("updateUserInfo",res.result.userName);
+          }
+        })
+      },
+      getCartCount(){
+        axios.get("users/getCartCount").then(res=&gt;{
+          var res = res.data;
+          this.$store.commit("updateCartCount",res.result);
+        });
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h2 id="10-3-登录拦截">10-3 登录拦截</h2>
+
+<h4 id="imoocmallserverappjs新增登录拦截"><code class="language-plaintext highlighter-rouge">ImoocMall/server/app.js</code>新增登录拦截</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var ejs = require('ejs')
+var index = require('./routes/index');
+var users = require('./routes/users');
+var goods = require('./routes/goods')
+
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.engine('.html',ejs.__express);
+app.set('view engine', 'html');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+//登录拦截
+app.use(function (req,res,next) {
+  if(req.cookies.userId){
+    next();
+  }else{
+    console.log("url:"+req.originalUrl);
+    if(req.originalUrl=='/users/login' || req.originalUrl=='/users/logout' || req.originalUrl.indexOf('/goods/list')&gt;-1){
+      next();
+    }else{
+      res.json({
+        status:'10001',
+        msg:'当前未登录',
+        result:''
+      });
+    }
+  }
+});
+
+app.use('/', index);
+app.use('/users', users);
+app.use('/goods', goods);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
+</code></pre></div></div>
+
+<h4 id="imoocmallserverroutesusersjs新增检查登录接口"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code>新增检查登录接口:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require('express');
+var router = express.Router();
+
+var User = require("./../models/user")  //获取模型
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
+});
+
+//登录接口
+router.post("/login", function (req,res,next) {
+  var param = {
+    userName:req.body.userName,
+    userPwd:req.body.userPwd
+  }
+  User.findOne(param, function (err,doc) {
+    if(err){
+      res.json({
+        status:"1",
+        msg:err.message
+      });
+    }else{
+      if(doc){
+        res.cookie("userId",doc.userId,{
+          path:'/',
+          maxAge:1000*60*60
+        });
+        res.cookie("userName",doc.userName,{
+          path:'/',
+          maxAge:1000*60*60
+        });
+        // req.session.user = doc;
+        res.json({
+          status:'0',
+          msg:'',
+          result:{
+            userName:doc.userName
+          }
+        });
+      }
+    }
+  });
+});
+
+//登出接口
+router.post("/logout", function (req,res,next) {
+  res.cookie("userId","",{
+    path:"/",
+    maxAge:-1
+  });
+  res.json({
+    status:"0",
+    msg:'',
+    result:''
+  })
+});
+
+//检查是否登录接口
+router.get("/checkLogin", function (req,res,next) {
+  if(req.cookies.userId){
+    res.json({
+      status:'0',
+      msg:'',
+      result:req.cookies.userName || ''
+    });
+  }else{
+    res.json({
+      status:'1',
+      msg:'未登录',
+      result:''
+    });
+  }
+});
+
+
+module.exports = router;
+</code></pre></div></div>
+
+<h4 id="imoocmallserverroutesgoodsjs修改"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/goods.js</code>修改：</h4>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">router.get("/",function (req,res,next) {</code></p>
+
+    <p>改成<br />
+<code class="language-plaintext highlighter-rouge">router.get("/list",function (req,res,next) {</code><br />
+(一级路由改成二级路由。方便<code class="language-plaintext highlighter-rouge">req.originalUrl.indexOf('/goods/list')&gt;-1</code>拦截)</p>
+  </li>
+</ul>
+
+<h4 id="imoocmallsrcviewsgoodslistvue修改"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/GoodsList.vue</code>修改:</h4>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">axios.get("/goods",{</code>  <br />
+  改成</p>
+
+    <p><code class="language-plaintext highlighter-rouge">axios.get("/goods/list",{</code></p>
+  </li>
+</ul>
+
+<h4 id="imoocmallsrcviewsnavheadervue新增检查跟新方法"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/NavHeader.vue</code>新增检查跟新方法：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+  &lt;header class="header"&gt;
+    &lt;symbol id="icon-cart" viewBox="0 0 38 32"&gt;
+      &lt;title&gt;cart&lt;/title&gt;
+      &lt;path class="path1" d="M37.759 0h-4.133c-0.733 0.004-1.337 0.549-1.434 1.255l-0.546 4.342c-0.081 0.484-0.496 0.849-0.997 0.849-0.005 0-0.009-0-0.014-0h-27.604c-0.003 0-0.007-0-0.011-0-1.674 0-3.031 1.357-3.031 3.031 0 0.34 0.056 0.666 0.159 0.971l2.52 8.062c0.385 1.194 1.486 2.043 2.785 2.043 0.126 0 0.25-0.008 0.372-0.023l22.983 0.002c0.515 0.131 0.626 0.768 0.626 1.283 0.005 0.044 0.009 0.095 0.009 0.146 0 0.501-0.294 0.933-0.718 1.134l-22.439 0.003c-0.354 0-0.642 0.287-0.642 0.642s0.287 0.642 0.642 0.642h22.745l0.131-0.071c0.919-0.392 1.551-1.287 1.551-2.33 0-0.058-0.002-0.116-0.006-0.173 0.021-0.108 0.033-0.24 0.033-0.376 0-1.072-0.732-1.973-1.724-2.23l-23.357-0.004c-0.063 0.008-0.135 0.013-0.209 0.013-0.719 0-1.332-0.455-1.566-1.093l-2.53-8.095c-0.048-0.154-0.076-0.332-0.076-0.515 0-0.973 0.782-1.764 1.752-1.778h27.657c1.159-0.004 2.112-0.883 2.232-2.011l0.547-4.345c0.010-0.083 0.078-0.147 0.161-0.152l4.133-0c0.354 0 0.642-0.287 0.642-0.642s-0.287-0.642-0.642-0.642z"&gt;&lt;/path&gt;
+      &lt;path class="path2" d="M31.323 9.69c-0.022-0.003-0.048-0.004-0.074-0.004-0.328 0-0.598 0.248-0.633 0.567l-0.809 7.268c-0.003 0.022-0.004 0.048-0.004 0.074 0 0.328 0.248 0.598 0.567 0.633l0.074 0c0.001 0 0.003 0 0.004 0 0.327 0 0.596-0.246 0.632-0.563l0.809-7.268c0.003-0.022 0.004-0.048 0.004-0.074 0-0.328-0.248-0.598-0.567-0.633z"&gt;&lt;/path&gt;
+      &lt;path class="path3" d="M27.514 25.594c-1.769 0-3.203 1.434-3.203 3.203s1.434 3.203 3.203 3.203c1.769 0 3.203-1.434 3.203-3.203s-1.434-3.203-3.203-3.203zM27.514 30.717c-1.060 0-1.92-0.86-1.92-1.92s0.86-1.92 1.92-1.92c1.060 0 1.92 0.86 1.92 1.92s-0.86 1.92-1.92 1.92z"&gt;&lt;/path&gt;
+      &lt;path class="path4" d="M9.599 25.594c-1.769 0-3.203 1.434-3.203 3.203s1.434 3.203 3.203 3.203c1.769 0 3.203-1.434 3.203-3.203s-1.434-3.203-3.203-3.203zM9.599 30.717c-1.060 0-1.92-0.86-1.92-1.92s0.86-1.92 1.92-1.92c1.060 0 1.92 0.86 1.92 1.92s-0.86 1.92-1.92 1.92z"&gt;&lt;/path&gt;
+    &lt;/symbol&gt;
+    &lt;div class="navbar"&gt;
+      &lt;div class="navbar-left-container"&gt;
+        &lt;a href="/"&gt;
+          &lt;img class="navbar-brand-logo" src="static/logo.png"&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-right-container" style="display: flex;"&gt;
+        &lt;div class="navbar-menu-container"&gt;
+          &lt;!--&lt;a href="/" class="navbar-link"&gt;我的账户&lt;/a&gt;--&gt;
+          &lt;span class="navbar-link"&gt;&lt;/span&gt;
+          &lt;span v-text="nickName" v-if="nickName"&gt;&lt;/span&gt;
+          &lt;a href="javascript:void(0)" class="navbar-link" @click="loginModalFlag=true" v-if="!nickName"&gt;Login&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="navbar-link" @click="logOut" v-if="nickName" &gt;Logout&lt;/a&gt;
+          &lt;div class="navbar-cart-container"&gt;
+            &lt;span class="navbar-cart-count"&gt;&lt;/span&gt;
+            &lt;a class="navbar-link navbar-cart-link" href="/#/cart"&gt;
+              &lt;svg class="navbar-cart-logo"&gt;
+                &lt;use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cart"&gt;&lt;/use&gt;
+              &lt;/svg&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+      &lt;!--下面是登录弹框--&gt;
+    &lt;div class="md-modal modal-msg md-modal-transition " v-bind:class="{'md-show':loginModalFlag}"&gt;
+      &lt;div class="md-modal-inner"&gt;
+        &lt;div class="md-top"&gt;
+          &lt;div class="md-title"&gt;Login in&lt;/div&gt;
+          &lt;button class="md-close" @click="loginModalFlag=false"&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="md-content"&gt;
+          &lt;div class="confirm-tips"&gt;
+            &lt;div class="error-wrap"&gt;
+              &lt;span class="error error-show" v-show="errorTip"&gt;用户名或者密码错误&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;ul&gt;
+              &lt;li class="regi_form_input"&gt;
+                &lt;i class="icon IconPeople"&gt;&lt;/i&gt;
+                &lt;input type="text" tabindex="1" name="loginname" v-model="userName" class="regi_login_input regi_login_input_left" placeholder="User Name" data-type="loginname"&gt;
+              &lt;/li&gt;
+              &lt;li class="regi_form_input noMargin"&gt;
+                &lt;i class="icon IconPwd"&gt;&lt;/i&gt;
+                &lt;input type="password" tabindex="2"  name="password" v-model="userPwd" class="regi_login_input regi_login_input_left login-input-no input_text" placeholder="Password" @keyup.enter="login"&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class="login-wrap"&gt;
+            &lt;a href="javascript:;" class="btn-login" @click="login"&gt;登  录&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="md-overlay" v-if="loginModalFlag" @click="loginModalFlag=false"&gt;&lt;/div&gt;
+  &lt;/header&gt;
+&lt;/template&gt;
+
+&lt;style&gt;
+  .header {
+    width: 100%;
+    background-color: white;
+    font-family: "moderat",sans-serif;
+    font-size: 16px;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    height: 70px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 5px 20px 10px 20px;
+  }
+  .navbar-left-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: -20px;
+  }
+  .navbar-brand-logo {
+    /*width: 120px;*/
+  }
+  .header a, .footer a {
+    color: #666;
+    text-decoration: none;
+  }
+  a {
+    -webkit-transition: color .3s ease-out;
+    transition: color .3s ease-out;
+  }
+  .navbar-right-container {
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .navbar-menu-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 10px;
+  }
+  .navbar-link {
+    padding-left: 15px;
+  }
+  .navbar-cart-container {
+    position: relative;
+  }
+  .navbar-cart-count {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -9px;
+    right: -11px;
+    width: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: #eb767d;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .navbar-cart-logo {
+    width: 25px;
+    height: 25px;
+    transform: scaleX(-1);
+  }
+&lt;/style&gt;
+&lt;script&gt;
+  import './../assets/css/login.css'
+  import axios from 'axios'
+  import { mapState } from 'vuex'
+  export default{
+    data(){
+      return{
+        userName:'admin',
+        userPwd:'123456',
+        errorTip:false,
+        loginModalFlag:false,  //遮罩层开关
+        nickName:""
+      }
+    },
+//    computed:{
+//      ...mapState(['nickName','cartCount'])
+//    },
+    /*nickName(){
+      return this.$store.state.nickName;
+    },
+    cartCount(){
+      return this.$store.state.cartCount;
+    }*/
+    mounted(){
+      this.checkLogin();
+    },
+    methods:{
+      checkLogin(){
+        axios.get("/users/checkLogin").then((response)=&gt;{
+          var res = response.data;
+//          var path = this.$route.pathname;
+          if(res.status=="0"){
+            this.nickName = res.result;
+//            this.$store.commit("updateUserInfo",res.result);
+//            this.loginModalFlag = false;
+          }
+        });
+      },
+      login(){
+        if(!this.userName || !this.userPwd){  //没输入提示错误信息
+          this.errorTip = true;
+          return;
+        }
+        axios.post("/users/login",{
+          userName:this.userName,
+          userPwd:this.userPwd
+        }).then((response)=&gt;{
+          let res = response.data;
+          if(res.status=="0"){
+            this.errorTip = false;
+            this.loginModalFlag = false; //登录成功关闭遮罩
+            this.nickName = res.result.userName;
+//            this.$store.commit("updateUserInfo",res.result.userName);
+//            this.getCartCount();
+          }else{
+            this.errorTip = true;
+          }
+        });
+      },
+      logOut(){
+        axios.post("/users/logout").then((response)=&gt;{
+          let res = response.data;
+          if(res.status=="0"){
+            this.nickName = '';
+//            this.$store.commit("updateUserInfo",res.result.userName);
+          }
+        })
+      },
+      getCartCount(){
+        axios.get("users/getCartCount").then(res=&gt;{
+          var res = res.data;
+          this.$store.commit("updateCartCount",res.result);
+        });
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h2 id="10-4-全局模态框组件实现">10-4 全局模态框组件实现</h2>
+
+<h4 id="imoocmallsrccomponentsmodalvue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/components/Modal.vue</code>代码:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+  &lt;!--template 中必须有一个根元素。若直接放多个元素在 template 中会报错--&gt;
+  &lt;!-- modal弹框 --&gt;
+  &lt;div&gt;
+    &lt;div class="md-modal modal-msg md-modal-transition " v-bind:class="{'md-show':mdShow}"&gt;
+      &lt;div class="md-modal-inner"&gt;
+        &lt;div class="md-top"&gt;
+
+          &lt;button class="md-close" @click="cosleModal"&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="md-content"&gt;
+          &lt;div class="confirm-tips"&gt;
+            &lt;slot name="message"&gt;&lt;/slot&gt;
+          &lt;/div&gt;
+          &lt;div class="btn-wrap"&gt;
+            &lt;slot name="btnGroup"&gt;&lt;/slot&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="md-overlay" v-if="mdShow" @click="cosleModal"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    props:["mdShow"],
+    data () {
+      return {
+        msg: 'Welcome to Your Vue.js App'
+      }
+    },
+    methods:{
+      cosleModal () {
+        this.$emit("close")    //调用父组件的close方法
+      }
+    }
+  }
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+</code></pre></div></div>
+
+<h4 id="imoocmallsrcviewsgoodslistvue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/GoodsList.vue</code>代码:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+	&lt;div&gt;
+    &lt;!-- icon-arrow-short 价格筛选的上下箭头 --&gt;
+    &lt;symbol id="icon-arrow-short" viewBox="0 0 25 32"&gt;
+      &lt;title&gt;arrow-short&lt;/title&gt;
+      &lt;path class="path1" d="M24.487 18.922l-1.948-1.948-8.904 8.904v-25.878h-2.783v25.878l-8.904-8.904-1.948 1.948 12.243 12.243z"&gt;&lt;/path&gt;
+    &lt;/symbol&gt;
+    &lt;symbol id="icon-status-ok" viewBox="0 0 32 32"&gt;
+      &lt;title&gt;status-ok&lt;/title&gt;
+      &lt;path class="path1" d="M22.361 10.903l-9.71 9.063-2.998-2.998c-0.208-0.209-0.546-0.209-0.754 0s-0.208 0.546 0 0.754l3.363 3.363c0.104 0.104 0.241 0.156 0.377 0.156 0.131 0 0.261-0.048 0.364-0.143l10.087-9.414c0.215-0.201 0.227-0.539 0.026-0.754s-0.539-0.226-0.754-0.026z"&gt;&lt;/path&gt;
+      &lt;path class="path2" d="M16 30.933c-8.234 0-14.933-6.699-14.933-14.933s6.699-14.933 14.933-14.933c8.234 0 14.933 6.699 14.933 14.933s-6.699 14.933-14.933 14.933zM16 0c-8.822 0-16 7.178-16 16 0 8.823 7.178 16 16 16s16-7.177 16-16c0-8.822-7.178-16-16-16z"&gt;&lt;/path&gt;
+    &lt;/symbol&gt;
+    &lt;nav-header&gt;&lt;/nav-header&gt;
+    &lt;nav-bread&gt;
+      &lt;span&gt;Goods&lt;/span&gt;
+    &lt;/nav-bread&gt;
+    &lt;div class="accessory-result-page accessory-page"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="filter-nav"&gt;
+          &lt;span class="sortby"&gt;Sort by:&lt;/span&gt;
+          &lt;a href="javascript:void(0)" class="default cur"&gt;Default&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="price" @click="sortGoods"&gt;Price
+            &lt;svg class="icon icon-arrow-short" v-bind:class="{'sort-up':!sortFlag}"&gt;
+              &lt;use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-short"&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+
+          &lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="filterby stopPop" v-on:click="showFilerPop"&gt;Filter by&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="accessory-result"&gt;
+          &lt;!-- filter --&gt;
+          &lt;div class="filter stopPop" id="filter" v-lazy="{'filterby-show':filerBy}"&gt;
+            &lt;dl class="filter-price"&gt;
+              &lt;dt&gt;Price:&lt;/dt&gt;
+              &lt;dd&gt;&lt;a href="javascript:void(0)" :class="{'cur':priceCheck=='all'}" @click="setPriceCheck('all')"&gt;All&lt;/a&gt;&lt;/dd&gt;
+              &lt;dd v-for="(price,index) in priceFilter"&gt;
+                &lt;a href="javascript:void(0)" @click="setPriceCheck(index)" :class="{'cur':priceCheck == index}"&gt; - &lt;/a&gt;
+              &lt;/dd&gt;
+
+            &lt;/dl&gt;
+          &lt;/div&gt;
+
+          &lt;!-- search result accessories list --&gt;
+          &lt;div class="accessory-list-wrap"&gt;
+            &lt;div class="accessory-list col-4"&gt;
+              &lt;ul&gt;
+                &lt;li v-for="(item,index) in goodslist"&gt;
+                  &lt;div class="pic"&gt;
+                    &lt;a href="#"&gt;&lt;img v-bind:src="'static/' + item.productImage" alt=""&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;div class="main"&gt;
+                    &lt;div class="name"&gt;&lt;/div&gt;
+                    &lt;div class="price"&gt;&lt;/div&gt;
+                    &lt;div class="btn-area"&gt;
+                      &lt;a href="javascript:;" class="btn btn--m" @click="addCart(item.productId)"&gt;加入购物车&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;!--// 利用 busy 控制隐藏加载HUD--&gt;
+              &lt;div v-show="!busy" class="load-more" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="30"&gt;
+                &lt;img src="static/loading-svg/loading-bubbles.svg" alt=""&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="md-overlay" v-show="overLayFlag" @click="closePop"&gt;&lt;/div&gt;
+    &lt;modal v-bind:mdShow="mdShow" v-on:close="cosleModal"&gt;
+      &lt;p slot="message"&gt;
+        请先登录，否则无法加入购物车！
+      &lt;/p&gt;
+      &lt;div slot="btnGroup"&gt;
+        &lt;a class="btn btn--m" href="javascript:;" @click="mdShow = false"&gt;关闭&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/modal&gt;
+
+    &lt;modal v-bind:mdShow="mdShowCart" v-on:close="cosleModal"&gt;
+      &lt;p slot="message"&gt;
+        &lt;svg class="icon icon-status-ok" &gt;
+          &lt;use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-status-ok"&gt;&lt;/use&gt;
+        &lt;/svg&gt;
+        &lt;span&gt;加入购物车成功！&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;div slot="btnGroup"&gt;
+        &lt;a class="btn btn--m" href="javascript:;" @click="mdShowCart = false"&gt;继续购物&lt;/a&gt;
+        &lt;router-link class="btn btn--m" href="javascript:;" to="/cart"&gt;查看购物车&lt;/router-link&gt;
+      &lt;/div&gt;
+    &lt;/modal&gt;
+    &lt;nav-footer&gt;&lt;/nav-footer&gt;
+	&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style &gt;
+.load-more {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+  .sort-up{
+    transform: rotate(180deg);
+    transition: all 0.3s ease-out;
+  }
+&lt;/style&gt;
+
+&lt;script &gt;
+  import './../assets/css/base.css'
+  import './../assets/css/product.css'
+  import NavHeader from './NavHeader.vue'
+  import NavFooter from './NavFooter.vue'
+  import NavBread from './NavBread.vue'
+  import Modal from './../components/Modal.vue'
+  import axios from 'axios'
+
+
+  export default {
+		data (){
+			return {
+				goodslist:[],
+        sortFlag:true, //排序
+        priceFilter:[
+          {
+            startPrice:'0.00',
+            endPrice:'100.00'
+          },
+          {
+            startPrice:'100.00',
+            endPrice:'500.00'
+          },
+          {
+            startPrice:'500.00',
+            endPrice:'1000.00'
+          }, {
+            startPrice:'1000.00',
+            endPrice:'5000.00'
+          }
+        ],
+        priceCheck:'all',   //价格选中的状态
+        filerBy:false,      //小屏幕价格菜单显示
+        overLayFlag:false,   //遮罩显示
+        page:1,
+        pageSize:8,
+        busy:true,       //默认禁止滚动加载
+        mdShow:false,  //登录模态框显示
+        mdShowCart:false
+
+			}
+		},
+    components:{
+		  NavHeader,
+      NavFooter,
+      NavBread,
+      Modal
+    },
+    mounted:function () {
+        this.getGoodsList(false);
+    },
+    methods:{
+        getGoodsList:function (flag) {    //获取商品列表
+          var param = {
+            page:this.page,
+            pageSize:this.pageSize,
+            sort:this.sortFlag?1:-1,   //升降排序
+            priceLevel:this.priceCheck //价格级别
+          };
+
+          axios.get("/goods/list",{
+            params:param
+          }).then((result)=&gt;{
+            var  res = result.data;
+            if (res.status=="0") {
+              if (flag) { //累加
+                this.goodslist = this.goodslist.concat(res.result.list);
+                if (res.result.count==0) {
+                  this.busy = true; //没数据时禁止滚动到底部自动请求
+                }else {
+                  this.busy = false;
+                }
+              }else { //不累加
+                this.goodslist = res.result.list;
+                this.busy = false; //首次请求成功后开启
+
+              }
+            }else {
+              this.goodslist = [];
+            };
+
+          })
+        },
+        showFilerPop() {
+           this.filerBy = true;
+           this.overLayFlag = true;
+
+        },
+        closePop(){
+          this.filerBy = false;
+          this.overLayFlag = false;
+        },
+        setPriceCheck(index){
+           this.priceCheck = index;
+           this.closePop();
+           this.page = 1;
+           this.getGoodsList();
+        },
+        sortGoods (){ //排序
+          this.sortFlag = !this.sortFlag;
+          this.page = 1;
+          this.getGoodsList();
+        },
+        loadMore () {
+          this.bus = true;
+          //第一请求完成后才会执行第二个请求，防止鼠标滚动时请求过多
+          setTimeout(()=&gt;{
+            this.page++;
+            this.getGoodsList(true); //传个true表示要列表数组累加
+          },500)
+        },
+        addCart (productId){
+          axios.post("/goods/addCart",{
+            productId:productId
+          }).then((res)=&gt;{
+            var res = res.data;
+            if(res.status==0){
+              this.mdShowCart = true;
+//              this.$store.commit("updateCartCount",1);
+//              alert("加入购物车成功");
+            }else{
+              this.mdShow = true;
+//              alert(res.msg);
+            }
+          });
+        },
+        cosleModal () {  //关闭模态框
+          this.mdShow = false;
+        }
+    }
+	}
+&lt;/script&gt;
+</code></pre></div></div>
+
+:ET

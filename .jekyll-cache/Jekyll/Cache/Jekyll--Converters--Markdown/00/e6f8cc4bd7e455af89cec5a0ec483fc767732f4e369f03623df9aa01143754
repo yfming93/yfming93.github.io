@@ -1,0 +1,188 @@
+I"k<ul id="markdown-toc">
+  <li><a href="#介绍一下objective-c常用的函数常数变量" id="markdown-toc-介绍一下objective-c常用的函数常数变量">介绍一下Objective-c常用的函数，常数变量</a></li>
+</ul>
+
+<h3 id="介绍一下objective-c常用的函数常数变量">介绍一下Objective-c常用的函数，常数变量</h3>
+
+<center><h3>(一)：【算术函数】</h3></center>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">函数名</th>
+      <th style="text-align: left">说明</th>
+      <th style="text-align: left">例子</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">int abs(int i)</td>
+      <td style="text-align: left">处理int类型的取绝对值</td>
+      <td style="text-align: left">int a = fabs( 71 - 78); <br />→7  <br />※浮点数的时候用fabs。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">float fabsf(float i)</td>
+      <td style="text-align: left">处理float类型的取绝对值</td>
+      <td style="text-align: left">CGFloat e = fabs( 71.001 - 78.89);</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">int rand()</td>
+      <td style="text-align: left">随机数生成</td>
+      <td style="text-align: left">srand(time(nil));　<br />//随机数初期化 <br />int val = rand()P;　<br />//0～49之间的随机数</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double fabs(double a)</td>
+      <td style="text-align: left">浮点数的绝对值</td>
+      <td style="text-align: left">double val = fabs(-12.345); <br /> →12.345 <br /> ※整数的时候用abs。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double floor(double a)</td>
+      <td style="text-align: left">返回浮点数整数部分（舍弃小数点）</td>
+      <td style="text-align: left">double val = floor(12.345); <br /> →12.000</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double ceil(double a)</td>
+      <td style="text-align: left">返回浮点数整数部分（舍弃小数点部分，往个位数进1）</td>
+      <td style="text-align: left">double val = ceil(12.345); <br /> →13.000 <br /></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double pow(double a, double b)</td>
+      <td style="text-align: left">a的b次方</td>
+      <td style="text-align: left">double val = pow(2, 3);  <br />→8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double sqrt(double a)</td>
+      <td style="text-align: left">a的平方根</td>
+      <td style="text-align: left">double val = sqrt(2); <br /> →1.41421356</td>
+    </tr>
+  </tbody>
+</table>
+
+<center><h3>(二)：【三角函数】</h3></center>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">函数名</th>
+      <th style="text-align: left">说明</th>
+      <th style="text-align: left">例子</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">double cos(double a)</td>
+      <td style="text-align: left">余弦函数　（a：弧度）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double sin(double a)</td>
+      <td style="text-align: left">正弦函数　（a：弧度）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double tan(double a)</td>
+      <td style="text-align: left">正切函数　（a：弧度）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double asin(double a)</td>
+      <td style="text-align: left">反正弦值　（a：弧度）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double acos(double a)</td>
+      <td style="text-align: left">反余弦函数（a：弧度）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double atan(double a)</td>
+      <td style="text-align: left">反正切函数</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double atan2(double a, double b)</td>
+      <td style="text-align: left">返回给定的 a 及 b 坐标值的反正切值</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<center><h3>(三)：【指数函数】</h3></center>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">函数名</th>
+      <th style="text-align: left">说明</th>
+      <th style="text-align: left">例子</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">double log(double a)</td>
+      <td style="text-align: left">以e 为底的对数值</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double log10(double a)</td>
+      <td style="text-align: left">对数函数log</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<center><h3>(四)：【常数】</h3></center>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">函数名</th>
+      <th style="text-align: left">说明</th>
+      <th style="text-align: left">例子</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">M_PI</td>
+      <td style="text-align: left">圆周率（=π）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">M_PI_2</td>
+      <td style="text-align: left">圆周率的１/２（=π/2）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">M_PI_4</td>
+      <td style="text-align: left">圆周率的１/４（=π/4）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">M_1_PI</td>
+      <td style="text-align: left">=1/π</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">M_2_PI</td>
+      <td style="text-align: left">=2/π</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">M_E</td>
+      <td style="text-align: left">=e</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">M_LOG2E</td>
+      <td style="text-align: left">log_2(e)</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">M_LOG10E</td>
+      <td style="text-align: left">log_10(e)</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

@@ -1,0 +1,111 @@
+I"Q<ul id="markdown-toc">
+  <li><a href="#ui设计师切图规范ios" id="markdown-toc-ui设计师切图规范ios">UI设计师切图规范（iOS）</a>    <ul>
+      <li><a href="#0x1序言" id="markdown-toc-0x1序言">0x1、序言：</a></li>
+      <li><a href="#0x2效果图相关规范" id="markdown-toc-0x2效果图相关规范">0x2、效果图相关规范：</a>        <ul>
+          <li><a href="#0x2-1效果图制作规范" id="markdown-toc-0x2-1效果图制作规范">0x2-1、效果图制作规范：</a></li>
+          <li><a href="#0x2-2效果图命名规范" id="markdown-toc-0x2-2效果图命名规范">0x2-2、效果图命名规范：</a></li>
+        </ul>
+      </li>
+      <li><a href="#0x3-icon-切图命名规范" id="markdown-toc-0x3-icon-切图命名规范">0x3  icon 切图命名规范：</a></li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h2 id="ui设计师切图规范ios">UI设计师切图规范（iOS）</h2>
+<h3 id="0x1序言">0x1、序言：</h3>
+<ul>
+  <li>不要无缘无故的在页面中新增一个 <strong>“东西”</strong>。
+    <ul>
+      <li>每个一个元素的展示，设计师都应该自己知道其交互意义。避免页面突然多个东西而没有其交互逻辑，不知道其是干嘛用的。</li>
+      <li>（如：页面多了一个按钮，作为设计都不知道这个按钮点击去哪个页面做什么事情，开发人员更不知道。）</li>
+    </ul>
+  </li>
+  <li>界面上的元素要简单而优雅。不要出现奇葩的交互方式。
+    <ul>
+      <li>如下图：这样交互就显得不够优雅，尽量减少多余的累赘交互，使得用户使用时候最大限度觉得简单而优雅。</li>
+      <li>
+        <p>（没必要多出一个这种页面。也没见过什么 <code class="language-plaintext highlighter-rouge">APP</code> 是这样登录的交互。完全可以把登录输入框页面和这个页面的登录注册按钮做在一个页面。）</p>
+
+        <p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/u3wSGO.jpg" alt="" />)</p>
+      </li>
+    </ul>
+  </li>
+  <li>建议 学习 <code class="language-plaintext highlighter-rouge">Axure-原型图</code> 对设计的 <code class="language-plaintext highlighter-rouge">UE</code> 交互理解非常有利。
+    <ul>
+      <li>（如：一个完整的购物流程应该有哪些页面组成，先到什么页面后到什么页面。相互之间怎么跳转展示。某个业务其间的交互流程逻辑要胸有成竹。）</li>
+    </ul>
+  </li>
+  <li>如果图片涉及几十张就必须按照业务模块，新建文件夹分类。如果懒不想分文件夹，那自己按照业务模块自行定义模块数字编号。如：<strong>4-3-1我的订单-全部</strong>
+    <ul>
+      <li>这样做方便排序，使同一类型业务图片都归类到一起，方便找图理解上下交互流程。</li>
+    </ul>
+  </li>
+  <li>尽量少用渐变色 。渐变色虽然好看，但渐变色都是要切图的。到处用就会新增<code class="language-plaintext highlighter-rouge">UI</code>切图工作量，和开发写代码的多余工作量。</li>
+</ul>
+
+<h3 id="0x2效果图相关规范">0x2、效果图相关规范：</h3>
+
+<h4 id="0x2-1效果图制作规范">0x2-1、效果图制作规范：</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">iOS</code>的效果图建议统一采用 <code class="language-plaintext highlighter-rouge">750px</code> 像素宽度（<code class="language-plaintext highlighter-rouge">iPhone6</code> 系列<code class="language-plaintext highlighter-rouge">4.7</code>寸的宽度），长度按照业务多少自行累加。</li>
+  <li>不要出现所给的效果图宽度像素，前后不一致。如错误的：<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/kARLkl.jpg" alt="" />
+    <ul>
+      <li><strong>在UI设计师没有给标注图时候， 开发人员都是手动测量效果图得知控件元素要布局多大多小，前后图规格都不一致 新增换算的工作量</strong>。</li>
+    </ul>
+  </li>
+  <li>有多种业务状态的图要提供多种效果图。
+    <ul>
+      <li>（如：个人中心的 登录之前展示的样子，和登录以后展示的样子。不一样就要提供两种图）</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="0x2-2效果图命名规范">0x2-2、效果图命名规范：</h4>
+
+<ul>
+  <li>效果图务必使用中文加业务模块数字编号命名。
+    <ul>
+      <li>（给别人看的图就必须让人快速找到，让人快速理解图片是什么业务）</li>
+    </ul>
+  </li>
+  <li>
+    <p>较好的效果图命名如下下图：</p>
+
+    <p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/qPi69k.jpg" alt="" /></p>
+
+    <ul>
+      <li>对上图解读：（<strong>4</strong>代表个人中心模块，<strong>3</strong>代表我的订单模块。<strong>1</strong>代表当前业务图片的某种状态；</li>
+      <li>解释为：个人中心 第三个 业务模块的 第一张状态图。（有数字编号代表业务模块，后期图即使非常多也容易分类查看）</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="0x3-icon-切图命名规范">0x3  icon 切图命名规范：</h3>
+<ul>
+  <li>每个大业务的所有图标<code class="language-plaintext highlighter-rouge">icon</code>都归类到该业务的文件夹。</li>
+  <li>必须切两套图标。<strong>@2x</strong> 和 <strong>@3x</strong>。
+    <ul>
+      <li><strong>注意：</strong><code class="language-plaintext highlighter-rouge">750px</code>宽度 <code class="language-plaintext highlighter-rouge">psd</code> 切出来的图标是 <strong>@2x</strong> 的。（自行把切出的 <strong>@2x</strong> 图标 和 <code class="language-plaintext highlighter-rouge">750px</code> 宽的 <code class="language-plaintext highlighter-rouge">psd</code>中该图标 对比一下。看看尺寸大小是否一样。）</li>
+    </ul>
+  </li>
+  <li>较好的<code class="language-plaintext highlighter-rouge">icon</code>图标命名规范如下图：<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/W8bqgl.jpg" alt="" />
+    <ul>
+      <li>对上图解读：
+        <ul>
+          <li>命名只支持，小写英文字符、数字、下划线 和<strong>@2x</strong>，<strong>@3x</strong> 等标识符</li>
+          <li>分了文件夹。找图非常方便</li>
+          <li>有业务前缀：<strong>“cf”</strong> ，代表当前业务名称：财富。这样在代码项目中， 找图有前缀也提供了方便。</li>
+          <li>业务前缀标识命名规范：自己用业务名称的首字母 或者 英文单词都行。如果没有加业务前缀标识，在几十上百张图中找图如同大海捞针。</li>
+          <li>单词之间用下划线连接： <strong>_</strong></li>
+          <li>命名名称后面附带 <strong>@2x</strong> 或者 <strong>@3x</strong> 规格标识符。</li>
+          <li>所有<code class="language-plaintext highlighter-rouge">icon</code>图标必须是 <strong>png</strong> 格式。</li>
+        </ul>
+      </li>
+      <li><strong>错误命名</strong>方式举例如下：<br />
+  <img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/TOzl0d.jpg" alt="" /></li>
+    </ul>
+  </li>
+</ul>
+
+:ET

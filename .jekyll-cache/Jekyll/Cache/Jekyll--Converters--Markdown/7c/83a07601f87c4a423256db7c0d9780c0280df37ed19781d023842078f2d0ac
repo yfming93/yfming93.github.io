@@ -1,0 +1,72 @@
+I"	<ul id="markdown-toc">
+  <li><a href="#0x001-android-studio-报错如下" id="markdown-toc-0x001-android-studio-报错如下">0x001 Android Studio 报错如下</a></li>
+  <li><a href="#0x002-androidstudio-不提示代码" id="markdown-toc-0x002-androidstudio-不提示代码">0x002 AndroidStudio 不提示代码</a></li>
+  <li><a href="#0x003-真机编译安装app显示空白" id="markdown-toc-0x003-真机编译安装app显示空白">0x003 真机编译安装APP显示空白</a></li>
+  <li><a href="#0x004-使用非-runner-名称-跑-flutter-项目" id="markdown-toc-0x004-使用非-runner-名称-跑-flutter-项目">0x004 使用非 Runner 名称 跑 flutter 项目</a>    <ul>
+      <li><a href="#0x005" id="markdown-toc-0x005">0x005</a></li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h4 id="0x001-android-studio-报错如下">0x001 Android Studio 报错如下</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    Error detected in pubspec.yaml:
+    Error on line 44, column 4: Expected a key while parsing a block mapping.
+    ╷
+    44 │    assets:
+    │    ^
+    ╵
+    Please correct the pubspec.yaml file at /Users/mingo/Desktop/AAAllGitRepos/flutter_douban/pubspec.yaml
+
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/20200707162257.png)
+- **原因：** `assets` 前面多了空格
+- **解决：** 去掉空格就好。
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="0x002-androidstudio-不提示代码">0x002 AndroidStudio 不提示代码</h4>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/final Color unselectedColor;.png" alt="" /><br />
+    - <strong>原因：</strong>可能是上一行使用了///注释导致的。<br />
+    -  <strong>解决：</strong>使用//注释</p>
+
+<hr />
+<h4 id="0x003-真机编译安装app显示空白">0x003 真机编译安装APP显示空白</h4>
+
+<ul>
+  <li><strong>原因：</strong>报错：<code class="language-plaintext highlighter-rouge">Failed to find assets path for "Frameworks/App.framework/flutter_assets"</code></li>
+  <li><strong>解决：</strong></li>
+  <li>点击红框加号添加 <code class="language-plaintext highlighter-rouge">Add Files</code> ， 在ios -&gt; flutter -&gt; 添加<code class="language-plaintext highlighter-rouge">App.framework</code>,<code class="language-plaintext highlighter-rouge">Flutter.framework</code>重新编译安装。<br />
+<img src="https://tva1.sinaimg.cn/middle/007S8ZIlgy1ggsx2sumbdj319o0se7af.jpg" alt="" /></li>
+</ul>
+
+<hr />
+<h4 id="0x004-使用非-runner-名称-跑-flutter-项目">0x004 使用非 Runner 名称 跑 flutter 项目</h4>
+
+<ul>
+  <li>
+    <p><strong>原因：</strong>使用非 Runner 名称 跑 flutter 项目。会报错如下：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Could not find the built application bundle at build/ios/iphoneos/Runner.app.
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>解决：</strong> 在<code class="language-plaintext highlighter-rouge">xcode</code>修改 项目名称为<code class="language-plaintext highlighter-rouge">Runner</code>再跑项目</p>
+  </li>
+</ul>
+
+<hr />
+
+<h5 id="0x005">0x005</h5>
+
+<ul>
+  <li><strong>原因：</strong>Flutter Entrypoint isn’t within the current project</li>
+  <li><strong>解决：</strong>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  as 打开  File -&gt; Project Structure -&gt; Module
+重新选择source 为你项目路径
+</code></pre></div>    </div>
+  </li>
+</ul>
+:ET

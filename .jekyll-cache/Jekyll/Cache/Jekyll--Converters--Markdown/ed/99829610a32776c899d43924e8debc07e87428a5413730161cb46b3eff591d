@@ -1,0 +1,16 @@
+I"<ul id="markdown-toc">
+  <li><a href="#vuejs20学习笔记" id="markdown-toc-vuejs20学习笔记">Vuejs2.0学习笔记</a></li>
+</ul>
+
+<h2 id="vuejs20学习笔记">Vuejs2.0学习笔记</h2>
+
+<hr />
+
+<p>按照慕课网的<code class="language-plaintext highlighter-rouge">Vuejs2.0</code>的学习视频零基础实践的一个demo如下:<br />
+演示页面：<a href="https://yfming93.github.io/vuejs/">袁凤鸣 | Vuejs2.0购物车demo</a><br />
+仓库地址：<a href="https://github.com/yfming93/vuejs">https://github.com/yfming93/vuejs</a><br />
+<br /></p>
+
+<p>同时感谢慕课网讲师 <a href="http://www.imooc.com/t/1343480">河畔一角</a> 分享的学习资料<br />
+<a href="http://www.imooc.com/learn/796">使用vue2.0实现购物车和地址选配功能</a></p>
+:ET

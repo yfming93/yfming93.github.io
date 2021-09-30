@@ -1,0 +1,108 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#0x001-引言" id="markdown-toc-0x001-引言">0x001 引言</a></li>
+  <li><a href="#0x002-方法一" id="markdown-toc-0x002-方法一">0x002 方法一</a></li>
+  <li><a href="#0x003-方法二" id="markdown-toc-0x003-方法二">0x003 方法二</a></li>
+  <li><a href="#0x004-终端详细步骤" id="markdown-toc-0x004-终端详细步骤">0x004 终端详细步骤</a></li>
+  <li><a href="#0x005-最终效果如下图" id="markdown-toc-0x005-最终效果如下图">0x005 最终效果如下图</a></li>
+</ul>
+<hr />
+
+<h3 id="0x001-引言">0x001 引言</h3>
+
+<p>请勿再使用 Linode 或 Vultr VPS 来搭建 FQ 类工具，它们已不适合作为搭建 FQ 类工具的选择。<br />
+如有需要，推荐 BandWagon（搬瓦工），CN2 线路系统内核自带 BBR 模块，SSH 端口非默认 22 端口。是您搭梯最佳选择。<br />
+关于搭梯工具，由于墙识别 SSR 的流量已经很准确，请勿再使用 SSR。可重新考虑 SS 或新的工具如 V2***。</p>
+
+<p>之前我们给 SS 加速的时候用的是 K*****，它是用流量换速度，缺点也很明显，上手有点麻烦。而 SS 在 19大期间已经被日益壮大的大长城国家防火墙有效和谐。因此，对于 SSR，我们推荐使用另一个更便捷的，只需要安装服务器端即可，不再需要在电脑上安装客户端，这就是谷歌开发的 BBR 模块。</p>
+
+<h3 id="0x002-方法一">0x002 方法一</h3>
+<p>连接 Xshell。</p>
+
+<p><strong>下载 BBR 加速脚本：</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh 执行：
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">chmod +x bbr.sh &amp;&amp; bash bbr.sh</code></p>
+
+<p>回车确定安装</p>
+
+<p>出现提示：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Info: Your kernel version is greater than 4.9, directly setting TCP BBR…
+Info: Setting TCP BBR completed…
+</code></pre></div></div>
+
+<p>用命令检查一下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ps aux | grep bbr*
+</code></pre></div></div>
+
+<p>发现 bbr 的进程正在运行。</p>
+
+<p>BBR 安装配置完毕，SSR 立即得到提速。</p>
+
+<h3 id="0x003-方法二">0x003 方法二</h3>
+<p><strong>——————-下面内容不适用于Linode VPS 安装 BBR———————</strong></p>
+
+<p>如果你用的不是 Linode VPS，用其他 VPS 安装，则可能要经历更新 CentOS 7 4.9 版本linux 内核的过程。</p>
+
+<p>CentOS 7的4.9内核合并了Google研发的BBR TCP阻塞算法，使用效果大概可以跟锐速相比。</p>
+
+<p>先检查你的 VPS 的内核版本，可以用如下命令检查一下：</p>
+
+<ul>
+  <li>uname -r
+    <ul>
+      <li>
+        <p>如果大于 4.9，比如：4.14.14-xxx.elrepo.x86_64 或 4.15.4-1.xxxx.elrepo.x86_64 ，则上面的脚本安装会一切顺利。</p>
+      </li>
+      <li>
+        <p>如果小于 4.9，比如：3.10.0-693.11.6.el7.x86_64，则无需执行上面的 BBR 安装步骤，直接从下面的更换 4.9版本内核开始即可。该内核自带 BBR 模块。</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>iozoom vps 上安装 BBR 安装之后，可能会出来这样的提示：</p>
+
+    <p>Error: /boot/grub2/grub.cfg not found, please check it.<br />
+  这就很可能说明没能成功安装新的 Kernel 版本。</p>
+
+    <p>则执行如下操作：</p>
+  </li>
+  <li>
+    <p>更换4.9版本内核</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  wget -O- https://soft.wellphp.com/scripts/install_bbr_centos.sh | bash
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>安装结束之后，重启： <code class="language-plaintext highlighter-rouge">reboot</code><br />
+会断开 vps 的连接。过一会，重新连接，然后输入如下命令验证：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sysctl net.ipv4.tcp_congestion_control net.core.default_qdisc
+</code></pre></div></div>
+
+<p>结果如下即可：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+</code></pre></div></div>
+
+<p>此脚本的特点：</p>
+
+<p>1、无需手动修改grub启动项；<br />
+2、已经默认设置拥塞算法为BBR，无需额外设置，重启即可用；<br />
+3、更新至4.9正式版<br />
+4、非模块化编写，lsmod | grep bbr 查不到 bbr 模块，但 ps aux | grep bbr* 可以查到进程。</p>
+
+<h3 id="0x004-终端详细步骤">0x004 终端详细步骤</h3>
+<p>楼主我是 virmach 的 vps ， Centos 6.5 操作系统，用方法二安装的加速。</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/zHWxm6.jpg" alt="" /></p>
+
+<h3 id="0x005-最终效果如下图">0x005 最终效果如下图</h3>
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/6qluJO.jpg" alt="" /></p>
+
+:ET

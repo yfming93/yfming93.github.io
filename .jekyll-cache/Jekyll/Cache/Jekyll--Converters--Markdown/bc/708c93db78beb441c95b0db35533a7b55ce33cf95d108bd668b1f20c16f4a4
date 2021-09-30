@@ -1,0 +1,74 @@
+I"<<hr />
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="kd">static</span> <span class="kt">void</span> <span class="nf">getDeviceInfo</span><span class="p">(</span><span class="o">)</span> <span class="n">async</span><span class="o">{</span>
+    <span class="n">DeviceInfoPlugin</span> <span class="n">deviceInfo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DeviceInfoPlugin</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">Platform</span><span class="o">.</span><span class="na">isIOS</span><span class="o">){</span>
+      <span class="n">IosDeviceInfo</span> <span class="n">iosInfo</span> <span class="o">=</span> <span class="n">await</span> <span class="n">deviceInfo</span><span class="o">.</span><span class="na">iosInfo</span><span class="o">;</span>
+      <span class="n">await</span> <span class="n">_readIosDeviceInfo</span><span class="o">(</span><span class="n">iosInfo</span><span class="o">);</span>
+
+    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">Platform</span><span class="o">.</span><span class="na">isAndroid</span><span class="o">){</span>
+      <span class="n">AndroidDeviceInfo</span> <span class="n">androidInfo</span> <span class="o">=</span> <span class="n">await</span> <span class="n">deviceInfo</span><span class="o">.</span><span class="na">androidInfo</span><span class="o">;</span>
+      <span class="n">await</span> <span class="n">_readAndroidBuildData</span><span class="o">(</span><span class="n">androidInfo</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+ <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="kd">dynamic</span><span class="o">&gt;</span> <span class="n">_readAndroidBuildData</span><span class="o">(</span><span class="n">AndroidDeviceInfo</span> <span class="n">build</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="kd">dynamic</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">=</span>  <span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="kd">dynamic</span><span class="o">&gt;{</span>
+      <span class="s">'version.securityPatch'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">version</span><span class="o">.</span><span class="na">securityPatch</span><span class="o">,</span><span class="c1">//用户可见的安全补丁程序级别。仅在Android 6.0或更高版本上可用。</span>
+      <span class="s">'version.sdkInt'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">version</span><span class="o">.</span><span class="na">sdkInt</span><span class="o">,</span><span class="c1">// API 级别是对 Android 平台版本提供的框架 API 修订版进行唯一标识的整数值。// https://developer.android.com/guide/topics/manifest/uses-sdk-element</span>
+      <span class="s">'version.release'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">version</span><span class="o">.</span><span class="na">release</span><span class="o">,</span><span class="c1">// 用户可见的版本字符串。示例：Android10</span>
+      <span class="s">'version.previewSdkInt'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">version</span><span class="o">.</span><span class="na">previewSdkInt</span><span class="o">,</span><span class="c1">// 开发人员预览版的预发行版SDK。</span>
+      <span class="s">'version.incremental'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">version</span><span class="o">.</span><span class="na">incremental</span><span class="o">,</span><span class="c1">// 源码控制版本号 示例： C00B171</span>
+      <span class="s">'version.codename'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">version</span><span class="o">.</span><span class="na">codename</span><span class="o">,</span><span class="c1">// 当前开发代号，或者字符串“REL”（如果是正式的发布版本） 示例： REL</span>
+      <span class="s">'version.baseOS'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">version</span><span class="o">.</span><span class="na">baseOS</span><span class="o">,</span><span class="c1">// 基带版本 The base OS build the product is based on. 示例：空值</span>
+      <span class="s">'board'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">board</span><span class="o">,</span><span class="c1">// 主板 示例：FRD-AL00</span>
+      <span class="s">'bootloader'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">bootloader</span><span class="o">,</span><span class="c1">// 系统启动程序版本号 示例：unknown</span>
+      <span class="s">'brand'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">brand</span><span class="o">,</span><span class="c1">// 系统定制商 示例：honor</span>
+      <span class="s">'device'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">device</span><span class="o">,</span><span class="c1">// 设备参数 示例：HWFRD</span>
+      <span class="s">'display'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">display</span><span class="o">,</span><span class="c1">// 用于向用户显示的构建ID字符串。示例：FRD-AL00C00B171</span>
+      <span class="s">'fingerprint'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">fingerprint</span><span class="o">,</span><span class="c1">// 设备指纹（同样的新设备该值应该是一样的） 示例：honor/FRD-AL00/HWFRD:6.0/HUAWEIFRD-AL00/C00B171:user/release-keys</span>
+      <span class="s">'hardware'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">hardware</span><span class="o">,</span><span class="c1">// 硬件的名称（从内核命令行或/ proc）。 示例：hi3650</span>
+      <span class="s">'host'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">host</span><span class="o">,</span><span class="c1">// Hostname 示例：huawei-RH2288H-V2-12L</span>
+      <span class="s">'id'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">id</span><span class="o">,</span><span class="c1">// 修订版本列表 示例：HUAWEIFRD-AL00</span>
+      <span class="s">'manufacturer'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">manufacturer</span><span class="o">,</span><span class="c1">// 产品/硬件的制造商 示例：HUAWEI</span>
+      <span class="s">'model'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">model</span><span class="o">,</span><span class="c1">// 最终用户可见名称。示例：FRD-AL00</span>
+      <span class="s">'product'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">product</span><span class="o">,</span><span class="c1">// 整体产品的名称。 示例：FRD-AL00</span>
+      <span class="s">'supported32BitAbis'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">supported32BitAbis</span><span class="o">,</span><span class="c1">// 支持32位ABIs的列表（数值）示例：[armeabi-v7a,armeabi]</span>
+      <span class="s">'supported64BitAbis'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">supported64BitAbis</span><span class="o">,</span><span class="c1">// 支持64位ABIs的列表（数值）示例：[arm64-v8a]</span>
+      <span class="s">'supportedAbis'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">supportedAbis</span><span class="o">,</span><span class="c1">// 支持ABIs的列表（数值）示例：[arm64-v8a,armeabi-v7a,armeabi]</span>
+      <span class="s">'tags'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">tags</span><span class="o">,</span><span class="c1">// 描述Build的标签（Comma-separated tags describing the build, like "unsigned,debug".） 示例：release-keys</span>
+      <span class="s">'type'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">type</span><span class="o">,</span><span class="c1">// 描述Build的类型（The type of build, like "user" or "eng".） 示例：user</span>
+      <span class="s">'isPhysicalDevice'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">isPhysicalDevice</span><span class="o">,</span><span class="c1">// 是否是真实物理设备（真机或模拟器）</span>
+      <span class="s">'androidId'</span><span class="o">:</span> <span class="n">build</span><span class="o">.</span><span class="na">androidId</span><span class="o">,</span> <span class="c1">//设备唯一标识</span>
+      <span class="c1">// 'systemFeatures': build.systemFeatures,</span>
+    <span class="o">};</span>
+    <span class="kt">String</span> <span class="n">str</span> <span class="o">=</span>  <span class="n">ConvertUtils</span><span class="o">.</span><span class="na">convert</span><span class="o">(</span><span class="n">map</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span> <span class="c1">// map to json</span>
+    <span class="n">developer</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">map</span><span class="o">;</span>
+
+  <span class="o">}</span>
+
+  <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="kd">dynamic</span><span class="o">&gt;</span> <span class="n">_readIosDeviceInfo</span><span class="o">(</span><span class="n">IosDeviceInfo</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="kd">dynamic</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">=</span>  <span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="kd">dynamic</span><span class="o">&gt;{</span>
+      <span class="s">'name'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">name</span><span class="o">,</span><span class="c1">// 手机名称（通用关于本机里显示的名称）示例：iPhone12</span>
+      <span class="s">'systemName'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">systemName</span><span class="o">,</span><span class="c1">// 系统名称 示例： iOS</span>
+      <span class="s">'systemVersion'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">systemVersion</span><span class="o">,</span><span class="c1">// 系统版本号 示例： iOS 14.3</span>
+      <span class="s">'model'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">model</span><span class="o">,</span><span class="c1">// 设备型号的名称 示例：iPhone</span>
+      <span class="s">'localizedModel'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">localizedModel</span><span class="o">,</span><span class="c1">// 设备型号的本地化名称 示例：iPhone</span>
+      <span class="s">'identifierForVendor'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">identifierForVendor</span><span class="o">,</span> <span class="c1">//设备唯一标识 示例：DB2E04F5-27D0-4101-8D53-F73CB0505DAD</span>
+      <span class="s">'isPhysicalDevice'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">isPhysicalDevice</span><span class="o">,</span><span class="c1">// 是否是物理设备（真机或模拟器）示例：true</span>
+      <span class="s">'utsname.sysname:'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">utsname</span><span class="o">.</span><span class="na">sysname</span><span class="o">,</span><span class="c1">// 操作系统名称。示例：Darwin</span>
+      <span class="s">'utsname.nodename:'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">utsname</span><span class="o">.</span><span class="na">nodename</span><span class="o">,</span><span class="c1">// 网络上的节点名称。示例：iPhone12t</span>
+      <span class="s">'utsname.release:'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">utsname</span><span class="o">.</span><span class="na">release</span><span class="o">,</span><span class="c1">// 当前发布级别  示例：20.2.0</span>
+      <span class="s">'utsname.version:'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">utsname</span><span class="o">.</span><span class="na">version</span><span class="o">,</span><span class="c1">// 当前发布版本  示例：Darwin Kernel Version 20.2.0: Fri Nov 13 01:00:14 PST 2020; root:xnu-7195.62.1~4/RELEASE_ARM64_T8101</span>
+      <span class="s">'utsname.machine:'</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="na">utsname</span><span class="o">.</span><span class="na">machine</span><span class="o">,</span><span class="c1">// 当前硬件体系类型  示例： 'iPhone7,1' 这个就是 iPhone 6 Plus；'iPhone13,2'这个就是iPhone12</span>
+    <span class="o">};</span>
+    <span class="kt">String</span> <span class="n">str</span> <span class="o">=</span>  <span class="n">ConvertUtils</span><span class="o">.</span><span class="na">convert</span><span class="o">(</span><span class="n">map</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span> <span class="c1">// map to json</span>
+    <span class="n">developer</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">map</span><span class="o">;</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+
+:ET

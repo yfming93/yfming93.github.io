@@ -1,0 +1,135 @@
+I"7(<ul id="markdown-toc">
+  <li><a href="#精确获取-uiwebview-的高度" id="markdown-toc-精确获取-uiwebview-的高度">精确获取 <strong>UIWebView</strong> 的高度</a></li>
+  <li><a href="#一使用背景" id="markdown-toc-一使用背景">（一）使用背景：</a></li>
+  <li><a href="#二原始做法" id="markdown-toc-二原始做法">（二）原始做法：</a></li>
+  <li><a href="#三问题介绍" id="markdown-toc-三问题介绍">（三）问题介绍：</a></li>
+  <li><a href="#四解决思路" id="markdown-toc-四解决思路">（四）解决思路：</a></li>
+  <li><a href="#五代码实现" id="markdown-toc-五代码实现">（五）代码实现：</a></li>
+  <li><a href="#六来个总结" id="markdown-toc-六来个总结">（六）来个总结：</a></li>
+</ul>
+
+<h2 id="精确获取-uiwebview-的高度">精确获取 <strong>UIWebView</strong> 的高度</h2>
+
+<h2 id="一使用背景">（一）使用背景：</h2>
+<p>很多情况下。项目需求实现H5文章  和 原生评论效果，文章是加载<code class="language-plaintext highlighter-rouge">H5</code>链接，评论信息是后台接口提供，以列表形式展示。</p>
+
+<p>像下面这个内容的详情图。我们希望上面部分的详情内容做成 <code class="language-plaintext highlighter-rouge">H5</code> ，下面部分的评论列表做成原生的。。我们这个时候就想到了把 <code class="language-plaintext highlighter-rouge">H5</code> 嵌入到  <code class="language-plaintext highlighter-rouge">tableView</code> 的  <code class="language-plaintext highlighter-rouge">tableHeaderView</code> 上面。然后评论就用 <code class="language-plaintext highlighter-rouge">cell</code> 进行显示。</p>
+
+<p>如图：（ <em>NO Pictures Say G8  O(∩_∩)O~</em> ）<br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/nmWGd6.jpg" alt="" /></p>
+
+<h2 id="二原始做法">（二）原始做法：</h2>
+<p>原始做法，只是在设置 <code class="language-plaintext highlighter-rouge">webView</code> 的代理之后 实现  <code class="language-plaintext highlighter-rouge">webViewDidFinishLoad</code>代理方法。在方法中使用 <code class="language-plaintext highlighter-rouge">[webView sizeThatFits:CGSizeZero]</code> 来得到 <code class="language-plaintext highlighter-rouge">webView</code>的内容高度。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- (void)webViewDidFinishLoad:(UIWebView *)webView {
+
+    CGSize tempSize = [webView sizeThatFits:CGSizeZero];
+    _webView.frame = CGRectMake(0, 0, tempSize.width, tempSize.height);
+    [self.table setTableHeaderView:_webView];
+    
+}
+</code></pre></div></div>
+
+<h2 id="三问题介绍">（三）问题介绍：</h2>
+<p>那么问题来了。</p>
+
+<p>获取<code class="language-plaintext highlighter-rouge">WebView</code> 内容高度，上面的做法无法获取到准确高度，导致页面布局出现差错。</p>
+
+<p>像上面这样，类似的方法很多，不管是JS获取，还是contentSize获取，最后结果都难以获取到准确高度，并非方法不行，<em>而是：<br />
+<code class="language-plaintext highlighter-rouge">webViewDidFinishLoad</code>代理方法被调用时，页面并不一定完全展现完成，可能有图片还未加载出来，导致此时获取的高度是并不是最终高度</em>，过会儿图片加载出来后，浏览器会重新排版，而我们在这之前给了一个错误高度，导致显示异常。</p>
+
+<p>布局出现差错后，上下滑动页面时，在<code class="language-plaintext highlighter-rouge">WebView</code>内容区域滑动只是 <code class="language-plaintext highlighter-rouge">WebView</code> 的内容上下动，在 <code class="language-plaintext highlighter-rouge">tableView</code> 内容区域滑动只是  <code class="language-plaintext highlighter-rouge">tableView</code> 内容上下动。而我们要的效果是无论怎样滑动 都只有  <code class="language-plaintext highlighter-rouge">tableView</code> 内容上下动。搜到的资料很多但都无法解决问题，相信很多人都踩过坑。以下是个人经验总结：</p>
+
+<h2 id="四解决思路">（四）解决思路：</h2>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">webView</code>加载<code class="language-plaintext highlighter-rouge">H5</code>链接，设置它为<code class="language-plaintext highlighter-rouge">tableView</code>的 <code class="language-plaintext highlighter-rouge">headerView</code>，下方评论信息用<code class="language-plaintext highlighter-rouge">Cell</code>加载展示。</p>
+  </li>
+  <li>在<code class="language-plaintext highlighter-rouge">webView</code>的回调方法<code class="language-plaintext highlighter-rouge">webViewDidFinishLoad</code>中获取网页内容高度，设置为<code class="language-plaintext highlighter-rouge">webView</code>的高度，重新将<code class="language-plaintext highlighter-rouge">webView</code>赋给<code class="language-plaintext highlighter-rouge">tableView</code>的<code class="language-plaintext highlighter-rouge">headerView</code>。</li>
+  <li>给<code class="language-plaintext highlighter-rouge">webView</code>的<code class="language-plaintext highlighter-rouge">scrollView</code>的<code class="language-plaintext highlighter-rouge">contentSize</code>属性添加监听，每当内容发生变化，<code class="language-plaintext highlighter-rouge">contentSize</code>一定会跟着变，捕获这个变动，在监听方法中实现<code class="language-plaintext highlighter-rouge">webViewDidFinishLoad</code>中的代码，也就是获取最新的内容高度赋给<code class="language-plaintext highlighter-rouge">webView</code>。</li>
+</ul>
+
+<p><strong>Tip: 将一个View赋值给UITableView的tableHeaderView时，不需要手动设置高度，HeaderView会自动使用View的高度。</strong></p>
+
+<h2 id="五代码实现">（五）代码实现：</h2>
+<p>引用 <strong>Linus Torvalds</strong> 一句装逼的话 ：</p>
+
+<blockquote>
+  <p>Talk is cheap, show me the code.   —— Linus Torvalds</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>设置监听的 <code class="language-plaintext highlighter-rouge">KeyPath</code> ：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   static NSString  *kcontentSize = @"contentSize";
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>在<code class="language-plaintext highlighter-rouge">webView</code>的回调方法<code class="language-plaintext highlighter-rouge">webViewDidFinishLoad</code>中设置 监听 <strong>webView</strong>.<strong>scrollView</strong> 的 <strong>contentSize</strong> 变化：</p>
+
+  	- (void)webViewDidFinishLoad:(UIWebView *)webView {<br />
+
+  	    CGSize tempSize = [webView sizeThatFits:CGSizeZero];<br />
+  	    _webView.frame = CGRectMake(0, 0, tempSize.width, tempSize.height);<br />
+  	    [self.table beginUpdates];<br />
+  	    [self.table setTableHeaderView:_webView];<br />
+  	    [self.table endUpdates];<br />
+
+  	    [self.webView.scrollView addObserver:self forKeyPath:kcontentSize options:NSKeyValueObservingOptionNew context:nil];<br />
+  	}
+  </li>
+  <li>
+    <p>实现 <code class="language-plaintext highlighter-rouge">KVO</code> 回调方法，并判断如果  <code class="language-plaintext highlighter-rouge">KeyPath</code>  是 <code class="language-plaintext highlighter-rouge">contentSize</code>时再进行一次 <code class="language-plaintext highlighter-rouge">webViewDidFinishLoad</code> 中 <code class="language-plaintext highlighter-rouge">webView</code>高度的赋值操作。</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context {
+	
+      if ([keyPath isEqualToString:kcontentSize]) {
+	        
+          CGSize tempSize = [_webView sizeThatFits:CGSizeZero];
+          _webView.frame = CGRectMake(0, 0, tempSize.width, tempSize.height);
+           [self.table beginUpdates];
+           [self.table setTableHeaderView:_webView];
+           [self.table endUpdates];
+	        
+      }else {
+          [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+      }
+  }
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>同时原来 <code class="language-plaintext highlighter-rouge">webViewDidFinishLoad</code>的操作也是要的 ：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  - (void)webViewDidFinishLoad:(UIWebView *)webView {
+	
+      CGSize tempSize = [webView sizeThatFits:CGSizeZero];
+      _webView.frame = CGRectMake(0, 0, tempSize.width, tempSize.height);
+      [self.table setTableHeaderView:_webView];
+	    
+  }
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>移除观察者 ：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  - (void)dealloc {
+      [_webView.scrollView removeObserver:self forKeyPath:kcontentSize context:nil];
+	    
+  }
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="六来个总结">（六）来个总结：</h2>
+<ul>
+  <li>
+    <p>好了。这样之后。<code class="language-plaintext highlighter-rouge">webView</code>内容发生变化后。就会监听到 <strong>webView.scrollView.contentSize</strong> 也发生了变化。我们在监听方法里面及时再次设置高度即可。</p>
+  </li>
+  <li>
+    <p>还有，在<code class="language-plaintext highlighter-rouge">cell</code>中使用<code class="language-plaintext highlighter-rouge">webView</code>获取高度不准确的解决办法跟上面一样，只不过需要注意<code class="language-plaintext highlighter-rouge">cell</code>中使用<code class="language-plaintext highlighter-rouge">webView</code>涉及到<code class="language-plaintext highlighter-rouge">cell</code>重用，会导致滑动列表时<code class="language-plaintext highlighter-rouge">webView</code>多次加载，影响性能，建议缓存高度。</p>
+  </li>
+</ul>
+
+:ET

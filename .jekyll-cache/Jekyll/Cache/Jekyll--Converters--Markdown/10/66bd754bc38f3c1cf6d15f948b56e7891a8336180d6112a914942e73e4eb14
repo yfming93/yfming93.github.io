@@ -1,0 +1,577 @@
+I"Tj<ul id="markdown-toc">
+  <li><a href="#vue20nodejsmongodb全栈打造商城系统第11章" id="markdown-toc-vue20nodejsmongodb全栈打造商城系统第11章">Vue2.0+Node.js+MongoDB全栈打造商城系统（第11章）</a></li>
+  <li><a href="#第11章-购物车模块实现" id="markdown-toc-第11章-购物车模块实现">第11章 购物车模块实现</a>    <ul>
+      <li><a href="#11-1-购物车列表功能实现" id="markdown-toc-11-1-购物车列表功能实现">11-1 购物车列表功能实现</a>        <ul>
+          <li><a href="#新增imoocmallsrcviewscartvue" id="markdown-toc-新增imoocmallsrcviewscartvue">新增<code class="language-plaintext highlighter-rouge">ImoocMall/src/views/Cart.vue</code>：</a></li>
+          <li><a href="#imoocmallsrcrouterindexjs中新增-cart-路由" id="markdown-toc-imoocmallsrcrouterindexjs中新增-cart-路由"><code class="language-plaintext highlighter-rouge">ImoocMall/src/router/index.js</code>中新增 cart 路由：</a></li>
+          <li><a href="#服务端imoocmallserverroutesusersjs新增查询购物车列表接口" id="markdown-toc-服务端imoocmallserverroutesusersjs新增查询购物车列表接口">服务端<code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code>新增查询购物车列表接口：</a></li>
+        </ul>
+      </li>
+      <li><a href="#11-2-商品删除功能实现" id="markdown-toc-11-2-商品删除功能实现">11-2 商品删除功能实现</a>        <ul>
+          <li><a href="#imoocmallserverroutesusersjs新增删除商品接口" id="markdown-toc-imoocmallserverroutesusersjs新增删除商品接口"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code>新增删除商品接口:</a></li>
+          <li><a href="#imoocmallsrcviewscartvue代码" id="markdown-toc-imoocmallsrcviewscartvue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/Cart.vue</code>代码:</a></li>
+        </ul>
+      </li>
+      <li><a href="#11-3-商品修改功能实现" id="markdown-toc-11-3-商品修改功能实现">11-3 商品修改功能实现</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!---->
+
+<h1 id="vue20nodejsmongodb全栈打造商城系统第11章">Vue2.0+Node.js+MongoDB全栈打造商城系统（第11章）</h1>
+<h1 id="第11章-购物车模块实现">第11章 购物车模块实现</h1>
+<h2 id="11-1-购物车列表功能实现">11-1 购物车列表功能实现</h2>
+<p><strong>注意：</strong></p>
+
+<ul>
+  <li>组件名<code class="language-plaintext highlighter-rouge">NavHeader</code> 标签用写成<code class="language-plaintext highlighter-rouge">&lt;nav-header&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">@keyup.enter="login"</code> 按回车登录</li>
+</ul>
+
+<h4 id="新增imoocmallsrcviewscartvue">新增<code class="language-plaintext highlighter-rouge">ImoocMall/src/views/Cart.vue</code>：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;nav-header&gt;&lt;/nav-header&gt;
+    &lt;nav-bread&gt;
+      &lt;span&gt;My Cart&lt;/span&gt;
+    &lt;/nav-bread&gt;
+    &lt;svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
+         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+      &lt;defs&gt;
+        &lt;symbol id="icon-add" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;add2&lt;/title&gt;
+          &lt;path class="path1"
+                d="M15 17h-13.664c-0.554 0-1.002-0.446-1.002-1 0-0.552 0.452-1 1.002-1h13.664v-13.664c0-0.554 0.446-1.002 1-1.002 0.552 0 1 0.452 1 1.002v13.664h13.664c0.554 0 1.002 0.446 1.002 1 0 0.552-0.452 1-1.002 1h-13.664v13.664c0 0.554-0.446 1.002-1 1.002-0.552 0-1-0.452-1-1.002v-13.664z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+        &lt;symbol id="icon-ok" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;ok&lt;/title&gt;
+          &lt;path class="path1"
+                d="M31.020 0.438c-0.512-0.363-1.135-0.507-1.757-0.406s-1.166 0.435-1.529 0.937l-17.965 24.679-5.753-5.67c-0.445-0.438-1.035-0.679-1.664-0.679s-1.219 0.241-1.664 0.679c-0.917 0.904-0.917 2.375 0 3.279l7.712 7.6c0.438 0.432 1.045 0.681 1.665 0.681l0.195-0.008c0.688-0.057 1.314-0.406 1.717-0.959l19.582-26.9c0.754-1.038 0.512-2.488-0.538-3.233z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+        &lt;symbol id="icon-edit" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;edit&lt;/title&gt;
+          &lt;path class="path1"
+                d="M28.287 8.51l-4.805-4.806 0.831-0.831c0.472-0.472 1.086-0.777 1.564-0.777 0.248 0 0.452 0.082 0.622 0.253l3.143 3.144c0.539 0.54 0.133 1.529-0.524 2.186l-0.831 0.831zM26.805 9.992l-1.138 1.138-4.805-4.806 1.138-1.138 4.805 4.806zM24.186 12.612l-14.758 14.762-4.805-4.806 14.758-14.762 4.805 4.806zM7.379 28.288l-4.892 1.224 1.223-4.894 3.669 3.67zM31.123 4.011l-3.143-3.144c-0.567-0.567-1.294-0.867-2.103-0.867-1.036 0-2.174 0.52-3.045 1.391l-20.429 20.436c-0.135 0.134-0.23 0.302-0.276 0.487l-2.095 8.385c-0.089 0.355 0.017 0.736 0.276 0.995 0.198 0.198 0.461 0.307 0.741 0.307 0.085 0 0.171-0.010 0.254-0.031l8.381-2.096c0.185-0.047 0.354-0.142 0.487-0.276l20.43-20.436c1.409-1.41 2.042-3.632 0.524-5.15v0z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+        &lt;symbol id="icon-del" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;delete&lt;/title&gt;
+          &lt;path class="path1"
+                d="M11.355 4.129v-2.065h9.29v2.065h-9.29zM6.194 29.935v-23.742h19.613v23.742h-19.613zM30.968 4.129h-8.258v-3.097c0-0.569-0.463-1.032-1.032-1.032h-11.355c-0.569 0-1.032 0.463-1.032 1.032v3.097h-8.258c-0.569 0-1.032 0.463-1.032 1.032s0.463 1.032 1.032 1.032h3.097v24.774c0 0.569 0.463 1.032 1.032 1.032h21.677c0.569 0 1.032-0.463 1.032-1.032v-24.774h3.097c0.569 0 1.032-0.463 1.032-1.032s-0.463-1.032-1.032-1.032v0z"&gt;&lt;/path&gt;
+          &lt;path class="path2"
+                d="M10.323 9.806c-0.569 0-1.032 0.463-1.032 1.032v14.452c0 0.569 0.463 1.032 1.032 1.032s1.032-0.463 1.032-1.032v-14.452c0-0.569-0.463-1.032-1.032-1.032z"&gt;&lt;/path&gt;
+          &lt;path class="path3"
+                d="M16 9.806c-0.569 0-1.032 0.463-1.032 1.032v14.452c0 0.569 0.463 1.032 1.032 1.032s1.032-0.463 1.032-1.032v-14.452c0-0.569-0.463-1.032-1.032-1.032z"&gt;&lt;/path&gt;
+          &lt;path class="path4"
+                d="M21.677 9.806c-0.569 0-1.032 0.463-1.032 1.032v14.452c0 0.569 0.463 1.032 1.032 1.032s1.032-0.463 1.032-1.032v-14.452c0-0.569-0.463-1.032-1.032-1.032z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+        &lt;symbol id="icon-clock" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;clock&lt;/title&gt;
+          &lt;path class="path1" fill="#605f5f"
+                d="M16 29c-7.168 0-13-5.831-13-13s5.832-13 13-13c7.168 0 13 5.832 13 13s-5.832 13-13 13zM16 0c-8.822 0-16 7.178-16 16s7.178 16 16 16c8.822 0 16-7.178 16-16s-7.178-16-16-16z"&gt;&lt;/path&gt;
+          &lt;path class="path2" fill="#605f5f"
+                d="M23.958 21.837l-6.958-6.489v-6.282c0-0.827-0.673-1.5-1.5-1.5s-1.5 0.673-1.5 1.5v6.934c0 0.414 0.174 0.814 0.477 1.098l7.435 6.934c0.279 0.259 0.642 0.402 1.023 0.402 0.415 0 0.814-0.174 1.096-0.477 0.564-0.605 0.532-1.555-0.073-2.12z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+      &lt;/defs&gt;
+    &lt;/svg&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="cart"&gt;
+        &lt;div class="page-title-normal"&gt;
+          &lt;h2 class="page-title-h2"&gt;&lt;span&gt;My Cart&lt;/span&gt;&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class="item-list-wrap"&gt;
+          &lt;div class="cart-item"&gt;
+            &lt;div class="cart-item-head"&gt;
+              &lt;ul&gt;
+                &lt;li&gt;Items&lt;/li&gt;
+                &lt;li&gt;Price&lt;/li&gt;
+                &lt;li&gt;Quantity&lt;/li&gt;
+                &lt;li&gt;Subtotal&lt;/li&gt;
+                &lt;li&gt;Edit&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;ul class="cart-item-list"&gt;
+              &lt;li v-for="(item,index) in cartList"&gt;
+                &lt;div class="cart-tab-1"&gt;
+                  &lt;div class="cart-item-check"&gt;
+                    &lt;a href="javascipt:;" class="checkbox-btn item-check-btn"&gt;
+                      &lt;svg class="icon icon-ok"&gt;
+                        &lt;use xlink:href="#icon-ok"&gt;&lt;/use&gt;
+                      &lt;/svg&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cart-item-pic"&gt;
+                    &lt;img v-bind:src="'static/'+item.productImage" v-bind:alt="item.productName"&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cart-item-title"&gt;
+                    &lt;div class="item-name"&gt;{{item.productName}}&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cart-tab-2"&gt;
+                  &lt;div class="item-price"&gt;{{item.salePrice}}&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cart-tab-3"&gt;
+                  &lt;div class="item-quantity"&gt;
+                    &lt;div class="select-self select-self-open"&gt;
+                      &lt;div class="select-self-area"&gt;
+                        &lt;a class="input-sub"&gt;-&lt;/a&gt;
+                        &lt;span class="select-ipt"&gt;{{item.productNum}}&lt;/span&gt;
+                        &lt;a class="input-add"&gt;+&lt;/a&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cart-tab-4"&gt;
+                  &lt;div class="item-price-total"&gt;{{item.salePrice*item.productNum}}&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cart-tab-5"&gt;
+                  &lt;div class="cart-item-opration"&gt;
+                    &lt;a href="javascript:;" class="item-edit-btn"&gt;
+                      &lt;svg class="icon icon-del"&gt;
+                        &lt;use xlink:href="#icon-del"&gt;&lt;/use&gt;
+                      &lt;/svg&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="cart-foot-wrap"&gt;
+          &lt;div class="cart-foot-inner"&gt;
+            &lt;div class="cart-foot-l"&gt;
+              &lt;div class="item-all-check"&gt;
+                &lt;a href="javascipt:;"&gt;
+                  &lt;span class="checkbox-btn item-check-btn"&gt;
+                      &lt;svg class="icon icon-ok"&gt;&lt;use xlink:href="#icon-ok"/&gt;&lt;/svg&gt;
+                  &lt;/span&gt;
+                  &lt;span&gt;Select all&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="cart-foot-r"&gt;
+              &lt;div class="item-total"&gt;
+                Item total: &lt;span class="total-price"&gt;500&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class="btn-wrap"&gt;
+                &lt;a class="btn btn--red"&gt;Checkout&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;nav-footer&gt;&lt;/nav-footer&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;style&gt;
+  .input-sub,.input-add{
+    min-width: 40px;
+    height: 100%;
+    border: 0;
+    color: #605F5F;
+    text-align: center;
+    font-size: 16px;
+    overflow: hidden;
+    display: inline-block;
+    background: #f0f0f0;
+  }
+  .item-quantity .select-self-area{
+    background:none;
+    border: 1px solid #f0f0f0;
+  }
+  .item-quantity .select-self-area .select-ipt{
+    display: inline-block;
+    padding:0 3px;
+    width: 30px;
+    min-width: 30px;
+    text-align: center;
+  }
+&lt;/style&gt;
+&lt;script&gt;
+  import './../assets/css/checkout.css'
+  import './../assets/css/base.css'
+  import './../assets/css/product.css'
+  import NavHeader from './NavHeader.vue'
+  import NavFooter from './NavFooter.vue'
+  import NavBread from './NavBread.vue'
+  import Modal from './../components/Modal.vue'
+  import axios from 'axios'
+
+  export default{
+    data(){
+      return{
+        cartList:[]  //购物车列表
+
+      }
+    },
+    mounted(){
+      this.init();
+    },
+    components:{
+      NavHeader,
+      NavFooter,
+      NavBread,
+      Modal
+    },
+    methods:{
+      init(){
+        axios.get("users/cartList").then((response)=&gt;{
+          let res = response.data;
+          this.cartList = res.result;
+
+        });
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h4 id="imoocmallsrcrouterindexjs中新增-cart-路由"><code class="language-plaintext highlighter-rouge">ImoocMall/src/router/index.js</code>中新增 cart 路由：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Vue from 'vue'
+import Router from 'vue-router'
+import GoodsList from './../views/GoodsList'
+import Cart from './../views/Cart.vue'
+
+Vue.use(Router)
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      component:GoodsList
+    },
+    {
+      path: '/cart',
+      name:'Cart',
+      component:Cart
+    }
+  ]
+})
+</code></pre></div></div>
+
+<h4 id="服务端imoocmallserverroutesusersjs新增查询购物车列表接口">服务端<code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code>新增查询购物车列表接口：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//查询当前用户名下的购物车数据
+router.get("/cartList",function (req, res, next) {
+  var userId = req.cookies.userId;
+
+  User.findOne({userId:userId},function (err,doc) {
+    if (err) {
+      res.json({
+        status: '1',
+        msg: err.msg,
+        result: ''
+      });
+    }else {
+      res.json({
+        status: '0',
+        msg:'',
+        result: doc.cartList
+      });
+    }
+  })
+})
+</code></pre></div></div>
+
+<h2 id="11-2-商品删除功能实现">11-2 商品删除功能实现</h2>
+
+<p><strong>注意:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">node</code>:代理配置里面
+    <ul>
+      <li>
+        <ul>
+          <li>代表当前目录下的子目录;</li>
+        </ul>
+      </li>
+      <li>
+        <p>** 代表所有子孙级目录;</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  proxyTable: {
+    '/goods': {
+      target: 'http://localhost:3000'
+    },
+    '/goods/*':{
+      target:'http://localhost:3000'
+    },
+    '/users/**':{
+      target:'http://localhost:3000'
+    }
+  },
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">mongoose</code>通过<code class="language-plaintext highlighter-rouge">update</code>删除<code class="language-plaintext highlighter-rouge">$pull</code></li>
+  <li>在组件里面定义的属性和自定义事件叫<code class="language-plaintext highlighter-rouge">mdshow</code>和<code class="language-plaintext highlighter-rouge">close</code>，父组件在使用的时候必须使用这个名字</li>
+</ul>
+
+<h4 id="imoocmallserverroutesusersjs新增删除商品接口"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/users.js</code>新增删除商品接口:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//购物车商品删除
+router.post("/cartDel", function (req,res,next) {
+  var userId = req.cookies.userId,productId = req.body.productId;
+  User.update({
+    userId:userId
+  },{
+    $pull:{
+      'cartList':{
+        'productId':productId
+      }
+    }
+  }, function (err,doc) {
+    if(err){
+      res.json({
+        status:'1',
+        msg:err.message,
+        result:''
+      });
+    }else{
+      res.json({
+        status:'0',
+        msg:'',
+        result:'suc'
+      });
+    }
+  });
+});
+</code></pre></div></div>
+
+<h4 id="imoocmallsrcviewscartvue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/Cart.vue</code>代码:</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;nav-header&gt;&lt;/nav-header&gt;
+    &lt;nav-bread&gt;
+      &lt;span&gt;My Cart&lt;/span&gt;
+    &lt;/nav-bread&gt;
+    &lt;svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
+         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+      &lt;defs&gt;
+        &lt;symbol id="icon-add" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;add2&lt;/title&gt;
+          &lt;path class="path1"
+                d="M15 17h-13.664c-0.554 0-1.002-0.446-1.002-1 0-0.552 0.452-1 1.002-1h13.664v-13.664c0-0.554 0.446-1.002 1-1.002 0.552 0 1 0.452 1 1.002v13.664h13.664c0.554 0 1.002 0.446 1.002 1 0 0.552-0.452 1-1.002 1h-13.664v13.664c0 0.554-0.446 1.002-1 1.002-0.552 0-1-0.452-1-1.002v-13.664z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+        &lt;symbol id="icon-ok" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;ok&lt;/title&gt;
+          &lt;path class="path1"
+                d="M31.020 0.438c-0.512-0.363-1.135-0.507-1.757-0.406s-1.166 0.435-1.529 0.937l-17.965 24.679-5.753-5.67c-0.445-0.438-1.035-0.679-1.664-0.679s-1.219 0.241-1.664 0.679c-0.917 0.904-0.917 2.375 0 3.279l7.712 7.6c0.438 0.432 1.045 0.681 1.665 0.681l0.195-0.008c0.688-0.057 1.314-0.406 1.717-0.959l19.582-26.9c0.754-1.038 0.512-2.488-0.538-3.233z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+        &lt;symbol id="icon-edit" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;edit&lt;/title&gt;
+          &lt;path class="path1"
+                d="M28.287 8.51l-4.805-4.806 0.831-0.831c0.472-0.472 1.086-0.777 1.564-0.777 0.248 0 0.452 0.082 0.622 0.253l3.143 3.144c0.539 0.54 0.133 1.529-0.524 2.186l-0.831 0.831zM26.805 9.992l-1.138 1.138-4.805-4.806 1.138-1.138 4.805 4.806zM24.186 12.612l-14.758 14.762-4.805-4.806 14.758-14.762 4.805 4.806zM7.379 28.288l-4.892 1.224 1.223-4.894 3.669 3.67zM31.123 4.011l-3.143-3.144c-0.567-0.567-1.294-0.867-2.103-0.867-1.036 0-2.174 0.52-3.045 1.391l-20.429 20.436c-0.135 0.134-0.23 0.302-0.276 0.487l-2.095 8.385c-0.089 0.355 0.017 0.736 0.276 0.995 0.198 0.198 0.461 0.307 0.741 0.307 0.085 0 0.171-0.010 0.254-0.031l8.381-2.096c0.185-0.047 0.354-0.142 0.487-0.276l20.43-20.436c1.409-1.41 2.042-3.632 0.524-5.15v0z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+        &lt;symbol id="icon-del" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;delete&lt;/title&gt;
+          &lt;path class="path1"
+                d="M11.355 4.129v-2.065h9.29v2.065h-9.29zM6.194 29.935v-23.742h19.613v23.742h-19.613zM30.968 4.129h-8.258v-3.097c0-0.569-0.463-1.032-1.032-1.032h-11.355c-0.569 0-1.032 0.463-1.032 1.032v3.097h-8.258c-0.569 0-1.032 0.463-1.032 1.032s0.463 1.032 1.032 1.032h3.097v24.774c0 0.569 0.463 1.032 1.032 1.032h21.677c0.569 0 1.032-0.463 1.032-1.032v-24.774h3.097c0.569 0 1.032-0.463 1.032-1.032s-0.463-1.032-1.032-1.032v0z"&gt;&lt;/path&gt;
+          &lt;path class="path2"
+                d="M10.323 9.806c-0.569 0-1.032 0.463-1.032 1.032v14.452c0 0.569 0.463 1.032 1.032 1.032s1.032-0.463 1.032-1.032v-14.452c0-0.569-0.463-1.032-1.032-1.032z"&gt;&lt;/path&gt;
+          &lt;path class="path3"
+                d="M16 9.806c-0.569 0-1.032 0.463-1.032 1.032v14.452c0 0.569 0.463 1.032 1.032 1.032s1.032-0.463 1.032-1.032v-14.452c0-0.569-0.463-1.032-1.032-1.032z"&gt;&lt;/path&gt;
+          &lt;path class="path4"
+                d="M21.677 9.806c-0.569 0-1.032 0.463-1.032 1.032v14.452c0 0.569 0.463 1.032 1.032 1.032s1.032-0.463 1.032-1.032v-14.452c0-0.569-0.463-1.032-1.032-1.032z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+        &lt;symbol id="icon-clock" viewBox="0 0 32 32"&gt;
+          &lt;title&gt;clock&lt;/title&gt;
+          &lt;path class="path1" fill="#605f5f"
+                d="M16 29c-7.168 0-13-5.831-13-13s5.832-13 13-13c7.168 0 13 5.832 13 13s-5.832 13-13 13zM16 0c-8.822 0-16 7.178-16 16s7.178 16 16 16c8.822 0 16-7.178 16-16s-7.178-16-16-16z"&gt;&lt;/path&gt;
+          &lt;path class="path2" fill="#605f5f"
+                d="M23.958 21.837l-6.958-6.489v-6.282c0-0.827-0.673-1.5-1.5-1.5s-1.5 0.673-1.5 1.5v6.934c0 0.414 0.174 0.814 0.477 1.098l7.435 6.934c0.279 0.259 0.642 0.402 1.023 0.402 0.415 0 0.814-0.174 1.096-0.477 0.564-0.605 0.532-1.555-0.073-2.12z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+      &lt;/defs&gt;
+    &lt;/svg&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="cart"&gt;
+        &lt;div class="page-title-normal"&gt;
+          &lt;h2 class="page-title-h2"&gt;&lt;span&gt;My Cart&lt;/span&gt;&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class="item-list-wrap"&gt;
+          &lt;div class="cart-item"&gt;
+            &lt;div class="cart-item-head"&gt;
+              &lt;ul&gt;
+                &lt;li&gt;Items&lt;/li&gt;
+                &lt;li&gt;Price&lt;/li&gt;
+                &lt;li&gt;Quantity&lt;/li&gt;
+                &lt;li&gt;Subtotal&lt;/li&gt;
+                &lt;li&gt;Edit&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;ul class="cart-item-list"&gt;
+              &lt;li v-for="(item,index) in cartList"&gt;
+                &lt;div class="cart-tab-1"&gt;
+                  &lt;div class="cart-item-check"&gt;
+                    &lt;a href="javascipt:;" class="checkbox-btn item-check-btn"&gt;
+                      &lt;svg class="icon icon-ok"&gt;
+                        &lt;use xlink:href="#icon-ok"&gt;&lt;/use&gt;
+                      &lt;/svg&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cart-item-pic"&gt;
+                    &lt;img v-bind:src="'static/'+item.productImage" v-bind:alt="item.productName"&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cart-item-title"&gt;
+                    &lt;div class="item-name"&gt;{{item.productName}}&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cart-tab-2"&gt;
+                  &lt;div class="item-price"&gt;{{item.salePrice}}&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cart-tab-3"&gt;
+                  &lt;div class="item-quantity"&gt;
+                    &lt;div class="select-self select-self-open"&gt;
+                      &lt;div class="select-self-area"&gt;
+                        &lt;a class="input-sub"&gt;-&lt;/a&gt;
+                        &lt;span class="select-ipt"&gt;{{item.productNum}}&lt;/span&gt;
+                        &lt;a class="input-add"&gt;+&lt;/a&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cart-tab-4"&gt;
+                  &lt;div class="item-price-total"&gt;{{item.salePrice*item.productNum}}&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cart-tab-5"&gt;
+                  &lt;div class="cart-item-opration"&gt;
+                    &lt;a href="javascript:;" class="item-edit-btn" @click="delCartConfirm(item.productId)"&gt;
+                      &lt;svg class="icon icon-del"&gt;
+                        &lt;use xlink:href="#icon-del"&gt;&lt;/use&gt;
+                      &lt;/svg&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="cart-foot-wrap"&gt;
+          &lt;div class="cart-foot-inner"&gt;
+            &lt;div class="cart-foot-l"&gt;
+              &lt;div class="item-all-check"&gt;
+                &lt;a href="javascipt:;"&gt;
+                  &lt;span class="checkbox-btn item-check-btn"&gt;
+                      &lt;svg class="icon icon-ok"&gt;&lt;use xlink:href="#icon-ok"/&gt;&lt;/svg&gt;
+                  &lt;/span&gt;
+                  &lt;span&gt;Select all&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="cart-foot-r"&gt;
+              &lt;div class="item-total"&gt;
+                Item total: &lt;span class="total-price"&gt;500&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class="btn-wrap"&gt;
+                &lt;a class="btn btn--red"&gt;Checkout&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;Modal :mdShow="modalCofirm" @close="closeModal"&gt;
+      &lt;p slot="message" &gt;
+        你确定要删除此条数据吗？
+      &lt;/p&gt;
+      &lt;div slot="btnGroup"&gt;
+        &lt;a class="btn btn--m" href="javascript:;" @click="delCart"&gt;确认&lt;/a&gt;
+        &lt;a class="btn btn--m" href="javascript:;" @click="modalCofirm = false"&gt;关闭&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/Modal&gt;
+    &lt;nav-footer&gt;&lt;/nav-footer&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;style&gt;
+  .input-sub,.input-add{
+    min-width: 40px;
+    height: 100%;
+    border: 0;
+    color: #605F5F;
+    text-align: center;
+    font-size: 16px;
+    overflow: hidden;
+    display: inline-block;
+    background: #f0f0f0;
+  }
+  .item-quantity .select-self-area{
+    background:none;
+    border: 1px solid #f0f0f0;
+  }
+  .item-quantity .select-self-area .select-ipt{
+    display: inline-block;
+    padding:0 3px;
+    width: 30px;
+    min-width: 30px;
+    text-align: center;
+  }
+&lt;/style&gt;
+&lt;script&gt;
+  import './../assets/css/checkout.css'
+  import './../assets/css/base.css'
+  import './../assets/css/product.css'
+  import NavHeader from './NavHeader.vue'
+  import NavFooter from './NavFooter.vue'
+  import NavBread from './NavBread.vue'
+  import Modal from './../components/Modal.vue'
+  import axios from 'axios'
+
+  export default{
+    data(){
+      return {
+        cartList: [],  //购物车列表
+        modalCofirm: false, //删除提示的模态框是否隐藏
+        productId: '' //记录将要删除的产品ID
+      }
+    },
+    mounted(){
+        this.init();
+    },
+    components: {
+      NavHeader,
+      NavFooter,
+      NavBread,
+      Modal
+    },
+    methods:{
+      init(){
+        axios.get("users/cartList").then((response)=&gt;{
+          let res = response.data;
+          this.cartList = res.result;
+
+        });
+      },
+      closeModal () {   //关闭模态框
+        this.modalCofirm = false;
+      },
+      delCartConfirm (productId){   //点击删除弹框的方法
+        this.modalCofirm = true; //显示删除模态框
+        this.productId = productId;
+      },
+      delCart(){    //删除商品
+        axios.post("/users/cartDel",{
+          productId:this.productId
+        }).then((response)=&gt;{
+          let res = response.data;
+          if(res.status == '0'){
+            this.modalCofirm = false;
+            // var delCount = this.delItem.productNum;
+            // this.$store.commit("updateCartCount",-delCount);
+            this.init();
+          }
+        });
+      }
+
+    }
+  }
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h2 id="11-3-商品修改功能实现">11-3 商品修改功能实现</h2>
+
+<!--  -->
+
+:ET

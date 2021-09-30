@@ -1,0 +1,403 @@
+I"\d<ul id="markdown-toc">
+  <li><a href="#一近期审核被拒总结" id="markdown-toc-一近期审核被拒总结">（一）、近期审核被拒总结：</a>    <ul>
+      <li><a href="#审核条款-21-被拒" id="markdown-toc-审核条款-21-被拒"><strong>审核条款 2.1 被拒：</strong></a></li>
+      <li><a href="#审核条款-21-被拒-1" id="markdown-toc-审核条款-21-被拒-1"><strong>审核条款 2.1 被拒：</strong></a></li>
+      <li><a href="#审核条款-21-被拒-2" id="markdown-toc-审核条款-21-被拒-2"><strong>审核条款 2.1 被拒：</strong></a></li>
+      <li><a href="#审核条款-251-被拒" id="markdown-toc-审核条款-251-被拒"><strong>审核条款 2.5.1 被拒：</strong></a></li>
+      <li><a href="#审核条款-254-被拒" id="markdown-toc-审核条款-254-被拒"><strong>审核条款 2.5.4 被拒：</strong></a></li>
+      <li><a href="#审核条款-41-被拒" id="markdown-toc-审核条款-41-被拒"><strong>审核条款 4.1 被拒</strong>：</a></li>
+      <li><a href="#审核条款-43-被拒" id="markdown-toc-审核条款-43-被拒"><strong>审核条款 4.3 被拒</strong>：</a></li>
+      <li><a href="#审核条款-512-被拒" id="markdown-toc-审核条款-512-被拒"><strong>审核条款 5.1.2 被拒：</strong></a></li>
+      <li><a href="#审核条款-521-被拒" id="markdown-toc-审核条款-521-被拒"><strong>审核条款 5.2.1 被拒：</strong></a></li>
+    </ul>
+  </li>
+  <li><a href="#二感想和防止再次被拒" id="markdown-toc-二感想和防止再次被拒">（二）、感想和防止再次被拒：</a>    <ul>
+      <li><a href="#后台权限使用一定要慎重" id="markdown-toc-后台权限使用一定要慎重">①、后台权限使用一定要慎重</a></li>
+      <li><a href="#马甲app开发需谨慎" id="markdown-toc-马甲app开发需谨慎">②、马甲APP开发需谨慎</a></li>
+      <li><a href="#app-和硬件设备交互使用审核时候需要重点解释说明" id="markdown-toc-app-和硬件设备交互使用审核时候需要重点解释说明">③、APP 和硬件设备交互使用审核时候需要重点解释说明。</a></li>
+      <li><a href="#审核时候尽可能的写好备注" id="markdown-toc-审核时候尽可能的写好备注">④、审核时候，尽可能的写好备注</a></li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h2 id="一近期审核被拒总结">（一）、近期审核被拒总结：</h2>
+
+<h3 id="审核条款-21-被拒"><strong>审核条款 2.1 被拒：</strong></h3>
+<ul>
+  <li><strong>APP 完整性被拒：</strong>
+    <ul>
+      <li><strong>如下情况属于元数据被拒：</strong>
+        <ul>
+          <li><strong>元数据被拒可以直接回复邮件解释情况，不用再次提交二进制文件</strong></li>
+        </ul>
+      </li>
+      <li>需要提供更多辅助审核的材料</li>
+      <li>一般是涉及硬件交互，要求邮寄硬件到美国</li>
+      <li>或者被要求需要更加详细的描述主要功能特征</li>
+    </ul>
+
+    <blockquote>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 		2. 1 Performance: App Completeness  Guideline 2.1 - Information Needed
+</code></pre></div>      </div>
+
+      <p>We have started the review of your app, but we are not able to continue because we need the associated hardware to fully assess your app features.</p>
+
+      <p>Next Steps<br />
+ To help us proceed with the review of your app, please send the necessary hardware/accessory to the address below.<br />
+ NOTE: Please include your app name and app ID in the shipment; failure to provide this information can delay the review process.<br />
+ Additionally, it may take several business days for us to receive the hardware once it has been delivered to Apple.</p>
+
+      <p>Apple<br />
+ One Apple Park Way<br />
+ M/S: 124-2APP<br />
+ Cupertino, CA 95014<br />
+ USA</p>
+    </blockquote>
+  </li>
+  <li><strong>解决方案：</strong>
+    <ul>
+      <li>我自己用的应对套路中文版本，英文版本自行翻译。</li>
+      <li>主要强调硬件设备的唯一性，独特性，邮寄方案真实不可行等。</li>
+      <li>示例如下：</li>
+    </ul>
+
+    <blockquote>
+      <p>尊敬的苹果审核团队：<br />
+  感谢您对我们的App耐心审核。请仔细看看演示视，地址是：https://youtu.be/nupqFYRNXMU。 我们应用只有一个功能是蓝牙控制设备联网。设备默认是4G网络，可以通过应用连接到WiFi网络。我们的应用和设备只在中国地区销售，不涉及其他国家。硬件设备所需要的电源标准只适合中国地区，邮寄到你们那里硬件设备是无法正常充电使用的。你们要求我们邮寄设备去“One Apple Park Way”。我们的硬件设备非常昂贵，邮寄过程耗时间。这是非常困难的把设备邮寄到你们那里。我们应用真的着急上线。<br />
+  真诚致谢！</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="审核条款-21-被拒-1"><strong>审核条款 2.1 被拒：</strong></h3>
+<ul>
+  <li><strong>APP 完整性被拒：</strong>
+    <ul>
+      <li>审核人员不是很理解你发布的<code class="language-plaintext highlighter-rouge">APP</code></li>
+      <li>需要你根据审核人员的提问组织中英文双语解释</li>
+    </ul>
+
+    <blockquote>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 		Guideline 2.1 - Information Needed
+</code></pre></div>      </div>
+
+      <p>We have started the review of your app, but we are not able to continue because we need additional information about your app.</p>
+
+      <p>Next Steps</p>
+
+      <p>To help us proceed with the review of your app, please provide detailed information to the following questions. The more information you can provide upfront, the sooner we can complete your review.</p>
+
+      <ul>
+        <li>What are the main features and functionality of your app?</li>
+        <li>Can you provide another demo video demonstrating the feature and functionality?</li>
+      </ul>
+
+      <p>Once you reply to this message in Resolution Center with the requested information, we can proceed with your review.</p>
+
+      <p>Since your App Store Connect status is Metadata Rejected, we do NOT require a new binary. To revise the metadata, visit App Store Connect to select your app and revise the desired metadata values. Once you’ve completed all changes, reply to this message in Resolution Center and we will continue the review.</p>
+    </blockquote>
+  </li>
+  <li><strong>解决方案：</strong>
+    <ul>
+      <li>补充更加详细说明。</li>
+      <li>针对审核人员提出的疑问，详细回复解答。尽量围绕问题多写些内容。（用个一两句话解释下你自己觉得靠谱吗？）</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="审核条款-21-被拒-2"><strong>审核条款 2.1 被拒：</strong></h3>
+<ul>
+  <li><strong>APP 完整性被拒：</strong>
+    <ul>
+      <li>乱用了容易产生误解的敏感词</li>
+      <li>不是和医疗相关就不要用“大夫”这个词</li>
+    </ul>
+
+    <blockquote>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 		2. 1 Performance: App Completeness  Dear Developer,
+</code></pre></div>      </div>
+
+      <p>Thank you for your reply.</p>
+
+      <p>Since your app is not relevant to medical use, it would be appropriate to remove 大夫 from your app title to avoid any confusion.</p>
+
+      <p>Best Regards,<br />
+ App Store Review</p>
+    </blockquote>
+  </li>
+  <li><strong>解决方案：</strong>
+    <ul>
+      <li>删除“大夫”重新打包上传审核</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="审核条款-251-被拒"><strong>审核条款 2.5.1 被拒：</strong></h3>
+<ul>
+  <li><strong>软件相关规定被拒</strong>
+    <ul>
+      <li>使用了苹果旧的接口<code class="language-plaintext highlighter-rouge">API</code>，该<code class="language-plaintext highlighter-rouge">API</code>被苹果收回为自己苹果公司内部使用的私有<code class="language-plaintext highlighter-rouge">API</code></li>
+    </ul>
+
+    <blockquote>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * 		Guideline 2.5.1 - Performance - Software Requirements
+</code></pre></div>      </div>
+
+      <p>Your app uses the “prefs:root=” non-public URL scheme, which is a private entity. The use of non-public APIs is not permitted on the App Store because it can lead to a poor user experience should these APIs change.</p>
+
+      <p>Continuing to use or conceal non-public APIs in future submissions of this app may result in the termination of your Apple Developer account, as well as removal of all associated apps from the App Store.</p>
+
+      <p>Next Steps</p>
+
+      <p>To resolve this issue, please revise your app to provide the associated functionality using public APIs or remove the functionality using the “prefs:root” or “App-Prefs:root” URL scheme.</p>
+
+      <p>If there are no alternatives for providing the functionality your app requires, you can file an enhancement request.</p>
+    </blockquote>
+  </li>
+  <li><strong>解决方案：</strong>
+    <ul>
+      <li>移除违规的<code class="language-plaintext highlighter-rouge">API</code>。</li>
+      <li>🍎就是爹，说不让你用就果断不让你用。你再用就给你拒。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="审核条款-254-被拒"><strong>审核条款 2.5.4 被拒：</strong></h3>
+
+<ul>
+  <li><strong>软件相关规定被拒</strong>
+    <ul>
+      <li>使用了后台音频权限，可以后台播放音乐，但是锁屏又木有音乐控制功能。被拒</li>
+      <li>锁屏没有使用<code class="language-plaintext highlighter-rouge">APP</code>时候，后台音频播放是一个无效功能。（可能意思是审核人员纠结锁屏没使用<code class="language-plaintext highlighter-rouge">APP</code>就无法控制音频了）</li>
+    </ul>
+
+    <blockquote>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 		Guideline 2.5.4 - Performance - Software Requirements
+</code></pre></div>      </div>
+
+      <p>Your app declares support for audio in the UIBackgroundModes key in your Info.plist but did not include features that require persistent audio. Specifically, we have received the note in Review Note that “我们的应用是一个语音助手，可以播放音乐。因此我们需要后台播放音频的权限。并且我们的应用可以和已经验证过的蓝牙耳机交互使用， 为此录制了一个视频演示这个功能。视频地址是：https://youtu.be/3plONKZ7aRY”  while the function to play music in the background is an invalid feature of background audio when the users did not use the app. in other words, it is an inappropriate way to use the background audio to play music when the users did not use the app. </p>
+
+      <p>Next Steps</p>
+
+      <p>The audio key is intended for use by apps that provide audible content to the user while in the background, such as music player or streaming audio apps. Please revise your app to provide audible content to the user while the app is in the background or remove the “audio” setting from the UIBackgroundModes key.</p>
+    </blockquote>
+  </li>
+  <li><strong>解决方案：</strong>
+    <ul>
+      <li>添加锁屏音乐控制功能。并重新录制视频演示这个功能。</li>
+      <li>审核人员建议如果不是做专门的音频播放<code class="language-plaintext highlighter-rouge">APP</code>的话建议移除后台音频播放功能。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="审核条款-41-被拒"><strong>审核条款 4.1 被拒</strong>：</h3>
+<ul>
+  <li><strong>设计抄袭</strong>
+    <ul>
+      <li>你的<code class="language-plaintext highlighter-rouge">APP</code>包含使人容易误解的内容</li>
+      <li>这种情况大多数是违规占用了著名的商标</li>
+      <li>比如占用<code class="language-plaintext highlighter-rouge">HYUNDAI</code>商标，之前遇到的也有占用那个<code class="language-plaintext highlighter-rouge">大白(●—●)</code>形象做<code class="language-plaintext highlighter-rouge">logo</code>被拒的</li>
+    </ul>
+
+    <blockquote>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 		4. 1 Design: Copycats
+</code></pre></div>      </div>
+
+      <p>Guideline 4.1 - Design - Copycats</p>
+
+      <p>Your app or its metadata appears to contain misleading content.</p>
+
+      <p>The next submission of this app may require a longer review time, and this app will not be eligible for an expedited review until this issue is resolved.</p>
+
+      <p>Next Steps</p>
+
+      <ul>
+        <li>Review the Copycats section of the App Store Review Guidelines.</li>
+        <li>Ensure your app is compliant with all sections of the App Store Review Guidelines and the Terms &amp; Conditions of the Apple Developer Program.</li>
+        <li>Provide rights to any protected or trademarked content in App Store Connect.</li>
+        <li>Once your app is fully compliant, resubmit your app for review.</li>
+      </ul>
+
+      <p>Submitting apps designed to mislead or harm customers or evade the review process may result in the termination of your Apple Developer Program account. Review the Terms &amp; Conditions of the Apple Developer Program to learn more about our policies regarding termination.</p>
+
+      <p>If you believe your app is compliant with the App Store Review Guidelines, you may submit an appeal.</p>
+
+      <p>You may attach documentary evidence in the App Review Information section in App Store Connect. In accordance with section 3.2(f) of the Apple Developer Program License Agreement, you acknowledge that submitting falsified or fraudulent documentation can result in the termination of your Apple Developer Program account and the removal of your apps from the App Store. Once Legal has reviewed your documentation and confirms its validity, we will proceed with the review of your app.</p>
+
+      <p>Since your App Store Connect status is Rejected, a new binary will be required.</p>
+    </blockquote>
+  </li>
+  <li><strong>解决方案：</strong>
+    <ul>
+      <li>修改使人误解的内容。</li>
+      <li>不要占用著名商标。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="审核条款-43-被拒"><strong>审核条款 4.3 被拒</strong>：</h3>
+
+<ul>
+  <li>垃圾设计。垃圾设计。
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">4.3 </code>被拒主要是被认定为马甲<code class="language-plaintext highlighter-rouge">APP</code>（<code class="language-plaintext highlighter-rouge">UI</code>换壳子，功能逻辑和界面布局一模一样）。</li>
+      <li>马甲<code class="language-plaintext highlighter-rouge">APP</code>原始流行于 彩票、棋牌、游戏 类型项目。这些项目总爱换一套<code class="language-plaintext highlighter-rouge">UI</code>皮肤疯狂上线。总有一个说不定火了。苹果17年开始严打这类型<code class="language-plaintext highlighter-rouge">APP</code></li>
+      <li>后期这种只换<code class="language-plaintext highlighter-rouge">UI</code>图标的马甲<code class="language-plaintext highlighter-rouge">APP</code>也是愈加难以通过审核。</li>
+      <li>我司<code class="language-plaintext highlighter-rouge">APP</code>被这个情况拒的比较多</li>
+    </ul>
+
+    <blockquote>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 		4. 3 Design: Spam
+</code></pre></div>      </div>
+
+      <p>Guideline 4.3 - Design</p>
+
+      <p>This app duplicates the content and functionality of other apps submitted by you or another developer to the App Store, which is considered a form of spam.</p>
+
+      <p>Apps that simply duplicate content or functionality create clutter, diminish the overall experience for the end user, and reduce the ability of developers to market their apps.</p>
+
+      <p>The next submission of this app may require a longer review time, and this app will not be eligible for an expedited review until this issue is resolved.</p>
+
+      <p>Next Step</p>
+      <ul>
+        <li>Review the Design section of the App Store Review Guidelines.</li>
+        <li>Ensure your app is compliant with all sections of the App Store Review Guidelines and the Terms &amp; Conditions of the Apple Developer Program.</li>
+        <li>Once your app is fully compliant, resubmit your app for review.</li>
+      </ul>
+
+      <p>Submitting apps designed to mislead or harm customers or evade the review process may result in the termination of your Apple Developer Program account. Review the Terms &amp; Conditions of the Apple Developer Program to learn more about our policies regarding termination.</p>
+
+      <p>If you believe your app is compliant with the App Store Review Guidelines, you may submit an appeal. Alternatively, you may provide additional details about your app by replying directly to this message.</p>
+    </blockquote>
+  </li>
+  <li><strong>解决方案：</strong>
+    <ul>
+      <li>目前了解的只有加混淆代码减少原始真实代码的比重发布审核。有一定几率还是被拒。</li>
+      <li>重新布局。界面做的真的不一样。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="审核条款-512-被拒"><strong>审核条款 5.1.2 被拒：</strong></h3>
+<ul>
+  <li><strong>用户隐私数据的使用和分享被拒</strong>
+    <ul>
+      <li>这个被拒由于<code class="language-plaintext highlighter-rouge">APP</code>进行了把了通讯录上传到服务器被拒。</li>
+      <li>被拒邮寄中要求提供用户隐私协议的勾选同意页面。</li>
+    </ul>
+
+    <blockquote>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 		Guideline 5.1.2 - Legal - Privacy - Data Use and Sharing
+</code></pre></div>      </div>
+
+      <p>Your app accesses user data from the device but does not have the required precautions in place.</p>
+
+      <p>Specifically, your current model alert did not make it clear to the users that their personal data will be uploaded to your server or not and there is no privacy URL in the metadata.</p>
+
+      <p>Next Steps</p>
+
+      <p>To collect personal data with your app, you must make it clear to the user that their personal data will be uploaded to your server and you must obtain the user’s consent before the data is uploaded. You must also have a Privacy Policy URL and ensure that the URL you provide directs users to your privacy policy.</p>
+
+      <ul>
+        <li>Starting with iOS 6, there are keys for specifying the reason the app will access the user’s protected data. When the access prompt is displayed, the purpose specified in these keys is displayed in that dialog box. If your app will be transmitting protected user data, the usage string in your access request should clearly inform the user that their data will be uploaded to your server if they consent.</li>
+      </ul>
+
+      <p>Resources</p>
+
+      <p>For more information on these keys, please review the Information Property List Key Reference.</p>
+    </blockquote>
+  </li>
+  <li><strong>解决方案：</strong>
+    <ul>
+      <li>和后台沟通加一个审核开关接口</li>
+      <li>利用审核开关接口，在审核期间屏蔽掉通讯录上传功能</li>
+      <li>或者按照要求加一个用户隐私数据同意上传的协议勾选页面。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="审核条款-521-被拒"><strong>审核条款 5.2.1 被拒：</strong></h3>
+<ul>
+  <li><strong>知识产权被拒</strong>
+    <ul>
+      <li>涉及到 医疗、彩票、金融、赌博等等 就会被要求提供相关资质文件。</li>
+      <li>有可能音乐的下载也会因为这个被拒。国外比较注重音乐版权。</li>
+      <li>苹果对这些类型<code class="language-plaintext highlighter-rouge">APP</code>审核会更加严厉。</li>
+      <li>以个人民义注册的苹果账号不能发布医疗<code class="language-plaintext highlighter-rouge">APP</code>。需要要求医疗机构的公司账号发布。</li>
+    </ul>
+
+    <blockquote>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 		Guideline 5.2.1 - Legal - Intellectual Property
+</code></pre></div>      </div>
+
+      <p>The seller and company names associated with your app do not reflect the name “Medical Institution” in the app or its metadata, as required by Guideline 5.2.1 of the App Store Review Guidelines.</p>
+
+      <p>Next Steps</p>
+
+      <p>Your app must be published under a seller name and company name that reflects the Medical Institution name. If you have developed this app on behalf of a client, please advise your client to add you to the development team of their Apple Developer account. If your client does not yet have an Apple Developer account, they can enroll in the Apple Developer Program through the Apple Developer portal.</p>
+
+      <p>Note that submitting documentation showing permission to publish this app on behalf of the content owner or institution will not resolve this issue. This app must be submitted under the content owner’s own Apple Developer account.</p>
+
+      <p>To request a fee waiver for nonprofit organizations, accredited educational institutions, or U.S.-based government entities, follow the steps outlined on the Apple Developer Program Membership Fee Waivers page.</p>
+
+      <p>Once created, you cannot change your seller name or company name in App Store Connect. For assistance with changing your company name or seller name, you will need to contact us. Select Membership and Account to request an update to your Apple Developer account information.</p>
+
+      <p>Since your App Store Connect status is Rejected, a new binary will be required.</p>
+    </blockquote>
+  </li>
+  <li><strong>解决方案：</strong>
+    <ul>
+      <li>描述和备注介绍中尽量不要出现敏感字眼。</li>
+      <li>真实做这些类型<code class="language-plaintext highlighter-rouge">APP</code>那就要提供完整的资质证明文件。</li>
+      <li>美好大夫机器人项目由于备注不小心写了医学健康常识字样被这个拒，后来删除敏感词重新提交。</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="二感想和防止再次被拒">（二）、感想和防止再次被拒：</h2>
+
+<h3 id="后台权限使用一定要慎重">①、后台权限使用一定要慎重</h3>
+
+<ul>
+  <li>开启的后台权限越多审核被拒几率越大。减少后台权限的使用可以极大增加审核几率。</li>
+  <li>苹果手机电池一般就一千多毫安，安卓普遍都三千多。后台权限越多手机就越耗电池。那苹果就越严抓这个。</li>
+  <li><strong>实在非要涉及的后台权限。审核时候需要附带视频演示后台权限什么功能使用了。苹果严禁滥用后台权限又不做正规的功能的 APP 。</strong>（主要是耗电）</li>
+  <li><strong>目前我司 APP 中的后台权限有：</strong>
+    <ul>
+      <li>后台音频播放权限</li>
+      <li>后台导航权限</li>
+      <li>后台蓝牙连接权限</li>
+      <li>所有后台权限一共才8个，<code class="language-plaintext highlighter-rouge">APP</code>就占了4个。🤣</li>
+    </ul>
+
+    <p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/TlsTv4.jpg" alt="" /></p>
+  </li>
+</ul>
+
+<h3 id="马甲app开发需谨慎">②、马甲APP开发需谨慎</h3>
+<ul>
+  <li>只换<strong>UI</strong>图标。界面的布局，和功能完全一样的这种<code class="language-plaintext highlighter-rouge">APP</code>是就是马甲<code class="language-plaintext highlighter-rouge">APP</code>。</li>
+  <li>现阶段苹果严抓的类型<code class="language-plaintext highlighter-rouge">APP</code>。这种<code class="language-plaintext highlighter-rouge">APP</code>苹果就是认为是垃圾，抄袭。经常被 <code class="language-plaintext highlighter-rouge">4.3</code>条款拒绝</li>
+</ul>
+
+<h3 id="app-和硬件设备交互使用审核时候需要重点解释说明">③、APP 和硬件设备交互使用审核时候需要重点解释说明。</h3>
+<ul>
+  <li><strong>当 <code class="language-plaintext highlighter-rouge">APP</code>涉及和硬件交互时候，一定要录制视频说明演示和硬件交互使用</strong></li>
+  <li><strong>还要解释硬件设备的唯一性，特殊性。防止被要求邮寄硬件到美国审核。</strong></li>
+</ul>
+
+<h3 id="审核时候尽可能的写好备注">④、审核时候，尽可能的写好备注</h3>
+<ul>
+  <li><strong>一个好的审核备注可以极大增加<code class="language-plaintext highlighter-rouge">APP</code>审核通过几率</strong>。</li>
+  <li>备注写的好，写的足够详细。审核人员才好更加全面的了解审核<code class="language-plaintext highlighter-rouge">APP</code>。</li>
+  <li><strong>需要专门的审核专员 组织比较好的 英文备注 和 <code class="language-plaintext highlighter-rouge">APP</code>一起发布审核。</strong>
+    <ul>
+      <li>目的还是让审核人员更加容易理解<code class="language-plaintext highlighter-rouge">APP</code>，毕竟审核人员是美国人，人家只爱看英文。发中文解释半天人家也很难看懂。</li>
+    </ul>
+  </li>
+</ul>
+
+:ET

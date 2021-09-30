@@ -1,0 +1,55 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#xcode-中删除一整行代码的快捷键设置" id="markdown-toc-xcode-中删除一整行代码的快捷键设置">Xcode 中删除一整行代码的快捷键设置</a>    <ul>
+      <li><a href="#一介绍" id="markdown-toc-一介绍">(一)、介绍</a></li>
+    </ul>
+  </li>
+  <li><a href="#二解决方案" id="markdown-toc-二解决方案">(二)、解决方案</a></li>
+</ul>
+
+<h2 id="xcode-中删除一整行代码的快捷键设置">Xcode 中删除一整行代码的快捷键设置</h2>
+
+<h3 id="一介绍">(一)、介绍</h3>
+
+<p>升级到<code class="language-plaintext highlighter-rouge">Xcdoe9</code>后面。。之前在<code class="language-plaintext highlighter-rouge">Xcode8</code> 中自定义的 <strong>delete line</strong> 快捷键好像失效了。</p>
+
+<p>呃呃呃~~~其实 <code class="language-plaintext highlighter-rouge">delete line</code>是<code class="language-plaintext highlighter-rouge">Xcode8</code>自带的。但是之前我发现不管用。后我自己折腾加了个快捷键 <code class="language-plaintext highlighter-rouge">cmd + d</code>就可以直接删除一整行了。</p>
+
+<p>这个快捷键我已经严重依赖了。。可是当我升级到<code class="language-plaintext highlighter-rouge">Xcode9</code>后。发现不管用了。。</p>
+
+<p>但是当我仔细研究后发现 ：<br />
+<strong>moveToEndOfLine</strong>、<strong>deleteToBeginningOfLine</strong>、<strong>Delete to End of Paragraph</strong></p>
+
+<p>这三个凑一起就是删除一行的意思。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;string&gt;moveToEndOfLine:&lt;/string&gt;
+&lt;key&gt;Move to End of Line Extending Selection&lt;/key&gt;
+
+&lt;key&gt;Delete to Beginning of Line&lt;/key&gt;
+&lt;string&gt;deleteToBeginningOfLine:&lt;/string&gt;
+
+&lt;key&gt;Delete to End of Paragraph&lt;/key&gt;
+&lt;string&gt;deleteToEndOfParagraph:&lt;/string&gt;
+</code></pre></div></div>
+
+<h2 id="二解决方案">(二)、解决方案</h2>
+
+<p>如上那三个快捷方式 在 <code class="language-plaintext highlighter-rouge">/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Resources/IDETextKeyBindingSet.plist</code>这个文件里面可以查找到。</p>
+
+<p>或者在 <code class="language-plaintext highlighter-rouge">Finder</code> 中输入 <code class="language-plaintext highlighter-rouge">⌘ + G</code>,然后复制这个路径粘贴并回车。</p>
+
+<p>打开 <code class="language-plaintext highlighter-rouge">IDETextKeyBindingSet.plist </code>，用 <code class="language-plaintext highlighter-rouge">Sublime Text</code> 或者 <code class="language-plaintext highlighter-rouge">Vim</code> 都可以。添加一个新的字典成员</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;key&gt;Custom Deletions&lt;/key&gt;
+        &lt;dict&gt;
+        &lt;key&gt;Delete Current Line &lt;/key&gt;
+        &lt;string&gt;moveToEndOfLine:, deleteToBeginningOfLine:, deleteToEndOfParagraph:&lt;/string&gt; 
+        &lt;/dict&gt;
+</code></pre></div></div>
+
+<p>保存并重启 <code class="language-plaintext highlighter-rouge">Xcode</code>。打开<code class="language-plaintext highlighter-rouge">Xcode Preferences</code> ,点击 <code class="language-plaintext highlighter-rouge">Key Bindings</code><br />
+在搜索框中输入 <code class="language-plaintext highlighter-rouge">Delete</code>，找到<code class="language-plaintext highlighter-rouge">Delete Current Line</code><br />
+双击 <code class="language-plaintext highlighter-rouge">Key</code>,设置为<code class="language-plaintext highlighter-rouge">⌘+D</code>(我设置的是这个键 。当然你可以设置为你喜欢的快捷键)。</p>
+
+<p><strong>说明：</strong>有个缺点就是撤销的时候要连续撤销两次才会恢复删除。。这点不然<code class="language-plaintext highlighter-rouge">Xcode</code>自带的 <code class="language-plaintext highlighter-rouge">delete line</code> 撤销好用。只可惜不知什么原因 <code class="language-plaintext highlighter-rouge">delete line</code>在 <code class="language-plaintext highlighter-rouge">Xcode9</code>里面用不了啊啊 O(∩_∩)O~</p>
+
+:ET

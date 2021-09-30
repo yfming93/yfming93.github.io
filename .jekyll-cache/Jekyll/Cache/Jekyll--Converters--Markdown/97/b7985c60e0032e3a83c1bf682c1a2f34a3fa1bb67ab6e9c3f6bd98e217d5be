@@ -1,0 +1,330 @@
+I"�@<ul id="markdown-toc">
+  <li><a href="#一引言" id="markdown-toc-一引言">一、引言：</a></li>
+  <li><a href="#二各大直播云部分技术指标对比" id="markdown-toc-二各大直播云部分技术指标对比">二、各大直播云部分技术指标对比:</a>    <ul>
+      <li><a href="#1直播技术难度比点播更大但不代表直播好的点播就一定好因此需要根据视频业务的实际需求和自身技术实力进行决策" id="markdown-toc-1直播技术难度比点播更大但不代表直播好的点播就一定好因此需要根据视频业务的实际需求和自身技术实力进行决策">1、直播技术难度比点播更大，但不代表直播好的点播就一定好，因此需要根据视频业务的实际需求和自身技术实力进行决策。</a></li>
+      <li><a href="#2稳定性-对于视频云服务来说稳定性不止于数据中心层更需要考虑视频流链路的稳定包括对弱网环境的处理对卡顿延迟现象有极地的容忍度" id="markdown-toc-2稳定性-对于视频云服务来说稳定性不止于数据中心层更需要考虑视频流链路的稳定包括对弱网环境的处理对卡顿延迟现象有极地的容忍度">2、稳定性 ，对于视频云服务来说，稳定性不止于数据中心层，更需要考虑视频流链路的稳定，包括对弱网环境的处理，对卡顿、延迟现象有极地的容忍度。</a></li>
+      <li><a href="#3支持场景就前面的分析来看" id="markdown-toc-3支持场景就前面的分析来看">3、支持场景就前面的分析来看</a></li>
+      <li><a href="#4-技术支持-" id="markdown-toc-4-技术支持-">4、 技术支持 。</a></li>
+    </ul>
+  </li>
+  <li><a href="#三金山直播云-和-七牛直播云-部分技术不同" id="markdown-toc-三金山直播云-和-七牛直播云-部分技术不同">三、金山直播云 和 七牛直播云 部分技术不同：</a></li>
+  <li><a href="#三综上所述推荐使用-金山直播云" id="markdown-toc-三综上所述推荐使用-金山直播云">三、综上所述：推荐使用 金山直播云。</a></li>
+</ul>
+
+<h1 id="一引言">一、引言：</h1>
+
+<blockquote>
+  <p>今天公司技术总监扔给我一个任务。对 <a href="https://developer.qiniu.com/sdk#official-sdk">七牛直播云</a> 和 <a href="https://www.ksyun.com/">金山直播云</a> 的调研对比。然后选出合适我们公司的直播云产品。</p>
+</blockquote>
+
+<p>于是乎查很多资料进行对比选型。之前我做了个包含直播模块的产品 <a href="https://itunes.apple.com/cn/app/fo-xue-yuan/id1179906438?mt=8">FO学院</a>。里面的直播模块采用的金山云。。当时也是技术总监直接告知使用金山云这个。如今出于对优质产品的追求，近期项目也有可能涉及直播模块。于是想货比三家。选个好的合适公司的直播云平台，为后期直播云技术选型做铺垫。</p>
+
+<h1 id="二各大直播云部分技术指标对比">二、各大直播云部分技术指标对比:</h1>
+
+<blockquote>
+  <p>本部分主要介绍各大主流直播云。金山云 和 七牛云 不同之处可直接查看结尾第三部分。<br /><br />
+【部分图片截取至知乎】</p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="1直播技术难度比点播更大但不代表直播好的点播就一定好因此需要根据视频业务的实际需求和自身技术实力进行决策">1、直播技术难度比点播更大，但不代表直播好的点播就一定好，因此需要根据视频业务的实际需求和自身技术实力进行决策。</h3>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/m29bLc.jpg" alt="" /></p>
+
+<p>不难发现，各个视频云产品在核心功能上大同小异，但因为分别和各自平台不同的云服务矩阵结合，这使得他们有着各自的特点。</p>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>直播平台</th>
+      <th>特点描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>腾讯云视频：</td>
+      <td>互动直播方案比较成熟，与腾讯云通信(IM)结合紧密，业务集成度较高。</td>
+    </tr>
+    <tr>
+      <td>七牛直播云：</td>
+      <td>沿袭七牛云的精品路线，侧重于直播，开放云端 API 实现透明播控管理，同时CDN节点相对要少一些。</td>
+    </tr>
+    <tr>
+      <td>金山视频云：</td>
+      <td>点播数据挖掘、H.265编码其特色(当然H.265需要视频源高清而且终端性能强劲才有明显效果)，客户端SDK集中在移动端，不过直播还支持OTT播放盒、超级电视等多屏播放。</td>
+    </tr>
+    <tr>
+      <td>网易视频云：</td>
+      <td>功能相对完善，同时支持实时互动直播，而且具有各种场景的完整解决方案，拥有千万级并发量，SDK也非常全面。好吧，其实网易视频云的最大优势，就是接入方便，新手也只需一天就可以为APP接入音视频功能。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2稳定性-对于视频云服务来说稳定性不止于数据中心层更需要考虑视频流链路的稳定包括对弱网环境的处理对卡顿延迟现象有极地的容忍度">2、稳定性 ，对于视频云服务来说，稳定性不止于数据中心层，更需要考虑视频流链路的稳定，包括对弱网环境的处理，对卡顿、延迟现象有极地的容忍度。</h3>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/s4PeCR.jpg" alt="" /></p>
+
+<p>从一定程度上说，自建机房意味着具备专业的运维团队、更强的突发事件应对能力、更高效的突发事件响应速度，而这些因素恰恰是提供稳定服务的关键。此外，传输机制保证了数据的安全性，网络QoS策略则能够保障复杂网络下的流畅直播体验。而服务模式决定了是否能够快速响应客户的技术、服务诉求。</p>
+
+<h3 id="3支持场景就前面的分析来看">3、支持场景就前面的分析来看</h3>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/Yg1VmS.jpg" alt="" /></p>
+
+<p>对比来看，网易视频云和腾讯直播云 基于开展本公司视频业务的技术积累研发，在综合实力上更有优势，比如说网易视频云针对在线教育场景的解决方案已经在网易云课堂、中国大学MOOC等行业知名产品上得到验证，比较具有说服力。</p>
+
+<p>七牛云作为创业公司，虽然只做直播，但涵盖的场景十分丰富，至少满足了猎奇的需要。</p>
+
+<p>而金山云拥有今日头条等明星级用户，但在场景案例上并没有公布太多，在垂直领域的话语权还亟待考证。</p>
+
+<h3 id="4-技术支持-">4、 技术支持 。</h3>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/pOcj0h.jpg" alt="" /></p>
+
+<p>以上是四款视频云服务产品在四个层面的比较。另外对价格敏感的拥护，还需要注意服务打包和计费方式，比如美颜、转码、鉴黄功能是不是另外收费，CDN是按流量还是按带宽峰值计费，这里就不细说了。</p>
+
+<p>四款视频云产品在场景化和直播功能上都有着不错的表现，网易和腾讯再次承担了市场领军者的角色，而金山和七牛在市场上的影响力也越来越大。说到这里，相信对直播感兴趣的朋友已经有了自己的选择。</p>
+
+<h3>5.  费用对比:</h3>
+<h5>1.直播</h5>
+<ul>
+<li>以下平台均是按流量来收费,七牛以天为单位,其他已时间长短为单位收费.</li>
+<li>以下以为各平台: <code>100人同时观看</code>  <em> <code>高清版视频(码率1M)</code>  </em> <code>1小时费用</code> 产生费用:</li>
+<li>
+<code>人数</code>、<code>码率</code>、<code>时间</code>变化,<code>费用</code> * <code>相应倍数</code>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>计费方式</th>
+<th>直播费用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>七牛直播云</td>
+<td>按天计费</td>
+<td>观看1天200元</td>
+<td>观看<code>1-24小时</code>均<code>按1天</code>收费</td>
+</tr>
+<tr>
+1.5 关于费用
+
+
+<td>金山直播云</td>
+<td>特定供应商收取授权费用</td>
+<td>特殊业务授权费</td>
+<td> 基于KSYLive iOS直播SDK的其他商业服务，会由特定供应商收取授权费用，大致包括： 云存储，CDN分发，动态贴纸，连麦 ，第三方美颜</td>
+</tr>
+
+<tr>
+<td>趣拍云直播</td>
+<td>按时间长短计费</td>
+<td>观看1小时15.82元</td>
+<td>观看几小时,<code>费用在这个基础上</code> * <code>几</code>
+</td>
+</tr>
+<tr>
+<td>腾讯互动直播</td>
+<td>按时间长短计费</td>
+<td>观看1小时40元</td>
+<td>观看几小时,<code>费用在这个基础上</code> * <code>几</code>
+</td>
+</tr>
+<tr>
+<td>网易视频云</td>
+<td>按时间长短计费</td>
+<td>观看1小时44.38元</td>
+<td>观看几小时,<code>费用在这个基础上</code> * <code>几</code>
+</td>
+</tr>
+<tr>
+<td>暴风云直播</td>
+<td>按时间长短计费</td>
+<td>观看1小时39.55元</td>
+<td>观看几小时,<code>费用在这个基础上</code> * <code>几</code>
+</td>
+</tr>
+</tbody>
+</table>
+<h5>2.回放(点播)</h5>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>云存储费用</th>
+<th>下载流量费用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>七牛直播云</td>
+<td>0.165元/G/月</td>
+<td>0.29/G</td>
+<td>存储10G内免费,下载10G内免费</td>
+</tr>
+<tr>
+<td>趣拍云直播</td>
+<td>0.165元/G/月</td>
+<td>0.36元/G(国内),0.46元/G(国外)</td>
+<td>存储10G内免费,下载10G内免费</td>
+</tr>
+<tr>
+<td>腾讯互动直播</td>
+<td>0.03元/G/天</td>
+<td>0.59元/G</td>
+<td>20G存储空间,60G点播流量,399/年</td>
+</tr>
+<tr>
+<td>网易视频云</td>
+<td>0.01元/G/天</td>
+<td>0.56元/G</td>
+<td>无</td>
+</tr>
+<tr>
+<td>暴风云直播</td>
+<td>0.01元/G/天</td>
+<td>0.45元/G</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h5>3.备注:</h5>
+<ul>
+<li>1.以上为主要收费项目,部分平台收取低额的转码费用.</li>
+<li>2.有些平台提供套餐服务,有8.5到9折优惠.</li>
+</ul>
+<h4>建议(仅供参考):</h4>
+<ul>
+<li>1.以上直播SDK 都能实现基本直播服务,功能大同小异.</li>
+<li>2.七牛直播云 和 趣拍云直播 收费相对较低, 可以优先考虑.</li>
+<li>3.趣拍云直播为 北京趣拍联合阿里云推出移动直播解决方案.</li>
+<li>4.七牛直播云有和 熊猫TV、魅族新品发布会、平安等大平台合作过的案例.</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="三金山直播云-和-七牛直播云-部分技术不同">三、金山直播云 和 七牛直播云 部分技术不同：</h1>
+
+<style>table th:nth-of-type(1) {    width: 100px;}</style>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">技 术 特 点</th>
+      <th style="text-align: left">金山直播云 (推流和播放融合)</th>
+      <th style="text-align: left">七牛直播云 (推流和播放为两个SDK)</th>
+      <th>金山 比 七牛 优势</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Github Star</td>
+      <td style="text-align: left">332</td>
+      <td style="text-align: left">244(推流）/1035(播放）</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Github fork</td>
+      <td style="text-align: left">111</td>
+      <td style="text-align: left">70(推流）/   262(播放)</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">描述</td>
+      <td style="text-align: left">金山云直播SDK [ iOS推流+播放 ]融合版 支持美颜滤镜(Beauty Filter)、美声(Beauty Voice)、软硬编(Software/Hardware Encoder) 、网络自适应(Network Auto Adapt)、混音(Audio Mixer)、混响(Reverb)、画中画(PIP)</td>
+      <td style="text-align: left">推流：<br />PLMediaStreamingKit 是 Pili 直播 SDK 的 iOS 推流端，支持 RTMP 推流，h.264 和 AAC 编码，硬编、软编支持。具有丰富的数据和状态回调，方便用户根据自己的业务定制化开发。具有直播场景下的重要功能，如：美颜、背景音乐、水印等功能。<br /><br /> 播放：<br />PLPlayerKit 是 Pili 直播 SDK 的 iOS 播放器。支持所有直播常用的格式，如：RTMP、HLS、FLV。拥有优秀的功能和特性，如：首屏秒开、追帧优化、丰富的数据和状态回调、硬解软解支持。而且可以根据自己的业务进行高度定制化开发。</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">计费方式</td>
+      <td style="text-align: left">特殊商业服务，会由特定供应商收取授权费用 包括：云存储，CDN分发，动态贴纸，连麦，第三方美颜</td>
+      <td style="text-align: left">按天计费 ：观看1天200元（有待核实什么条件多少人观看等等因素）</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">回放(点播)相关功能费</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">云存储费用 0.165元/G/月 <br />下载流量费用 		0.29/G<br />	存储10G内免费,下载10G内免费</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">成功案例</td>
+      <td style="text-align: left">龙珠，蜻蜓FM，今日头条，宝宝巴士，麦唱 等</td>
+      <td style="text-align: left">大神TV，懂球帝，咸蛋家，熊猫TV、魅族新品发布会、平安</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">播放SDK</td>
+      <td style="text-align: left">Android，iOS</td>
+      <td style="text-align: left">Android，iOS，H5，PC</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">转码</td>
+      <td style="text-align: left">分布式转码，采用软硬件混合转码技术，支持H.264,H.265，AAC编码</td>
+      <td style="text-align: left">h.264 和 AAC 编码，硬编、软编支持</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">CDN</td>
+      <td style="text-align: left">近千个节点</td>
+      <td style="text-align: left">全球300+</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">安全方面</td>
+      <td style="text-align: left">DRM，防盗链</td>
+      <td style="text-align: left">防盗链，播放地址加密，黑白名单</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">机房</td>
+      <td style="text-align: left">有自建机房</td>
+      <td style="text-align: left">托管云机房</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">优势</td>
+      <td style="text-align: left">脱胎于老牌软件企业，在直播方面发力比较早，编码解决方案优于行业领先</td>
+      <td style="text-align: left">云储存起家的企业级公有云服务商，在场景支持方面比较全面</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">场景支持</td>
+      <td style="text-align: left">游戏，行业应用</td>
+      <td style="text-align: left">社交，游戏，在线教育，网络电台，VR，无人机</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SDK集成</td>
+      <td style="text-align: left">集成一个融合版即可</td>
+      <td style="text-align: left">需集成推流SDK 和 拉流播放SDK</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">文档详细度</td>
+      <td style="text-align: left"><a href="https://github.com/ksvc/KSYLive_iOS/wiki">金山云文档</a>篇幅较多</td>
+      <td style="text-align: left"><a href="https://developer.qiniu.com/pili/sdk/1211/ios-playback-end-the-sdk">七牛云文档</a>篇幅较少</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>“ - ”：代表实际意义无需比较的项目 ；“ X ”：代表目前还无法比较的项目 ； <br /><br />
+“ 1 ”：代表 金山云占于优势，共计 7 项 ； <br /><br />
+“ 0 ”：代码 七牛云占于优势，共计 3 项 ；</strong></p>
+
+<h1 id="三综上所述推荐使用-金山直播云">三、综上所述：推荐使用 金山直播云。</h1>
+
+<p>但如果有具体的业务需求，可对比下图后按照具体业务偏向程度来选择。哪边需要的业务符合自己的需求更多就选择哪边。<br />（下图截取于各自官方 Github 仓库 功能点的描述部分。）</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/epa5X4.jpg" alt="" /></p>
+
+:ET

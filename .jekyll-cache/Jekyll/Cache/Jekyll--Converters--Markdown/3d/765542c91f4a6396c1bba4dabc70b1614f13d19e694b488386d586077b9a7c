@@ -1,0 +1,92 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#0x01-天坑" id="markdown-toc-0x01-天坑">0x01 天坑</a></li>
+  <li><a href="#0x02-于是乎决定卸载-node-npm-再重装" id="markdown-toc-0x02-于是乎决定卸载-node-npm-再重装">0x02 于是乎，决定卸载 <code class="language-plaintext highlighter-rouge">node</code> <code class="language-plaintext highlighter-rouge">npm</code> 再重装</a></li>
+  <li><a href="#0x03-开始安装-remix-ide" id="markdown-toc-0x03-开始安装-remix-ide">0x03 开始安装 remix-ide</a></li>
+  <li><a href="#0x04-完成效果" id="markdown-toc-0x04-完成效果">0x04 完成效果</a></li>
+</ul>
+<hr />
+<!---->
+
+<h3 id="0x01-天坑">0x01 天坑</h3>
+<p><strong>上来就是<code class="language-plaintext highlighter-rouge">npm install remix-ide -g</code>的坑</strong><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/D23B25F41AF5502C17AC26A98ED43542.jpg" alt="" /></p>
+
+<ul>
+  <li>正常情况下 不管怎么 安装都报错如图一大堆。</li>
+</ul>
+
+<h3 id="0x02-于是乎决定卸载-node-npm-再重装">0x02 于是乎，决定卸载 <code class="language-plaintext highlighter-rouge">node</code> <code class="language-plaintext highlighter-rouge">npm</code> 再重装</h3>
+<p>卸载 <code class="language-plaintext highlighter-rouge">node</code> <code class="language-plaintext highlighter-rouge">npm</code>  参考的教程： <a href="https://www.cnblogs.com/kivenlv/p/6096171.html">nodejs在Mac下的卸载</a></p>
+
+<p><strong>重安装：</strong><br />
+部分参考：<a href="https://cloud.tencent.com/developer/article/1194056">搭建智能合约开发环境Remix IDE及使用</a><br />
+部分参考：<a href="https://www.jianshu.com/p/622ad36ee020">Mac OS 下 NVM 的安装与使用</a>（注意 <strong>oh my zsh</strong> 部分）</p>
+
+<p>目的：安装 <code class="language-plaintext highlighter-rouge">node</code> <code class="language-plaintext highlighter-rouge">npm</code> <code class="language-plaintext highlighter-rouge">nvm</code> 为如下三个版本：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ node --version
+v7.10.1
+$ npm --version
+4.2.0
+$ nvm --version
+0.33.11
+</code></pre></div></div>
+
+<p>如上命令查不到版本号就是木有安装正确，达到如上前期要求开始安装。</p>
+
+<h3 id="0x03-开始安装-remix-ide">0x03 开始安装 remix-ide</h3>
+
+<p><strong>注意：</strong>先把这个目录的读写权限提高<br />
+<code class="language-plaintext highlighter-rouge">sudo chmod 777  /usr/local/lib/</code></p>
+
+<ul>
+  <li>然后开始：<code class="language-plaintext highlighter-rouge">sudo npm install remix-ide -g</code></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mingo @ 192 in ~ [16:27:10]
+$ sudo chmod 777  /usr/local/lib/
+
+# mingo @ 192 in ~ [16:27:45]
+$ sudo npm install remix-ide -g
+npm WARN deprecated tar.gz@1.0.7: ⚠️  WARNING ⚠️ tar.gz module has been deprecated and your application is vulnerable. Please use tar module instead: https://npmjs.com/tar
+npm WARN deprecated fs-promise@2.0.3: Use mz or fs-extra^3.0 with Promise Support
+/Users/mingo/.nvm/versions/node/v7.10.1/bin/remix-ide -&gt; /Users/mingo/.nvm/versions/node/v7.10.1/lib/node_modules/remix-ide/bin/remix-ide
+
+&gt; websocket@1.0.26 install /Users/mingo/.nvm/versions/node/v7.10.1/lib/node_modules/remix-ide/node_modules/web3-providers-ws/node_modules/websocket
+&gt; (node-gyp rebuild 2&gt; builderror.log) || (exit 0)
+
+CXX(target) Release/obj.target/bufferutil/src/bufferutil.o
+SOLINK_MODULE(target) Release/bufferutil.node
+CXX(target) Release/obj.target/validation/src/validation.o
+SOLINK_MODULE(target) Release/validation.node
+/Users/mingo/.nvm/versions/node/v7.10.1/lib
+└─┬ remix-ide@0.8.0
+└─┬ remixd@0.1.8-alpha.6
+└─┬ web3@1.0.0-beta.27
+└─┬ web3-core@1.0.0-beta.27
+└─┬ web3-core-requestmanager@1.0.0-beta.27
+└─┬ web3-providers-ws@1.0.0-beta.27
+└── websocket@1.0.26  (git://github.com/frozeman/WebSocket-Node.git#6c72925e3f8aaaea8dc8450f97627e85263999f2)
+
+
+# mingo @ 192 in ~ [16:30:01] C:127
+$ cd /Users/mingo/Desktop/blockchain/code
+
+# mingo @ 192 in ~/Desktop/blockchain/code [16:58:21]
+$ remix-ide
+setup notifications for /Users/mingo/Desktop/blockchain/code
+Starting Remix IDE at http://localhost:8080 and sharing /Users/mingo/Desktop/blockchain/code
+Fri May 31 2019 16:58:24 GMT+0800 (CST) Remixd is listening on 127.0.0.1:65520
+
+</code></pre></div></div>
+
+<!--  -->
+
+<h3 id="0x04-完成效果">0x04 完成效果</h3>
+
+<p>完成后就阔以关联本地的sol文件开发智能合约了<br />
+开启remix-ide后 访问浏览器路径：http://localhost:8080</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/20190531170925.png" alt="" /></p>
+
+:ET

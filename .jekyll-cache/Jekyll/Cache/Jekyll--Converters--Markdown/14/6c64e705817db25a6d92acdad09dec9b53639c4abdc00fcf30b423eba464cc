@@ -1,0 +1,30 @@
+I"�	<ul id="markdown-toc">
+  <li><a href="#当年创建-jekyll-博客时默认的一篇文章没什么意义我也一直没删除留个纪念吧" id="markdown-toc-当年创建-jekyll-博客时默认的一篇文章没什么意义我也一直没删除留个纪念吧">当年创建 jekyll 博客时默认的一篇文章，没什么意义，我也一直没删除，留个纪念吧。</a></li>
+</ul>
+
+<h4 id="当年创建-jekyll-博客时默认的一篇文章没什么意义我也一直没删除留个纪念吧">当年创建 jekyll 博客时默认的一篇文章，没什么意义，我也一直没删除，留个纪念吧。</h4>
+
+<p><br /></p>
+
+<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>To add new posts, simply add a file in the <code class="language-plaintext highlighter-rouge">_posts</code> directory that follows the convention <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+
+<p>Jekyll also offers powerful support for code snippets:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span>
+</code></pre></div></div>
+
+<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
+
+<p>Block Mathjax</p>
+
+\[f(x) = ax + b\]
+
+<p>Inline Mathjax $a \neq b$</p>
+
+:ET

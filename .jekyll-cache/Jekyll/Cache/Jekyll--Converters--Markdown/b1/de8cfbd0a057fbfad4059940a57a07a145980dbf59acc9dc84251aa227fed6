@@ -1,0 +1,19 @@
+I"�<hr />
+
+<p>报错如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; Failed to verify bitcode in opus.framework/opus:
+&gt; error: Bundle only contains bitcode-marker /var/folders/xl/0m5873ss5fv9t4phvwfn56z40000gn/T/IDEDistributionOptionThinning.lF0/Payload/Taidi.app/Frameworks/opus.framework/opus (armv7)
+</code></pre></div></div>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/XCSXwW.jpg" alt="" /></p>
+
+<p>分析报错描述：</p>
+
+<p><code class="language-plaintext highlighter-rouge">opus</code> 库不支持 <code class="language-plaintext highlighter-rouge">Bitcode</code> 。但是打包需要<code class="language-plaintext highlighter-rouge">Bitcode</code>支持。我项目开发过程中都是木有选定<code class="language-plaintext highlighter-rouge">Bitcode</code>的。试试了重新打开项目工程的<code class="language-plaintext highlighter-rouge">Bitcode</code>还是不行。后查了下。需要导出时候不需要勾选如下</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/iWR1EG.jpg" alt="" /></p>
+
+<p>在此留个记录备忘。</p>
+
+:ET

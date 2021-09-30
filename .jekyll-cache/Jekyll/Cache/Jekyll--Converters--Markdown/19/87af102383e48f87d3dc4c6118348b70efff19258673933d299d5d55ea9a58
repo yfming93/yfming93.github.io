@@ -1,0 +1,29 @@
+I"�
+<ul id="markdown-toc">
+  <li><a href="#git-中忽略-userinterfacestatexcuserstate" id="markdown-toc-git-中忽略-userinterfacestatexcuserstate">git 中忽略 UserInterfaceState.xcuserstate</a>    <ul>
+      <li><a href="#1userinterfacestatexcuserstate是什么" id="markdown-toc-1userinterfacestatexcuserstate是什么">1.UserInterfaceState.xcuserstate是什么？</a></li>
+      <li><a href="#2使用gitignore-如何解决" id="markdown-toc-2使用gitignore-如何解决">2.使用.gitignore 如何解决？</a></li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h2 id="git-中忽略-userinterfacestatexcuserstate">git 中忽略 UserInterfaceState.xcuserstate</h2>
+
+<h3 id="1userinterfacestatexcuserstate是什么">1.UserInterfaceState.xcuserstate是什么？</h3>
+
+<p>该文件为<code class="language-plaintext highlighter-rouge">xcode</code>默认自带文件，是<code class="language-plaintext highlighter-rouge">xcode</code>的配置信息，git会用这个文件记录下来。<br />
+比如：手动删除此文件，退出<code class="language-plaintext highlighter-rouge">xcode</code>后重启<code class="language-plaintext highlighter-rouge">xcode</code>，设置了<code class="language-plaintext highlighter-rouge">debug</code> 调试断点等。此文件会自动创建并跟踪</p>
+
+<p><strong>SO,</strong>  <strong>此文件无需<code class="language-plaintext highlighter-rouge">push</code>，应忽略。不忽略的话在多人开发时提交文件时候会因为这个文件导致冲突。</strong></p>
+
+<h3 id="2使用gitignore-如何解决">2.使用.gitignore 如何解决？</h3>
+<p>终端输入以下指令：【网络比较流行的方案。但是对我无效。2018-10-18实测】</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">git</span> <span class="n">rm</span> <span class="o">-</span><span class="k">-</span><span class="n">cached</span> <span class="err">工程名称</span><span class="p">.</span><span class="n">xcodeproj</span><span class="o">/</span><span class="n">project</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="err">电脑用户名称</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">UserInterfaceState</span><span class="p">.</span><span class="n">xcuserstate</span>
+    
+<span class="n">git</span> <span class="n">commit</span> <span class="k">-</span><span class="n">m</span> <span class="s">"Removed file that shouldn't be tracked"</span>    
+    
+<span class="n">git</span> <span class="n">push</span>
+</code></pre></div></div>
+:ET

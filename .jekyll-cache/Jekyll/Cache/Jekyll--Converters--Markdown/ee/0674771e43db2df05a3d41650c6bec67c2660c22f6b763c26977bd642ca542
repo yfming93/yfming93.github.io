@@ -1,0 +1,415 @@
+I"�u<ul id="markdown-toc">
+  <li><a href="#vuejs20学习笔记" id="markdown-toc-vuejs20学习笔记">Vuejs2.0学习笔记</a></li>
+  <li><a href="#一基本配置命令介绍" id="markdown-toc-一基本配置命令介绍">(一)、基本配置命令介绍</a></li>
+  <li><a href="#二vue-10-和-20-区别" id="markdown-toc-二vue-10-和-20-区别">(二)、Vue 1.0 和 2.0 区别</a></li>
+  <li><a href="#三语法讲解" id="markdown-toc-三语法讲解">(三)、语法讲解</a>    <ul>
+      <li><a href="#v-for-用于循环" id="markdown-toc-v-for-用于循环"><strong>v-for</strong> 用于循环</a></li>
+      <li><a href="#filter-过滤器" id="markdown-toc-filter-过滤器"><strong>filter</strong> 过滤器：</a></li>
+      <li><a href="#v-text-文本渲染" id="markdown-toc-v-text-文本渲染"><strong>v-text</strong> 文本渲染</a></li>
+      <li><a href="#v-show-控制显示隐藏" id="markdown-toc-v-show-控制显示隐藏"><strong>v-show</strong> 控制显示隐藏。</a></li>
+      <li><a href="#v-if-控制显示隐藏" id="markdown-toc-v-if-控制显示隐藏"><strong>v-if</strong> 控制显示隐藏</a></li>
+      <li><a href="#v-model-双向数据绑定" id="markdown-toc-v-model-双向数据绑定"><strong>v-model</strong> 双向数据绑定</a></li>
+      <li><a href="#v-bind-绑定属性" id="markdown-toc-v-bind-绑定属性"><strong>v-bind</strong> 绑定属性</a></li>
+      <li><a href="#v-on-事件绑定" id="markdown-toc-v-on-事件绑定"><strong>v-on</strong> 事件绑定</a></li>
+      <li><a href="#component-组件" id="markdown-toc-component-组件"><strong>component</strong> 组件</a></li>
+    </ul>
+  </li>
+  <li><a href="#四语法对比" id="markdown-toc-四语法对比">(四)、语法对比</a></li>
+  <li><a href="#五语法技巧" id="markdown-toc-五语法技巧">(五)、语法技巧</a></li>
+  <li><a href="#六插件使用注意" id="markdown-toc-六插件使用注意">(六)、插件使用注意</a></li>
+  <li><a href="#七调试和其他" id="markdown-toc-七调试和其他">(七)、调试和其他</a></li>
+  <li><a href="#八常见业务总结" id="markdown-toc-八常见业务总结">(八)、常见业务总结</a></li>
+</ul>
+
+<h2 id="vuejs20学习笔记">Vuejs2.0学习笔记</h2>
+
+<hr />
+
+<p>按照慕课网的<code class="language-plaintext highlighter-rouge">Vuejs2.0</code>的学习视频零基础实践的一个demo如下:<br />
+演示页面：<a href="https://yfming93.github.io/vuejs/">袁凤鸣 | Vuejs2.0购物车demo</a><br />
+仓库地址：<a href="https://github.com/yfming93/vuejs">https://github.com/yfming93/vuejs</a><br />
+<br /></p>
+
+<p>同时感谢慕课网讲师 <a href="http://www.imooc.com/t/1343480">河畔一角</a> 分享的学习资料<br />
+<a href="http://www.imooc.com/learn/796">使用vue2.0实现购物车和地址选配功能</a></p>
+
+<h2 id="一基本配置命令介绍">(一)、基本配置命令介绍</h2>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">cnpm install vue --save</code> 是将软件安装到<code class="language-plaintext highlighter-rouge">dependencies</code>里面，<code class="language-plaintext highlighter-rouge">--save-dev</code>是安装到<code class="language-plaintext highlighter-rouge">devDependencies</code>里面</p>
+
+    <p><code class="language-plaintext highlighter-rouge">--save</code>是将软件安装到开发里面去，在<code class="language-plaintext highlighter-rouge">package.json</code>文件中的<code class="language-plaintext highlighter-rouge">devDependencies</code>中</p>
+  </li>
+  <li>
+    <p><strong>Mac 电脑终端配置运行如下：</strong></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> MingodeMacBook-Pro:~ Mingo$ cd /Users/Mingo/Desktop/VueShoppingCart
+ MingodeMacBook-Pro:VueShoppingCart Mingo$ ls
+    address.html	cart.html	css		data		img		js
+ MingodeMacBook-Pro:VueShoppingCart Mingo$ npm init
+    This utility will walk you through creating a package.json file.
+    It only covers the most common items, and tries to guess sensible defaults.
+       
+    See `npm help json` for definitive documentation on these fields
+    and exactly what they do.
+       
+    Use `npm install &lt;pkg&gt;` afterwards to install a package and
+    save it as a dependency in the package.json file.
+       
+    Press ^C at any time to quit.
+    package name: (vueshoppingcart) VueShoppingCart
+    Sorry, name can no longer contain capital letters.
+    package name: (vueshoppingcart) vuejs
+    version: (1.0.0)
+    description: 这是袁凤鸣的第一个Vuejs2.0开发的购物车程序。
+    entry point: (index.js)
+    test command:
+    git repository:
+    keywords: vue，shopping
+    author: 袁凤鸣
+    license: (ISC)
+    About to write to /Users/Mingo/Desktop/VueShoppingCart/package.json:
+       
+    {
+        "name": "vuejs",
+        "version": "1.0.0",
+        "description": "这是袁凤鸣的第一个Vuejs2.0开发的购物车程序。",
+        "main": "index.js",
+        "scripts": {
+            "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
+        },
+        "keywords": [
+                     "vue，shopping"
+                     ],
+        "author": "袁凤鸣",
+        "license": "ISC"
+    }
+       
+       
+    Is this ok? (yes) y
+       
+       
+    ╭─────────────────────────────────────╮
+    │                                     │
+    │   Update available 5.3.0 → 5.4.2    │
+    │     Run npm i -g npm to update      │
+    │                                     │
+    ╰─────────────────────────────────────╯
+       
+ MingodeMacBook-Pro:VueShoppingCart Mingo$ sudo npm i -g npm
+    Password:
+    /usr/local/bin/npm -&gt; /usr/local/lib/node_modules/npm/bin/npm-cli.js
+    /usr/local/bin/npx -&gt; /usr/local/lib/node_modules/npm/bin/npx-cli.js
+    + npm@5.4.2
+    added 21 packages, removed 111 packages and updated 19 packages in 282.892s
+       
+       
+    ╭─────────────────────────────────────╮
+    │                                     │
+    │   Update available 5.3.0 → 5.4.2    │
+    │     Run npm i -g npm to update      │
+    │                                     │
+    ╰─────────────────────────────────────╯
+       
+ MingodeMacBook-Pro:VueShoppingCart Mingo$ sudo npm i -g npm
+    Password:
+    /usr/local/bin/npx -&gt; /usr/local/lib/node_modules/npm/bin/npx-cli.js
+    /usr/local/bin/npm -&gt; /usr/local/lib/node_modules/npm/bin/npm-cli.js
+    + npm@5.4.2
+    updated 1 package in 8.177s
+ MingodeMacBook-Pro:VueShoppingCart Mingo$ npm -v
+    5.4.2
+ MingodeMacBook-Pro:VueShoppingCart Mingo$ npm install vue --save
+    npm notice created a lockfile as package-lock.json. You should commit this file.
+    npm WARN vuejs@1.0.0 No repository field.
+       
+    + vue@2.4.4
+    added 1 package in 3.255s
+ MingodeMacBook-Pro:VueShoppingCart Mingo$ npm install vue-resource --save
+    npm WARN vuejs@1.0.0 No repository field.
+       
+    + vue-resource@1.3.4
+    added 22 packages in 21.824s
+ MingodeMacBook-Pro:VueShoppingCart Mingo$ ls -l -a
+    total 96
+    drwxr-xr-x  14 Mingo  staff   476  9 19 14:41 .
+    drwx------+ 74 Mingo  staff  2516  9 19 14:35 ..
+    -rw-r--r--@  1 Mingo  staff  6148  9 19 14:41 .DS_Store
+    drwxr-xr-x   7 Mingo  staff   238  9 19 14:39 .idea
+    -rwxr-xr-x@  1 Mingo  staff   363  8 31 00:57 .project
+    -rwxr-xr-x@  1 Mingo  staff  9550  8 31 00:57 address.html
+    -rwxr-xr-x@  1 Mingo  staff  8622  8 31 00:57 cart.html
+    drwxr-xr-x@  6 Mingo  staff   204  8 31 00:57 css
+    drwxr-xr-x@  5 Mingo  staff   170  8 31 00:57 data
+    drwxr-xr-x@  8 Mingo  staff   272  8 31 00:57 img
+    drwxr-xr-x@  5 Mingo  staff   170  9 19 14:12 js
+    drwxr-xr-x  26 Mingo  staff   884  9 19 14:41 node_modules
+    -rw-r--r--   1 Mingo  staff  5900  9 19 14:41 package-lock.json
+    -rw-r--r--   1 Mingo  staff   389  9 19 14:41 package.json
+ MingodeMacBook-Pro:VueShoppingCart Mingo$
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="二vue-10-和-20-区别">(二)、Vue 1.0 和 2.0 区别</h2>
+
+<p><strong><a href="https://cn.vuejs.org/v2/guide/migration.html">从 Vue 1.x 迁移【参照官方文档】</a></strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">methods</code>负责声明方法  方法的调用写在<code class="language-plaintext highlighter-rouge">mounted</code>上<br />
+<code class="language-plaintext highlighter-rouge">Vue1.0</code>用<code class="language-plaintext highlighter-rouge">ready</code>  <code class="language-plaintext highlighter-rouge">Vue2.0</code>用<code class="language-plaintext highlighter-rouge">mounted</code>
+    <ul>
+      <li>生命周期<code class="language-plaintext highlighter-rouge">mounted</code>其实可以换成<code class="language-plaintext highlighter-rouge">created</code>吧，本例用<code class="language-plaintext highlighter-rouge">created</code>也行</li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">ready</code> 替换，使用新的 <code class="language-plaintext highlighter-rouge">mounted</code> 钩子函数替代。应该注意的是，使用 <code class="language-plaintext highlighter-rouge">mounted</code> 并不能保证钩子函数中的 <code class="language-plaintext highlighter-rouge">this.$el</code> 在 <code class="language-plaintext highlighter-rouge">document</code> 中。为此还应该引入 <code class="language-plaintext highlighter-rouge">Vue.nextTick/vm.$nextTick</code>。例如：</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    mounted: function () {
+        this.$nextTick(function () {
+          // 代码保证 this.$el 在 document 中
+        })
+    }
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>2.0</strong>
+    <ul>
+      <li>使用图片 <code class="language-plaintext highlighter-rouge">v-bind:src=""</code></li>
+      <li><code class="language-plaintext highlighter-rouge">$index</code>已经删除 ` v-for(item,index)`使用索引</li>
+      <li>2.0 不再支持用<code class="language-plaintext highlighter-rouge">$delete</code>删除</li>
+      <li>2.0 取消了标签内 <code class="language-plaintext highlighter-rouge">属性={{ }}</code>   功能</li>
+    </ul>
+  </li>
+  <li>给图片动态绑定需要用 <code class="language-plaintext highlighter-rouge">v-bind：src=xx.xx</code>  在 <code class="language-plaintext highlighter-rouge">vue2.0</code> 里 <code class="language-plaintext highlighter-rouge">src：{{xx.xx}}</code> 是无效的
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Mustache</code>既双大括号<code class="language-plaintext highlighter-rouge">{{}}</code> 不能在 <code class="language-plaintext highlighter-rouge">HTML</code> 属性中使用，应使用 <code class="language-plaintext highlighter-rouge">v-bind</code> 指令,相当于<code class="language-plaintext highlighter-rouge">html</code>的自定义属性。<code class="language-plaintext highlighter-rouge">v-bind:src=""</code><br />
+<code class="language-plaintext highlighter-rouge">Mustache</code>内部可以使用 JS 表达式，如<code class="language-plaintext highlighter-rouge">{{ number + 1 }}</code><br />
+。在方法里使用<code class="language-plaintext highlighter-rouge">this.$http.get().then()</code>可以使用<code class="language-plaintext highlighter-rouge">vue-resource</code></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="三语法讲解">(三)、语法讲解</h2>
+<ul>
+  <li>
+    <h3 id="v-for-用于循环"><strong>v-for</strong> 用于循环</h3>
+    <p>循环。主要用于表格，<code class="language-plaintext highlighter-rouge">&lt;li&gt; </code>标签。去循环一个数组。【凡是看到列表就推荐使用<code class="language-plaintext highlighter-rouge">v-for</code>】<br />
+  <strong>使用for渲染商品时,若想加索引如下 （限vue2.0）</strong></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   v-for="(item,index) in productList"
+    在商品名字处 {{item.productName+index}}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <h3 id="filter-过滤器"><strong>filter</strong> 过滤器：</h3>
+    <p>过滤器，格式化数据。主要对接口返回的字段进行业务转换，数据进行格式化如后台返回金额19数字。页面显示：<code class="language-plaintext highlighter-rouge">￥19.00元</code>。</p>
+  </li>
+  <li>
+    <p>写在实例Vue内部的是局部过滤器，</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     new Vue({
+       filters:{
+       formatMoney: function (value){
+           return "$"+value.toFixed(2);
+        }
+      }
+     })  - 写在外部的是全局过滤器(value:默认值 ，type参数)
+
+     Vue.filter("money", function (vaule, type) {
+         return "￥" + vaule.toFixed(2) + type;
+     }) 
+</code></pre></div>    </div>
+
+    <p>eg: 例如：<br />
+  <code class="language-plaintext highlighter-rouge">&lt;div class="item-price"&gt;{ { item.productPrice | formatMoney('元') }}&lt;/div&gt;</code></p>
+
+    <p><strong>注意: 全局的过滤器不要加s</strong></p>
+  </li>
+  <li>
+    <h3 id="v-text-文本渲染"><strong>v-text</strong> 文本渲染</h3>
+    <p>和<code class="language-plaintext highlighter-rouge">{{}}</code>功能一样。但是<code class="language-plaintext highlighter-rouge">{{}}</code>在第一次页面<code class="language-plaintext highlighter-rouge">Vue</code>木有初始化完成会在页面上显示<code class="language-plaintext highlighter-rouge">{{}}</code>字符。故文本渲染多用<code class="language-plaintext highlighter-rouge">v-text</code>。</p>
+
+    <ul>
+      <li><strong>注意：</strong><code class="language-plaintext highlighter-rouge">v-text</code>里用过滤器<code class="language-plaintext highlighter-rouge">filter</code>会失效，原因是在<code class="language-plaintext highlighter-rouge">vue2.0</code>里 管道符<code class="language-plaintext highlighter-rouge">|</code>只能用在<code class="language-plaintext highlighter-rouge">mousetache</code>和<code class="language-plaintext highlighter-rouge">v-bind</code>中。</li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="v-show-控制显示隐藏"><strong>v-show</strong> 控制显示隐藏。</h3>
+    <p>控制显示隐藏。<code class="language-plaintext highlighter-rouge">dom</code>是存在的。仅仅加<code class="language-plaintext highlighter-rouge">display block： display none</code>。</p>
+  </li>
+  <li>
+    <h3 id="v-if-控制显示隐藏"><strong>v-if</strong> 控制显示隐藏</h3>
+    <p>控制显示隐藏。如果dom不显示，整个dom则没有不存在。</p>
+  </li>
+  <li>
+    <h3 id="v-model-双向数据绑定"><strong>v-model</strong> 双向数据绑定</h3>
+    <p><strong>主要在表单中使用,比如文本框,下拉框,单选,复选,textarea</strong><br />
+ <code class="language-plaintext highlighter-rouge">v-model</code>是一个双向的功能。文本框输入以后，模型也会发生改变。反之模型改变了文本框也会改变。</p>
+  </li>
+  <li>
+    <h3 id="v-bind-绑定属性"><strong>v-bind</strong> 绑定属性</h3>
+    <p><strong>给一个dom元素添加属性 v-bind:class=”” 等价于 :class=”“</strong><br />
+  绑定属性。给一个<code class="language-plaintext highlighter-rouge">dom</code>元素添加属性。【比如：在做图片的渲染过程中，如果图片的<code class="language-plaintext highlighter-rouge">src</code>地址是动态的，那么就需要<code class="language-plaintext highlighter-rouge">v-bind</code>去绑定<code class="language-plaintext highlighter-rouge">src</code>属性，去给这个<code class="language-plaintext highlighter-rouge">src</code>赋值。】。凡是样式变化的可用<code class="language-plaintext highlighter-rouge">v-bind</code>动态去操作<code class="language-plaintext highlighter-rouge">class</code> 【不要在原生的<code class="language-plaintext highlighter-rouge">class</code>里面去使用<code class="language-plaintext highlighter-rouge">{{}}</code>改变<code class="language-plaintext highlighter-rouge">class</code>】<br />
+  <code class="language-plaintext highlighter-rouge">v-bind</code>添加<code class="language-plaintext highlighter-rouge">class</code>属性，属性值只能为<code class="language-plaintext highlighter-rouge">obj</code>或<code class="language-plaintext highlighter-rouge">arr</code></p>
+
+    <ul>
+      <li>
+        <p>不同的绑定方式：</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  v-bind:class="{ }"; //绑定 class 时 “”中是{} 或者 []
+  v-bind:src="";
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="v-on-事件绑定"><strong>v-on</strong> 事件绑定</h3>
+
+    <ul>
+      <li>【v-on：同等于@】 比如：<code class="language-plaintext highlighter-rouge">@click=""</code> 同等于<code class="language-plaintext highlighter-rouge">v-on:click=""</code>是支持表达式的（一元表达式、三元表达式）</li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="component-组件"><strong>component</strong> 组件</h3>
+    <p>在做单页面过程中使用多些。把每一个网页做成多个组件然后拼接。起到组件复用。如页面头部底部和轮播等。</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="四语法对比">(四)、语法对比</h2>
+
+<ul>
+  <li>
+    <p>循环遍历：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (1)js:obj.forEach(function(value,index){});
+  (2)jQuery:$.each(function(index,value){});
+  (3)vue2.0:&lt;i v-for="(value,index) in arr"&gt;&lt;/i&gt;
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">es6</code>的箭头函数的<code class="language-plaintext highlighter-rouge">this</code>指向外部，里面用 <code class="language-plaintext highlighter-rouge">this</code>调用外部的变量和方法。</li>
+  <li><code class="language-plaintext highlighter-rouge">js</code>中<code class="language-plaintext highlighter-rouge">slice</code>与<code class="language-plaintext highlighter-rouge">splice</code>的差别：<br />
+都是截取数组，<code class="language-plaintext highlighter-rouge">slice</code>重新创建一个数组，<code class="language-plaintext highlighter-rouge">splice</code>在原先是数组的基础上</li>
+</ul>
+
+<hr />
+<h2 id="五语法技巧">(五)、语法技巧</h2>
+<ul>
+  <li>自动计算： <code class="language-plaintext highlighter-rouge">v-model="item.b" </code> 直接可以<code class="language-plaintext highlighter-rouge">{{item.a*item.b}}</code></li>
+  <li><code class="language-plaintext highlighter-rouge">toFixed</code>有精度缺失（四舍五入），所以价格一般有后台传入</li>
+  <li>这个<code class="language-plaintext highlighter-rouge">{{}}</code>花括号  页面刚出来的时候 会出现~~  这个怎么去掉呢？
+    <ul>
+      <li>在整个控制模块上加 v-cloak 例如： <code class="language-plaintext highlighter-rouge">&lt;div id="app"  v-cloak&gt;&lt;/div&gt; </code></li>
+    </ul>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">data</code>中没有需要使用的数据使，使用<code class="language-plaintext highlighter-rouge">set</code>注册。</p>
+
+    <p><code class="language-plaintext highlighter-rouge">vue.set(object, key, value)</code>全局注册<br />
+  <code class="language-plaintext highlighter-rouge">this.$set(object, key, value)</code>局部注册</p>
+  </li>
+  <li>
+    <p>数据中是否存在某一属性，可以用此方法，<code class="language-plaintext highlighter-rouge">typeof item.checked==‘undefined’</code></p>
+
+    <ul>
+      <li>如果不存在可以全局注册一个<code class="language-plaintext highlighter-rouge">Vue.set(item,"checked",true)</code>;<br />
+  或者局部注册一个<code class="language-plaintext highlighter-rouge">this.$set(item,"checked",true)</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">vue</code>里面，全局的<code class="language-plaintext highlighter-rouge">Vue.set</code>和局部的<code class="language-plaintext highlighter-rouge">$.set</code>什么区别？
+    <ul>
+      <li>全局的<code class="language-plaintext highlighter-rouge">set</code>就是在data里面创建，<code class="language-plaintext highlighter-rouge">$.set</code>可以在遍历<code class="language-plaintext highlighter-rouge">item</code>里面创建</li>
+    </ul>
+  </li>
+  <li>删除: 通过<code class="language-plaintext highlighter-rouge">indexOf</code>获取索引,<code class="language-plaintext highlighter-rouge">var index = this.productList.indexOf(this.curProduct);</code><br />
+然后 <code class="language-plaintext highlighter-rouge">splice(index,1)</code>从当前位置开始删除一个元素</li>
+  <li>对于文本框这样的值,是通过<code class="language-plaintext highlighter-rouge">v-model</code>绑定的,<code class="language-plaintext highlighter-rouge">v-model</code>具有双向数据绑定功能,通过<code class="language-plaintext highlighter-rouge">+</code>改变数量,那么文本框的值会相应的去发生变化<br />
+但是变量<code class="language-plaintext highlighter-rouge">{{ }}</code>是不会实时改变的</li>
+  <li>表达式使用<code class="language-plaintext highlighter-rouge">data</code>变量不要加<code class="language-plaintext highlighter-rouge">this</code>。<code class="language-plaintext highlighter-rouge">v-for 循环</code>可以控制循环的数量</li>
+  <li><code class="language-plaintext highlighter-rouge">computed</code>,<code class="language-plaintext highlighter-rouge">filters</code>区别是什么？什么时候使用<code class="language-plaintext highlighter-rouge">computed</code>，什么时候使用<code class="language-plaintext highlighter-rouge">filters</code>
+    <ul>
+      <li>我个人理解：<code class="language-plaintext highlighter-rouge">computed</code>是主要对数据进行实时操作，比如删除，插入等。 而<code class="language-plaintext highlighter-rouge">filters</code>主要是格式化数据。</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">_this</code> 的使用 <code class="language-plaintext highlighter-rouge">_this.addRess=res.result;</code>   什么时候应该用<code class="language-plaintext highlighter-rouge">_this</code> 和 <code class="language-plaintext highlighter-rouge">this</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">this</code>,在<code class="language-plaintext highlighter-rouge">vue</code>实例中指向<code class="language-plaintext highlighter-rouge">vue</code>的实例，<code class="language-plaintext highlighter-rouge">var vm = new Vue(){}</code>中的 <code class="language-plaintext highlighter-rouge">this</code> 指向 <code class="language-plaintext highlighter-rouge">vm</code>；而在 <code class="language-plaintext highlighter-rouge">forEach() </code>函数中 <code class="language-plaintext highlighter-rouge">this</code> 的指向发生了改变，不再指向<code class="language-plaintext highlighter-rouge">vue</code>实例，所以在使用 <code class="language-plaintext highlighter-rouge">forEach() </code>这个函数之外，先用<code class="language-plaintext highlighter-rouge"> _this = this</code> 储存<code class="language-plaintext highlighter-rouge">vue</code>实例。不会改变<code class="language-plaintext highlighter-rouge">this</code>指向，用<code class="language-plaintext highlighter-rouge">this</code>，会改变<code class="language-plaintext highlighter-rouge">this</code>指向，例如 <code class="language-plaintext highlighter-rouge">forEach（）</code>，外部储存<code class="language-plaintext highlighter-rouge">this</code>然后在内部用 <code class="language-plaintext highlighter-rouge">_this</code> 。</li>
+    </ul>
+  </li>
+  <li>凡是在指令里面（在页面视图里面）一定不要使用<code class="language-plaintext highlighter-rouge">this</code>，因为当前的指令的作用域已经是th``is了，直接操作即可。若再去加<code class="language-plaintext highlighter-rouge">this</code>作用域就发生变化了，故<code class="language-plaintext highlighter-rouge">this</code>就无法取得当前变量了。只有在<code class="language-plaintext highlighter-rouge">Vue</code>的实例的过程中函数里面去使用<code class="language-plaintext highlighter-rouge">this</code>，此时的<code class="language-plaintext highlighter-rouge">this</code>就是当前的<code class="language-plaintext highlighter-rouge">Vue</code>实例<code class="language-plaintext highlighter-rouge">data</code>里面的变量。</li>
+</ul>
+
+<hr />
+
+<h2 id="六插件使用注意">(六)、插件使用注意</h2>
+<ul>
+  <li>和后台数据交互用<code class="language-plaintext highlighter-rouge">vue-resource</code>，但是已经不被官方推荐，推荐使用<code class="language-plaintext highlighter-rouge">axios</code>作为<code class="language-plaintext highlighter-rouge">ajax</code>请求库</li>
+  <li><code class="language-plaintext highlighter-rouge">vue-resoure</code>插件主要用于数据交互 方面<br />
+<code class="language-plaintext highlighter-rouge">this.$http.get("请求 地址"，{请求参数}).then(function(res)){ 取数据 });</code></li>
+  <li>
+    <p>函数内部<code class="language-plaintext highlighter-rouge">this</code>指向改变了，使用<code class="language-plaintext highlighter-rouge">vue resource</code>方法之前要定义一个内部变量<code class="language-plaintext highlighter-rouge">_this</code>保存<code class="language-plaintext highlighter-rouge">this</code></p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">this.$http.{请求方式}('请求地址'{请求的数据}).then(function (res){})</code><br />
+返回的数据并不是真正的数据 ，而是由<code class="language-plaintext highlighter-rouge">vue</code>封装的，全部包括 <code class="language-plaintext highlighter-rouge">body</code> 、<code class="language-plaintext highlighter-rouge">header</code>等 通常数据被包装在了<code class="language-plaintext highlighter-rouge">res.body</code>里面<br />
+【最好打开浏览器调试看看，我的测试时数据在 <code class="language-plaintext highlighter-rouge">res.data</code>里面】</li>
+</ul>
+
+<hr />
+
+<h2 id="七调试和其他">(七)、调试和其他</h2>
+<ul>
+  <li>谷歌浏览器中<code class="language-plaintext highlighter-rouge">command + option + i</code>打开审查元素</li>
+  <li>单页面用：<code class="language-plaintext highlighter-rouge">vue-router</code>；项目足够复杂用：<code class="language-plaintext highlighter-rouge">vuex</code>；构建系统用：<code class="language-plaintext highlighter-rouge">build</code></li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">webstorm</code>中<code class="language-plaintext highlighter-rouge">es6</code>语法报错，解决方法：</p>
+
+    <ul>
+      <li>打开 <code class="language-plaintext highlighter-rouge">Settings</code> =&gt; <code class="language-plaintext highlighter-rouge">Languages</code> &amp; <code class="language-plaintext highlighter-rouge">Frameworks</code> =&gt; <code class="language-plaintext highlighter-rouge">Javascript</code><br />
+把 <code class="language-plaintext highlighter-rouge">Javascript Language version </code>改为 <code class="language-plaintext highlighter-rouge">ECMAScript 6</code></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="八常见业务总结">(八)、常见业务总结</h2>
+<ul>
+  <li>
+    <p><strong>对于<code class="language-plaintext highlighter-rouge">v-for</code>循环的 类似卡片的选中效果</strong><br />
+可以配合 <code class="language-plaintext highlighter-rouge">v-bind</code> 和 <code class="language-plaintext highlighter-rouge">@click</code>使用，巧妙运用下标<code class="language-plaintext highlighter-rouge">index</code>，如:</p>
+
+    <p><code class="language-plaintext highlighter-rouge">&lt;li v-for="(address, index) in filterAddress" v-bind:class="{'check':index == curentIndex}" @click="curentIndex = index"&gt;</code></p>
+  </li>
+  <li>
+    <p><strong>固定<code class="language-plaintext highlighter-rouge">UI</code>业务选中效果</strong><br />
+  配合 <code class="language-plaintext highlighter-rouge">v-bind</code> 和 <code class="language-plaintext highlighter-rouge">@click</code> 然后设置一个固定值在``@click`中改变，如：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   &lt;div class="shipping-method-wrap"&gt;
+     &lt;div class="shipping-method"&gt;
+       &lt;ul&gt;
+         &lt;li v-bind:class="{'check':shippingMethod==1}" @click="shippingMethod=1"&gt;
+           &lt;div class="name" &gt;标准配送&lt;/div&gt;
+           &lt;div class="price"&gt;Free&lt;/div&gt;
+         &lt;/li&gt;
+         &lt;li v-bind:class="{'check':shippingMethod==2}" @click="shippingMethod=2"&gt;
+           &lt;div class="name" &gt;高级配送&lt;/div&gt;
+           &lt;div class="price"&gt;180&lt;/div&gt;
+         &lt;/li&gt;
+       &lt;/ul&gt;
+     &lt;/div&gt;
+   &lt;/div&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>常见错误<br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/MI3oky.jpg" alt="" /></p>
+  </li>
+</ul>
+
+:ET

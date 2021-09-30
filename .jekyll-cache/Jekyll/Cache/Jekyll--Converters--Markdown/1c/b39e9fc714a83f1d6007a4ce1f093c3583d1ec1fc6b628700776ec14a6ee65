@@ -1,0 +1,80 @@
+I"<ul id="markdown-toc">
+  <li><a href="#xcode-相关" id="markdown-toc-xcode-相关">Xcode 相关：</a>    <ul>
+      <li><a href="#xcdoe真机测试文件地址" id="markdown-toc-xcdoe真机测试文件地址">Xcdoe真机测试文件地址：</a></li>
+      <li><a href="#查看xcode的uuid方式在终端执行-" id="markdown-toc-查看xcode的uuid方式在终端执行-">查看Xcode的UUID方式，在终端执行 ：</a></li>
+      <li><a href="#xcode-插件目录如下-" id="markdown-toc-xcode-插件目录如下-">Xcode 插件目录如下 ：</a></li>
+      <li><a href="#将-xcdoe-的软件的-uuid-加到所有插件中" id="markdown-toc-将-xcdoe-的软件的-uuid-加到所有插件中">将 Xcdoe 的软件的 UUID 加到所有插件中：</a></li>
+      <li><a href="#直接清除xcode缓存的数据" id="markdown-toc-直接清除xcode缓存的数据">直接清除Xcode缓存的数据:</a></li>
+      <li><a href="#xcode-的-code-snippets-文件存放于---代码块" id="markdown-toc-xcode-的-code-snippets-文件存放于---代码块">Xcode 的 Code Snippets 文件存放于   【代码块】</a></li>
+    </ul>
+  </li>
+  <li><a href="#文件高效处理相关" id="markdown-toc-文件高效处理相关">文件高效处理相关</a>    <ul>
+      <li><a href="#给文件加前缀切换到对应文件夹终端执行" id="markdown-toc-给文件加前缀切换到对应文件夹终端执行">给文件加前缀：(切换到对应文件夹终端执行)</a></li>
+      <li><a href="#os-x-下统计项目代码行数" id="markdown-toc-os-x-下统计项目代码行数">OS X 下统计项目代码行数:</a></li>
+      <li><a href="#os-x-下打印文件夹的目录结构" id="markdown-toc-os-x-下打印文件夹的目录结构">OS X 下打印文件夹的目录结构:</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="xcode-相关">Xcode 相关：</h2>
+<h5 id="xcdoe真机测试文件地址">Xcdoe真机测试文件地址：</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport
+</code></pre></div></div>
+
+<h5 id="查看xcode的uuid方式在终端执行-">查看Xcode的UUID方式，在终端执行 ：</h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</code></li>
+</ul>
+
+<h5 id="xcode-插件目录如下-">Xcode 插件目录如下 ：</h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">~/Library/Developer/Xcode/Plug-ins </code></li>
+  <li><code class="language-plaintext highlighter-rouge">~/Library/Application Support/Developer/Shared/Xcode/Plug-ins</code></li>
+  <li><code class="language-plaintext highlighter-rouge">~/Library/Developer/Application Support/Developer/Shared/Xcode/Plug-ins</code></li>
+</ul>
+
+<h5 id="将-xcdoe-的软件的-uuid-加到所有插件中">将 Xcdoe 的软件的 UUID 加到所有插件中：</h5>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I{} defaults write {} DVTPlugInCompatibilityUUIDs -array -addUUID</code></p>
+
+    <p>在终端中运行上述命令就解决了插件失效的问题，在插件 Info.plist 的 DVTPlugInCompatibilityUUIDs 中也能看到新增的 UUID 了。</p>
+    <ul>
+      <li>网络上真的好多把 <strong>-array -addUUID</strong> 错写成了 <strong>-array-addUUID</strong>。写成连在一起了导致写入 <strong>DVTPlugInCompatibilityUUIDs</strong>出错。我第一次运行网友这个错误的方式时直接把 <strong>DVTPlugInCompatibilityUUIDs</strong>数组变成了 <strong>string</strong>类型。</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="直接清除xcode缓存的数据">直接清除Xcode缓存的数据:</h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">~/Library/Developer/Xcode/DerivedData</code></li>
+</ul>
+
+<h5 id="xcode-的-code-snippets-文件存放于---代码块">Xcode 的 Code Snippets 文件存放于   【代码块】</h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">~/Library/Developer/Xcode/UserData/CodeSnippets</code>  目录，只要直接把 *.codesnippets 文件放到这个目录下（若没有则自己创建），重启 Xcode 即可生效。</li>
+</ul>
+
+<h2 id="文件高效处理相关">文件高效处理相关</h2>
+
+<h4 id="给文件加前缀切换到对应文件夹终端执行">给文件加前缀：(切换到对应文件夹终端执行)</h4>
+<ul>
+  <li><strong>for i in `ls`;do mv $i `echo “前缀内容” $i`;done;</strong></li>
+</ul>
+
+<h4 id="os-x-下统计项目代码行数">OS X 下统计项目代码行数:</h4>
+
+<p>这是一条普通的计算代码行数的命令，在终端中切换到源码文件所在目录下执行即可：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find . "(" -name "*.m" -or -name "*.mm" -or -name "*.swift" -or -name "*.cpp" -or -name "*.h" -or -name "*.rss" ")" -print | xargs wc -l
+</code></pre></div></div>
+
+<p>可以计算代码行数，源码文件类型在命令里哦，可以根据自己需要修改，上面这条是计算 iOS 项目的，效果如下：</p>
+
+<p><img src="https://www.eyrefree.org/images/Wrap-Count-1.png" alt="" /></p>
+
+<h4 id="os-x-下打印文件夹的目录结构">OS X 下打印文件夹的目录结构:</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+</code></pre></div></div>
+
+:ET

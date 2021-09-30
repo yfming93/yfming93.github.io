@@ -1,0 +1,237 @@
+I"�9<ul id="markdown-toc">
+  <li><a href="#喜欢的一段话" id="markdown-toc-喜欢的一段话">喜欢的一段话:</a></li>
+  <li><a href="#关于我" id="markdown-toc-关于我">关于我：</a>    <ul>
+      <li><a href="#开发过的一部分作品" id="markdown-toc-开发过的一部分作品"><strong>开发过的一部分作品:</strong></a></li>
+      <li><a href="#自嘲标签" id="markdown-toc-自嘲标签"><strong>自嘲标签:</strong></a></li>
+      <li><a href="#联系方式" id="markdown-toc-联系方式"><strong>联系方式:</strong></a></li>
+    </ul>
+  </li>
+  <li><a href="#友情链接" id="markdown-toc-友情链接">友情链接</a></li>
+  <li><a href="#请科学上网看评论-" id="markdown-toc-请科学上网看评论-">请科学上网看评论 😂</a></li>
+</ul>
+
+<head>
+<title>图片轮播代码</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+</head>
+
+<style type="text/css">
+    body{margin: 0 auto;}
+    #lunbo ul li{width:100%;list-style: none; height:auto ;background-color: ;text-align: center;}
+    #lunbo ul li:not(:first-child){display: none;}
+</style>
+
+<body>
+<div id="lunbo">
+    <ul style=" text-align: center; margin:0;">
+
+        <li href="#"><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/yfming.jpg" alt="在老家园博园" />  </li>
+        <!-- <li href="#" ><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/SiqEeO.jpg" alt="20190124在保利国际中心">  </li> -->
+        <li href="#"><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/N4v9CH.jpg" alt="20140326在武汉大学" />  </li>
+        <!-- <li href="#" ><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/rq7h1Y.jpg" alt="20170716武汉东湖绿道日出">  </li> -->
+
+    </ul>
+</div>
+<script type="text/javascript">
+    //因为使用了document，所以js需要放在需要执行的代码下面生效才能生效
+    var li=document.getElementById('lunbo').getElementsByTagName("li");
+    var num=0;
+    var len=li.length;
+
+    setInterval(function(){
+        li[num].style.display="none";
+        num=++num==len?0:num;
+        li[num].style.display="inline-block";
+
+    },5000);//切换时间
+</script>
+</body>
+
+<!-- <iframe frameborder="0" src="http://player.youku.com/embed/XNDE5NzY5MjYzNg==" frameborder="0" allowfullscreen="true" width="100%" height=600px ></iframe> -->
+
+<!-- <embed src='http://player.youku.com/player.php/sid/XNDE5NzY5MjYzNg==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed> -->
+
+<!-- <iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=u08763pmr6m" frameborder="0" allowfullscreen="true" width="100%" height=600px ></iframe> -->
+
+<h3 id="喜欢的一段话">喜欢的一段话:</h3>
+
+<blockquote>
+  <p><a href="https://video.tudou.com/v/XMzYwOTY4NDA0NA==.html?spm=a2h0k.8191414.0.0&amp;from=s1.8-1-1.2">New York is 3 hours ahead of California 🎬</a>,</p>
+
+  <p>but it does not make California slow.</p>
+
+  <p>Someone graduated at the age of 22,</p>
+
+  <p>but waited 5 years before securing a good job!</p>
+
+  <p>Someone became a CEO at 25,</p>
+
+  <p>and died at 50.</p>
+
+  <p>While another became a CEO at 50,</p>
+
+  <p>and lived to 90 years.</p>
+
+  <p>Someone is still single,</p>
+
+  <p>while someone else got married.</p>
+
+  <p>Obama retires at 55,</p>
+
+  <p>but Trump starts at 70.</p>
+
+  <p>Absolutely everyone in this world works based on their Time Zone.</p>
+
+  <p>People around you might seem to go ahead of you,</p>
+
+  <p>some might see to behind you</p>
+
+  <p>But everyone is running their own RACE, in their own TIME.</p>
+
+  <p>Don’t envy them or mock them.</p>
+
+  <p>They are in their TIME ZONE, and you are in yours!</p>
+
+  <p>Life is about waiting for the right moment to act.</p>
+
+  <p>So, RELAX.</p>
+
+  <p>You’re not LATE.</p>
+
+  <p>You’re not EARLY.</p>
+
+  <p>You are very much ON TIME, and in your TIME ZONE Destiny set up for you.</p>
+</blockquote>
+
+<h2 id="关于我">关于我：</h2>
+
+<p>Hey，我是 <strong>袁凤鸣</strong>，毕业于武汉纺织大学。iOS开发者 &amp; 业余设计师，会一些 H5（HTML、CSS、JS、Vue）基础。近两年热衷于 flutter，从事 flutter 移动端（安卓和iOS）开发。 喜欢折腾一些新技术。</p>
+
+<hr />
+
+<p>平时喜欢逛逛技术论坛，整理个人博客。常泡于 <a href="https://github.com/search?l=Objective-C&amp;o=desc&amp;q=stars%3A%3E100&amp;s=updated&amp;type=Repositories&amp;utf8=%E2%9C%93">Github</a>、<a href="https://www.raywenderlich.com/category/ios">Raywenderlich</a>、<a href="http://www.cocoachina.com/ios/index.html">CocoaChina</a>、<a href="https://juejin.im/welcome/ios">掘金</a>、<a href="https://www.jianshu.com/c/e84a7722d673">简书</a>、<a href="https://www.cnblogs.com/cate/ios/">博客园</a>、等等技术社区。站在巨人的肩膀上去开发、去探索、去学习。经常去 <a href="https://stackoverflow.com/questions/tagged/ios">Stackoverflow</a> 、<a href="https://github.com/search?l=Objective-C&amp;o=desc&amp;q=stars%3A%3E100&amp;s=updated&amp;type=Repositories&amp;utf8=%E2%9C%93">Github</a> 寻求解决方案。</p>
+
+<p>喜欢在黑夜中钻研技术，时常夜深人静的时候，我的精力值视乎爆满。于是就穿梭在各个技术论坛之间。同时喜欢听网易云里面的一些民谣歌曲和纯音乐，喜欢逛各大无损音乐论坛。每次找到一个自己的喜欢的音乐就会单曲循环好多天呃呃。</p>
+
+<hr />
+
+<p>各方面都是辣鸡，但是觉得好玩就不会放弃。</p>
+
+<p><br /></p>
+
+<h4 id="开发过的一部分作品"><strong>开发过的一部分作品:</strong></h4>
+
+<ul>
+  <li><a target="_blank" href="https://itunes.apple.com/cn/app/id1241200980?mt=8"> 蓝牙小精灵      </a>
+    <ul>
+      <li>蓝牙小精灵是一个人工智能创造的机器人，她能陪你聊天，讲故事，帮你订机票，同时具备自主学习的能力，做你24小时的贴心助理。 支持32个领域，在App上以不同的形式进行展示，支持文本发送，单击发送语音，长按发送语音三种交互方式。</li>
+    </ul>
+  </li>
+  <li><a target="_blank" href="https://itunes.apple.com/cn/app/id1442048976?mt=8"> 阿拉的小朋友      </a>
+    <ul>
+      <li>阿拉的小朋友们是一款儿童智能早教启蒙APP，配套阿拉的小朋友们儿童智能早教玩具智能音箱使用。拥有海量优质内容，有儿童英语、故事、儿歌、国学、诗词、算术、翻译等诸多儿童早教内容，是0-6岁宝宝早教启蒙的好选择；囊括了教育、娱乐、小工具、生活服务、节目、电话短信等多项来自阿拉的，搜狗和飔拓智能语义提供的智能技能。</li>
+    </ul>
+  </li>
+  <li><a target="_blank" href="https://itunes.apple.com/cn/app/id1321310096?mt=8"> 文化南宁       </a><br />
+ 		<!-- - 授奖新闻 http://www.nntv.cn/news/m/2018-5-4/1525405241514.shtml  -->
+    <ul>
+      <li><a target="_blank" href="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/20190610000213.png"> 被世界新媒体大会授予品牌潜力奖 </a></li>
+      <li>文化南宁APP是南宁电视台旗下广西发扬传媒文化有限公司打造的一款，注重南宁本地文化生活娱乐的产品，用户可在本APP了解到当前，最热门的演出节目。游览景点等内容。</li>
+    </ul>
+  </li>
+  <li><a target="_blank" href="https://itunes.apple.com/cn/app/id1179906438?mt=8"> F O 学院 </a>
+    <ul>
+      <li>FO学院主要定位为法律法规培训教学课堂，由直播、案例、订阅、FO资讯、知名讲师、积分兑换等功能模块构成。让用户通过FO学院移动客户端就能清晰的掌握直播信息，行业资讯，以及一系列真实案例。</li>
+    </ul>
+  </li>
+  <li><a target="_blank" href="https://itunes.apple.com/cn/app/id1147640197?mt=8"> 一起云购		</a>
+    <ul>
+      <li>你与梦想只有一元的距离! 用一元获得梦想中的商品! 当下最流行的一元夺宝玩法!</li>
+      <li>【因国家政策已下架】</li>
+    </ul>
+  </li>
+  <li><a target="_blank" href="https://itunes.apple.com/cn/app/id977886800?mt=8"> 南宁问政 		</a>
+    <ul>
+      <li>“南宁问政”APP是专门为《向人民承诺–电视问政》栏目打造的一款集直播、点播、问政新闻、我来问政、投票、在线调查等多功能于一身的手机客户端，旨在建立南宁市民与政府职能部门沟通的桥梁，促进实际问题的解决，加强政府为民务实的公共形象。</li>
+    </ul>
+  </li>
+  <li><a target="_blank" href="https://itunes.apple.com/cn/app/id863921247?mt=8"> 南宁头条 		</a>
+    <ul>
+      <li>南宁头条新闻客户端是南宁电视台全媒体新闻中心官方客户端，重大新闻权威发布，突发事件及时报道，关心百姓，感受民生，见证南宁发展，给您身边最及时有用的新闻！丰富的新闻资讯直播、点播、预告、搜索、和分享服务，全天滚动更新，让你随时随地获取新闻资讯。</li>
+    </ul>
+  </li>
+  <li><a target="_blank" href="https://itunes.apple.com/cn/app/id1184797652?mt=8"> 在   马   山 		</a>
+    <ul>
+      <li>“在马山”手机应用是互联网+新常态下，通过移动互联网展示马山县扶贫攻坚、生态治理、旅游新线等全景化互联网应用，是整合新闻资讯、政府公共信息查询和市民服务的综合服务平台，成为马山政务宣传、政民互动、网上办事、生活服务、娱乐休闲的可拓展的移动智能化综合体。</li>
+    </ul>
+  </li>
+  <li><a target="_blank" href="https://itunes.apple.com/cn/app/id780406619?mt=8"> 掌上南昌 		</a>
+    <ul>
+      <li>南昌市的新闻头条资讯APP。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>　</p>
+
+<!-- [蓝牙小精灵](https://itunes.apple.com/cn/app/id1241200980?mt=8)（智能语音助手类型）、[文化南宁](https://itunes.apple.com/cn/app/id1321310096?mt=8)([被实世界新媒体大会授予品牌潜力奖](https://ws2.sinaimg.cn/large/006tNc79gy1fr9ui8ov7lj313w0tztgo.jpg))、[FO学院](https://itunes.apple.com/cn/app/id1179906438?mt=8)、 [一起云购](https://itunes.apple.com/cn/app/id1147640197?mt=8)(因国家政策已下架)、 ARKVPN(因国家政策已下架)、[南宁问政](https://itunes.apple.com/cn/app/id977886800?mt=8)、 [南宁头条 ](https://itunes.apple.com/cn/app/id863921247?mt=8)、[在马山](https://itunes.apple.com/cn/app/id1184797652?mt=8)、 [掌上南昌](https://itunes.apple.com/cn/app/id780406619?mt=8) 等等。 -->
+
+<!--**目前所在公司：** 
+
+[飔拓 (武汉泰迪智慧科技有限公司)](http://www.stormorai.com/) ，飔拓总部位于中国光谷，在北京、厦门、深圳分别设有子公司，业务已覆盖北京、上海、武汉、江西、广州等数十个省市。飔拓是一家专注于“智能人机交互”领域的高新技术企业，公司核心产品包括智能交互语义平台、分布式机器学习平台、智能交互舆情系统等。
+
+**以前工作过的公司：**
+[北京众思高远科技有限公司](http://www.asia-cloud.com/) 众思高远公司总部位于北京，在武汉和南宁设有分公司。主要关注于搭建区域性融合媒体平台，为传统媒体行业转型、商业企业的移动化建设，提供技术解决方案，同时提供平台服务和运营支持。-->
+
+<h4 id="自嘲标签"><strong>自嘲标签:</strong></h4>
+<p>音乐初烧、摄影爱好者、追求完美者、持续学习者、习惯性熬夜者</p>
+
+<h4 id="联系方式"><strong>联系方式:</strong></h4>
+<p><strong>邮箱：</strong>yfmingo@163.com<br />
+<strong>网站：</strong><a href="https://www.yfmingo.cn/">www.yfmingo.cn</a><br />
+<strong>Q Q：</strong>928289877<br />
+<strong>手机：</strong>13129924211(同微信)</p>
+
+<!-- <h5>Talks</h5>
+    <ul>
+    <li><a href="//huangxuan.me/2016/11/20/sw-101-gdgdf/">Service Worker 101 · GDG DevFest 2016 北京</a></li>
+    <li><a href="//huangxuan.me/2016/10/20/pwa-qcon2016/">Progressive Web Apps，复兴序章 · QCon 上海 2016</a></li>
+    <li><a href="//huangxuan.me/2016/06/05/pwa-in-my-pov/">Progressive Web App 之我见 · 2016</a></li>
+    <li><a href="//huangxuan.me/2015/12/28/css-sucks-2015/">CSS Still Sucks 2015 · 2015</a></li>
+    <li><a href="//huangxuan.me/2015/07/09/js-module-7day/">JavaScript 模块化七日谈 · 2015</a></li>
+    </ul> -->
+
+<h2 id="友情链接">友情链接</h2>
+
+<p><a href="http://www.cnblogs.com/yfming/">我的博客园</a> |<a href="http://www.jianshu.com/c/8554d4ccb9b9">简书专题：iOS 技术文集</a> | <a href="http://www.jianshu.com/c/e84a7722d673">简书专题：iOS Developer </a> 、<a href="http://www.code4app.com/forum-2-1-117-118.html">Code4App</a></p>
+
+<p><a href="https://gold.xitu.io/timeline/ios">掘金</a> | <a href="http://tool.lu/c/developer">在线开发者工具集</a> | <a href="http://www.runoob.com/">菜鸟学习网</a> | <a href="https://www.v2ex.com/">V2EX</a> | <a href="http://code4app.qiniudn.com/">code4app</a> | <a href="http://www.oschina.net/ios/home">oschina</a> | <a href="http://ios.jobbole.com/category/ios-dev/">伯乐在线</a> | <a href="http://stackoverflow.com/">stackoverflow</a> | <a href="https://dribbble.com/shots?list=teams">dribbble</a> | <a href="https://github.com/QMUI">QMUI 团队</a> | <a href="http://www.swift51.com/">swift51</a> | <a href="http://swift.gg/">swift.gg</a> |</p>
+
+<p><a href="https://onevcat.com/#blog">王巍的博客</a> | <a href="http://blog.sunnyxx.com/">sunnyxx的博客</a> | <a href="http://blog.devtang.com/">唐巧的博客</a> | <a href="http://www.tboox.org/cn/">TBOOX</a></p>
+
+<h2 id="请科学上网看评论-">请科学上网看评论 😂</h2>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://fleeming.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+:ET

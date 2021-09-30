@@ -1,0 +1,18 @@
+I"X<ul id="markdown-toc">
+  <li><a href="#0x001-git合并代码冲突解决小技巧" id="markdown-toc-0x001-git合并代码冲突解决小技巧">0x001 git合并代码——冲突解决小技巧</a></li>
+  <li><a href="#0x002-gitee-码云上传代码错误" id="markdown-toc-0x002-gitee-码云上传代码错误">0x002 Gitee 码云上传代码错误</a></li>
+</ul>
+<hr />
+
+<h4 id="0x001-git合并代码冲突解决小技巧">0x001 git合并代码——冲突解决小技巧</h4>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/WeChat760faf42390e04f175d5d7cf7dd41304.png" alt="" /></p>
+
+<hr />
+<h4 id="0x002-gitee-码云上传代码错误">0x002 Gitee 码云上传代码错误</h4>
+<p>如 原来的项目地址 <code class="language-plaintext highlighter-rouge">https://gitee.com/yfming93/allez.git</code><br />
+突然某一天上传不上去了，一直要提示用户登录，但是账号密码都正确就是登录不上。</p>
+
+<p><strong>解决：</strong><code class="language-plaintext highlighter-rouge">https://yfming93@gitee.com/yfming93/allez.git</code> 改成这样就可以了。</p>
+
+:ET

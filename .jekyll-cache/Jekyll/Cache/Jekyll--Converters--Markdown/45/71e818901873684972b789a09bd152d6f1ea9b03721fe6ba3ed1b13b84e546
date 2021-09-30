@@ -1,0 +1,167 @@
+I"1<ul id="markdown-toc">
+  <li><a href="#fmlistplaceholder" id="markdown-toc-fmlistplaceholder">FMListPlaceholder</a>    <ul>
+      <li><a href="#0x001-与其他的同类三方库对比的优点" id="markdown-toc-0x001-与其他的同类三方库对比的优点">0x001 与其他的同类三方库对比的优点：</a></li>
+      <li><a href="#0x002-效果演示" id="markdown-toc-0x002-效果演示">0x002 效果演示</a></li>
+      <li><a href="#0x003-如何使用" id="markdown-toc-0x003-如何使用">0x003 如何使用</a>        <ul>
+          <li><a href="#一行代码使用" id="markdown-toc-一行代码使用">一行代码使用</a></li>
+          <li><a href="#自定义全局默认" id="markdown-toc-自定义全局默认">自定义全局默认</a></li>
+          <li><a href="#0x004-自定义" id="markdown-toc-0x004-自定义">0x004 自定义</a>            <ul>
+              <li><a href="#自定义某个特殊列表" id="markdown-toc-自定义某个特殊列表">自定义某个特殊列表</a></li>
+              <li><a href="#点击刷新逻辑" id="markdown-toc-点击刷新逻辑">点击刷新逻辑</a></li>
+              <li><a href="#更加详细请见演示工程" id="markdown-toc-更加详细请见演示工程">更加详细请见演示工程</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#0x005-希望" id="markdown-toc-0x005-希望">0x005 希望</a></li>
+      <li><a href="#0x006-更新记录" id="markdown-toc-0x006-更新记录">0x006 更新记录</a>        <ul>
+          <li><a href="#20190123-v110" id="markdown-toc-20190123-v110">2019.01.23 V1.1.0</a></li>
+        </ul>
+      </li>
+      <li><a href="#0x007-qq-群" id="markdown-toc-0x007-qq-群">0x007 QQ 群</a></li>
+      <li><a href="#0x008-要求" id="markdown-toc-0x008-要求">0x008 要求</a></li>
+      <li><a href="#0x009-许可证" id="markdown-toc-0x009-许可证">0x009 许可证</a></li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h1 id="fmlistplaceholder">FMListPlaceholder</h1>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fz8ipkdw88j30va0b4q48.jpg" alt="" /></p>
+
+<p><a href="#"><img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=plastic" alt="platform" /></a><br />
+<a href="#"><img src="https://img.shields.io/badge/language-objective--c-blue.svg" alt="languages" /></a> <br />
+<a href="https://cocoapods.org/pods/FMListPlaceholder"><img src="https://img.shields.io/badge/cocoapods-supported-4BC51D.svg?style=plastic" alt="cocoapods" /></a><br />
+<a href="#"><img src="https://img.shields.io/badge/support-iOS9%2B-orange.svg" alt="support" /></a></p>
+
+<p><a href="https://github.com/yfming93/FMListPlaceholder/blob/master/README_English.md">There is an English version of README here. just click it！</a></p>
+
+<p>一个优雅的占位图解决方案。适用于 UITableView 和 UICollectionView。</p>
+
+<p><strong>一行代码处理空列表占位图逻辑</strong></p>
+
+<h3 id="0x001-与其他的同类三方库对比的优点">0x001 与其他的同类三方库对比的优点：</h3>
+
+<ul>
+  <li>首次进入列表占位图是不显示的。只在网络请求完成后，再次刷新列表时才处理相关逻辑；</li>
+  <li>简单、高效、实用，最快一行代码就可以集成;</li>
+  <li>提供更加全面丰富、高度自定义的效果；</li>
+  <li>可一行代码设置一套自己项目专属的默认方案，然后也可以在某个特殊的列表单独二次自定义效果；</li>
+  <li>支持用户自行自定义的视图作为占位图；</li>
+</ul>
+
+<h3 id="0x002-效果演示">0x002 效果演示</h3>
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/006tNc79ly1fz7ly8x5feg30gx0dokjm.gif" alt="" /></p>
+
+<h3 id="0x003-如何使用">0x003 如何使用</h3>
+<ul>
+  <li>CocoaPods 使用:
+    <ul>
+      <li>在  <code class="language-plaintext highlighter-rouge">Podfile</code>  文件新增 <code class="language-plaintext highlighter-rouge">pod "FMListPlaceholder"</code> ；</li>
+      <li>打开终端, 切换到项目文件目录。 执行 <code class="language-plaintext highlighter-rouge">pod install</code>；</li>
+      <li>导入主头文件：<code class="language-plaintext highlighter-rouge">#import &lt;FMListPlaceholder.h&gt;</code></li>
+    </ul>
+  </li>
+  <li>手动拖入 使用：
+    <ul>
+      <li>下载演示工程，把 <code class="language-plaintext highlighter-rouge">FMListPlaceholder</code> 文件夹拖入自己项目中；</li>
+      <li>导入主头文件：<code class="language-plaintext highlighter-rouge">#import "FMListPlaceholder.h"</code>；</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="一行代码使用">一行代码使用</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_tableView.needPlaceholderView = YES;   //the same as UICollectionView
+</code></pre></div></div>
+
+<p>或者如下自定义</p>
+<h5 id="自定义全局默认">自定义全局默认</h5>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+    
+    <span class="p">[</span><span class="n">FMListPlaceholder</span> <span class="nf">fm_defaultBackgroundColor</span><span class="p">:</span><span class="n">UIColor</span><span class="p">.</span><span class="n">whiteColor</span> <span class="nf">coverName</span><span class="p">:</span><span class="s">@"xxx"</span> <span class="n">tips</span><span class="o">:</span><span class="s">@"Sorroy,nil here!"</span> <span class="n">tipsTextColor</span><span class="o">:</span><span class="n">UIColor</span><span class="p">.</span><span class="n">grayColor</span> <span class="n">tipsFont</span><span class="o">:</span><span class="p">[</span><span class="n">UIFont</span> <span class="nf">systemFontOfSize</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">coverSize</span><span class="o">:</span><span class="n">CGSizeZero</span> <span class="n">coverCenterYOffset</span><span class="o">:-</span><span class="mi">30</span> <span class="n">coverSpaceToTips</span><span class="o">:</span><span class="mi">10</span><span class="p">];</span>
+
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h4 id="0x004-自定义">0x004 自定义</h4>
+<h5 id="自定义某个特殊列表">自定义某个特殊列表</h5>
+<p> 根据自己需求自行调用如下某些接口设置，UITableView 和 UICollectionView 接口相同。</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">_tableView</span> <span class="nf">fm_emptyCoverName</span><span class="p">:</span><span class="s">@"fm_placeholder_nil"</span> <span class="nf">emptyTips</span><span class="p">:</span><span class="s">@" "</span><span class="p">];</span>
+<span class="p">[</span><span class="n">_tableView</span> <span class="nf">fm_backgroundColor</span><span class="p">:[</span><span class="n">UIColor</span> <span class="nf">colorWithRed</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">91</span> <span class="nf">green</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">90</span> <span class="nf">blue</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">90</span> <span class="n">alpha</span><span class="o">:</span><span class="mi">1</span><span class="p">.</span><span class="mo">00</span><span class="p">]</span> <span class="n">tipsTextColor</span><span class="o">:</span><span class="n">UIColor</span><span class="p">.</span><span class="n">redColor</span> <span class="n">tipsFont</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">[</span><span class="n">_tableView</span> <span class="nf">fm_coverCenterYOffset</span><span class="p">:</span><span class="o">-</span><span class="mi">80</span> <span class="nf">coverSize</span><span class="p">:</span><span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span> <span class="n">coverSpaceToTips</span><span class="o">:</span><span class="mi">20</span><span class="p">];</span>
+<span class="c1">// the same as UICollectionView</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<h5 id="点击刷新逻辑">点击刷新逻辑</h5>
+<p>（如果需要点击刷新逻辑，可实现如下 block）</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_tableView</span><span class="p">.</span><span class="n">reloadBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">UIScrollView</span> <span class="o">*</span><span class="n">listView</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Reload Handle is Here!</span>
+  <span class="c1">// [listView.mj_header beginRefreshing]; // reloadData</span>
+<span class="p">};</span>
+</code></pre></div></div>
+<h5 id="更加详细请见演示工程">更加详细请见演示工程</h5>
+
+<h3 id="0x005-希望">0x005 希望</h3>
+<ul>
+  <li>
+    <p>如果您在使用过程中有任何疑问或想要更多界面进行自定义，您可以发给我！</p>
+  </li>
+  <li>如果您想参与本项目的维护或具有良好的设计风格，欢迎拉动请求！</li>
+  <li>如果您在使用时有任何问题，请与我联系。
+    <ul>
+      <li>博客网站: <a href="www.yfmingo.cn">www.yfmingo.cn</a></li>
+      <li>邮箱: yfmingo@163.com.</li>
+    </ul>
+  </li>
+  <li>希望能够共同完善这个项目，让它变得更强大，能够满足大多数用户的需求！</li>
+</ul>
+
+<h3 id="0x006-更新记录">0x006 更新记录</h3>
+<h4 id="20190123-v110">2019.01.23 V1.1.0</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">[+]</code> 新增支持用户自定义视图作为全局默认占位图 或 某个列表的占位图</li>
+  <li><code class="language-plaintext highlighter-rouge">[+]</code> 新增一些使用示例 在 演示工程的 <code class="language-plaintext highlighter-rouge">FMTableViewPlaceholder.m</code> 文件中</li>
+</ul>
+
+<h3 id="0x007-qq-群">0x007 QQ 群</h3>
+<p><img src="https://ws3.sinaimg.cn/small/006tNc79gy1fz8aavckscj30f10kl0us.jpg" alt="" /></p>
+
+<h3 id="0x008-要求">0x008 要求</h3>
+<ul>
+  <li>iOS 9.0 or later</li>
+  <li>Xcode 9.0 or later</li>
+</ul>
+
+<h3 id="0x009-许可证">0x009 <a href="https://github.com/yfming93/FMListPlaceholder/blob/master/LICENSE">许可证</a></h3>
+<p><strong>All source code is licensed under the MIT <a href="https://github.com/yfming93/FMListPlaceholder/blob/master/LICENSE">License</a>.</strong></p>
+
+<blockquote>
+  <p>MIT License</p>
+
+  <p>Copyright (c) 2019 Fleeming</p>
+
+  <p>Permission is hereby granted, free of charge, to any person obtaining a copy<br />
+of this software and associated documentation files (the “Software”), to deal<br />
+in the Software without restriction, including without limitation the rights<br />
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br />
+copies of the Software, and to permit persons to whom the Software is<br />
+furnished to do so, subject to the following conditions:</p>
+
+  <p>The above copyright notice and this permission notice shall be included in all<br />
+copies or substantial portions of the Software.</p>
+
+  <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br />
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<br />
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<br />
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<br />
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br />
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE<br />
+SOFTWARE.</p>
+</blockquote>
+
+:ET

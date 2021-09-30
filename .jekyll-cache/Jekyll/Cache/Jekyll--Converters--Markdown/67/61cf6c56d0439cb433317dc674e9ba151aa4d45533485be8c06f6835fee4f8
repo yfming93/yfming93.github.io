@@ -1,0 +1,76 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#介绍" id="markdown-toc-介绍">介绍：</a></li>
+  <li><a href="#步骤" id="markdown-toc-步骤">步骤：</a></li>
+  <li><a href="#代码" id="markdown-toc-代码">代码：</a></li>
+</ul>
+
+<h2 id="介绍">介绍：</h2>
+<p>日常开发中。有些情况需要将多个二维码合成一个二维码。如:</p>
+
+<p>将蒲公英的iOS测试包二维码和安卓测试包二维码合成一个。。这样发给任何人测试只要发一个二维码就行。不管他是安卓手机还是苹果手机自动识别并安装对应的测试包。</p>
+
+<h2 id="步骤">步骤：</h2>
+<ol>
+  <li>新建<code class="language-plaintext highlighter-rouge">index.html</code>文件。</li>
+  <li>在<code class="language-plaintext highlighter-rouge">index</code>文件中写入相关逻辑判断代码。将准备好的iOS和安卓测试包二维码链接替换代码中二维码链接。</li>
+  <li>将<code class="language-plaintext highlighter-rouge">index</code>文件发布到<code class="language-plaintext highlighter-rouge">coding</code>或者<code class="language-plaintext highlighter-rouge">Github Page</code>平台并开启<code class="language-plaintext highlighter-rouge">page</code>模式（page模式开启教程也简单，可见官网）。</li>
+  <li>然后得到<code class="language-plaintext highlighter-rouge">index</code>的<code class="language-plaintext highlighter-rouge">page</code>网页链接。再将此链接利用在线生成二维码工具生成二维码即可。</li>
+</ol>
+
+<h2 id="代码">代码：</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+        &lt;title&gt;二维码下载&lt;/title&gt;   
+ 
+        &lt;script type="text/javascript"&gt;
+            /*
+             * 智能机浏览器版本信息:
+             *
+             */
+            var browser = {
+                versions: function() {
+                    var u = navigator.userAgent, app = navigator.appVersion;
+                    return {//移动终端浏览器版本信息
+                        trident: u.indexOf('Trident') &gt; -1, //IE内核
+                        presto: u.indexOf('Presto') &gt; -1, //opera内核
+                        webKit: u.indexOf('AppleWebKit') &gt; -1, //苹果、谷歌内核
+                        gecko: u.indexOf('Gecko') &gt; -1 &amp;&amp; u.indexOf('KHTML') == -1, //火狐内核
+                        mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+                        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                        android: u.indexOf('Android') &gt; -1 || u.indexOf('Linux') &gt; -1, //android终端或者uc浏览器
+                        iPhone: u.indexOf('iPhone') &gt; -1 || u.indexOf('Mac') &gt; -1, //是否为iPhone或者QQHD浏览器
+                        iPad: u.indexOf('iPad') &gt; -1, //是否iPad
+                        webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                    };
+                }(),
+                language: (navigator.browserLanguage || navigator.language).toLowerCase()
+            }
+ 
+            if (browser.versions.android) { 
+                
+                window.location="https://www.pgyer.com/VzkB";
+            } else if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+                window.location="https://www.pgyer.com/me2z";
+            }
+             
+ 
+//            document.writeln("语言版本: " + browser.language);
+//            document.writeln(" 是否为移动终端: " + browser.versions.mobile);
+//            document.writeln(" ios终端: " + browser.versions.ios);
+//            document.writeln(" android终端: " + browser.versions.android);
+//            document.writeln(" 是否为iPhone: " + browser.versions.iPhone);
+//            document.writeln(" 是否iPad: " + browser.versions.iPad);
+//            document.writeln(navigator.userAgent);
+ 
+ 
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+         
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div></div>
+
+:ET

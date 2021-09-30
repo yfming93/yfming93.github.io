@@ -1,0 +1,114 @@
+I"�%<ul id="markdown-toc">
+  <li><a href="#一前言" id="markdown-toc-一前言">一、前言</a></li>
+  <li><a href="#二说明" id="markdown-toc-二说明">二、说明</a></li>
+  <li><a href="#三talk-is-cheap-show-me-the-screenshot" id="markdown-toc-三talk-is-cheap-show-me-the-screenshot">三、Talk is cheap, show me the screenshot.</a>    <ul>
+      <li><a href="#1-首先来个qq的几个bug吧" id="markdown-toc-1-首先来个qq的几个bug吧">1. 首先来个<code class="language-plaintext highlighter-rouge">QQ</code>的几个<code class="language-plaintext highlighter-rouge">bug</code>吧。。</a>        <ul>
+          <li><a href="#bug01和别人详细聊天的时候导航栏不见了不能返回了双击home退出再次进去又好了" id="markdown-toc-bug01和别人详细聊天的时候导航栏不见了不能返回了双击home退出再次进去又好了"><strong>bug01：</strong>和别人详细聊天的时候导航栏不见了。不能返回了。双击home退出再次进去又好了。</a></li>
+          <li><a href="#bug02不知道怎么回事如图页面下方出现了qqandroidqavgesture" id="markdown-toc-bug02不知道怎么回事如图页面下方出现了qqandroidqavgesture"><strong>bug02：</strong>不知道怎么回事。如图页面下方出现了：<code class="language-plaintext highlighter-rouge">qq.android.qavgesture</code></a></li>
+          <li><a href="#bug03侧滑返回过程中出现前后页面错位" id="markdown-toc-bug03侧滑返回过程中出现前后页面错位"><strong>bug03：</strong>侧滑返回过程中出现前后页面错位。</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-新浪微博的bug" id="markdown-toc-2-新浪微博的bug">2. 新浪微博的<code class="language-plaintext highlighter-rouge">Bug</code>。</a>        <ul>
+          <li><a href="#bug01我已经登录成功了但是个人中心的信息木有显示完全" id="markdown-toc-bug01我已经登录成功了但是个人中心的信息木有显示完全"><strong>bug01：</strong>我已经登录成功了。但是个人中心的信息木有显示完全。</a></li>
+        </ul>
+      </li>
+      <li><a href="#3腾讯视频的bug20170917更新如下" id="markdown-toc-3腾讯视频的bug20170917更新如下">3.腾讯视频的<code class="language-plaintext highlighter-rouge">Bug</code>【20170917更新如下】</a></li>
+      <li><a href="#4微信的bug20170922跟新如下" id="markdown-toc-4微信的bug20170922跟新如下">4.微信的<code class="language-plaintext highlighter-rouge">bug</code>【20170922跟新如下】</a>        <ul>
+          <li><a href="#bug01隐私协议竟然弹出键盘" id="markdown-toc-bug01隐私协议竟然弹出键盘"><strong>bug01：</strong>隐私协议竟然弹出键盘</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#四后记" id="markdown-toc-四后记">四、后记</a></li>
+</ul>
+
+<h2 id="一前言">一、前言</h2>
+
+<p>产品：“~哎哎哎。。你知道你的程序有bug吗?”<br />
+开发：“怎么可能？不要乱说。没有。”<br />
+产品：“真的有啊。我以前遇到了啊。。“<br />
+开发：“有个🐔吧，你现在复现给我看看。”<br />
+产品：”。。。。。。“<br />
+开发：“<strong>Talk is cheap, show me the screenshot.</strong>”</p>
+
+<p><br /><br />
+“不要嚣张，劳资之前幸好截图了。虽然现在复现不出来。但是有截图为证。非要下次再出现了然后拍个视频证实下？”，产品心中两万个草泥马正在这样思索着。</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/GZflxS.jpg" alt="" /></p>
+
+<h2 id="二说明">二、说明</h2>
+
+<p>诚然，没有永无<code class="language-plaintext highlighter-rouge">bug</code>的程序。只是<code class="language-plaintext highlighter-rouge">bug</code>有木有被你发现罢了。</p>
+
+<p>发现了<code class="language-plaintext highlighter-rouge">bug</code>要摆正态度，及时定位<code class="language-plaintext highlighter-rouge">bug</code>的原因然后尽快修复。这才是有个有态度的程序员该做的事情。当然产品也请不要死抓一些东西死磕。阿里腾讯等大厂的<code class="language-plaintext highlighter-rouge">APP</code>有时候都会有<code class="language-plaintext highlighter-rouge">bug</code>。什么东西都有个度，自己好好把控就好。</p>
+
+<h2 id="三talk-is-cheap-show-me-the-screenshot">三、Talk is cheap, show me the screenshot.</h2>
+
+<h3 id="1-首先来个qq的几个bug吧">1. 首先来个<code class="language-plaintext highlighter-rouge">QQ</code>的几个<code class="language-plaintext highlighter-rouge">bug</code>吧。。</h3>
+
+<p>这是一起偶发性发现的<code class="language-plaintext highlighter-rouge">bug</code>。现在复现也确实不好复现了。好在当时发现的时候截图为证了哈<br />
+    <br /></p>
+<h4 id="bug01和别人详细聊天的时候导航栏不见了不能返回了双击home退出再次进去又好了"><strong>bug01：</strong>和别人详细聊天的时候导航栏不见了。不能返回了。双击home退出再次进去又好了。</h4>
+<p><br /><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/AVN8ug.jpg" alt="" /><br />
+<br /></p>
+
+<p>此图是我司产品发现的。发现时我让他截图了，然后发我保存了。</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/XI4w6r.jpg" alt="" /><br />
+<br /></p>
+<h4 id="bug02不知道怎么回事如图页面下方出现了qqandroidqavgesture"><strong>bug02：</strong>不知道怎么回事。如图页面下方出现了：<code class="language-plaintext highlighter-rouge">qq.android.qavgesture</code></h4>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/GVVgTa.jpg" alt="" /><br />
+<br /><br />
+【时间：2017-07-18】</p>
+
+<p>当日下午。持续几个小时后有木有了。<br />
+【记得当时发现这个<code class="language-plaintext highlighter-rouge">bug</code>的操作过程是：点击兴趣部落，然后后来进入好友动态。然后又回来接着下面<code class="language-plaintext highlighter-rouge">tabbar</code>三个按钮点击切换的时候就出现了如图】<br />
+<br /></p>
+<h4 id="bug03侧滑返回过程中出现前后页面错位"><strong>bug03：</strong>侧滑返回过程中出现前后页面错位。</h4>
+
+<p>【时间：2017-08-14】<br />
+【以我iOS角度分析原因是：后面页面隐藏导航，当面页面需要导航。这期间的导航隐藏和不隐藏木有处理好导致前面页面有错落感。】</p>
+
+<p><br /><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/YkfccV.jpg" alt="" /></p>
+
+<p><br /><br />
+当日下午发现的<code class="language-plaintext highlighter-rouge">bug</code>。但是也马上截图了。但是一般情况下也不好复现。</p>
+
+<p><br /></p>
+<h3 id="2-新浪微博的bug">2. 新浪微博的<code class="language-plaintext highlighter-rouge">Bug</code>。</h3>
+<h4 id="bug01我已经登录成功了但是个人中心的信息木有显示完全"><strong>bug01：</strong>我已经登录成功了。但是个人中心的信息木有显示完全。</h4>
+
+<p>个人资料里面的信息都有。但是头像，微博数量，关注数量，粉丝数量都变为0了。<br />
+【时间： 2017-08-28】<br />
+<br /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/InU5UP.jpg" alt="" /></p>
+
+<h3 id="3腾讯视频的bug20170917更新如下">3.腾讯视频的<code class="language-plaintext highlighter-rouge">Bug</code>【20170917更新如下】</h3>
+
+<p>9月13苹果新品发布会。腾讯视频直播这次发布会的时候。我闲来无事想看看苹果的新品发布会了解下新品特性。（这也是作为一个iOSer需要去了解关注的资讯吧。）</p>
+
+<p>如图实时评论都跑到页面底部了。整个页面乱成狗了哈。。、O(∩_∩)O~</p>
+
+<p>（当时发现了就果断录了个gif存着）<br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/iIchMJ.jpg" alt="" /></p>
+
+<h3 id="4微信的bug20170922跟新如下">4.微信的<code class="language-plaintext highlighter-rouge">bug</code>【20170922跟新如下】</h3>
+<h4 id="bug01隐私协议竟然弹出键盘"><strong>bug01：</strong>隐私协议竟然弹出键盘</h4>
+<p>前几天我搞了一个移动的天悦卡，话说1元500M流量还是很给力的。。So,那我就有两个手机卡了。于是新卡准备注册个微信。可是当我输入完验证码去看看隐私协议时候。这个页面却出现了数字键盘。<br />
+这页面只是给人看的怎么会把上个页面的输入键盘带过来了。但是可以点击屏幕后收回键盘。</p>
+
+<p>当时截屏如下：</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/DnSPe5.jpg" alt="" /></p>
+
+<h2 id="四后记">四、后记</h2>
+
+<p>之前也发现过淘宝 和 饿了么的<code class="language-plaintext highlighter-rouge">bug</code>。但当时木有截图收集。后面的又发现了这几家大厂<code class="language-plaintext highlighter-rouge">APP</code>的<code class="language-plaintext highlighter-rouge">bug</code>。所以就无聊截图留个纪念吧。毕竟大厂<code class="language-plaintext highlighter-rouge">APP</code>的<code class="language-plaintext highlighter-rouge">bug</code>不是天天有的。这真的要靠机遇和运气才能发现哦。。。</p>
+
+<p>So，后续发现其他知名<code class="language-plaintext highlighter-rouge">APP</code>的<code class="language-plaintext highlighter-rouge">bug</code>我会截图跟新此帖。</p>
+
+:ET

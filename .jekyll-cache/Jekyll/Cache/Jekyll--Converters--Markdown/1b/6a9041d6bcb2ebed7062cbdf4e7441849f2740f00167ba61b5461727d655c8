@@ -1,0 +1,26 @@
+I"<ul id="markdown-toc">
+  <li><a href="#uiwebview-加-mjrefresh-同时解决底部黑影问题" id="markdown-toc-uiwebview-加-mjrefresh-同时解决底部黑影问题">UIWebView 加 MJRefresh 同时解决底部黑影问题</a>    <ul>
+      <li><a href="#一介绍" id="markdown-toc-一介绍">一、介绍：</a>        <ul>
+          <li><a href="#让-h5-的刷新更加撩人浪漫" id="markdown-toc-让-h5-的刷新更加撩人浪漫">让 H5 的刷新更加撩人浪漫！</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="uiwebview-加-mjrefresh-同时解决底部黑影问题">UIWebView 加 MJRefresh 同时解决底部黑影问题</h1>
+
+<h2 id="一介绍">一、介绍：</h2>
+<h4 id="让-h5-的刷新更加撩人浪漫">让 H5 的刷新更加撩人浪漫！</h4>
+
+<!--原文在我博客： [https://www.yfmingo.cn/2017/07/23/PagingButton/](https://www.yfmingo.cn/2017/07/23/PagingButton/)-->
+<p><br /></p>
+
+<p>之前<code class="language-plaintext highlighter-rouge">H5</code>的刷新一直用 <code class="language-plaintext highlighter-rouge">MBProgressHUD</code>在页面中间加个转转。。后来发现有些<code class="language-plaintext highlighter-rouge">APP</code>是直接进去的时候就有 <code class="language-plaintext highlighter-rouge">MJRefresh</code>。那样的效果个人觉得更加撩人。用户体验赶脚要好一些。不信你看看哈。</p>
+
+<p>效果图：<br /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/bUHCZz.jpg" alt="" /></p>
+
+<p><br /></p>
+:ET

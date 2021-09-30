@@ -1,0 +1,158 @@
+I"N<ul id="markdown-toc">
+  <li><a href="#objective-c-相关学习资源列表" id="markdown-toc-objective-c-相关学习资源列表">Objective-C 相关学习资源列表</a>    <ul>
+      <li><a href="#objective-c-中文学习列表" id="markdown-toc-objective-c-中文学习列表">Objective-C 中文学习列表：</a></li>
+      <li><a href="#objective-c-英文学习列表" id="markdown-toc-objective-c-英文学习列表">Objective-C 英文学习列表：</a></li>
+    </ul>
+  </li>
+  <li><a href="#swift-相关学习资源列表" id="markdown-toc-swift-相关学习资源列表">Swift 相关学习资源列表</a>    <ul>
+      <li><a href="#swift-中文学习列表" id="markdown-toc-swift-中文学习列表">Swift 中文学习列表：</a></li>
+      <li><a href="#swift-英文学习列表" id="markdown-toc-swift-英文学习列表">Swift 英文学习列表：</a></li>
+    </ul>
+  </li>
+  <li><a href="#开源app-相关学习资源列表" id="markdown-toc-开源app-相关学习资源列表">开源APP 相关学习资源列表</a>    <ul>
+      <li><a href="#开源app-中文学习列表中国人开发的" id="markdown-toc-开源app-中文学习列表中国人开发的">开源APP 中文学习列表（中国人开发的）：</a></li>
+      <li><a href="#开源app-英文学习列表外国人开发的" id="markdown-toc-开源app-英文学习列表外国人开发的">开源APP 英文学习列表（外国人开发的）：</a></li>
+    </ul>
+  </li>
+  <li><a href="#综合-各类杂乱资源" id="markdown-toc-综合-各类杂乱资源">综合 （各类杂乱资源）</a></li>
+</ul>
+
+<h1 id="objective-c-相关学习资源列表">Objective-C 相关学习资源列表</h1>
+<h3 id="objective-c-中文学习列表">Objective-C 中文学习列表：</h3>
+<ul>
+  <li>
+    <p><a href="https://github.com/Tim9Liu9/TimLiu-iOS">https://github.com/Tim9Liu9/TimLiu-iOS</a></p>
+
+    <p>OS开发常用三方库、插件、知名博客等等</p>
+  </li>
+  <li>
+    <p><a href="http://github.ibireme.com/github/list/ios/">http://github.ibireme.com/github/list/ios/</a></p>
+
+    <p>( ゜- ゜)つロ Github-iOS备忘</p>
+
+    <p><strong>【YYKit系列的作者：耀源】</strong>。极力推荐，另附上作者的  <a href="https://github.com/ibireme">Github主页</a> 和 <a href="http://blog.ibireme.com/">个人博客主页</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.csdn.net/arodung/article/details/50846546">http://blog.csdn.net/arodung/article/details/50846546</a></p>
+
+    <p>GitHub上史上最全的iOS开源项目分类汇总</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/edagarli/open-ios-projects/blob/master/README.md">https://github.com/edagarli/open-ios-projects/blob/master/README.md</a></p>
+
+    <p>开源 iOS 项目分类索引大全</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/lilongcnc/iOSAppWheels">https://github.com/lilongcnc/iOSAppWheels</a></p>
+
+    <p>收集一些开源的精品轮子,这些轮子是组成一个完整 iOS项目必不可少的部分</p>
+  </li>
+  <li>
+    <p><a href="http://blog.csdn.net/u014068781/article/details/52484821">http://blog.csdn.net/u014068781/article/details/52484821</a></p>
+
+    <p>iOS开发 非常全的三方库、插件、大牛博客等等</p>
+  </li>
+  <li>
+    <p><a href="http://www.jianshu.com/p/2c779b1d1102">http://www.jianshu.com/p/2c779b1d1102</a></p>
+
+    <p>在ios开发路上查阅的资料</p>
+  </li>
+  <li>
+    <p><a href="http://www.jianshu.com/p/e06f99a6256b">http://www.jianshu.com/p/e06f99a6256b</a></p>
+
+    <p>iOS 学习必备的开源项目及库</p>
+  </li>
+  <li>
+    <p><a href="http://www.jianshu.com/p/8dda0caf47ea">http://www.jianshu.com/p/8dda0caf47ea</a></p>
+
+    <p>成为iOS顶尖高手，你必须来这里(这里有最好的开源项目和文章)</p>
+  </li>
+  <li>
+    <p><a href="http://www.cnblogs.com/wujy/p/4747998.html">http://www.cnblogs.com/wujy/p/4747998.html</a></p>
+
+    <p>iOS比较常用的第三方及实例(不断更新中)</p>
+  </li>
+  <li>
+    <p><a href="http://www.jianshu.com/p/73be68baa1ac">http://www.jianshu.com/p/73be68baa1ac</a></p>
+
+    <p>iOS超强框架集合：一</p>
+  </li>
+  <li>
+    <p><a href="http://www.jianshu.com/p/5f7a95629193">http://www.jianshu.com/p/5f7a95629193</a></p>
+
+    <p>iOS超强框架集合：二</p>
+  </li>
+  <li>
+    <p><a href="http://www.jianshu.com/p/9f00911bf530">http://www.jianshu.com/p/9f00911bf530</a></p>
+
+    <p>iOS超强框架集合：三</p>
+  </li>
+</ul>
+
+<h3 id="objective-c-英文学习列表">Objective-C 英文学习列表：</h3>
+<ul>
+  <li>
+    <p><a href="https://github.com/vsouza/awesome-ios">https://github.com/vsouza/awesome-ios</a></p>
+
+    <p>几乎揽括了所有关于iOS的学习资源，不仅限于入门电子书，编程手册，教学视频，开源APP，控件／组件，模块，框架，库，开发工具，免费以及收费的服务，技术论坛，技术讨论群，技术博客，技术讨论区 以及等等等等</p>
+  </li>
+</ul>
+
+<h1 id="swift-相关学习资源列表">Swift 相关学习资源列表</h1>
+<h3 id="swift-中文学习列表">Swift 中文学习列表：</h3>
+<ul>
+  <li>
+    <p><a href="http://www.swift51.com/swift.html">http://www.swift51.com/swift.html</a></p>
+
+    <p>Swift3 官方教程中文版</p>
+  </li>
+  <li>
+    <p><a href="http://swift.gg/archives/">http://swift.gg/archives/</a></p>
+
+    <p>走心的 Swift 翻译组</p>
+  </li>
+</ul>
+
+<h3 id="swift-英文学习列表">Swift 英文学习列表：</h3>
+<ul>
+  <li>
+    <p><a href="https://github.com/matteocrippa/awesome-swift">https://github.com/matteocrippa/awesome-swift</a></p>
+
+    <p>一个令人敬畏的swift资源的协作列表。 随意贡献！</p>
+  </li>
+</ul>
+
+<h1 id="开源app-相关学习资源列表">开源APP 相关学习资源列表</h1>
+<h3 id="开源app-中文学习列表中国人开发的">开源APP 中文学习列表（中国人开发的）：</h3>
+<ul>
+  <li>
+    <p><a href="http://blog.csdn.net/qq_30513483/article/details/51312180">http://blog.csdn.net/qq_30513483/article/details/51312180</a></p>
+
+    <p>Github上的iOS App源码 (中文)</p>
+  </li>
+  <li>
+    <p><a href="https://www.zhihu.com/question/28518265?rf=28477097">https://www.zhihu.com/question/28518265?rf=28477097</a></p>
+
+    <p><strong>知乎上的文章：</strong><a href="https://www.zhihu.com/question/28518265?rf=28477097">GitHub 上有哪些应用级别的 iOS 开源项目值得推荐？</a></p>
+  </li>
+</ul>
+
+<h3 id="开源app-英文学习列表外国人开发的">开源APP 英文学习列表（外国人开发的）：</h3>
+<ul>
+  <li>
+    <p><a href="https://github.com/dkhamsing/open-source-ios-apps">https://github.com/dkhamsing/open-source-ios-apps</a></p>
+
+    <p>一个开源的iOS，watchOS和tvOS应用程序的协作列表</p>
+  </li>
+</ul>
+
+<h1 id="综合-各类杂乱资源">综合 （各类杂乱资源）</h1>
+
+<ul>
+  <li><a href="https://github.com/trending,github">Github 排名</a></li>
+  <li><a href="https://github.com/search">Github 搜索</a></li>
+  <li><a href="http://weibo.com/p/1005055713457429/home?pids=&amp;profile_ftype=1&amp;is_all=1#_0">爱迪生资源分享站</a></li>
+  <li><strong><a href="http://www.jianshu.com/c/e84a7722d673">优质的简书专题：iOS Developer</a></strong></li>
+</ul>
+
+:ET

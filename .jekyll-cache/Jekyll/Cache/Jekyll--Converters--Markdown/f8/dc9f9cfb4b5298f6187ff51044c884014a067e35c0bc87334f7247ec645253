@@ -1,0 +1,149 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#0x001-坑01" id="markdown-toc-0x001-坑01">0x001 坑01</a></li>
+  <li><a href="#0x002-坑02" id="markdown-toc-0x002-坑02">0x002 坑02</a></li>
+  <li><a href="#0x003-坑03" id="markdown-toc-0x003-坑03">0x003 坑03</a></li>
+  <li><a href="#0x004-坑04" id="markdown-toc-0x004-坑04">0x004 坑04</a></li>
+  <li><a href="#0x005-坑05" id="markdown-toc-0x005-坑05">0x005 坑05</a></li>
+  <li><a href="#0x006-坑06" id="markdown-toc-0x006-坑06">0x006 坑06</a></li>
+  <li><a href="#0x007-坑07" id="markdown-toc-0x007-坑07">0x007 坑07</a></li>
+  <li><a href="#0x008-坑08" id="markdown-toc-0x008-坑08">0x008 坑08</a></li>
+</ul>
+<hr />
+
+<h2 id="0x001-坑01">0x001 坑01</h2>
+
+<p>生产环境的 页面统计数据只能显示昨天的，或者以前的某一周。不能显示自然日。<br />
+<img src="https://i.loli.net/2021/06/03/saTvyiKqXRkr2QA.png" alt="" /></p>
+
+<h2 id="0x002-坑02">0x002 坑02</h2>
+<p>必须要把版本管理都加上采集中。不加测试和生产都统计不到。<br />
+<img src="https://i.loli.net/2021/06/03/osb9c4hlNqJLYCH.png" alt="" /></p>
+
+<h2 id="0x003-坑03">0x003 坑03</h2>
+<p>官方获取安卓的测试机id不好用。</p>
+
+<ul>
+  <li>在安卓项目工程文件夹的 <code class="language-plaintext highlighter-rouge">MainActivity.java</code> 中的<code class="language-plaintext highlighter-rouge">onCreate</code>执行以下方法<code class="language-plaintext highlighter-rouge">getTestDeviceInfo(getApplicationContext());</code>获取的id是空的。
+    <ul>
+      <li><strong>解决：</strong> 延时几秒执行就获取到。</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static String[] getTestDeviceInfo(Context context){
+    String[] deviceInfo = new String[2];
+    try {
+        if(context != null){
+            deviceInfo[0] = DeviceConfig.getDeviceIdForGeneral(context);
+            deviceInfo[1] = DeviceConfig.getMac(context);
+            android.util.Log.i("UMLog--deviceInfo0", deviceInfo[0]);
+            android.util.Log.i("UMLog--deviceInfo1", deviceInfo[1]);
+
+        }
+    } catch (Exception e){
+    }
+    return deviceInfo;
+}
+</code></pre></div></div>
+
+<h2 id="0x004-坑04">0x004 坑04</h2>
+<p>添加的测试手机，如果长时间收录不到信息。最后一次测试时间迟迟不更新。可能是设备信息变了。需要删除重新添加。</p>
+
+<ul>
+  <li><strong>解决:</strong>删除测试设备 卸载重装应用.重新添加测试设备 然后触发页面 完全退出应用  不在后台运行。 间隔40秒 重新启动应用。看下数据是否上传。</li>
+</ul>
+
+<p><img src="https://i.loli.net/2021/06/03/4lAqURJhaOHpkLb.png" alt="" /></p>
+
+<h2 id="0x005-坑05">0x005 坑05</h2>
+<p>错误日志，暂无数据，是不体现在集成测试模式下的。官方把这个放在这里又看不数据确实很鸡肋。</p>
+<ul>
+  <li><strong>解决：</strong>需要单独集成U-APM</li>
+</ul>
+
+<p><img src="https://i.loli.net/2021/06/03/SGNnyAuhmVEYWac.jpg" alt="" /></p>
+
+<h2 id="0x006-坑06">0x006 坑06</h2>
+<p><code class="language-plaintext highlighter-rouge">onPageStart</code> 和  <code class="language-plaintext highlighter-rouge">onPageEnd</code> 没成对使用的话友盟日志会报错。</p>
+
+<p><strong>解决：</strong>一定要想办法成对调用。就是先<code class="language-plaintext highlighter-rouge">onPageStart</code>了一定要先<code class="language-plaintext highlighter-rouge">onPageEnd</code>后再次去<code class="language-plaintext highlighter-rouge">onPageStart</code>。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E/UMLog (30670): │ 对于页面XXX，请确保先依序成对调用onPageStart，onPageEnd接口，再调用onPageStart接口对其它页面进行统计。 
+E/UMLog (30670): ├───────────────────解决方案────── 
+E/UMLog (30670): │ 对于任意一个页面，必须依序成对调用onPageStart以及onPageEnd，不能有遗漏。详见链接 https://developer.umeng.com/docs/66632/detail/66975?um_channel=sdk 
+I/UMLog (30670): onPageStart:xxx
+</code></pre></div></div>
+
+<p><strong>解决示例代码：</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static void onPageStart (String pageName)async {
+    String  page = FmAnalysis.pageName(pageName);
+    if ( page != umStartPage &amp;&amp;(page.length &gt; 0)){
+      if (umStartPage != ''){
+        await UmengCommonSdk.onPageEnd(umStartPage);
+      }
+      umStartPage = page;
+      await UmengCommonSdk.onPageStart(page);
+    }
+  }
+  static void onPageEnd (String pageName) async {
+
+    String  page = FmAnalysis.pageName(pageName);
+    if ( (page == umStartPage )&amp;&amp;(umStartPage != '')){
+        await UmengCommonSdk.onPageEnd(umStartPage);
+        umStartPage = '';
+    }
+  }
+
+  static String pageName (String pageName){
+    String name = pageName??'';
+    if (name == '/') name = '';
+    if (name == '/FmTabPage') name = '';
+    if (name.contains('/Fm')){
+      name = name.replaceFirst('/Fm', '');
+    }
+    return name;
+  }
+</code></pre></div></div>
+
+<p>然后 新建 <code class="language-plaintext highlighter-rouge">AppAnalysis</code>文件。在<code class="language-plaintext highlighter-rouge">MaterialApp</code>中的<code class="language-plaintext highlighter-rouge">navigatorObservers: [AppAnalysis()],</code>引用。我使用的是配合<code class="language-plaintext highlighter-rouge">GetMaterialApp</code>使用的。整个项目使用了<code class="language-plaintext highlighter-rouge">Get</code>管理路由。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class AppAnalysis extends NavigatorObserver {
+  @override
+  void didPush(Route&lt;dynamic&gt; route, Route&lt;dynamic&gt; previousRoute) {
+    // print('---didPush.Get.previousRoute:${Get.previousRoute}');
+    // print('---didPush.Get.currentRoute:${Get.currentRoute}');
+    FmAnalysis.onPageStart(Get.currentRoute);
+  }
+
+  @override
+  void didPop(Route&lt;dynamic&gt; route, Route&lt;dynamic&gt; previousRoute) {
+    // print('---didPop.Get.previousRoute:${Get.previousRoute}');
+    // print('---didPop.Get.currentRoute:${Get.currentRoute}');
+    FmAnalysis.onPageEnd(Get.currentRoute);
+  }
+
+  @override
+  void didReplace({Route&lt;dynamic&gt; newRoute, Route&lt;dynamic&gt; oldRoute}) {
+    // print('---didReplace.Get.previousRoute:${Get.previousRoute}');
+    // print('---didReplace.Get.currentRoute:${Get.currentRoute}');
+    // FmAnalysis.onPageEnd(Get.previousRoute);
+    // FmAnalysis.onPageStart(Get.currentRoute);
+
+  }
+}
+</code></pre></div></div>
+
+<h2 id="0x007-坑07">0x007 坑07</h2>
+<p>集成友盟需要问题联系不到官方人员。<br />
+<strong>解决：</strong></p>
+<ul>
+  <li>1、提客服工单，效率极慢。</li>
+  <li>2、拨打官方400客服电话咨询</li>
+  <li>3、我推荐的，在线客服，连续发两次“人工”。就好转接的在线的人工客服。回复讨论问题比较及时。我之前都不知道这个方案。还是打400电话咨询官方告诉我的。</li>
+</ul>
+
+<h2 id="0x008-坑08">0x008 坑08</h2>
+<p>如果把测试手机转变为正式用户测试正式环境数据是否统计。<br />
+<strong>解决：</strong>直接在测试设备中删除测试手机。正常使用APP。第二天才能看到数据被统计。</p>
+:ET

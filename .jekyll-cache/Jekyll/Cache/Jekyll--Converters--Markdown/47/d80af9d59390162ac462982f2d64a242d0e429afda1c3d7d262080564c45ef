@@ -1,0 +1,54 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#一介绍" id="markdown-toc-一介绍">一、介绍：</a>    <ul>
+      <li><a href="#这是一个左右分页按钮的集合视图控件用于快速编写出集合视图上分页多按钮点击事件" id="markdown-toc-这是一个左右分页按钮的集合视图控件用于快速编写出集合视图上分页多按钮点击事件">这是一个左右分页按钮的集合视图控件。用于快速编写出集合视图上分页多按钮点击事件！</a></li>
+    </ul>
+  </li>
+  <li><a href="#二-使用" id="markdown-toc-二-使用">二、 使用：</a>    <ul>
+      <li><a href="#简单使用" id="markdown-toc-简单使用">简单使用：</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="一介绍">一、介绍：</h2>
+<h4 id="这是一个左右分页按钮的集合视图控件用于快速编写出集合视图上分页多按钮点击事件">这是一个左右分页按钮的集合视图控件。用于快速编写出集合视图上分页多按钮点击事件！</h4>
+
+<p>原文在我博客： <a href="https://www.yfmingo.cn/2017/07/23/PagingButton/">https://www.yfmingo.cn/2017/07/23/PagingButton/</a><br />
+<br /><br />
+效果图：<br /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/vpsso2.jpg" alt="" /></p>
+
+<h2 id="二-使用">二、 使用：</h2>
+<p>支持 <code class="language-plaintext highlighter-rouge">cocoapods</code>，在你的 <code class="language-plaintext highlighter-rouge">Podfile</code> 文件中 加入 <code class="language-plaintext highlighter-rouge">pod 'PagingButton'</code> 然后终端<code class="language-plaintext highlighter-rouge">cd</code>到项目文件夹执行 <code class="language-plaintext highlighter-rouge">pod install</code> 即可：</p>
+<blockquote>
+  <p><strong>pod ‘PagingButton’</strong></p>
+</blockquote>
+
+<p><strong>然后导入头文件，添加代理：</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#import &lt;PagingButtonView.h&gt;
+
+@interface ViewController ()&lt;PagingButtonViewDelegate&gt;
+</code></pre></div></div>
+
+<p><strong>实现代理方法：</strong><br />
+可在代理方法里执行各个按钮点击后的跳转页面操作</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#pragma mark - PagingButtonViewDelegate
+- (void)PagingButtonView:(PagingButtonView *)actionView clickButtonWithIndex:(NSInteger)index {
+    
+    NSLog(@"clickButtonWithIndex：%ld",(long)index);
+}
+</code></pre></div></div>
+
+<h4 id="简单使用">简单使用：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>self.demo02 = [[PagingButtonView alloc] init];
+//    【若设置过大View的高度太小时程序会根据主View的高度推算出一个最大值的图标宽高】
+//    _demo02.pageButtonIconSize = CGSizeMake(20, 20);
+//    _demo02.pageButtonTitleFontSize = 14 ; //字体大小
+    [_demo02 yfm_createPagingButtonViewWithFrame:CGRectMake(0, 350, [UIScreen mainScreen].bounds.size.width, 0) showToSuperView:self.view delegate:self iconUrlsOrNamesArr:@[@"yfzwxx",@"yfzsbs",@"yfqtms",@"yfxwzx",@"yfmsfq",@"yfczms"] buttonTextColorArrOrOneColor:[UIColor blueColor] buttonTitleArray:@[@"政务信息",@"掌上办事",@"倾听民声",@"新闻资讯",@"民俗风情",@"吃在天朝"]];
+   
+NSLog(@"当_demo02的View高度太小而设置的pageButtonIconSize过大时，程序会自动推算出当前高度下最大的pageButtonIconSize。可在此范围内重新设置pageButtonIconSize大小。  \n:width:%.2f,height:%.2f",_demo02.pageButtonIconSize.width,_demo02.pageButtonIconSize.height);
+</code></pre></div></div>
+:ET

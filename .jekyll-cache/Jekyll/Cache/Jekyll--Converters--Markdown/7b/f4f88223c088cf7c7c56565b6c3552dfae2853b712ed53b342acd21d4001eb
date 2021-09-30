@@ -1,0 +1,157 @@
+I"<ul id="markdown-toc">
+  <li><a href="#一引言" id="markdown-toc-一引言">（一）、引言：</a></li>
+  <li><a href="#二问题介绍" id="markdown-toc-二问题介绍">（二）、问题介绍：</a></li>
+  <li><a href="#三需求目的" id="markdown-toc-三需求目的">（三）、需求目的：</a></li>
+  <li><a href="#四解决方法" id="markdown-toc-四解决方法">（四）、解决方法：</a></li>
+</ul>
+
+<h2 id="一引言">（一）、引言：</h2>
+
+<p>在 <a href="https://github.com/hackiftekhar/IQKeyboardManager">IQKeyboardManager</a> 和 <a href="https://github.com/SnapKit/Masonry">Masonry</a> 同时使用时，导航栏上移和<code class="language-plaintext highlighter-rouge"> make.right</code>失效等问题多多。</p>
+
+<p>其实我们完美的效果应该是这样的：<em>（NO Pictures say *8 ！O(∩_∩)O~）</em></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/d9KYpi.jpg" alt="" /></p>
+
+<h2 id="二问题介绍">（二）、问题介绍：</h2>
+<p>我们使用 <a href="https://github.com/hackiftekhar/IQKeyboardManager">IQKeyboardManager</a> 可以很好的处理键盘弹起输入框上移事件。但是当你的 backView 【底视图】不是 <code class="language-plaintext highlighter-rouge">tableView</code> 或者<code class="language-plaintext highlighter-rouge">scrollView</code> 时。你的导航栏会随着一起往上跑了。</p>
+
+<p>就像这样：</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/SwZBOK.jpg" alt="" /></p>
+
+<p>如果是上图那种效果。你的产品经理会放过你这个逗比吗？</p>
+
+<p>不！！！，绝不会。一定会说：“重做。导航栏不能往上跑。”</p>
+
+<p>好吧。不往上跑。于是你在网上会找到 如下方法解决了这个问题：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> -(void)loadView {
+	    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [scrollView setBackgroundColor:[UIColor grayColor]];
+    self.view = scrollView;
+}
+</code></pre></div></div>
+
+<p>但是虽然不往上跑了。尼玛又出现了其他问题：</p>
+
+<p>像这样：<br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/8iGEyp.jpg" alt="" /></p>
+
+<p>哎呀，我擦：</p>
+
+<p>怎么我的控件布局都乱了。</p>
+
+<p><strong>【本屌也是在这个地方卡蛮久，最后自己摸索出了本文章的解决办法。】</strong></p>
+
+<p>在经过多次尝试之后你会发现。真正的问题所在是 <a href="https://github.com/hackiftekhar/IQKeyboardManager">IQKeyboardManager</a> 和 <a href="https://github.com/SnapKit/Masonry">Masonry</a> 同时使用时，控件放在 <code class="language-plaintext highlighter-rouge">scrollView</code>上面。<a href="https://github.com/SnapKit/Masonry">masonry</a> 的 <code class="language-plaintext highlighter-rouge">make.right</code> 约束就会失效。<br />
+ 但是 <code class="language-plaintext highlighter-rouge">make.width</code> 等等其他约束还是正常的。</p>
+
+<p>你可以不使用   <code class="language-plaintext highlighter-rouge">make.right</code> 约束，用 <code class="language-plaintext highlighter-rouge">make.width</code>和 <code class="language-plaintext highlighter-rouge">make.left</code>代替约束。但是我觉得还是用  <code class="language-plaintext highlighter-rouge">make.right</code> 和 <code class="language-plaintext highlighter-rouge">make.left</code> 约束组合要好些。不要老是写个 <code class="language-plaintext highlighter-rouge">make.width</code>的固定宽度。</p>
+
+<h2 id="三需求目的">（三）、需求目的：</h2>
+
+<p>我们想要的效果很简单。就如文章开篇的图一那样。。控件布局正常，键盘弹起时相应的输入框要上抬。但是啊，这个导航栏是坚决不能也上抬的。同时支持  <code class="language-plaintext highlighter-rouge">make.right</code> 约束。</p>
+
+<h2 id="四解决方法">（四）、解决方法：</h2>
+
+<ul>
+  <li>
+    <p>1.重写 <code class="language-plaintext highlighter-rouge">loadView</code> 方法 。<code class="language-plaintext highlighter-rouge">把 self.view</code> 替换成 <code class="language-plaintext highlighter-rouge">scrollView</code>。</p>
+  </li>
+  <li>
+    <p>2.背景容器视图（back）必须设置。而且对 back 约束时 要附带 <code class="language-plaintext highlighter-rouge">make.width.mas_equalTo(self.view);</code>【不写导致 <code class="language-plaintext highlighter-rouge">textField</code> 布局的 <code class="language-plaintext highlighter-rouge">make.right</code> 失效】</p>
+  </li>
+  <li>
+    <p>3.子控件要直接放在<code class="language-plaintext highlighter-rouge">self.view</code> 上。不能放在背景容器视图（back）上面。【放在 back上时会无法点击，无法成为第一响应】</p>
+  </li>
+</ul>
+
+<p>（方法中有点脑残的地方就是设置了 backView 底视图但是没有用它。还没想到好的优化方法，先就实现需求而言想出的这个搓比方法。）<br />
+【附上本demo的垃圾代码如下：】</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+//  ViewController.m
+//  IQKeyboardManagerAndMasonryConflictDemo
+//
+//  Created by Mingo on 17/4/6.
+//  Copyright © 2017年 Mingo. All rights reserved.
+//
+	
+#import "ViewController.h"
+#import &lt;Masonry/Masonry.h&gt;
+	
+	
+@interface ViewController ()
+	
+@end
+	
+@implementation ViewController
+	
+#pragma mark - step 01
+-(void)loadView { //不将 self.view 替换成 scrollView 会在点击底部输入框时 导航栏也一起往上跑。
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [scrollView setBackgroundColor:[UIColor grayColor]];
+    self.view = scrollView;
+}
+	
+/**  
+ 1.重写 loadView 方法 。把 self.view 替换成 scrollView。
+ 
+ 2.背景容器视图（back）必须设置。而且对 back 约束时 要附带 make.width.mas_equalTo(self.view);
+ 【不写导致 textField 布局的 make.right 失效】
+ 
+ 3.子控件要直接放在self.view 上。不能放在背景容器视图（back）上面。
+ 【放在 back上时会无法点击，无法成为第一响应】
+ 
+ */
+	
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"我是导航栏";
+	
+#pragma mark - step 02
+    UIView  *back = [[UIView alloc] init];
+    [self.view addSubview:back];
+    [back mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+        make.edges.mas_equalTo(self.view);
+        make.width.mas_equalTo(self.view); 
+        //此处必填 - 【关键点】 。不写导致 textField 布局的 make.right 失效。
+        //（但是布局textField 时使用 make.width不受这句话限制。）
+    }];
+    
+    
+    for (int i = 0 ; i &lt; 30 ; i++) {
+       
+        UITextField *textField = [[UITextField alloc] init];
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+        textField.placeholder =  [NSString stringWithFormat:@"%d请输入文字",i];
+        
+#pragma mark - step 03
+        [self.view addSubview:textField];
+ //      [back addSubview:textField];   
+ //      textField 放在 back上时会无法点击，无法成为第一响应。
+        
+        [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.with.offset(20);
+            make.right.with.offset(-20);
+            make.height.mas_equalTo(30);
+            make.top.mas_equalTo(i *40+5);
+        }];
+    }
+}
+	
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+	
+	
+@end
+</code></pre></div></div>
+
+<p>完整的 demo 已经上传 github 中：<br /><a href="https://github.com/yfming93/IQKeyboarManagerAndMasonryConflictDemo">https://github.com/yfming93/IQKeyboarManagerAndMasonryConflictDemo</a></p>
+
+:ET

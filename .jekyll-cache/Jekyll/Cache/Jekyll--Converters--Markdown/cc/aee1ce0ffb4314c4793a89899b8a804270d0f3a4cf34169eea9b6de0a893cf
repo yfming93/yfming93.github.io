@@ -1,0 +1,125 @@
+I"@R<ul id="markdown-toc">
+  <li><a href="#git-中忽略-userinterfacestatexcuserstate" id="markdown-toc-git-中忽略-userinterfacestatexcuserstate">git 中忽略 UserInterfaceState.xcuserstate</a>    <ul>
+      <li><a href="#1userinterfacestatexcuserstate是什么" id="markdown-toc-1userinterfacestatexcuserstate是什么">1.UserInterfaceState.xcuserstate是什么？</a></li>
+      <li><a href="#2使用gitignore-如何解决" id="markdown-toc-2使用gitignore-如何解决">2.使用.gitignore 如何解决？</a></li>
+      <li><a href="#3解决误区" id="markdown-toc-3解决误区">3.解决误区</a></li>
+      <li><a href="#4正确解决姿势" id="markdown-toc-4正确解决姿势">4.正确解决姿势</a></li>
+      <li><a href="#5终端操作记录" id="markdown-toc-5终端操作记录">5.终端操作记录</a></li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h2 id="git-中忽略-userinterfacestatexcuserstate">git 中忽略 UserInterfaceState.xcuserstate</h2>
+
+<h3 id="1userinterfacestatexcuserstate是什么">1.UserInterfaceState.xcuserstate是什么？</h3>
+
+<p>该文件为<code class="language-plaintext highlighter-rouge">xcode</code>默认自带文件，是<code class="language-plaintext highlighter-rouge">xcode</code>的配置信息，git会用这个文件记录下来。<br />
+比如：手动删除此文件，退出<code class="language-plaintext highlighter-rouge">xcode</code>后重启<code class="language-plaintext highlighter-rouge">xcode</code>，设置了<code class="language-plaintext highlighter-rouge">debug</code> 调试断点等。此文件会自动创建并跟踪</p>
+
+<p><strong>SO,</strong>  <strong>此文件无需<code class="language-plaintext highlighter-rouge">push</code>，应忽略。不忽略的话在多人开发时提交文件时候会因为这个文件导致冲突。</strong></p>
+
+<h3 id="2使用gitignore-如何解决">2.使用.gitignore 如何解决？</h3>
+<p>终端输入以下指令：【网络比较流行的方案。但是对我无效。2018-10-18实测】</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">git</span> <span class="n">rm</span> <span class="o">-</span><span class="k">-</span><span class="n">cached</span> <span class="err">工程名称</span><span class="p">.</span><span class="n">xcodeproj</span><span class="o">/</span><span class="n">project</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="err">电脑用户名称</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">UserInterfaceState</span><span class="p">.</span><span class="n">xcuserstate</span>
+    
+<span class="n">git</span> <span class="n">commit</span> <span class="k">-</span><span class="n">m</span> <span class="s">"Removed file that shouldn't be tracked"</span>    
+    
+<span class="n">git</span> <span class="n">push</span>
+</code></pre></div></div>
+
+<p>我项目的<code class="language-plaintext highlighter-rouge">.gitignore</code>配置如下：</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="n">DS_Store</span>
+<span class="o">*</span><span class="p">.</span><span class="n">xcuserstate</span>
+<span class="n">project</span><span class="p">.</span><span class="n">xcworkspace</span>
+<span class="n">UserInterfaceState</span><span class="p">.</span><span class="n">xcuserstate</span>
+<span class="n">oclint</span><span class="p">.</span><span class="n">html</span>
+<span class="n">build</span><span class="o">/</span>
+<span class="n">derivedData</span><span class="o">/</span>
+<span class="n">xcuserdata</span>
+<span class="n">xcuserdata</span><span class="o">/</span>  
+<span class="n">UserInterface</span><span class="p">.</span><span class="n">xcuserstate</span>
+<span class="o">*</span><span class="p">.</span><span class="n">xcbkptlist</span>
+</code></pre></div></div>
+
+<p>配置完<code class="language-plaintext highlighter-rouge">.gitignore</code>文件后， 要注意下面一个前提</p>
+
+<p>要进入该工程的路径中，也就是<code class="language-plaintext highlighter-rouge">.xcodeproj</code>的上一级，否则会出现以下错误</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">fatal:</span> <span class="n">path</span> <span class="n">spec</span> <span class="err">'</span><span class="p">[</span><span class="nf">ProjectFolder</span><span class="p">].</span><span class="n">xcodeproj</span><span class="o">/</span><span class="n">project</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="p">[</span><span class="nf">myUserName</span><span class="p">].</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">UserInterfaceState</span><span class="p">.</span><span class="n">xcuserstate</span><span class="err">'</span> <span class="n">did</span> <span class="n">not</span> <span class="n">match</span> <span class="n">any</span> <span class="n">files</span>
+</code></pre></div></div>
+
+<p><strong>重点说明:</strong>我真的是按照如上步骤这样搞的。但是任然是如上挂了。在检查了其他能意识想到的情况后。后来寻思，既然提示匹配不到文件。是不是文件路径有问题呀。网上复制来复制去都是很久以前的方案了。新版<code class="language-plaintext highlighter-rouge">xcode</code>是不是改变了这个路径。</p>
+
+<h3 id="3解决误区">3.解决误区</h3>
+
+<p>按照如上思路。。在项目文件目录中到处找。因为我项目是用<code class="language-plaintext highlighter-rouge">cocoapods</code>来管理的 。所以有<code class="language-plaintext highlighter-rouge">xcworkspace</code>文件。最终在<code class="language-plaintext highlighter-rouge">xcworkspace</code>文件中找到目标文件。<br />
+<strong>路径：</strong></p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span>
+</code></pre></div></div>
+
+<p>然后：</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">git</span> <span class="n">rm</span> <span class="o">-</span><span class="k">-</span><span class="n">cached</span> <span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span>
+</code></pre></div></div>
+
+<p>给的提示是：</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">fatal:</span> <span class="n">not</span> <span class="n">removing</span> <span class="err">'</span><span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="err">'</span> <span class="n">recursively</span> <span class="n">without</span> <span class="k">-</span><span class="n">r</span>
+</code></pre></div></div>
+
+<h3 id="4正确解决姿势">4.正确解决姿势</h3>
+
+<p><strong>所以最终的正确命令如下：</strong></p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">git</span> <span class="n">rm</span> <span class="k">-</span><span class="n">r</span> <span class="o">-</span><span class="k">-</span><span class="n">cached</span> <span class="p">[</span><span class="err">工程名称</span><span class="p">].</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="p">[</span><span class="err">电脑用户名称</span><span class="p">].</span><span class="n">xcuserdatad</span>
+    
+<span class="n">git</span> <span class="n">commit</span> <span class="k">-</span><span class="n">m</span> <span class="s">"Removed file that shouldn't be tracked"</span>    
+    
+<span class="n">git</span> <span class="n">push</span>
+</code></pre></div></div>
+<p>经过这些步骤后就完美解决了。</p>
+
+<h3 id="5终端操作记录">5.终端操作记录</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">Last</span> <span class="n">login</span><span class="o">:</span> <span class="n">Thu</span> <span class="n">Oct</span> <span class="mi">18</span> <span class="mi">14</span><span class="o">:</span><span class="mi">58</span><span class="o">:</span><span class="mi">49</span> <span class="n">on</span> <span class="n">ttys005</span>
+<span class="n">Fengmings</span><span class="o">-</span><span class="n">iMac</span><span class="o">:~</span> <span class="n">mingo</span><span class="err">$</span> <span class="n">cd</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">mingo</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">AAAllGitRepos</span><span class="o">/</span><span class="n">jshop_cbd_ios</span>
+<span class="n">Fengmings</span><span class="o">-</span><span class="n">iMac</span><span class="o">:</span><span class="n">jshop_cbd_ios</span> <span class="n">mingo</span><span class="err">$</span> <span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+   <span class="p">.</span>                <span class="n">CHANGELOG</span><span class="p">.</span><span class="n">md</span>            <span class="n">Podfile</span><span class="p">.</span><span class="n">lock</span>
+   <span class="p">..</span>                <span class="n">FupingElectricity</span>        <span class="n">Pods</span>
+   <span class="p">.</span><span class="n">DS_Store</span>            <span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcodeproj</span>    <span class="n">README</span><span class="p">.</span><span class="n">md</span>
+   <span class="p">.</span><span class="n">git</span>                <span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span>
+   <span class="p">.</span><span class="n">gitignore</span>            <span class="n">Podfile</span>
+<span class="n">Fengmings</span><span class="o">-</span><span class="n">iMac</span><span class="o">:</span><span class="n">jshop_cbd_ios</span> <span class="n">mingo</span><span class="err">$</span> <span class="n">git</span> <span class="n">rm</span> <span class="o">--</span><span class="n">cached</span> <span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcodeproj</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">UserInterfaceState</span><span class="p">.</span><span class="n">xcuserstate</span>
+   <span class="n">fatal</span><span class="o">:</span> <span class="n">pathspec</span> <span class="err">'</span><span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcodeproj</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">UserInterfaceState</span><span class="p">.</span><span class="n">xcuserstate</span><span class="err">'</span> <span class="n">did</span> <span class="n">not</span> <span class="n">match</span> <span class="n">any</span> <span class="n">files</span>
+<span class="n">Fengmings</span><span class="o">-</span><span class="n">iMac</span><span class="o">:</span><span class="n">jshop_cbd_ios</span> <span class="n">mingo</span><span class="err">$</span> <span class="n">git</span> <span class="n">rm</span> <span class="o">--</span><span class="n">cached</span> <span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span>
+   <span class="n">fatal</span><span class="o">:</span> <span class="n">not</span> <span class="n">removing</span> <span class="err">'</span><span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="err">'</span> <span class="n">recursively</span> <span class="n">without</span> <span class="o">-</span><span class="n">r</span>
+<span class="n">Fengmings</span><span class="o">-</span><span class="n">iMac</span><span class="o">:</span><span class="n">jshop_cbd_ios</span> <span class="n">mingo</span><span class="err">$</span> <span class="n">git</span> <span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="o">--</span><span class="n">cached</span> <span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span>
+   <span class="n">rm</span> <span class="err">'</span><span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">IDEFindNavigatorScopes</span><span class="p">.</span><span class="n">plist</span><span class="err">'</span>
+   <span class="n">rm</span> <span class="err">'</span><span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">UserInterfaceState</span><span class="p">.</span><span class="n">xcuserstate</span><span class="err">'</span>
+   <span class="n">rm</span> <span class="err">'</span><span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">xcdebugger</span><span class="o">/</span><span class="n">Breakpoints_v2</span><span class="p">.</span><span class="n">xcbkptlist</span><span class="err">'</span>
+<span class="n">Fengmings</span><span class="o">-</span><span class="n">iMac</span><span class="o">:</span><span class="n">jshop_cbd_ios</span> <span class="n">mingo</span><span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">"Removed file that shouldn't be tracked"</span>
+   <span class="p">[</span><span class="n">dev</span><span class="o">/</span><span class="n">shopv2</span> <span class="n">bf20f45</span><span class="p">]</span> <span class="n">Removed</span> <span class="n">file</span> <span class="n">that</span> <span class="n">shouldn</span><span class="err">'</span><span class="n">t</span> <span class="n">be</span> <span class="n">tracked</span>
+   <span class="mi">3</span> <span class="n">files</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">51</span> <span class="n">deletions</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+   <span class="n">delete</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">IDEFindNavigatorScopes</span><span class="p">.</span><span class="n">plist</span>
+   <span class="n">delete</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">UserInterfaceState</span><span class="p">.</span><span class="n">xcuserstate</span>
+   <span class="n">delete</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">FupingElectricity</span><span class="p">.</span><span class="n">xcworkspace</span><span class="o">/</span><span class="n">xcuserdata</span><span class="o">/</span><span class="n">mingo</span><span class="p">.</span><span class="n">xcuserdatad</span><span class="o">/</span><span class="n">xcdebugger</span><span class="o">/</span><span class="n">Breakpoints_v2</span><span class="p">.</span><span class="n">xcbkptlist</span>
+<span class="n">Fengmings</span><span class="o">-</span><span class="n">iMac</span><span class="o">:</span><span class="n">jshop_cbd_ios</span> <span class="n">mingo</span><span class="err">$</span> <span class="n">git</span> <span class="n">push</span>
+   <span class="n">Username</span> <span class="k">for</span> <span class="err">'</span><span class="n">https</span><span class="o">:</span><span class="c1">//gitee.com': yfmingo@163.com</span>
+   <span class="n">Password</span> <span class="k">for</span> <span class="err">'</span><span class="n">https</span><span class="o">:</span><span class="c1">//yfmingo@163.com@gitee.com':</span>
+   <span class="n">Counting</span> <span class="n">objects</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">done</span><span class="p">.</span>
+   <span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">4</span> <span class="n">threads</span><span class="p">.</span>
+   <span class="n">Compressing</span> <span class="n">objects</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">done</span><span class="p">.</span>
+   <span class="n">Writing</span> <span class="n">objects</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="mi">318</span> <span class="n">bytes</span> <span class="o">|</span> <span class="mi">318</span><span class="p">.</span><span class="mo">00</span> <span class="n">KiB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span> <span class="n">done</span><span class="p">.</span>
+   <span class="n">Total</span> <span class="mi">3</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="n">remote</span><span class="o">:</span> <span class="n">Powered</span> <span class="n">by</span> <span class="n">Gitee</span><span class="p">.</span><span class="n">com</span>
+   <span class="n">To</span> <span class="n">https</span><span class="o">:</span><span class="c1">//gitee.com/wuhan_wan_teng/jshop_cbd_ios.git</span>
+   <span class="n">f2db7ec</span><span class="p">..</span><span class="n">bf20f45</span>  <span class="n">dev</span><span class="o">/</span><span class="n">shopv2</span> <span class="o">-&gt;</span> <span class="n">dev</span><span class="o">/</span><span class="n">shopv2</span>
+<span class="n">Fengmings</span><span class="o">-</span><span class="n">iMac</span><span class="o">:</span><span class="n">jshop_cbd_ios</span> <span class="n">mingo</span><span class="err">$</span>
+
+</code></pre></div></div>
+
+:ET

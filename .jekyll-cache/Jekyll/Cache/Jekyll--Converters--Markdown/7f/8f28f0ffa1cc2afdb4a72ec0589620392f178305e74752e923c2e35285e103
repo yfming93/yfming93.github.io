@@ -1,0 +1,118 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#uiwebview-不自动全屏播放视频" id="markdown-toc-uiwebview-不自动全屏播放视频">UIWebView 不自动全屏播放视频</a>    <ul>
+      <li><a href="#一介绍" id="markdown-toc-一介绍">一、介绍：</a>        <ul>
+          <li><a href="#让-h5-里面的视频播放变得更加优雅" id="markdown-toc-让-h5-里面的视频播放变得更加优雅">让 H5 里面的视频播放变得更加优雅！</a></li>
+        </ul>
+      </li>
+      <li><a href="#二-实现代码" id="markdown-toc-二-实现代码">二、 实现代码：</a>        <ul>
+          <li><a href="#1h5-端要实现的代码如下" id="markdown-toc-1h5-端要实现的代码如下">（1）、H5 端要实现的代码如下：</a></li>
+          <li><a href="#2ios端要实现的代码如下" id="markdown-toc-2ios端要实现的代码如下">（2）、iOS端要实现的代码如下：</a></li>
+        </ul>
+      </li>
+      <li><a href="#三其他问题" id="markdown-toc-三其他问题">三、其他问题：</a>        <ul>
+          <li><a href="#解决当页面消失时h5视频不自动播放方法" id="markdown-toc-解决当页面消失时h5视频不自动播放方法">解决当页面消失时H5视频不自动播放方法：</a></li>
+        </ul>
+      </li>
+      <li><a href="#四补充技能" id="markdown-toc-四补充技能">四、补充技能：</a></li>
+      <li><a href="#五联系" id="markdown-toc-五联系">五、联系：</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="uiwebview-不自动全屏播放视频">UIWebView 不自动全屏播放视频</h1>
+
+<h2 id="一介绍">一、介绍：</h2>
+<h4 id="让-h5-里面的视频播放变得更加优雅">让 H5 里面的视频播放变得更加优雅！</h4>
+
+<p>原文在我博客： <a href="https://www.yfmingo.cn/2017/08/24/UIWebVIew-play-video/">https://www.yfmingo.cn/2017/08/24/UIWebVIew-play-video/</a><br />
+<br /><br />
+<code class="language-plaintext highlighter-rouge">iOS</code> 客户端<code class="language-plaintext highlighter-rouge">APP</code>里面的的<code class="language-plaintext highlighter-rouge">H5</code>页面如果含有视频，当我们点击播放时就会调用<code class="language-plaintext highlighter-rouge">iOS</code>原生自带的播放器进行播放。最可恶的是还自动自己全屏播放了。</p>
+
+<p>效果图：<br /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/mzD93k.jpg" alt="" /></p>
+
+<p><br /></p>
+
+<p>这样的用户体验总会感觉到无比的尴尬。公司产品往往幻想的效果是这样：</p>
+
+<p>不要自动全屏播放。要内嵌在网页里面播放。视频框可以跟随网页内容上下滚动。</p>
+
+<p><strong>理想效果图：</strong><br /><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/lJh1aD.jpg" alt="" /></p>
+
+<h2 id="二-实现代码">二、 实现代码：</h2>
+<h4 id="1h5-端要实现的代码如下">（1）、H5 端要实现的代码如下：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;video id="video" width="100%" autobuffer="true" x5-video-player-type='h5' x5-video-player-fullscreen='true' playsinline webkit-playsinline controls='controls' poster="http://img.nntv.cn/images/2017-6-25/5OdZ806_1498400363126_G8a72i9_1.jpg" src="http://mvod.nntv.cn/vod/local/2017/06/25/5OdZ806_1498400363126_G8a72i9_2812.mp4"
+                   onclick="playVideo('http://mvod.nntv.cn/vod/local/2017/06/25/5OdZ806_1498400363126_G8a72i9_2812.mp4');"&gt;
+                不支持视频播放
+            &lt;/video&gt;
+</code></pre></div></div>
+
+<p>重点代码如下：</p>
+
+<p><code class="language-plaintext highlighter-rouge">x5-video-player-type='h5' x5-video-player-fullscreen='true' playsinline webkit-playsinline</code></p>
+
+<p><strong>说明：</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">iOS10</code>以上<code class="language-plaintext highlighter-rouge">H5</code>视频不自动全屏播放识别 <code class="language-plaintext highlighter-rouge">playsinline</code>这个属性</li>
+  <li><code class="language-plaintext highlighter-rouge">iOS10</code>以下<code class="language-plaintext highlighter-rouge">H5</code>视频不自动全屏播放识别 <code class="language-plaintext highlighter-rouge">webkit-playsinline</code>这个属性</li>
+</ul>
+
+<h4 id="2ios端要实现的代码如下">（2）、iOS端要实现的代码如下：</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_webView.allowsInlineMediaPlayback = YES;
+</code></pre></div></div>
+
+<p>设置<code class="language-plaintext highlighter-rouge">UIWebView</code> 的<code class="language-plaintext highlighter-rouge">allowsInlineMediaPlayback</code>属性为<code class="language-plaintext highlighter-rouge">YES</code>即可。</p>
+
+<h2 id="三其他问题">三、其他问题：</h2>
+<p>这样设置了以后，你的 <code class="language-plaintext highlighter-rouge">UIWebView</code> 里面的视频就已经实现点击播放不会自动全屏了。</p>
+
+<p>但是当你仔细测试后发现。当这个页面消失后<code class="language-plaintext highlighter-rouge">H5</code>里面的视频仍然在继续播放。</p>
+
+<h5 id="解决当页面消失时h5视频不自动播放方法">解决当页面消失时H5视频不自动播放方法：</h5>
+<ul>
+  <li>
+    <p>方法一 ：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  - (void)viewDidDisappear:(BOOL)animated {
+      [super viewDidDisappear:animated];
+      [_webView reload]; //重新加载 防止web中正在播放的视频页面消失后还在播放。 
+  }
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>方法二：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   - (void)viewDidDisappear:(BOOL)animated {
+    //新跳转一个空白页 防止web中正在播放的视频页面消失后还在播放。
+      [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]]; 
+  }
+</code></pre></div>    </div>
+
+    <p><strong>此方法的弊端 ：</strong><br />
+  当当前<code class="language-plaintext highlighter-rouge">H5</code>页面不是单纯<code class="language-plaintext highlighter-rouge">H5</code>时，再次拿如下图来描述：<br />
+  <img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/lJh1aD.jpg" alt="" /></p>
+
+    <p>最新评论以上全部是<code class="language-plaintext highlighter-rouge">H5</code> ，评论列表是原生。底部四个按钮是原生。</p>
+
+    <p>当我们点击这些原生元素进入次级详情页面时，然后再返回就会发现<code class="language-plaintext highlighter-rouge">H5</code>页面已经变成了我们刚刚新建的空白页了。</p>
+  </li>
+</ul>
+
+<h2 id="四补充技能">四、补充技能：</h2>
+<p>以上示例中，用<code class="language-plaintext highlighter-rouge">H5</code>拼接详情页然后下面拼接原生评论列表。这个技巧在日常开发中很实用。很可能有机会使用到。那类似这种需求怎么准确拿到<code class="language-plaintext highlighter-rouge">H5</code>内容的高度呢？</p>
+
+<p>请进入我的另外一篇文章传送门：<a href="https://www.yfmingo.cn/2017/03/13/accurate-get-webViewHeader/">精确获取 UIWebView 的高度</a></p>
+
+<p>还一篇<code class="language-plaintext highlighter-rouge">UIWebView</code>实用技能：<br />
+<a href="https://www.yfmingo.cn/2017/08/25/UIWebVIew-mjrefresh/">UIWebView 加 MJRefresh 同时解决底部黑影问题</a></p>
+<h2 id="五联系">五、联系：</h2>
+<ul>
+  <li>联系邮箱：yfmingo@163.com</li>
+  <li>联系网站：<a href="https://www.yfmingo.cn/">www.yfmingo.cn</a></li>
+</ul>
+
+:ET

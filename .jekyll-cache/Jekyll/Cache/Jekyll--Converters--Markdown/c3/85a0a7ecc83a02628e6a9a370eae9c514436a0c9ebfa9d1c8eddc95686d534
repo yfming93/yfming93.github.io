@@ -1,0 +1,22 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#xcode-中删除一整行代码的快捷键设置" id="markdown-toc-xcode-中删除一整行代码的快捷键设置">Xcode 中删除一整行代码的快捷键设置</a>    <ul>
+      <li><a href="#一介绍" id="markdown-toc-一介绍">(一)、介绍</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="xcode-中删除一整行代码的快捷键设置">Xcode 中删除一整行代码的快捷键设置</h2>
+
+<h3 id="一介绍">(一)、介绍</h3>
+
+<p>升级到<code class="language-plaintext highlighter-rouge">Xcdoe9</code>后面。。之前在<code class="language-plaintext highlighter-rouge">Xcode8</code> 中自定义的 <strong>delete line</strong> 快捷键好像失效了。</p>
+
+<p>呃呃呃~~~其实 <code class="language-plaintext highlighter-rouge">delete line</code>是<code class="language-plaintext highlighter-rouge">Xcode8</code>自带的。但是之前我发现不管用。后我自己折腾加了个快捷键 <code class="language-plaintext highlighter-rouge">cmd + d</code>就可以直接删除一整行了。</p>
+
+<p>这个快捷键我已经严重依赖了。。可是当我升级到<code class="language-plaintext highlighter-rouge">Xcode9</code>后。发现不管用了。。</p>
+
+<p>但是当我仔细研究后发现 ：<br />
+<strong>moveToEndOfLine</strong>、<strong>deleteToBeginningOfLine</strong>、<strong>Delete to End of Paragraph</strong></p>
+
+<p>这三个凑一起就是删除一行的意思。</p>
+:ET

@@ -1,0 +1,985 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#vue20nodejsmongodb全栈打造商城系统14章" id="markdown-toc-vue20nodejsmongodb全栈打造商城系统14章">Vue2.0+Node.js+MongoDB全栈打造商城系统（1—4章）</a></li>
+  <li><a href="#1-1-课程-导学" id="markdown-toc-1-1-课程-导学">1-1 课程-导学</a>    <ul>
+      <li><a href="#课程安排" id="markdown-toc-课程安排">课程安排:</a></li>
+      <li><a href="#课程收获" id="markdown-toc-课程收获">课程收获:</a></li>
+      <li><a href="#前置知识" id="markdown-toc-前置知识">前置知识：</a></li>
+    </ul>
+  </li>
+  <li><a href="#1-2-前端框架回顾" id="markdown-toc-1-2-前端框架回顾">1-2 前端框架回顾</a></li>
+  <li><a href="#1-3-vue概况以及核心思想" id="markdown-toc-1-3-vue概况以及核心思想">1-3 vue概况以及核心思想</a>    <ul>
+      <li><a href="#1-3-1-vue介绍" id="markdown-toc-1-3-1-vue介绍">1-3-1 Vue介绍:</a></li>
+      <li><a href="#1-3-2-vue实现双向数据绑定核心思想" id="markdown-toc-1-3-2-vue实现双向数据绑定核心思想">1-3-2 Vue实现双向数据绑定核心思想</a></li>
+    </ul>
+  </li>
+  <li><a href="#1-4-vue框架优缺点对比" id="markdown-toc-1-4-vue框架优缺点对比">1-4 vue框架优缺点对比</a></li>
+  <li><a href="#2-1-nodejs和npm的安装和环境搭建" id="markdown-toc-2-1-nodejs和npm的安装和环境搭建">2-1 nodejs和npm的安装和环境搭建</a></li>
+  <li><a href="#2-2-vue环境搭建以及vue-cli使用" id="markdown-toc-2-2-vue环境搭建以及vue-cli使用">2-2 vue环境搭建以及vue-cli使用</a>    <ul>
+      <li><a href="#初始化-webpack-simple-项目-" id="markdown-toc-初始化-webpack-simple-项目-">初始化 webpack-simple 项目 ：</a></li>
+      <li><a href="#初始化一个-webpack-项目" id="markdown-toc-初始化一个-webpack-项目">初始化一个 webpack 项目：</a></li>
+    </ul>
+  </li>
+  <li><a href="#2-3-vue配置上" id="markdown-toc-2-3-vue配置上">2-3 vue配置（上）</a></li>
+  <li><a href="#2-4-vue配置下" id="markdown-toc-2-4-vue配置下">2-4 vue配置（下）</a></li>
+  <li><a href="#2-5-vue基础语法" id="markdown-toc-2-5-vue基础语法">2-5 vue基础语法</a>    <ul>
+      <li><a href="#父子组件通讯-数据传输" id="markdown-toc-父子组件通讯-数据传输">父子组件通讯-数据传输</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-1-路由基础介绍" id="markdown-toc-3-1-路由基础介绍">3-1 路由基础介绍</a></li>
+  <li><a href="#3-2-动态路由匹配" id="markdown-toc-3-2-动态路由匹配">3-2 动态路由匹配</a></li>
+  <li><a href="#3-3-嵌套路由" id="markdown-toc-3-3-嵌套路由">3-3 嵌套路由</a></li>
+  <li><a href="#3-4-编程式路由" id="markdown-toc-3-4-编程式路由">3-4 编程式路由</a></li>
+  <li><a href="#3-5-命名路由和命名视图" id="markdown-toc-3-5-命名路由和命名视图">3-5 命名路由和命名视图</a></li>
+  <li><a href="#4-1-vue-resource使用上" id="markdown-toc-4-1-vue-resource使用上">4-1 Vue-Resource使用（上）</a>    <ul>
+      <li><a href="#getpostjsonp-配置http参数--四种请求演示" id="markdown-toc-getpostjsonp-配置http参数--四种请求演示">Get、Post、JsonP 、配置http参数  四种请求演示：</a></li>
+    </ul>
+  </li>
+  <li><a href="#4-2-vue-resource使用下" id="markdown-toc-4-2-vue-resource使用下">4-2 Vue-Resource使用（下）</a></li>
+  <li><a href="#4-3-axios基础介绍" id="markdown-toc-4-3-axios基础介绍">4-3 axios基础介绍</a>    <ul>
+      <li><a href="#axios-中-getposthttp配置参数-三种请求演示" id="markdown-toc-axios-中-getposthttp配置参数-三种请求演示">axios 中 GET、POST、HTTP配置参数 三种请求演示</a></li>
+      <li><a href="#全局拦截器" id="markdown-toc-全局拦截器">全局拦截器</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!---->
+<h1 id="vue20nodejsmongodb全栈打造商城系统14章">Vue2.0+Node.js+MongoDB全栈打造商城系统（1—4章）</h1>
+<p>用前端技术开发的商城整站<br />
+项目已部署上线，你可抢先体验：<a href="http://imooc.51purse.com/">http://imooc.51purse.com/</a><br />
+收费项目介绍：<a href="http://coding.imooc.com/class/113.html">http://coding.imooc.com/class/113.html</a></p>
+
+<h1 id="1-1-课程-导学">1-1 课程-导学</h1>
+<ul>
+  <li>
+    <h4 id="课程安排">课程安排:</h4>
+
+    <ul>
+      <li>前两章主要介绍 Vue 基础知识</li>
+      <li>第三、四章主要介绍 VueRouter 和 VueResource已经Axios</li>
+      <li>第五章主要介绍 ES6 常用语法知识</li>
+      <li>第六到十四章主要基于实战项目开发</li>
+      <li>第十五章主要介绍webpack使用</li>
+      <li>第十七章主要介绍线上部署</li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="课程收获">课程收获:</h4>
+    <ul>
+      <li>Vue 全家桶知识</li>
+      <li>掌握 Vue 的 SPA应用开发</li>
+      <li>掌握 ES6 知识</li>
+      <li>掌握 Node+Express 的后端接口开发</li>
+      <li>掌握 MongoDB 等数据库知识</li>
+      <li>掌握 Vue+Node项目的线上部署</li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="前置知识">前置知识：</h4>
+    <p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/NKu7eJ.jpg" alt="" /></p>
+  </li>
+  <li><strong>项目架构：</strong><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/2LWZa8.jpg" alt="" /></li>
+</ul>
+
+<h1 id="1-2-前端框架回顾">1-2 前端框架回顾</h1>
+<ul>
+  <li><strong>传统MVC框架特点：</strong>
+    <ul>
+      <li>1.<code class="language-plaintext highlighter-rouge">Model</code>和<code class="language-plaintext highlighter-rouge">View</code>解耦</li>
+      <li>2.<code class="language-plaintext highlighter-rouge">Controller</code>控制<code class="language-plaintext highlighter-rouge">DOM</code></li>
+      <li>3.完全照搬<code class="language-plaintext highlighter-rouge">MVC</code>模式</li>
+    </ul>
+  </li>
+  <li><strong>基于MV*框架特点：</strong>
+    <ul>
+      <li>1.<code class="language-plaintext highlighter-rouge">Model</code>绑定<code class="language-plaintext highlighter-rouge">View</code></li>
+      <li>2.没有控制器概念</li>
+      <li>3.数据驱动，状态管理</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="1-3-vue概况以及核心思想">1-3 vue概况以及核心思想</h1>
+<h2 id="1-3-1-vue介绍">1-3-1 Vue介绍:</h2>
+<p>Vue本身并不是一个框架，但结合周边生态构成一个灵活的、渐进式的框架 Vue核心思想：1.数据驱动 2.组件化</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/xH2U2A.jpg" alt="" /></p>
+
+<p><strong>vue发展历程：</strong></p>
+
+<ul>
+  <li>1、2013年作为尤雨溪个人实验项目开始开发</li>
+  <li>2、2014年2月公开发布</li>
+  <li>3、2014年11月发布0.11版本</li>
+  <li>4、截至目前版本：<code class="language-plaintext highlighter-rouge">vue 0.11</code>、<code class="language-plaintext highlighter-rouge">vue 1.0</code>、<code class="language-plaintext highlighter-rouge">vue2.0</code></li>
+</ul>
+
+<h2 id="1-3-2-vue实现双向数据绑定核心思想">1-3-2 Vue实现双向数据绑定核心思想</h2>
+<p><code class="language-plaintext highlighter-rouge">vue</code>数据双向绑定的原理，利用<code class="language-plaintext highlighter-rouge">Object.defineProperty()</code>方法，这个方法是给对象添加属性，并且它自身包含<code class="language-plaintext highlighter-rouge">get</code>和<code class="language-plaintext highlighter-rouge">set</code>两个<code class="language-plaintext highlighter-rouge">api</code>。通过<code class="language-plaintext highlighter-rouge">keyup</code>事件，改变<code class="language-plaintext highlighter-rouge">userName</code>属性的值去触发它的<code class="language-plaintext highlighter-rouge">set</code>方法</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;input type="text" id="userName"&gt;
+&lt;br&gt;
+&lt;span id="uName"&gt;&lt;/span&gt;
+&lt;script&gt;
+    var obj = {
+        pwd:"123456"
+    };
+    Object.defineProperty(obj,"userName",{
+        get:function () {
+            console.log("log get init");
+        },
+        set:function (val) {
+            console.log("log set init");
+            document.getElementById("uName").innerText = val;
+            document.getElementById("userName").value = val;
+        }
+    });
+    document.getElementById("userName").addEventListener("keyup",function (envet) {
+        document.getElementById("uName").innerText = envet.target.value;
+    })
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div></div>
+
+<h1 id="1-4-vue框架优缺点对比">1-4 vue框架优缺点对比</h1>
+<ul>
+  <li><strong>Vue和React不同点：</strong>
+    <ul>
+      <li><strong>1）Vue：</strong>
+        <ul>
+          <li>1.模板和渲染函数的弹性选择</li>
+          <li>2.简单的语法及项目创建</li>
+          <li>3.更快的选软速度和更小的体积</li>
+        </ul>
+      </li>
+      <li><strong>2）React：</strong>
+        <ul>
+          <li>1.更适用于大型应用和更好的可测试性</li>
+          <li>2.同时适用于Web端和原生App</li>
+          <li>3.更大的生态圈带来的跟多支持和工具</li>
+        </ul>
+      </li>
+      <li><strong>Vue和React相同点：</strong>
+        <ul>
+          <li>1.利用虚拟DOM实现快速渲染</li>
+          <li>2.轻量级</li>
+          <li>3.响应式组件</li>
+          <li>4.服务器端渲染</li>
+          <li>5.易于集成路由工具，打包工具以及状态管理工具</li>
+          <li>6.优秀的支持和社区</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="2-1-nodejs和npm的安装和环境搭建">2-1 nodejs和npm的安装和环境搭建</h1>
+<p><strong>Webpack：</strong>代码模块化构建打包工具 <br />
+<strong>Gulp：</strong>基于流的自动化构建工具 <br />
+<strong>Grunt：</strong><code class="language-plaintext highlighter-rouge">Javascript</code>世界的构建工具 <br />
+<strong>Babel：</strong>使用最新的规范来编写<code class="language-plaintext highlighter-rouge">js</code> <br />
+<strong>Vue：</strong>构建数据驱动的<code class="language-plaintext highlighter-rouge">web</code>界面的渐进式框架 <br />
+<strong>Express：</strong>基于<code class="language-plaintext highlighter-rouge">Node.js</code>平台，快速，开放，极简的<code class="language-plaintext highlighter-rouge">web</code>开发框架</p>
+
+<ul>
+  <li><strong>npm 指令：</strong>
+    <ul>
+      <li><strong>升级npm：</strong> <code class="language-plaintext highlighter-rouge">npm install -g npm</code></li>
+      <li><strong>查看安装的目录：</strong><code class="language-plaintext highlighter-rouge">npm list</code></li>
+      <li><strong>node 运行js文件：</strong><code class="language-plaintext highlighter-rouge">node</code> 文件名</li>
+      <li><strong>vue 安装：</strong> <code class="language-plaintext highlighter-rouge">npm i vue --save</code></li>
+      <li><strong>npm安装目录</strong>：<code class="language-plaintext highlighter-rouge">/usr/local/lib/node_modules</code></li>
+      <li><strong>查看npm安装路径</strong>：<code class="language-plaintext highlighter-rouge">npm root -g</code></li>
+    </ul>
+  </li>
+  <li><strong>cnpm安装：</strong><br />
+  <code class="language-plaintext highlighter-rouge">npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br />
+  参考 <a href="http://npm.taobao.org/">npm淘宝镜像</a></li>
+</ul>
+
+<h1 id="2-2-vue环境搭建以及vue-cli使用">2-2 vue环境搭建以及vue-cli使用</h1>
+<p>最简单的<code class="language-plaintext highlighter-rouge">Vue</code>实例：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;!--在线引用Vuejs如下：--&gt;
+    &lt;!--&lt;script src="https://vuejs.org/js/vue.js"&gt;&lt;/script&gt;--&gt;
+    &lt;!--本地安装后引用Vuejs--&gt;
+    &lt;script src="node_modules/vue/dist/vue.min.js"&gt;&lt;/script&gt;    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="app"&gt;
+        &lt;span&gt;{{message}}&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        new Vue ({
+            el:"#app",
+            data:{
+                message:"hello, Vue!"
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div></div>
+
+<ul>
+  <li><strong>全局安装 Vue-cli ：</strong> <code class="language-plaintext highlighter-rouge">cnpm i vue-cli -g</code></li>
+  <li>
+    <h4 id="初始化-webpack-simple-项目-">初始化 webpack-simple 项目 ：</h4>
+    <p>利用 Vue 初始化一个简单的 webpack 项目 ：<br />
+  <code class="language-plaintext highlighter-rouge">vue init webpack-simple demo5</code><br />
+<strong>注意:</strong> 项目名称必须小写</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  MingodeMacBook-Pro:vueMall Mingo$ vue init webpack-simple demo5
+    
+  ? Project name demo5
+  ? Project description A Vue.js project
+  ? Author 袁凤鸣 &lt;yfmingo@163.com&gt;
+  ? Use sass? No
+    
+     vue-cli · Generated "demo5".
+    
+     To get started:
+       
+       cd demo5
+       npm install
+       npm run dev.
+    
+  MingodeMacBook-Pro:vueMall Mingo$ 
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>说明：</strong>其中生成的 <code class="language-plaintext highlighter-rouge">.babelrc</code>文件是<code class="language-plaintext highlighter-rouge">ES6</code>编译插件配置。</p>
+
+<ul>
+  <li>
+    <h4 id="初始化一个-webpack-项目">初始化一个 webpack 项目：</h4>
+    <p><code class="language-plaintext highlighter-rouge">vue init webpack demo6</code><br />
+  代码如下：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  MingodeMacBook-Pro:demo6 Mingo$ vue init webpack demo6
+    
+  ? Project name demo6
+  ? Project description A Vue.js project
+  ? Author 袁凤鸣 &lt;yfmingo@163.com&gt;
+  ? Vue build standalone
+  ? Install vue-router? Yes
+  ? Use ESLint to lint your code? No
+  ? Setup unit tests with Karma + Mocha? No
+  ? Setup e2e tests with Nightwatch? No
+    
+     vue-cli · Generated "demo6".
+    
+     To get started:
+       
+       cd demo6
+       npm install
+       npm run dev
+       
+     Documentation can be found at https://vuejs-templates.github.io/webpack
+</code></pre></div>    </div>
+
+    <p><strong>以上说明：</strong> <br />
+  <code class="language-plaintext highlighter-rouge">? Install vue-router?</code>：是否需要路由<br />
+  <code class="language-plaintext highlighter-rouge">? Use ESLint to lint your code?</code>是否需要 <code class="language-plaintext highlighter-rouge">ESLint</code>（语法检查），刚开始入门建议不需要<br />
+  <code class="language-plaintext highlighter-rouge">? Setup unit tests with Karma + Mocha? </code>是否需要单元测试<br />
+  <code class="language-plaintext highlighter-rouge">? Setup e2e tests with Nightwatch?</code>是否需要端到端测试</p>
+  </li>
+</ul>
+
+<p>通过<code class="language-plaintext highlighter-rouge">vue init webpack-simple demo</code>创建项目:<br />
+<code class="language-plaintext highlighter-rouge">src</code>是项目源码，<code class="language-plaintext highlighter-rouge">.babelrc</code>编译<code class="language-plaintext highlighter-rouge">ES6</code>插件的配置，<code class="language-plaintext highlighter-rouge">readme.md</code>说明文件，<code class="language-plaintext highlighter-rouge">webpack.config</code>配置。</p>
+
+<p><strong>要运行项目，首先<code class="language-plaintext highlighter-rouge">cnpm i</code> 下载依赖的插件，第二步<code class="language-plaintext highlighter-rouge">cnpm run dev</code></strong></p>
+
+<h1 id="2-3-vue配置上">2-3 vue配置（上）</h1>
+<p><strong>build</strong>打包配置文件所在的文件夹，<strong>config</strong>是<code class="language-plaintext highlighter-rouge">webpack</code>对应的配置，<strong>src</strong>是开发项目的源码，<strong>App.vue</strong>是入口组件，<strong>main.js</strong>项目入口文件，<strong>static</strong>资源文件件，<strong>babelrc</strong>是<code class="language-plaintext highlighter-rouge">ES6</code>解析的配置，<strong>postcssrc</strong>是<code class="language-plaintext highlighter-rouge">html</code>添加前缀的配置，<strong>dependencies</strong>是项目依赖库，<strong>devDependencies</strong>是开发依赖库，<strong>devDependencies</strong>在打包的时候需要，打包后就没有了</p>
+
+<p><code class="language-plaintext highlighter-rouge">package.json</code>中的<code class="language-plaintext highlighter-rouge">script</code>是<code class="language-plaintext highlighter-rouge">shell</code>脚本命令，做<code class="language-plaintext highlighter-rouge">spa</code>开发只需要关注几个页面:<br />
+ <strong>build/webpack.base.conf.js</strong>打包核心配置 <strong>config/index.js</strong>其实可以和<code class="language-plaintext highlighter-rouge">build/webpack.base.conf.j</code>s合并成一个，但是<code class="language-plaintext highlighter-rouge">spa</code>想做一个清晰的架构，所以拆开了 以上两个核心关注，其他都是辅助关系 初学者都要有个初步认识</p>
+
+<p><strong>build/build.js</strong>构建生产版本，项目开发完成，使用这个打生产包<br />
+ <strong>var config = require(‘../config’)</strong> <code class="language-plaintext highlighter-rouge">require</code>一个文件夹，会默认加载里面的<code class="language-plaintext highlighter-rouge">index.js</code>文件，这个写的时候是可以省略，也是相当于<code class="language-plaintext highlighter-rouge">=require('../config/index.js')</code>。但如果是里面的非<code class="language-plaintext highlighter-rouge">index.js</code>文件，<code class="language-plaintext highlighter-rouge">require</code>时则不可省略。</p>
+<h1 id="2-4-vue配置下">2-4 vue配置（下）</h1>
+<p><a href="https://www.npmjs.com/package[]()">https://www.npmjs.com/package</a> 将npm安装的插件放在这个网址后面就可以看到插件的对应信息，例如 <a href="https://www.npmjs.com/package/vue">https://www.npmjs.com/package/vue</a></p>
+<h1 id="2-5-vue基础语法">2-5 vue基础语法</h1>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/L6AbSu.jpg" alt="" /></p>
+
+<ul>
+  <li><strong>v-bind:class=”{ active: isActive }”</strong>  这里<code class="language-plaintext highlighter-rouge">active</code>是类名，<code class="language-plaintext highlighter-rouge">isActive</code>是<code class="language-plaintext highlighter-rouge">true</code>或者<code class="language-plaintext highlighter-rouge">false</code></li>
+  <li>
+    <p><strong>v-bind:class=”[activeClass,errorClass]”</strong> 这里<code class="language-plaintext highlighter-rouge">activeClass</code>,<code class="language-plaintext highlighter-rouge">errorClass</code>是2个变量，具体的类名在<code class="language-plaintext highlighter-rouge">data</code>中定义</p>
+
+    <p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/7xDXRD.jpg" alt="" /></p>
+  </li>
+  <li><strong>v-cloak</strong> 的作用是防止页面刷新太快，部分页面没有刷新出来，<code class="language-plaintext highlighter-rouge">v-cloak</code>可以进行隐</li>
+  <li>
+    <p><strong>.stop</strong> 阻止冒泡，<strong>.prevent</strong> 阻止默认事件，<strong>.self</strong> 只给本身绑定事件（如果有子元素，点击子元素没有作用），<strong>.once</strong> 只给事件绑定一次</p>
+
+    <p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/neKvwm.jpg" alt="" /></p>
+  </li>
+  <li>
+    <h4 id="父子组件通讯-数据传输">父子组件通讯-数据传输</h4>
+    <ul>
+      <li>组件往父组件传输。 通过<code class="language-plaintext highlighter-rouge">this.$emit("incre")</code>自定义了一个<code class="language-plaintext highlighter-rouge">incre</code>事件，在父组件中绑定<code class="language-plaintext highlighter-rouge">@incre="increment"</code>，而<code class="language-plaintext highlighter-rouge">increment</code>这个方法是写在父组件中的。也就是说父组件绑定了子组件的事件来控制父组件的方法来操作父组件的元素</li>
+      <li>子组件操作父组件数据。通过给父组件绑定自定义事件，子组件方法中使用 <strong>this.$emit(自定义事件名)</strong>（此方法相当于<code class="language-plaintext highlighter-rouge">jquery</code>里面的<code class="language-plaintext highlighter-rouge">trigger</code>）来执行父组件的函数，从而改变父组件数据。 如果想要子组件传值给父组件，通过  <strong>this.$emit(‘自定义事件名’,’想传的值’）</strong>传递给父组件，父组件的该自定义事件回调方法的入参，即为你想传递的值。</li>
+      <li>父组件往子组件传递参数，父组件中定义好，子组件使用<strong>props:[“num”]</strong>来接受，<code class="language-plaintext highlighter-rouge">props</code>必须为数组</li>
+    </ul>
+  </li>
+  <li><strong>v-on:click.self</strong> 阻止事件代理； <strong>v-on:click.once</strong> 只生效一次 <code class="language-plaintext highlighter-rouge">vue</code>的核心思想：数据驱动，组件开发。 在<code class="language-plaintext highlighter-rouge">webpack.base.config</code>配置后，引入<code class="language-plaintext highlighter-rouge">.vue</code>文件，可以省略<code class="language-plaintext highlighter-rouge">.vue</code> <strong>this.$emit(‘chuandi’)</strong> 父组件可以监听到子组件的<code class="language-plaintext highlighter-rouge">chuandi</code>事件 <strong>methods:{ incre(){} }</strong></li>
+  <li><strong>v-if</strong> 如果不渲染，整个<code class="language-plaintext highlighter-rouge">dom</code>都没有，<strong>v-show</strong> 只是<code class="language-plaintext highlighter-rouge">display:none</code></li>
+</ul>
+
+<h1 id="3-1-路由基础介绍">3-1 路由基础介绍</h1>
+<ul>
+  <li>单页面没法缓存和记住滚动条位置，浏览器前进后退都是重新加载。</li>
+  <li><strong>router-link</strong> 就当做a标签使用，<strong>router-view</strong> 是跳转后渲染的位置</li>
+  <li>请问这么做版本号控制？
+    <ul>
+      <li>实际上单页面应用只输出一个html一个js，每次如果内容变动了，就会产生对应的hash值加在文件的里面，hash就相当于文件的版本。</li>
+    </ul>
+  </li>
+  <li>想问个问题，C组件为A B两组件的共用的子组件，这个时候如果我在A页面中的C组件触发事件，如果A B两个父组件和C组件的通信规则是一样的，是不是B组件也能同时接收到相同的事件？
+    <ul>
+      <li>不能，你当前页面是A组件，加载了C组件，那么C组件内部事件触发，可以通过emit传递到A组件，这个时候B组件并没有加载，相当于B组件根本就没有初始化，所以不会同时触发B组件。</li>
+    </ul>
+  </li>
+  <li>表单都有下拉框，下拉框的选项在另一页，然后跳转过去的时候这边表单都清空了，通常有什么方法？实在不行是不是就要用模态框的形式
+    <ul>
+      <li>这是两个页面之间的交互了，最后做成组件来实现，这样父子组件可以通信</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="3-2-动态路由匹配">3-2 动态路由匹配</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">components</code>文件夹一般放复用的组件，同时可以新建一个 <code class="language-plaintext highlighter-rouge">views</code> 放单独的页面</li>
+  <li>组件有且只有一个根元素</li>
+  <li>路由模式可配置，默认<code class="language-plaintext highlighter-rouge">hash</code>，路由带<code class="language-plaintext highlighter-rouge">#</code>号，改为<code class="language-plaintext highlighter-rouge">history</code>后，可去掉<code class="language-plaintext highlighter-rouge">#</code>号，表现为常见的路由形式</li>
+  <li>在<code class="language-plaintext highlighter-rouge">router</code>文件夹下的<code class="language-plaintext highlighter-rouge">index.js</code>修改路由 <code class="language-plaintext highlighter-rouge">src</code>里的<code class="language-plaintext highlighter-rouge">views</code>文件夹放页面，里面也是.vue结尾的文件，本质上一样的。 <code class="language-plaintext highlighter-rouge">router</code>里面配置默认渲染的组件，可以修改让它加载其他页面，<code class="language-plaintext highlighter-rouge">@</code>被配置成了一个别名，映射到了<code class="language-plaintext highlighter-rouge">src</code>文件夹目录 <strong>{{$route.params.goodsId}}</strong>拿到路径<code class="language-plaintext highlighter-rouge">path:'/goods/:goodsId'</code>,中的参数 <strong>{{$route.params.name}}</strong><code class="language-plaintext highlighter-rouge">path: '/goods/:goodsId/user/:name'</code>, 路由是对<code class="language-plaintext highlighter-rouge">history</code>的封装 路由模式有<code class="language-plaintext highlighter-rouge">mode:'history' </code>和 <code class="language-plaintext highlighter-rouge">mode:'hash'</code>两种</li>
+</ul>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/R1SrVE.jpg" alt="" /><br />
+演示代码：</p>
+
+<p><code class="language-plaintext highlighter-rouge">index.js</code> ：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Vue from 'vue'
+import Router from 'vue-router'
+import GoodsList from './../views/GoodsList'
+
+Vue.use(Router)
+
+export default new Router({
+	mode:'history',
+  routes: [
+    {
+      path: '/goods/:goodsId/user/:name',
+      name: 'GoodsList',
+      component: GoodsList
+    }
+  ]
+})
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">GoodsList.vue :</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+	&lt;div&gt;
+		这个商品列表页面
+		&lt;span&gt;{{$route.params.goodsId}}&lt;/span&gt;&lt;br&gt;
+		&lt;span&gt;{{$route.params.name}}&lt;/span&gt;
+	&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style &gt;
+&lt;/style&gt;
+
+&lt;script &gt;
+	export default {	
+		data (){
+			return {
+				msg:'hello Vue!'
+			}
+		}
+	}
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h1 id="3-3-嵌套路由">3-3 嵌套路由</h1>
+<ul>
+  <li><strong>使用场景：</strong>主菜单中嵌套子菜单，点击各个子菜单显示各个区域。
+    <ul>
+      <li>打开了用户信息页面。用户信息左边有个菜单，分为用户的基本信息和用户的教育方式等等资料信息。有很多菜单，这些菜单不需要页面进行刷新。这样可以在用户信息页面做两个嵌套子路由。这样形成嵌套路由。</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">import Vue from 'vue' </code>是es6的语法，用来导入模块 <code class="language-plaintext highlighter-rouge">webpach</code>里的别名配置：<code class="language-plaintext highlighter-rouge">@</code>: <code class="language-plaintext highlighter-rouge">resolve('src')  </code>其中<code class="language-plaintext highlighter-rouge">@</code>就代表了<code class="language-plaintext highlighter-rouge">src</code>文件夹的绝对路径 用<code class="language-plaintext highlighter-rouge">children:[{},{}]</code>的方式定义子组件</li>
+</ul>
+
+<p>演示代码：<br />
+<code class="language-plaintext highlighter-rouge">GoodsList.vue</code>中代码：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+	&lt;div&gt;
+		这个商品列表页面
+		&lt;span&gt;{{$route.params.goodsId}}&lt;/span&gt;&lt;br&gt;
+		&lt;span&gt;{{$route.params.name}}&lt;/span&gt;
+		&lt;router-link to="/goods/Title"&gt;显示商品标题&lt;/router-link&gt;
+		&lt;router-link to="/goods/Img"&gt;显示商品图片&lt;/router-link&gt;
+		&lt;div&gt;
+			&lt;router-view&gt; &lt;/router-view&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style &gt;
+&lt;/style&gt;
+
+&lt;script &gt;
+	export default {	
+		data (){
+			return {
+				msg:'hello Vue!'
+			}
+		}
+	}
+&lt;/script&gt; **特别注意：** `&lt;router-link to="/goods/Title"&gt;`中的 to 地址不要写错了 。to 地址一定写绝对地址（就是子路由最终会映射到的地址）
+</code></pre></div></div>
+
+<p>其demo中 <code class="language-plaintext highlighter-rouge">Title.vue </code> 和 <code class="language-plaintext highlighter-rouge">Image.vue</code> 一样只是文字不同：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+	&lt;div&gt;
+		这里是商品标题子组件
+	&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style &gt;
+&lt;/style&gt;
+
+&lt;script &gt;
+	export default {	
+		data (){
+			return {
+				msg:'hello Vue!'
+			}
+		}
+	}
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h1 id="3-4-编程式路由">3-4 编程式路由</h1>
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/WjnWJF.jpg" alt="" /></p>
+
+<p>编程路由常用方式方法总结（附已知路由间切换的2个方式）：</p>
+
+<ul>
+  <li>①.<strong>router-link to=”/cart”</strong> 通过a链接的形式，进行跳转。</li>
+  <li>②.绑定点击事件，<strong>jump(){ this.$router.push(“/cart”) }</strong></li>
+</ul>
+
+<p>代码演示:<br />
+<code class="language-plaintext highlighter-rouge">GoodsList.vue</code>中：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Title&lt;/title&gt;
+  &lt;!-- 最新版本的 Bootstrap 核心 CSS 文件 --&gt;
+  &lt;link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"&gt;
+  &lt;script src="node_modules/vue/dist/vue.js"&gt;&lt;/script&gt;
+  &lt;script src="node_modules/vue-resource/dist/vue-resource.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div id="app" class="container"&gt;
+    &lt;h1&gt;vue-resource插件请求讲解&lt;/h1&gt;
+    &lt;a href="javascript:;" class="btn btn-primary" v-on:click="get"&gt;Get请求&lt;/a&gt;
+    &lt;a href="javascript:;" class="btn btn-primary"&gt;Post请求&lt;/a&gt;
+    &lt;a href="javascript:;" class="btn btn-primary"&gt;JSONP请求&lt;/a&gt;
+    &lt;div&gt;
+      &lt;span&gt;{{msg}}&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    new Vue ({
+      el:"#app",
+      data:{
+        msg:""
+      },
+      methods:{
+        get:function () {
+          this.$http.get("package1.json",{
+            params:{
+              userId:"101"
+            },
+            headers:{
+              token:"abcd"
+            }
+          }).then(res=&gt;{
+            this.msg = res.data;
+          },error=&gt;{
+            this.msg = error;
+          });
+        }
+      }
+    });
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div></div>
+
+<h1 id="3-5-命名路由和命名视图">3-5 命名路由和命名视图</h1>
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/5e21em.jpg" alt="" /></p>
+
+<ul>
+  <li><strong>app.vue</strong>是路由的根文件</li>
+  <li>动态路由参数：<strong>$route.params.xxx</strong></li>
+  <li>页面之间路由参数:<strong>$route.query.xxx</strong></li>
+  <li>只写 <strong>to</strong> 相当于后面赋的是一个运算好的值，而在 <strong>to</strong> 前加上<strong>v-bind:</strong>或者只加上“<code class="language-plaintext highlighter-rouge">:</code>”这是会对等号后面的值先运算编译再赋值</li>
+</ul>
+
+<p>代码演示:<br />
+<code class="language-plaintext highlighter-rouge">app.vue</code>中代码:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+  &lt;div id="app"&gt;
+    &lt;img src="./assets/logo.png"&gt;
+    &lt;router-view class="main"&gt;&lt;/router-view&gt;
+    &lt;router-view class="left" name="title"&gt;&lt;/router-view&gt;
+    &lt;router-view class="right" name="img"&gt;&lt;/router-view&gt;
+
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'app'
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+  .left,.right {
+    float: left;
+    width: 49%;
+    border: 1px solid gray;
+  }
+&lt;/style&gt;
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">GoodsList.vue</code>中代码:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+	&lt;div&gt;
+		这个商品列表页面
+		&lt;span&gt;{{$route.params.goodsId}}&lt;/span&gt;&lt;br&gt;
+		&lt;span&gt;{{$route.params.name}}&lt;/span&gt;
+		&lt;router-link to="/goods/Title"&gt;显示商品标题&lt;/router-link&gt;
+		&lt;router-link to="/goods/Img"&gt;显示商品图片&lt;/router-link&gt;
+		&lt;div&gt;
+			&lt;router-view&gt; &lt;/router-view&gt;
+		&lt;/div&gt;
+		&lt;!-- 带参数的命名路由 --&gt;
+		&lt;router-link v-bind:to="{name:'cart',params:{cartId:123}}"&gt;跳转到购物车页面&lt;/router-link&gt;
+		
+	&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style &gt;
+&lt;/style&gt;
+
+&lt;script &gt;
+	export default {	
+		data (){
+			return {
+				msg:'hello Vue!'
+			}
+		},
+		methods:{
+			jump(){
+				// this.$router.push("/cart")
+				this.$router.push({path:'/cart?goodsId=123'})
+				// this.$router.go(-2) //后退两步
+			}
+		}
+	}
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h1 id="4-1-vue-resource使用上">4-1 Vue-Resource使用（上）</h1>
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/twit8U.jpg" alt="" /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/CB79pL.jpg" alt="" /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/CRldjn.jpg" alt="" /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/PAWjY3.jpg" alt="" /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HRagJ1.jpg" alt="" /></p>
+
+<h3 id="getpostjsonp-配置http参数--四种请求演示">Get、Post、JsonP 、配置http参数  四种请求演示：</h3>
+<p><code class="language-plaintext highlighter-rouge">vue-resource.html</code>中代码:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Title&lt;/title&gt;
+  &lt;!-- 最新版本的 Bootstrap 核心 CSS 文件 --&gt;
+  &lt;link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"&gt;
+  &lt;script src="node_modules/vue/dist/vue.js"&gt;&lt;/script&gt;
+  &lt;script src="node_modules/vue-resource/dist/vue-resource.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div id="app" class="container"&gt;
+    &lt;h1&gt;vue-resource插件请求讲解&lt;/h1&gt;
+    &lt;a href="javascript:;" class="btn btn-primary" v-on:click="get"&gt;Get请求&lt;/a&gt;
+    &lt;a href="javascript:;" class="btn btn-primary" v-on:click="post"&gt;Post请求&lt;/a&gt;
+    &lt;a href="javascript:;" class="btn btn-primary" v-on:click="jsonp"&gt;JSONP请求&lt;/a&gt;
+    &lt;a href="javascript:;" class="btn btn-primary" v-on:click="http"&gt;http配置参数请求&lt;/a&gt;
+
+    &lt;div&gt;
+      &lt;span&gt;{{msg}}&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    new Vue ({
+      el:"#app",
+      data:{
+        msg:""
+      },
+      mounted:function () {
+//        全局拦截器处理。可以拦截请求前和请求后的事件。可用在请求前加loding HUD
+        Vue.http.interceptors.push(function (request,next) {
+          console.log("request init");
+          next(function (respose) {
+            console.log("respose init");
+            return respose;
+          });
+
+        });
+      },
+      http:{
+//        root:"这里面可以放主域名头地址"
+      },
+      methods:{
+        get:function () {
+          this.$http.get("package.json",{
+            params:{
+              userId:"101"
+            },
+            headers:{
+              token:"abcd"
+            }
+          }).then(res=&gt;{
+            this.msg = res.data;
+          },error=&gt;{
+            this.msg = error;s
+          });
+        },
+        post:function () {
+          this.$http.post("package.json",{
+            userId:"102"
+          },{
+            headers:{
+              access_token:"abd"
+            }
+          }).then(res=&gt;{
+            this.msg = res.data;
+          },error=&gt;{
+            this.msg = error;
+          })
+        },
+        jsonp:function () {
+          this.$http.jsonp("http://www.imooc.com/course/AjaxCourseMembers?ids=796").then(res=&gt;{
+            this.msg = res.data;
+          })
+        },
+        http:function () {
+          this.$http({
+            url:"package.json",
+            method:"GET",
+            params:{
+              userId:"103"
+            },
+            headers:{
+              token:"abc123"
+            },
+            timeout:50,
+            before:function () {
+              console.log("before init")
+            }
+          }).then(function (res) {
+            this.msg = res.data;
+          });
+        }
+      }
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div></div>
+
+<p><strong>Get调试结果：</strong></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/xJh3k4.jpg" alt="" /></p>
+
+<p><strong>Post调试结果：</strong><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/3tp6Md.jpg" alt="" /></p>
+
+<p><strong>JsonP调试结果：</strong></p>
+
+<ul>
+  <li>jsonp: 跨域请求</li>
+</ul>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/VxFGX0.jpg" alt="" /></p>
+
+<p><strong>http配置参数请求调试结果：</strong><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/bqD7b2.jpg" alt="" /></p>
+
+<h1 id="4-2-vue-resource使用下">4-2 Vue-Resource使用（下）</h1>
+<p><strong>全局拦截器使用：可以拦截请求前后的事件。一般正在加载loading HUD 需要用。</strong></p>
+
+<p><strong>演示代码:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Title&lt;/title&gt;
+  &lt;!-- 最新版本的 Bootstrap 核心 CSS 文件 --&gt;
+  &lt;link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"&gt;
+  &lt;script src="node_modules/vue/dist/vue.js"&gt;&lt;/script&gt;
+  &lt;script src="node_modules/vue-resource/dist/vue-resource.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div id="app" class="container"&gt;
+    &lt;h1&gt;vue-resource插件请求讲解&lt;/h1&gt;
+    &lt;a href="javascript:;" class="btn btn-primary" v-on:click="get"&gt;Get请求&lt;/a&gt;
+    &lt;a href="javascript:;" class="btn btn-primary" v-on:click="post"&gt;Post请求&lt;/a&gt;
+    &lt;a href="javascript:;" class="btn btn-primary" v-on:click="jsonp"&gt;JSONP请求&lt;/a&gt;
+    &lt;div&gt;
+      &lt;span&gt;{{msg}}&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    new Vue ({
+      el:"#app",
+      data:{
+        msg:""
+      },
+      mounted:function () {
+//        全局拦截器处理。可以拦截请求前和请求后的事件。可用在请求前加loding HUD
+        Vue.http.interceptors.push(function (request,next) {
+          console.log("request init");
+          next(function (respose) {
+            console.log("respose init");
+            return respose;
+          });
+
+        });
+      },
+      http:{
+//        root:"这里面可以放主域名头地址，做到提取接口主域名的作用"
+      },
+      methods:{
+        get:function () {
+          this.$http.get("package.json",{
+            params:{
+              userId:"101"
+            },
+            headers:{
+              token:"abcd"
+            }
+          }).then(res=&gt;{
+            this.msg = res.data;
+          },error=&gt;{
+            this.msg = error;s
+          });
+        },
+        post:function () {
+          this.$http.post("package.json",{
+            userId:"102"
+          },{
+            headers:{
+              access_token:"abd"
+            }
+          }).then(res=&gt;{
+            this.msg = res.data;
+          },error=&gt;{
+            this.msg = error;
+          })
+        },
+        jsonp:function () {
+          this.$http.jsonp("http://www.imooc.com/course/AjaxCourseMembers?ids=796").then(res=&gt;{
+            this.msg = res.data;
+          })
+        }
+      }
+    });
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div></div>
+
+<p><strong>结果调试:</strong><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/BLpDqU.jpg" alt="" /></p>
+
+<p><strong>提取接口主域名头:</strong><br />
+    (使用可见上面演示代码)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http:{
+//root:"这里面可以放主域名头地址，做到提取接口主域名的作用"
+ }
+</code></pre></div></div>
+
+<h1 id="4-3-axios基础介绍">4-3 axios基础介绍</h1>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">axios.all</code>可一起调用和处理多个接口的返回</li>
+  <li>` vue-resources<code class="language-plaintext highlighter-rouge">是挂在</code>vue<code class="language-plaintext highlighter-rouge">上的，而</code>axios<code class="language-plaintext highlighter-rouge">没有挂在</code>vue`</li>
+</ul>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/uYR3Hk.jpg" alt="" /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/OJfmKu.jpg" alt="" /><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/36qTCV.jpg" alt="" /></p>
+
+<h3 id="axios-中-getposthttp配置参数-三种请求演示">axios 中 GET、POST、HTTP配置参数 三种请求演示</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Title&lt;/title&gt;
+  &lt;!-- 最新版本的 Bootstrap 核心 CSS 文件 --&gt;
+  &lt;link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"&gt;
+  &lt;script src="node_modules/vue/dist/vue.js"&gt;&lt;/script&gt;
+  &lt;script src="node_modules/axios/dist/axios.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div id="app" class="container"&gt;
+  &lt;h1&gt;axios插件请求讲解&lt;/h1&gt;
+  &lt;a href="javascript:;" class="btn btn-primary" v-on:click="get"&gt;Get请求&lt;/a&gt;
+  &lt;a href="javascript:;" class="btn btn-primary" v-on:click="post"&gt;Post请求&lt;/a&gt;
+  &lt;a href="javascript:;" class="btn btn-primary" v-on:click="http"&gt;http配置参数请求&lt;/a&gt;
+
+  &lt;div&gt;
+    &lt;span&gt;{{msg}}&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  new Vue ({
+    el:"#app",
+    data:{
+      msg:""
+    },
+    mounted:function () {
+
+    },
+    methods:{
+      get:function () {
+        axios.get("package.json",{
+          params:{
+            userId:"999"
+          },
+          headers:{
+            token:"Jack"
+          }
+        }).then(res=&gt;{
+          this.msg = res.data;
+        }).catch(error=&gt;{
+          console.log("error init"+error)
+        });
+      },
+      post:function () {
+        axios.post("package.json",{
+          userId:"666"
+        },{
+          headers:{
+            token:"www.yfming.cn"
+          }
+        }).then(res=&gt;{
+          this.msg = res.data;
+        }).catch(error=&gt;{
+          console.log("error init"+error)
+        });
+      },
+      http:function () {
+        axios({
+          url:"package.json",
+          method:"POST",
+          data:{
+            userId:"111"
+          },
+//          // 注意： POST请求时参数在data里面定义；GET请求时参数要在 params 中定义
+//          params:{
+//            userId:"222"
+//          },
+          headers:{
+            token:"eeeee"
+          }
+        }).then(res=&gt;{
+          this.msg = res.data;
+        })
+      }
+    }
+  });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div></div>
+
+<p><strong>axios的GET调试：</strong><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/efws1E.jpg" alt="" /><br />
+<strong>axios的POST调试：</strong><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/9ccAYj.jpg" alt="" /></p>
+
+<h3 id="全局拦截器">全局拦截器</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mounted:function () {
+  //全局拦截器：
+  //请求前拦截
+  axios.interceptors.request.use(function (config) {
+    console.log("可以在这里写加载HUD");
+    return config;
+  })
+  // 请求后拦截
+  axios.interceptors.response.use(function (response) {
+    console.log("response init ");
+    return response;
+  })
+},
+</code></pre></div></div>
+
+<!--  -->
+
+:ET

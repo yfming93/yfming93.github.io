@@ -1,0 +1,147 @@
+I"U/<ul id="markdown-toc">
+  <li><a href="#5-3-template模板的使用" id="markdown-toc-5-3-template模板的使用">5-3 template模板的使用</a></li>
+</ul>
+<!---->
+
+<p><a href="https://coding.imooc.com/class/75.html">微信小程序入门与实战 常用组件API开发技巧项目实战</a></p>
+
+<h2 id="5-3-template模板的使用">5-3 template模板的使用</h2>
+
+<p><strong>模板只对<code class="language-plaintext highlighter-rouge">WXML</code>和<code class="language-plaintext highlighter-rouge">WXSS</code>文件有作用。对<code class="language-plaintext highlighter-rouge">JS</code>和<code class="language-plaintext highlighter-rouge">JSON</code>文件引用无效。</strong></p>
+
+<p><strong>WXML文件实例：</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"postItem"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;view</span> <span class="na">class=</span><span class="s">'post-container'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;view</span> <span class="na">class=</span><span class="s">'post-author-date'</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;image</span> <span class="na">class=</span><span class="s">'post-author'</span> <span class="na">src=</span><span class="s">'{{headImgSrc}}'</span><span class="nt">&gt;&lt;/image&gt;</span>
+            <span class="nt">&lt;text</span> <span class="na">class=</span><span class="s">'post-date'</span><span class="nt">&gt;</span>{{date}}<span class="nt">&lt;/text&gt;</span>
+        <span class="nt">&lt;/view&gt;</span>
+        <span class="nt">&lt;text</span> <span class="na">class=</span><span class="s">'post-title'</span><span class="nt">&gt;</span>{{title}}<span class="nt">&lt;/text&gt;</span>
+        <span class="nt">&lt;image</span> <span class="na">class=</span><span class="s">'post-image'</span> <span class="na">src=</span><span class="s">'{{imgSrc}}'</span><span class="nt">&gt;&lt;/image&gt;</span>
+        <span class="nt">&lt;text</span> <span class="na">class=</span><span class="s">'post-content'</span><span class="nt">&gt;</span>{{content}}<span class="nt">&lt;/text&gt;</span>
+        <span class="nt">&lt;view</span> <span class="na">post-like</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;image</span> <span class="na">class=</span><span class="s">'post-like-image'</span> <span class="na">src=</span><span class="s">'../../images/icon/chat.png'</span><span class="nt">&gt;&lt;/image&gt;</span>
+            <span class="nt">&lt;text</span> <span class="na">class=</span><span class="s">'post-like-font'</span><span class="nt">&gt;</span>{{collection}}<span class="nt">&lt;/text&gt;</span>
+            <span class="nt">&lt;image</span> <span class="na">class=</span><span class="s">'post-like-image'</span> <span class="na">src=</span><span class="s">'../../images/icon/view.png'</span><span class="nt">&gt;&lt;/image&gt;</span>
+            <span class="nt">&lt;text</span> <span class="na">class=</span><span class="s">'post-like-font'</span><span class="nt">&gt;</span>{{reading}}<span class="nt">&lt;/text&gt;</span>
+        <span class="nt">&lt;/view&gt;</span>
+    <span class="nt">&lt;/view&gt;</span>
+ <span class="nt">&lt;/template&gt;</span>
+</code></pre></div></div>
+
+<p><strong>WXSS文件实例：</strong></p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.post-container</span><span class="p">{</span>
+ <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+ <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+ <span class="nl">margin-top</span><span class="p">:</span> <span class="m">20</span><span class="n">rpx</span><span class="p">;</span>
+ <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">40</span><span class="n">rpx</span><span class="p">;</span>
+ <span class="nl">background-color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+ <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ededed</span><span class="p">;</span>
+ <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ededed</span><span class="p">;</span>
+ <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.post-author-date</span><span class="p">{</span>
+ <span class="nl">margin</span><span class="p">:</span> <span class="m">10</span><span class="n">rpx</span> <span class="m">0</span> <span class="m">20</span><span class="n">rpx</span> <span class="m">10</span><span class="n">rpx</span><span class="p">;</span>
+    
+<span class="p">}</span>
+    
+<span class="nc">.post-author</span><span class="p">{</span>
+ <span class="nl">width</span><span class="p">:</span> <span class="m">60</span><span class="n">rpx</span><span class="p">;</span>
+ <span class="nl">height</span><span class="p">:</span> <span class="m">60</span><span class="n">rpx</span><span class="p">;</span>
+ <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">middle</span><span class="p">;</span>
+ <span class="nl">border-radius</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.post-date</span><span class="p">{</span>
+ <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20</span><span class="n">rpx</span><span class="p">;</span>
+ <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">middle</span><span class="p">;</span>
+ <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+ <span class="nl">font-size</span><span class="p">:</span> <span class="m">26</span><span class="n">rpx</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.post-title</span><span class="p">{</span>
+ <span class="nl">font-size</span><span class="p">:</span> <span class="m">34</span><span class="n">rpx</span><span class="p">;</span>
+ <span class="nl">font-weight</span><span class="p">:</span> <span class="m">600</span><span class="p">;</span>
+ <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+ <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+ <span class="nl">margin-left</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+     
+<span class="nc">.post-image</span><span class="p">{</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">340</span><span class="n">rpx</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.post-content</span><span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#666</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">28</span><span class="n">rpx</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">20</span><span class="n">rpx</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20</span><span class="n">rpx</span><span class="p">;</span>
+  <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">2</span><span class="n">rpx</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">40</span><span class="n">rpx</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.post-like</span><span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">13px</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">row</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">10px</span>
+<span class="p">}</span>
+    
+<span class="nc">.post-like-image</span><span class="p">{</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">margin-right</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">middle</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.post-like-font</span><span class="p">{</span>
+  <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">middle</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">burlywood</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>引入:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;import</span> <span class="na">src=</span><span class="s">"post-item/post-item-template.wxml"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;view</span> <span class="na">wx:for=</span><span class="s">"{{postList}}"</span> <span class="na">wx:key=</span><span class="s">"idx"</span> <span class="nt">&gt;</span>
+   <span class="nt">&lt;view</span> <span class="na">catchtap=</span><span class="s">"onPostTap"</span> <span class="nt">&gt;</span>
+       <span class="nt">&lt;template</span> <span class="na">is=</span><span class="s">"postItem"</span> <span class="na">data=</span><span class="s">"{{...item}}"</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;/view&gt;</span>
+<span class="nt">&lt;/view&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>在主引用样式文件中引用<code class="language-plaintext highlighter-rouge">wxss</code>：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  @import "post-item/post-item-template.wxss";
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>注意：</strong></p>
+
+<ul>
+  <li>模板文件引用的结尾必须用 <code class="language-plaintext highlighter-rouge">/&gt;</code>结尾</li>
+  <li>
+    <p>当在某个<code class="language-plaintext highlighter-rouge">js</code>文件中<code class="language-plaintext highlighter-rouge">require</code>一个脚本文件时<strong>必须使用相对路径</strong>：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> var postsData = require('../../data/posts-data.js')
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<!--  -->
+
+:ET

@@ -1,0 +1,675 @@
+I"Y<div class="page clearfix" index="">
+   <div class="left">
+      <img src="/photos/assets/search-by-algolia.svg" style="height:2em;" />
+      <div id="search-searchbar">
+      </div>
+      <hr />
+      <div id="search-hits"> </div>
+      <script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3.3/dist/instantsearch.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3.3/dist/instantsearch-theme-algolia.min.css" />
+
+
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css" />
+
+
+
+<script>
+const search = instantsearch({
+  appId: 'KRITZR1P9L',
+  apiKey: '5fdcf330fc6ad3f56dff2fdf3a3f874d',
+  indexName: 'KRITZR1P9L',
+  searchParameters: {
+    restrictSearchableAttributes: [
+      'title',
+      'content'
+    ]
+  }
+});
+
+const hitTemplate = function(hit) {
+  let date = '';
+  if (hit.date) {
+    date = moment.unix(hit.date).format('MMM D, YYYY');
+  }
+  const url = hit.url;
+  const title = hit._highlightResult.title.value;
+  const content = hit._highlightResult.html.value;
+
+  return `
+    <div class="post-item">
+      <h2><a class="post-link" href="${url}">${title}</a></h2>
+      <div class="post-snippet">${content}</div>
+    </div>
+  `;
+}
+
+
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-searchbar',
+    placeholder: 'Search into posts...'
+  })
+);
+
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits',
+    templates: {
+      item: hitTemplate
+    }
+  })
+);
+
+search.start();
+</script>
+
+<style>
+.ais-search-box {
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+.post-item {
+  margin-bottom: 30px;
+}
+.post-link .ais-Highlight {
+  color: #111;
+  font-style: normal;
+  text-decoration: underline;
+}
+.post-snippet .ais-Highlight {
+  color: #2a7ae2;
+  font-style: normal;
+  font-weight: bold;
+}
+</style>
+
+
+   </div>
+    <div class="right">
+        <div class="wrap">
+            <!-- Categories -->
+            <div class="side ">
+                <div>
+                    <i class="fa fa-th-list"></i>
+                    Categories
+                </div>
+                <ul class="content-ul" cate="">
+                    
+                    <li>
+                        <a href="/category/#随笔" class="categories-list-item" cate="随笔">
+                            <span class="name">
+                                随笔
+                            </span>
+                            <span class="badge">3</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#实用技术" class="categories-list-item" cate="实用技术">
+                            <span class="name">
+                                实用技术
+                            </span>
+                            <span class="badge">10</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#开发效率" class="categories-list-item" cate="开发效率">
+                            <span class="name">
+                                开发效率
+                            </span>
+                            <span class="badge">8</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#学习资源" class="categories-list-item" cate="学习资源">
+                            <span class="name">
+                                学习资源
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#iOS" class="categories-list-item" cate="iOS">
+                            <span class="name">
+                                iOS
+                            </span>
+                            <span class="badge">26</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#转载" class="categories-list-item" cate="转载">
+                            <span class="name">
+                                转载
+                            </span>
+                            <span class="badge">9</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#报错调试" class="categories-list-item" cate="报错调试">
+                            <span class="name">
+                                报错调试
+                            </span>
+                            <span class="badge">8</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Weex" class="categories-list-item" cate="Weex">
+                            <span class="name">
+                                Weex
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#vue" class="categories-list-item" cate="vue">
+                            <span class="name">
+                                vue
+                            </span>
+                            <span class="badge">8</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#微信小程序" class="categories-list-item" cate="微信小程序">
+                            <span class="name">
+                                微信小程序
+                            </span>
+                            <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#flutter" class="categories-list-item" cate="flutter">
+                            <span class="name">
+                                flutter
+                            </span>
+                            <span class="badge">5</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#cocoapods" class="categories-list-item" cate="cocoapods">
+                            <span class="name">
+                                cocoapods
+                            </span>
+                            <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#solidity" class="categories-list-item" cate="solidity">
+                            <span class="name">
+                                solidity
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#git" class="categories-list-item" cate="git">
+                            <span class="name">
+                                git
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#mac" class="categories-list-item" cate="mac">
+                            <span class="name">
+                                mac
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Android" class="categories-list-item" cate="Android">
+                            <span class="name">
+                                Android
+                            </span>
+                            <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <div class="side">
+                <div>
+                    <i class="fa fa-tags"></i>
+                    Tags
+                </div>
+                <div class="tags-cloud">
+                  
+                    
+                    
+                    
+
+                    
+
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#jekyll" style="font-size: 10.5pt; color: #888;">jekyll</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#随笔" style="font-size: 9pt; color: #999;">随笔</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#VPN" style="font-size: 13pt; color: #555;">VPN</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SublimeText3" style="font-size: 9pt; color: #999;">SublimeText3</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#代码片段" style="font-size: 9pt; color: #999;">代码片段</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#资源" style="font-size: 9pt; color: #999;">资源</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#TCP/IP" style="font-size: 9pt; color: #999;">TCP/IP</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#宏定义" style="font-size: 9pt; color: #999;">宏定义</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#搜索" style="font-size: 9pt; color: #999;">搜索</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#证书" style="font-size: 9pt; color: #999;">证书</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#WiFi" style="font-size: 9pt; color: #999;">WiFi</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#UIImageView" style="font-size: 9pt; color: #999;">UIImageView</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#离屏渲染" style="font-size: 9pt; color: #999;">离屏渲染</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#error" style="font-size: 9pt; color: #999;">error</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#适配" style="font-size: 9pt; color: #999;">适配</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#UIWebView" style="font-size: 11.5pt; color: #666;">UIWebView</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#代码行数" style="font-size: 9pt; color: #999;">代码行数</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#评测" style="font-size: 9pt; color: #999;">评测</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#FontAwesome" style="font-size: 9pt; color: #999;">FontAwesome</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#开源图标" style="font-size: 9pt; color: #999;">开源图标</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#html" style="font-size: 9pt; color: #999;">html</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS基础" style="font-size: 11.5pt; color: #666;">iOS基础</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IQKeyboardManager" style="font-size: 9pt; color: #999;">IQKeyboardManager</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Masonry" style="font-size: 9pt; color: #999;">Masonry</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#学习资源" style="font-size: 9pt; color: #999;">学习资源</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#规范" style="font-size: 9pt; color: #999;">规范</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#直播" style="font-size: 9pt; color: #999;">直播</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#markdown" style="font-size: 9pt; color: #999;">markdown</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#开源库" style="font-size: 9pt; color: #999;">开源库</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#BitCode编译" style="font-size: 9pt; color: #999;">BitCode编译</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#大厂Bug" style="font-size: 9pt; color: #999;">大厂Bug</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Weex" style="font-size: 9pt; color: #999;">Weex</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#注册码" style="font-size: 9pt; color: #999;">注册码</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#vue" style="font-size: 18pt; color: #000;">vue</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Xcode" style="font-size: 9pt; color: #999;">Xcode</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#正则" style="font-size: 9pt; color: #999;">正则</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#cocoapods" style="font-size: 11.5pt; color: #666;">cocoapods</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS审核" style="font-size: 9pt; color: #999;">iOS审核</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#git" style="font-size: 10.5pt; color: #888;">git</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#二维码" style="font-size: 9pt; color: #999;">二维码</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#百度云" style="font-size: 9pt; color: #999;">百度云</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#微信小程序" style="font-size: 10.5pt; color: #888;">微信小程序</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#AFN" style="font-size: 9pt; color: #999;">AFN</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#form-data" style="font-size: 9pt; color: #999;">form-data</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#审核" style="font-size: 10.5pt; color: #888;">审核</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#OClint" style="font-size: 9pt; color: #999;">OClint</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Bitcode" style="font-size: 9pt; color: #999;">Bitcode</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#xcuserstate" style="font-size: 9pt; color: #999;">xcuserstate</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#UITableView" style="font-size: 9pt; color: #999;">UITableView</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#分发" style="font-size: 9pt; color: #999;">分发</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#VPS" style="font-size: 10.5pt; color: #888;">VPS</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#UI" style="font-size: 9pt; color: #999;">UI</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#flutter" style="font-size: 14pt; color: #444;">flutter</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#solidity" style="font-size: 9pt; color: #999;">solidity</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#remix" style="font-size: 9pt; color: #999;">remix</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#mac" style="font-size: 9pt; color: #999;">mac</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Android" style="font-size: 10.5pt; color: #888;">Android</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#iOS" style="font-size: 9pt; color: #999;">iOS</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+:ET

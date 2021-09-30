@@ -1,0 +1,293 @@
+I"5<ul id="markdown-toc">
+  <li><a href="#flutter-技巧" id="markdown-toc-flutter-技巧">Flutter 技巧</a>    <ul>
+      <li><a href="#网络请求返回封装时候-直接返回-future" id="markdown-toc-网络请求返回封装时候-直接返回-future">网络请求返回，封装时候 直接返回 <code class="language-plaintext highlighter-rouge">Future</code></a></li>
+      <li><a href="#属性不能共存" id="markdown-toc-属性不能共存">属性不能共存</a></li>
+      <li><a href="#列表-cell-中一个item底部的灰色小空白可以用如下" id="markdown-toc-列表-cell-中一个item底部的灰色小空白可以用如下">列表 <code class="language-plaintext highlighter-rouge">cell</code> 中，一个<code class="language-plaintext highlighter-rouge">item</code>底部的灰色小空白可以用如下</a></li>
+      <li><a href="#数组数据处理技巧" id="markdown-toc-数组数据处理技巧">数组数据处理技巧</a></li>
+      <li><a href="#图片加载闪烁问题" id="markdown-toc-图片加载闪烁问题">图片加载闪烁问题</a></li>
+      <li><a href="#富文本水平不对齐" id="markdown-toc-富文本水平不对齐">富文本水平不对齐</a></li>
+      <li><a href="#富文本字符不自动换行" id="markdown-toc-富文本字符不自动换行">富文本字符不自动换行</a></li>
+      <li><a href="#print打印" id="markdown-toc-print打印">print打印</a></li>
+      <li><a href="#fluttertext-换行问题" id="markdown-toc-fluttertext-换行问题">flutterText 换行问题</a></li>
+      <li><a href="#flutter-text-文本点击" id="markdown-toc-flutter-text-文本点击">flutter Text 文本点击</a></li>
+      <li><a href="#flutter-加载本地离线-package-包" id="markdown-toc-flutter-加载本地离线-package-包">flutter 加载本地离线 package 包</a></li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h3 id="flutter-技巧">Flutter 技巧</h3>
+<hr />
+<ul>
+  <li>
+    <h4 id="网络请求返回封装时候-直接返回-future">网络请求返回，封装时候 直接返回 <code class="language-plaintext highlighter-rouge">Future</code></h4>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  static Future&lt;List&lt;MovieItem&gt;&gt; requestMovieList (int start) async {}
+</code></pre></div>    </div>
+
+    <p>这样在其他界面 <code class="language-plaintext highlighter-rouge">initState</code> 可以用<code class="language-plaintext highlighter-rouge">then</code>来接收数据。不能使用<code class="language-plaintext highlighter-rouge">async</code> 和<code class="language-plaintext highlighter-rouge">await</code>，而且<code class="language-plaintext highlighter-rouge">initState</code>是系统函数不能加<code class="language-plaintext highlighter-rouge">async</code></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  @override
+  void initState() {
+    super.initState();
+    HomeRequest.requestMovieList(0).then((res){
+      print("homeres:$res");
+    });
+  }
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h4 id="属性不能共存">属性不能共存</h4>
+
+    <p><code class="language-plaintext highlighter-rouge">color</code> 和 <code class="language-plaintext highlighter-rouge">decoration</code> 不能共存，同时写会报错，因为 <code class="language-plaintext highlighter-rouge">decoration</code> 中也有<code class="language-plaintext highlighter-rouge">color</code></p>
+  </li>
+</ul>
+
+<hr />
+<ul>
+  <li>
+    <h4 id="列表-cell-中一个item底部的灰色小空白可以用如下">列表 <code class="language-plaintext highlighter-rouge">cell</code> 中，一个<code class="language-plaintext highlighter-rouge">item</code>底部的灰色小空白可以用如下</h4>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  decoration: BoxDecoration(
+      border: Border(
+    bottom: BorderSide(
+      width: 10,
+      color: Color(0xffdddddd),
+    ),
+  )),
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+<ul>
+  <li>
+    <h4 id="数组数据处理技巧">数组数据处理技巧</h4>
+
+    <p><code class="language-plaintext highlighter-rouge">final castsString = movie.casts.map((item)=&gt; item.name).join(" ");</code></p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">movie.casts.map((item)=&gt; item.name)</code> ：取<code class="language-plaintext highlighter-rouge">movie</code>对象里面的<code class="language-plaintext highlighter-rouge">casts</code>数组，转换成可遍历的<code class="language-plaintext highlighter-rouge">map</code>，取每个遍历出的<code class="language-plaintext highlighter-rouge">item</code>对象中的<code class="language-plaintext highlighter-rouge">name</code>然后返回成一个新<code class="language-plaintext highlighter-rouge">map</code>。</p>
+
+<p><code class="language-plaintext highlighter-rouge">.join(" ")</code>：用返回的新<code class="language-plaintext highlighter-rouge">map</code>，再用空格字符串拼接得到新字符串。</p>
+
+<hr />
+<ul>
+  <li>
+    <h4 id="图片加载闪烁问题">图片加载闪烁问题</h4>
+
+    <p>默认图片的<code class="language-plaintext highlighter-rouge">gaplessPlayback</code>属性为<code class="language-plaintext highlighter-rouge">false</code>，</p>
+
+    <ul>
+      <li><strong>问题：</strong>这种模式下加载一个新图片的流程是。删除旧图 –&gt; 显示空白 –&gt; 等新图加载完成再去显示。这样会导致新图片替换旧图片时候，新图片第一次加载的过程中闪烁一下。</li>
+      <li><strong>解决：</strong><code class="language-plaintext highlighter-rouge">gaplessPlayback: true</code></li>
+      <li><strong>原理：</strong><code class="language-plaintext highlighter-rouge">gaplessPlayback: true</code>模式加载图片流程：等新图加载完成 –&gt; 删除旧图替换新图</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<ul>
+  <li>
+    <h4 id="富文本水平不对齐">富文本水平不对齐</h4>
+
+    <p>如图 富文本的图标和文字不在同一水平线<br />
+  <img src="https://tva1.sinaimg.cn/small/007S8ZIlgy1ggph7s09pbj308d04ldgs.jpg" alt="" /></p>
+
+    <p>问题代码：</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    Widget buildContentInfoTitle() {
+      return Text.rich(TextSpan(children: [
+        WidgetSpan(
+          child: Icon(
+            Icons.play_circle_outline,
+            color: Colors.redAccent,
+            size: 24,
+          ),
+        ),
+        TextSpan(
+          text: movie.title,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        WidgetSpan(
+            child: Text("(${movie.playDate})",
+                style: TextStyle(fontSize: 16, color: Colors.grey))),
+      ]));
+    }
+</code></pre></div>    </div>
+  </li>
+  <li><strong>问题：</strong>使用了不同的<code class="language-plaintext highlighter-rouge">span</code>导致的。如上分别使用了 <code class="language-plaintext highlighter-rouge">WidgetSpan</code>、<code class="language-plaintext highlighter-rouge">TextSpan</code>、<code class="language-plaintext highlighter-rouge">WidgetSpan</code></li>
+  <li><strong>解决：</strong>全部使用<code class="language-plaintext highlighter-rouge">WidgetSpan</code>即可解决。
+    <ul>
+      <li>
+        <p>正确代码：</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Widget buildContentInfoTitle() {
+      return Text.rich(TextSpan(children: [
+        WidgetSpan(
+            child: Icon(
+              Icons.play_circle_outline,
+              color: Colors.redAccent,
+              size: 24,
+            ),
+            alignment: PlaceholderAlignment.middle),
+        WidgetSpan(
+            child: Text(movie.title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                )),
+            alignment: PlaceholderAlignment.middle),
+        WidgetSpan(
+            child: Text("(${movie.playDate})",
+                style: TextStyle(fontSize: 16, color: Colors.grey)),
+            alignment: PlaceholderAlignment.middle),
+      ]));
+    }
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<ul>
+  <li>
+    <h4 id="富文本字符不自动换行">富文本字符不自动换行</h4>
+    <p>如图 ：图标+电影名称+年份 是三个<code class="language-plaintext highlighter-rouge">WidgetSpan</code>，预期效果是文本接到图标后面。<br />
+  <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggphztvpn8j308r04vdgw.jpg" alt="" /></p>
+
+    <ul>
+      <li><strong>问题：</strong>电影名称是一个单独的<code class="language-plaintext highlighter-rouge">WidgetSpan</code>，如果文字过长就不会自动换行。单独的<code class="language-plaintext highlighter-rouge">Widget</code>不会自动换行。
+        <ul>
+          <li>问题代码：【见如上 《<strong>富文本水平不对齐</strong>》 中代码】</li>
+        </ul>
+      </li>
+      <li><strong>解决思路</strong>：将特别长的电影名称按照每个字分割为许多单独的<code class="language-plaintext highlighter-rouge">Widget</code>。</li>
+      <li>
+        <p><strong>解决：</strong></p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Widget buildContentInfoTitle() {
+     List&lt;InlineSpan&gt; spans = [];
+        
+     spans.add(WidgetSpan(
+         child: Icon(
+           Icons.play_circle_outline,
+           color: Colors.redAccent,
+           size: 24,
+         ),
+         alignment: PlaceholderAlignment.middle));
+     spans.addAll(movie.title.runes.map((rune) {
+       return WidgetSpan(
+           child: Text(String.fromCharCode(rune),
+               style: TextStyle(
+                 fontSize: 18,
+                 fontWeight: FontWeight.bold,
+               )),
+           alignment: PlaceholderAlignment.middle);
+     }));
+        
+     spans.add(WidgetSpan(
+         child: Text("(${movie.playDate})",
+             style: TextStyle(fontSize: 16, color: Colors.grey)),
+         alignment: PlaceholderAlignment.middle));
+        
+     return Text.rich(TextSpan(children: spans));
+   }
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<ul>
+  <li>
+    <h4 id="print打印">print打印</h4>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">debugPrint</code> 打印会在每一行最前面多出很多<code class="language-plaintext highlighter-rouge">flutter: </code>，这样复制打印的数据很不方便。</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h4 id="fluttertext-换行问题">flutterText 换行问题</h4>
+  </li>
+  <li>直接设置<code class="language-plaintext highlighter-rouge">maxLines</code> 发现有些场景会无效，解决方法 在<code class="language-plaintext highlighter-rouge">Text</code>外层级使用<code class="language-plaintext highlighter-rouge">Expanded</code>包一下</li>
+</ul>
+
+<hr />
+
+<hr />
+<ul>
+  <li>自定义dialog 点击框外背景自动消失无效
+    <ul>
+      <li><strong>解决：</strong>需要按照如下控件顺序布局<br />
+  <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh8djft9udj317n0u0n3k.jpg" alt="" /></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h4 id="flutter-text-文本点击">flutter Text 文本点击</h4>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  RichText(
+    text: TextSpan(
+        text: "我已认真阅读并同意",
+        style: TextStyle(color: Colors.red, fontSize: 24),
+        children: [
+          TextSpan(
+              text: "《隐私协议》",
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 30,
+                  fontStyle: FontStyle.italic,
+                  decoration: TextDecoration.underline),
+          recognizer: TapGestureRecognizer()..onTap=(){
+                print("点击了！！");
+          }),
+        ]),
+  )
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+<ul>
+  <li>
+    <h4 id="flutter-加载本地离线-package-包">flutter 加载本地离线 package 包</h4>
+  </li>
+  <li>
+    <p><strong>问题：</strong>开发自己的私有 package 时候。</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     dependencies:
+       app_debug:
+         path:/Users/imac/Desktop/AAAFleeming/MingoKit/FlutterAppDebug/app_debug
+            
+ 报错：
+ ```
+ Error on line 54, column 5 of pubspec.yaml: Invalid version constraint: Could not parse version "path:/Users/imac/Desktop/AAAFleeming/MingoKit/FlutterAppDebug/app_debug". Unknown text at "path:/Users/imac/Desktop/AAAFleeming/MingoKit/FlutterAppDebug/app_debug".
+    ╷
+ 54 │     path:/Users/imac/Desktop/AAAFleeming/MingoKit/FlutterAppDebug/app_debug
+    │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+ pub get failed (65;    ╵)
+ ```
+</code></pre></div>    </div>
+  </li>
+  <li><strong>解决：</strong>是因为 <code class="language-plaintext highlighter-rouge">path:</code> 后面没有空一格，空一格解决问题。path 使用绝对路径或者相对路径都行。</li>
+</ul>
+:ET

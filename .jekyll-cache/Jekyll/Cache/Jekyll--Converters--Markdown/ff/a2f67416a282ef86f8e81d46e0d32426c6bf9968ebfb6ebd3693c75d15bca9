@@ -1,0 +1,32 @@
+I"<<ul id="markdown-toc">
+  <li><a href="#uiwebview-不自动全屏播放视频" id="markdown-toc-uiwebview-不自动全屏播放视频">UIWebView 不自动全屏播放视频</a>    <ul>
+      <li><a href="#一介绍" id="markdown-toc-一介绍">一、介绍：</a>        <ul>
+          <li><a href="#让-h5-里面的视频播放变得更加优雅" id="markdown-toc-让-h5-里面的视频播放变得更加优雅">让 H5 里面的视频播放变得更加优雅！</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="uiwebview-不自动全屏播放视频">UIWebView 不自动全屏播放视频</h1>
+
+<h2 id="一介绍">一、介绍：</h2>
+<h4 id="让-h5-里面的视频播放变得更加优雅">让 H5 里面的视频播放变得更加优雅！</h4>
+
+<p>原文在我博客： <a href="https://www.yfmingo.cn/2017/08/24/UIWebVIew-play-video/">https://www.yfmingo.cn/2017/08/24/UIWebVIew-play-video/</a><br />
+<br /><br />
+<code class="language-plaintext highlighter-rouge">iOS</code> 客户端<code class="language-plaintext highlighter-rouge">APP</code>里面的的<code class="language-plaintext highlighter-rouge">H5</code>页面如果含有视频，当我们点击播放时就会调用<code class="language-plaintext highlighter-rouge">iOS</code>原生自带的播放器进行播放。最可恶的是还自动自己全屏播放了。</p>
+
+<p>效果图：<br /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/mzD93k.jpg" alt="" /></p>
+
+<p><br /></p>
+
+<p>这样的用户体验总会感觉到无比的尴尬。公司产品往往幻想的效果是这样：</p>
+
+<p>不要自动全屏播放。要内嵌在网页里面播放。视频框可以跟随网页内容上下滚动。</p>
+
+<p><strong>理想效果图：</strong><br /><br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/lJh1aD.jpg" alt="" /></p>
+:ET

@@ -1,0 +1,13 @@
+I"y<ul id="markdown-toc">
+  <li><a href="#一起因" id="markdown-toc-一起因">一、起因：</a></li>
+</ul>
+<hr />
+
+<h2 id="一起因">一、起因：</h2>
+
+<p>由于使用 <code class="language-plaintext highlighter-rouge">cocoapods</code> 安装依赖库。使用<code class="language-plaintext highlighter-rouge">pod
+ install</code> 等等各种命令时候。终端卡着蜗牛速度。每次新加依赖库都搞半天，国内开源的依赖库还好。要是碰到几个国外的依赖库那真是泪崩啊。</p>
+
+<p>经过一番了解后才知道。<code class="language-plaintext highlighter-rouge">Mac</code> 端 <code class="language-plaintext highlighter-rouge">shadowsocks</code> 软件的代理开启后。只对浏览器进行了代理。木有对所有软件代理。这个原因就导致了<code class="language-plaintext highlighter-rouge">pod
+ install</code>速度慢，即使你傻傻开启了<code class="language-plaintext highlighter-rouge">shadowsocks</code>软件的代理也毫无卵用的。所以 <code class="language-plaintext highlighter-rouge">Mac</code> 终端也使用上代理就慢慢折腾了起来。</p>
+:ET

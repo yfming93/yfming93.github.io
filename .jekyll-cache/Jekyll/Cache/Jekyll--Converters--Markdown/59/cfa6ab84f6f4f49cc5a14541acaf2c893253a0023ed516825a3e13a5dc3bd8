@@ -1,0 +1,48 @@
+I"~<ul id="markdown-toc">
+  <li><a href="#今天项目中遇到一个奇葩的编译错误终端用cocoapods-导入第三方一切正常但是编译的时候偶尔同时报--apple-mach-o-linker-error-group-和-lipo-error-group-错误-我-google-了好久才找到相应解决办法" id="markdown-toc-今天项目中遇到一个奇葩的编译错误终端用cocoapods-导入第三方一切正常但是编译的时候偶尔同时报--apple-mach-o-linker-error-group-和-lipo-error-group-错误-我-google-了好久才找到相应解决办法">今天项目中遇到一个奇葩的编译错误。终端用cocoapods 导入第三方一切正常，但是编译的时候偶尔同时报  <code class="language-plaintext highlighter-rouge">Apple Mach-O Linker Error Group</code> 和 <code class="language-plaintext highlighter-rouge">Lipo Error Group</code> 错误 。我 Google 了好久才找到相应解决办法。。</a></li>
+  <li><a href="#方法1" id="markdown-toc-方法1">方法1</a></li>
+  <li><a href="#方法2" id="markdown-toc-方法2">方法2</a></li>
+  <li><a href="#同时报--apple-mach-o-linker-error-group-和-lipo-error-group-时" id="markdown-toc-同时报--apple-mach-o-linker-error-group-和-lipo-error-group-时">同时报  <code class="language-plaintext highlighter-rouge">Apple Mach-O Linker Error Group</code> 和 <code class="language-plaintext highlighter-rouge">Lipo Error Group</code> 时，</a></li>
+  <li><a href="#后来摸索到终极解大法" id="markdown-toc-后来摸索到终极解大法">后来摸索到终极解大法</a></li>
+  <li><a href="#使用之前请检查是不是因为-a-的静态库文件没有被svn上传上来所以你更新拉下来就会报这个错误" id="markdown-toc-使用之前请检查是不是因为-a-的静态库文件没有被svn上传上来所以你更新拉下来就会报这个错误">使用之前请检查是不是因为 <strong>.a</strong> 的静态库文件没有被SVN上传上来。所以你更新拉下来就会报这个错误。</a>    <ul>
+      <li><a href="#上面一步检查没问题了不是因为a的原因就请看下面" id="markdown-toc-上面一步检查没问题了不是因为a的原因就请看下面">上面一步检查没问题了。不是因为.a的原因就请看下面:</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="今天项目中遇到一个奇葩的编译错误终端用cocoapods-导入第三方一切正常但是编译的时候偶尔同时报--apple-mach-o-linker-error-group-和-lipo-error-group-错误-我-google-了好久才找到相应解决办法">今天项目中遇到一个奇葩的编译错误。终端用cocoapods 导入第三方一切正常，但是编译的时候偶尔同时报  <code class="language-plaintext highlighter-rouge">Apple Mach-O Linker Error Group</code> 和 <code class="language-plaintext highlighter-rouge">Lipo Error Group</code> 错误 。我 Google 了好久才找到相应解决办法。。</h4>
+
+<p>网传如下方法好像有时候不管用。</p>
+
+<h3 id="方法1">方法1</h3>
+<p>退出Xcode，然后从 <code class="language-plaintext highlighter-rouge">finder</code> 里面进入<br />
+<code class="language-plaintext highlighter-rouge">~/Library/Developer/Xcode/DerivedData</code> 删掉里面所有的内容，然后重启 <code class="language-plaintext highlighter-rouge">Xcode</code> 。<br />
+上面的操作也可以直接在 <code class="language-plaintext highlighter-rouge">Xcode</code> 的 <code class="language-plaintext highlighter-rouge">organizer</code> 中完成，在 <code class="language-plaintext highlighter-rouge">organizer</code> 里面切换到 <code class="language-plaintext highlighter-rouge">projects</code>，然后 delete 掉 <code class="language-plaintext highlighter-rouge">derived data</code><br />
+在 <code class="language-plaintext highlighter-rouge">target</code> 设置中删掉 <code class="language-plaintext highlighter-rouge">Prefix Header</code> 的值，重启 Xcode 试试看<br />
+最后恢复 <code class="language-plaintext highlighter-rouge">Prefix Header</code> 的设置</p>
+
+<h3 id="方法2">方法2</h3>
+
+<p>在 <code class="language-plaintext highlighter-rouge">Xcode</code> 里面 <code class="language-plaintext highlighter-rouge">build phases</code>，<br />
+然后从 <code class="language-plaintext highlighter-rouge">copy bundle resources</code>里面删掉红色的错误资源文件</p>
+
+<h3 id="同时报--apple-mach-o-linker-error-group-和-lipo-error-group-时">同时报  <code class="language-plaintext highlighter-rouge">Apple Mach-O Linker Error Group</code> 和 <code class="language-plaintext highlighter-rouge">Lipo Error Group</code> 时，</h3>
+
+<h3 id="后来摸索到终极解大法">后来摸索到终极解大法</h3>
+
+<h2 id="使用之前请检查是不是因为-a-的静态库文件没有被svn上传上来所以你更新拉下来就会报这个错误">使用之前请检查是不是因为 <strong>.a</strong> 的静态库文件没有被SVN上传上来。所以你更新拉下来就会报这个错误。</h2>
+
+<h3 id="上面一步检查没问题了不是因为a的原因就请看下面">上面一步检查没问题了。不是因为.a的原因就请看下面:</h3>
+
+<p>将 <code class="language-plaintext highlighter-rouge">Build Active Architecture Only</code> 的 <code class="language-plaintext highlighter-rouge">Debug</code> 换成 Yes 。</p>
+<ul>
+  <li>为 <code class="language-plaintext highlighter-rouge">Yes</code> 是为了 <code class="language-plaintext highlighter-rouge">debug</code> 的时候编译速度更快，它只编译当前的 <code class="language-plaintext highlighter-rouge">architecture</code> 版本。</li>
+  <li>避免其他版本其他特殊因素导致错误。</li>
+  <li>但 <strong><code class="language-plaintext highlighter-rouge">release</code> 版必须为 NO</strong> 全部编译适应所有版本。</li>
+</ul>
+
+<p>（ <em>NO Pictures Say G8</em> ，O(∩_∩)O~）</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HJHixM.jpg" alt="" /></p>
+
+:ET

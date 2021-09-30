@@ -1,0 +1,77 @@
+I"?<ul id="markdown-toc">
+  <li><a href="#一问题" id="markdown-toc-一问题">一、问题：</a></li>
+  <li><a href="#二什么鬼表格线呢没线叫鸡毛表格啊" id="markdown-toc-二什么鬼表格线呢没线叫鸡毛表格啊">二、什么鬼，表格线呢。没线叫鸡毛表格啊。</a></li>
+  <li><a href="#三解决" id="markdown-toc-三解决">三、解决：</a>    <ul>
+      <li><a href="#就这样" id="markdown-toc-就这样">就这样：</a></li>
+    </ul>
+  </li>
+  <li><a href="#四one-more-thing" id="markdown-toc-四one-more-thing">四、one more thing</a></li>
+</ul>
+
+<h2 id="一问题">一、问题：</h2>
+
+<p>有时候我们信心满满的写了一篇 <code class="language-plaintext highlighter-rouge">markdown</code> 文章。在本地端的<code class="language-plaintext highlighter-rouge">markdown</code>软件表现一切正常。然而当我们上传部署到博客后。</p>
+
+<p>恶心的事情发生了。。</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/YhWUFe.jpg" alt="" /></p>
+
+<p><br /></p>
+
+<h2 id="二什么鬼表格线呢没线叫鸡毛表格啊">二、什么鬼，表格线呢。没线叫鸡毛表格啊。</h2>
+
+<p>弄了好久解决不好。于是就去Jekyll官网看看。<br /><br />
+刚开始到jekyll官网去，看到了有个Table of Content Generator: 生成包含表格（ TOC ）的 HTML 代码的插件，结果安装步骤安装，还是老是解决不好。</p>
+
+<p>最后转换思想，其实不用什么插件都可以解决这些问题。直接写个HTML代码放在头文件里，每片文章时自动引入。完全可以很好的兼容表格的问题。</p>
+
+<h2 id="三解决">三、解决：</h2>
+
+<p>直接在Jekyll博客根目录下，  有个_includes 文件夹。官方介绍如下。</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HtwMcK.jpg" alt="" /></p>
+
+<p><br /><br />
+<strong>你可以加载这些包含部分到你的布局或者文章中以方便重用。然后再包含进来。</strong></p>
+
+<p>我们一般都会把每篇文章需要重复引用的文件放在这个<code class="language-plaintext highlighter-rouge">_includes</code>文件夹里面。<br />
+其中我建了一个 <code class="language-plaintext highlighter-rouge">head.html</code>文件进行全局JS函数库的引用。。我设想把解决<code class="language-plaintext highlighter-rouge">table</code>表格线的 <code class="language-plaintext highlighter-rouge">HTML</code> 代码放到这里来，以便每篇文章可以引用到这段代码。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;style&gt;
+	  table{
+	    border-left:1px solid #000000;border-top:1px solid #000000;
+	    width: 100%;
+	    word-wrap:break-word; word-break:break-all;
+	  }
+	  table th{
+	  text-align:center;
+	  }
+	  table th,td{
+	    border-right:1px solid #000000;border-bottom:1px solid #000000;
+	  }
+&lt;/style&gt;
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="就这样">就这样：</h3>
+<p>我的表格终于有线了。O(∩_∩)O哈哈~</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/AEC9V1.jpg" alt="" /></p>
+
+<h1 id="四one-more-thing">四、one more thing</h1>
+<p>注意到了木有。。有线的表格第一列显示的宽度合理了很多。。回头看看之前第一张没有表格线的图，里面的第一列被挤的很窄很不好看。。</p>
+
+<p>下面我就介绍下设置<code class="language-plaintext highlighter-rouge">table</code> 列宽度的技巧。<br /><br />
+只要在表格前面添加一行代码：<br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;style&gt;table  th:nth-of-type(1) {    width: 100px;}&lt;/style&gt;
+</code></pre></div></div>
+
+<p><strong>这样就可以调整每一列的宽度了</strong>。<br /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">width: 100px;</code>可以自行更改宽度数值哈。</li>
+  <li><code class="language-plaintext highlighter-rouge">th:nth-of-type(1)</code> 中括号里面的数字就第几列。</li>
+</ul>
+
+:ET

@@ -1,0 +1,12 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#一引言" id="markdown-toc-一引言">（一）、引言：</a></li>
+</ul>
+
+<h2 id="一引言">（一）、引言：</h2>
+
+<p>在 <a href="https://github.com/hackiftekhar/IQKeyboardManager">IQKeyboardManager</a> 和 <a href="https://github.com/SnapKit/Masonry">Masonry</a> 同时使用时，导航栏上移和<code class="language-plaintext highlighter-rouge"> make.right</code>失效等问题多多。</p>
+
+<p>其实我们完美的效果应该是这样的：<em>（NO Pictures say *8 ！O(∩_∩)O~）</em></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/d9KYpi.jpg" alt="" /></p>
+:ET

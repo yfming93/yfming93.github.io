@@ -1,0 +1,159 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#uiwebview-加-mjrefresh-同时解决底部黑影问题" id="markdown-toc-uiwebview-加-mjrefresh-同时解决底部黑影问题">UIWebView 加 MJRefresh 同时解决底部黑影问题</a>    <ul>
+      <li><a href="#一介绍" id="markdown-toc-一介绍">一、介绍：</a>        <ul>
+          <li><a href="#让-h5-的刷新更加撩人浪漫" id="markdown-toc-让-h5-的刷新更加撩人浪漫">让 H5 的刷新更加撩人浪漫！</a></li>
+        </ul>
+      </li>
+      <li><a href="#二-实现代码" id="markdown-toc-二-实现代码">二、 实现代码：</a>        <ul>
+          <li><a href="#直接给整块代码吧其他的废话说多了显得太廉价" id="markdown-toc-直接给整块代码吧其他的废话说多了显得太廉价">直接给整块代码吧。其他的废话说多了显得太廉价。</a></li>
+        </ul>
+      </li>
+      <li><a href="#三注意细节问题" id="markdown-toc-三注意细节问题">三、注意细节问题：</a>        <ul>
+          <li><a href="#解决方法也相当简单" id="markdown-toc-解决方法也相当简单">解决方法也相当简单：</a></li>
+        </ul>
+      </li>
+      <li><a href="#四补充技能" id="markdown-toc-四补充技能">四、补充技能：</a></li>
+      <li><a href="#五联系" id="markdown-toc-五联系">五、联系：</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="uiwebview-加-mjrefresh-同时解决底部黑影问题">UIWebView 加 MJRefresh 同时解决底部黑影问题</h1>
+
+<h2 id="一介绍">一、介绍：</h2>
+<h4 id="让-h5-的刷新更加撩人浪漫">让 H5 的刷新更加撩人浪漫！</h4>
+
+<!--原文在我博客： [https://www.yfmingo.cn/2017/07/23/PagingButton/](https://www.yfmingo.cn/2017/07/23/PagingButton/)-->
+<p><br /></p>
+
+<p>之前<code class="language-plaintext highlighter-rouge">H5</code>的刷新一直用 <code class="language-plaintext highlighter-rouge">MBProgressHUD</code>在页面中间加个转转。。后来发现有些<code class="language-plaintext highlighter-rouge">APP</code>是直接进去的时候就有 <code class="language-plaintext highlighter-rouge">MJRefresh</code>。那样的效果个人觉得更加撩人。用户体验赶脚要好一些。不信你看看哈。</p>
+
+<p>效果图：<br /></p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/bUHCZz.jpg" alt="" /></p>
+
+<p><br /></p>
+
+<h2 id="二-实现代码">二、 实现代码：</h2>
+<h4 id="直接给整块代码吧其他的废话说多了显得太廉价">直接给整块代码吧。其他的废话说多了显得太廉价。</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//
+//  FMWebViewController.m
+//  MobileProject
+//
+//  Created by Mingo on 2017/8/25.
+//  Copyright © 2017年 袁凤鸣. All rights reserved.
+//
+
+#import "FMWebViewController.h"
+#import &lt;MJRefresh.h&gt;
+
+@interface FMWebViewController ()&lt;UIWebViewDelegate&gt;
+
+@property (nonatomic, strong) UIWebView *webView;//网页
+@end
+
+@implementation FMWebViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.webView];
+    [self.webView.scrollView.mj_header beginRefreshing];
+}
+
+#pragma mark -  懒加载创建webView：
+- (UIWebView *)webView{
+    
+    if (!_webView) {
+        UIWebView *webView = [[UIWebView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        webView.backgroundColor = [UIColor whiteColor];
+        webView.delegate = self;
+        
+        webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
+        webView.scrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
+        webView.opaque = NO;
+        [self.view addSubview:webView];
+        self.webView = webView;
+    }
+    return _webView;
+}
+
+#pragma mark - 下拉刷新
+- (void)headerRefresh{
+    [self loadData];
+}
+
+#pragma mark - 上拉加载
+- (void)footerRefresh{
+    [self loadData];
+}
+
+#pragma mark - 结束下拉刷新和上拉加载
+- (void)endRefresh{
+    [self.webView.scrollView.mj_header endRefreshing];
+    [self.webView.scrollView.mj_footer endRefreshing];
+}
+
+#pragma mark - 加载网页
+- (void)loadData{
+    
+    NSString *urlString =@"http://www.yfmingo.cn/";
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:request];
+}
+
+#pragma mark - UIWebViewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationTyp {
+    
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self endRefresh];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self endRefresh];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+@end
+</code></pre></div></div>
+
+<h2 id="三注意细节问题">三、注意细节问题：</h2>
+<p>经过上面的一大坨代码后。你的<code class="language-plaintext highlighter-rouge">H5</code>页面已经有比较好看的刷新功能了。但是我的会出现底部有一部分黑底的情况。你打开<code class="language-plaintext highlighter-rouge">Xcode</code>的调试视图会发现他在<code class="language-plaintext highlighter-rouge">UIWebBrowserView</code>上面。</p>
+
+<p>如图：<br />
+<img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/iG9cxe.jpg" alt="" /></p>
+
+<h5 id="解决方法也相当简单">解决方法也相当简单：</h5>
+<p>在<code class="language-plaintext highlighter-rouge">UIWebView</code>初始化的时候加一句代码：<br />
+    <code class="language-plaintext highlighter-rouge">webView.opaque = NO;</code></p>
+
+<p>这样的就OK了哈。</p>
+
+<h2 id="四补充技能">四、补充技能：</h2>
+<p>以上示例中，用<code class="language-plaintext highlighter-rouge">H5</code>拼接详情页然后下面拼接原生评论列表。这个技巧在日常开发中很实用。很可能有机会使用到。那类似这种需求怎么准确拿到<code class="language-plaintext highlighter-rouge">H5</code>内容的高度呢？</p>
+
+<p>请进入我的另外一篇文章传送门：<a href="https://www.yfmingo.cn/2017/03/13/accurate-get-webViewHeader/">精确获取 UIWebView 的高度</a></p>
+
+<p>UIWebView其他实用技能文章：<a href="https://www.yfmingo.cn/2017/08/24/UIWebVIew-play-video/">UIWebView 不自动全屏播放视频</a></p>
+
+<h2 id="五联系">五、联系：</h2>
+<ul>
+  <li>联系邮箱：yfmingo@163.com</li>
+  <li>联系网站：<a href="https://www.yfmingo.cn/">www.yfmingo.cn</a></li>
+</ul>
+
+:ET

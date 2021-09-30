@@ -1,0 +1,96 @@
+I"� <ul id="markdown-toc">
+  <li><a href="#0x0001-需求" id="markdown-toc-0x0001-需求">0x0001 需求</a></li>
+  <li><a href="#0x0002-详细步骤" id="markdown-toc-0x0002-详细步骤">0x0002 详细步骤</a></li>
+  <li><a href="#0x0003-使用" id="markdown-toc-0x0003-使用">0x0003 使用</a></li>
+  <li><a href="#0x0004-总结" id="markdown-toc-0x0004-总结">0x0004 总结</a></li>
+</ul>
+<hr />
+
+<h3 id="0x0001-需求">0x0001 需求</h3>
+
+<p>年底了，业务不是非常忙。公司最近需求要搞组件化开发。把每一个成熟的模块做成 <code class="language-plaintext highlighter-rouge">SDK</code>、<code class="language-plaintext highlighter-rouge">framework</code>、<code class="language-plaintext highlighter-rouge">pod-repo</code>等。计划将核心业务打包成静态<code class="language-plaintext highlighter-rouge">framework</code>，制作静态<code class="language-plaintext highlighter-rouge">framewok</code>的网上到处搜索得到，但是真正能说清楚如何依赖<code class="language-plaintext highlighter-rouge">AFNetworking</code>的却很少，如何一步一步做<code class="language-plaintext highlighter-rouge">framework</code>很少，接下来我们就一起来看一下，如何制作一个依赖<code class="language-plaintext highlighter-rouge">AFNetworking</code>的静态库<code class="language-plaintext highlighter-rouge">framework</code>。</p>
+
+<h3 id="0x0002-详细步骤">0x0002 详细步骤</h3>
+<ul>
+  <li>
+    <p>我们要创建一个静态库工程：打开<strong>Xcode -&gt;File -&gt;New-&gt;Project</strong>，，我们选择 <code class="language-plaintext highlighter-rouge">Framework</code></p>
+
+    <p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gafystdbhmj31hy0u07wd.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p>保存到桌面<br />
+<img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gafyxotkz5j31800qi4go.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p>使用pod 来依赖AFNetworking,打出来的静态库。</p>
+
+    <p>在引用的时候，引用静态库的工程也需要用 <code class="language-plaintext highlighter-rouge">pod</code> 安装<code class="language-plaintext highlighter-rouge">AFNetworking</code>，否则无法使用打包出来的<code class="language-plaintext highlighter-rouge">framework</code>。这种方法虽然优雅，但是也有风险，比如说一些特别老的工程可能没有使用 <code class="language-plaintext highlighter-rouge">pod</code> 来管理三方库，这就略微蛋疼了。But。。试问现在还要多少公司的工程不用<code class="language-plaintext highlighter-rouge">pod</code>来管理呢？如果有这种公司我建议裸辞回家过年哈。<code class="language-plaintext highlighter-rouge">pod</code>都不用的公司以后苦逼日多的是。</p>
+  </li>
+  <li>
+    <p>新建 <code class="language-plaintext highlighter-rouge">Podfile</code> 后，终端执行 <code class="language-plaintext highlighter-rouge">pod install</code>安装 <code class="language-plaintext highlighter-rouge">AFNetworking</code></p>
+
+    <p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gafz6nsqnfj30zy0qcwl9.jpg" alt="" /></p>
+  </li>
+  <li>进入<code class="language-plaintext highlighter-rouge">xcworkspace</code>文件 编译项目，并拉入你的<code class="language-plaintext highlighter-rouge">SDK</code>将要封装打包的文件
+    <ul>
+      <li>这里是将要把红框的<code class="language-plaintext highlighter-rouge">FMNetworking</code>文件夹封装成framework。<code class="language-plaintext highlighter-rouge">FMNetworking</code>内部一些文件依赖的 <code class="language-plaintext highlighter-rouge">AFNetworking</code><br />
+  <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gafzck8zo0j31be0u0e3q.jpg" alt="" /></li>
+    </ul>
+  </li>
+  <li>
+    <p>对外暴露出你想要提供给别人使用的一些头文件</p>
+
+    <p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gafzfz96fvj319z0u0u0x.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p>然后我们要把<code class="language-plaintext highlighter-rouge">framework</code>工程修改为静态库<code class="language-plaintext highlighter-rouge">framework</code>，因为我们创建的工程默认是动态库工程,将红框里面的<code class="language-plaintext highlighter-rouge">Mach-o Type</code> 修改为<code class="language-plaintext highlighter-rouge">Static Library</code>,这个一定要改，不改的话，打出来的framework 在引用的时候会报 如下错误。 </p>
+
+    <p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gafziwoweij31t40qk1kx.jpg" alt="" /><br />
+  <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gafynb82ylj31tg0so7wh.jpg" alt="" /></p>
+
+    <ul>
+      <li>然后这里引入你刚才暴露出的头文件
+        <ul>
+          <li>注意：我暴露出的头文件.h里面都没有引用 <code class="language-plaintext highlighter-rouge">AFNetworking</code>的文件。都是在<code class="language-plaintext highlighter-rouge">.m</code>里面引用的，不然编译不成功。<br />
+  <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gafznxlwloj31po0t01kx.jpg" alt="" /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>编译导出：<code class="language-plaintext highlighter-rouge"> cmd + k</code>先清除缓存，然后<code class="language-plaintext highlighter-rouge">cmd+b</code>编译。你发现<code class="language-plaintext highlighter-rouge">products</code>文件夹里的<code class="language-plaintext highlighter-rouge">framework</code>由红色变成实心灰黑色。
+    <ul>
+      <li>编译成功，直接<code class="language-plaintext highlighter-rouge">option + 鼠标左键</code>拖出 <code class="language-plaintext highlighter-rouge">products</code>文件夹里的<code class="language-plaintext highlighter-rouge">framework</code>到桌面放着<br />
+  <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gafzqt27aaj31na0u07wh.jpg" alt="" /></li>
+    </ul>
+  </li>
+  <li>
+    <p>注意：TARGETS —&gt; Build Settings 中设置相关项 <code class="language-plaintext highlighter-rouge">Build Active Architecture Only</code> 设置为<code class="language-plaintext highlighter-rouge">NO</code>的意思是当前打包的<code class="language-plaintext highlighter-rouge">.framework</code>支持所有的设备.否则打包时只能用当前版本的模拟器或真机运行.</p>
+
+    <p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gamnc2plx0j31ds0hgn1b.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Build Setting</code> 搜索<code class="language-plaintext highlighter-rouge">Dead Code Stripping</code> 设置为<code class="language-plaintext highlighter-rouge">NO</code>是编译选项优化,包瘦身,(可不改)<br />
+  <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gamnf488gej31cm0gctd2.jpg" alt="" /></p>
+  </li>
+  <li>
+    <p>设置framework最低支持的版本</p>
+
+    <p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gamngroqw1j31ci0eijve.jpg" alt="" /></p>
+  </li>
+</ul>
+
+<h3 id="0x0003-使用">0x0003 使用</h3>
+
+<ul>
+  <li>你的工程也要使用 <code class="language-plaintext highlighter-rouge">pod</code> 引用 <code class="language-plaintext highlighter-rouge">AFNetworking</code>。</li>
+  <li>然后将桌面的 <code class="language-plaintext highlighter-rouge">framework</code>拖到你的工程中。</li>
+  <li>在要使用的地方导入<code class="language-plaintext highlighter-rouge">#import &lt;FMNetworking/FMNetworking.h&gt;</code>即可使用。</li>
+</ul>
+
+<h3 id="0x0004-总结">0x0004 总结</h3>
+<ul>
+  <li>制作的<code class="language-plaintext highlighter-rouge">framework</code>中 某些<code class="language-plaintext highlighter-rouge">.m</code>文件中使用了<code class="language-plaintext highlighter-rouge">AFNetworking</code>，但是所有头文件无涉及<code class="language-plaintext highlighter-rouge">AFNetworking</code>。这样编译导出的<code class="language-plaintext highlighter-rouge">framework</code>正常；</li>
+  <li>使用时候，项目工程要用 <code class="language-plaintext highlighter-rouge">pod</code> 引用<code class="language-plaintext highlighter-rouge">AFNetworking</code>，然后在使用刚才的<code class="language-plaintext highlighter-rouge">framework</code></li>
+</ul>
+
+:ET

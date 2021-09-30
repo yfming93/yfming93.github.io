@@ -1,0 +1,34 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#mac-使用技巧" id="markdown-toc-mac-使用技巧">mac 使用技巧</a>    <ul>
+      <li><a href="#0x01-mac-给-iphone-充电不是上电" id="markdown-toc-0x01-mac-给-iphone-充电不是上电">0x01 mac 给 iPhone 充电不是上电</a></li>
+      <li><a href="#0x02-忘记mac电脑密码时重置管理员密码" id="markdown-toc-0x02-忘记mac电脑密码时重置管理员密码">0x02 忘记Mac电脑密码时重置管理员密码</a></li>
+    </ul>
+  </li>
+</ul>
+<hr />
+
+<h2 id="mac-使用技巧">mac 使用技巧</h2>
+
+<h3 id="0x01-mac-给-iphone-充电不是上电">0x01 mac 给 iPhone 充电不是上电</h3>
+<p><strong>Q：</strong>数据线连接 mac 给 iPhone 充电不是上电。电池图标一直断断续续闪烁。<br />
+<strong>A：</strong>解决方法：打开终端Terminal，输入</p>
+<ul>
+  <li><strong>sudo killall -STOP -c usbd</strong> 命令回车，即可把进程关闭。插上<code class="language-plaintext highlighter-rouge">iPhone</code>，正常连接，问题解决。</li>
+</ul>
+
+<hr />
+<h3 id="0x02-忘记mac电脑密码时重置管理员密码">0x02 忘记Mac电脑密码时重置管理员密码</h3>
+
+<p><strong>Q：</strong> 如果您无法在重新启动 Mac 后使用新密码登录，可尝试重新设置密码 ，请完成以下额外步骤：</p>
+
+<p><strong>A：</strong>解决步骤：</p>
+
+<ol>
+  <li>再次重新启动 Mac，然后立即按住 <code class="language-plaintext highlighter-rouge">Command-R</code> 或其他 <code class="language-plaintext highlighter-rouge">macOS</code> 恢复组合键之一，直到您看到 <code class="language-plaintext highlighter-rouge">Apple</code> 标志或旋转的地球。</li>
+  <li>当您看到“<code class="language-plaintext highlighter-rouge">macOS</code> 实用工具”窗口时，请从菜单栏中选取“实用工具”&gt;“终端”。</li>
+  <li>在“终端”窗口中，键入 <code class="language-plaintext highlighter-rouge">resetpassword</code>，然后按下 Return 键以打开上图所示的“重设密码”助理。</li>
+  <li>选择“我的密码在登录时无法正常工作”，然后点按“下一步”，并按照屏幕上适用于您用户帐户的说明操作。</li>
+</ol>
+
+<hr />
+:ET

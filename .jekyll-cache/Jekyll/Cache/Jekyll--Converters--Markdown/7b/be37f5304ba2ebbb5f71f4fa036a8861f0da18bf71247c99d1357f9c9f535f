@@ -1,0 +1,90 @@
+I"�)<ul id="markdown-toc">
+  <li><a href="#一背景" id="markdown-toc-一背景">（一）、背景:</a></li>
+  <li><a href="#二采坑" id="markdown-toc-二采坑">（二）、采坑</a></li>
+  <li><a href="#三解决" id="markdown-toc-三解决">（三）、解决：</a></li>
+</ul>
+
+<hr />
+<h2 id="一背景">（一）、背景:</h2>
+<ul>
+  <li>后台返回一个菜谱网站<a href="https://m.meishij.net/html5/search.php">美食街：https://m.meishij.net/html5/search.php</a> 的主页地址。</li>
+  <li>APP 端根据用户给的关键字 自行将参数设置到对应的键<code class="language-plaintext highlighter-rouge">p</code>中。</li>
+  <li>后台解释说：将参数设置在 <code class="language-plaintext highlighter-rouge">Body</code> 中利用 <code class="language-plaintext highlighter-rouge">post</code> 请求自行拿数据。</li>
+</ul>
+
+<hr />
+<h2 id="二采坑">（二）、采坑</h2>
+<p>咋一听，好简单啊。立马用 <code class="language-plaintext highlighter-rouge">AFN</code> 开始搞起。试了半天，咦，怎么老是调不通啊。</p>
+
+<p>遂本能反应到 用我神器 <code class="language-plaintext highlighter-rouge">postman</code> 来试试。结果是了半天发现 在<code class="language-plaintext highlighter-rouge">Body</code>中的 <code class="language-plaintext highlighter-rouge">form-data</code>栏调试成功。得到如下<code class="language-plaintext highlighter-rouge">HTML</code>数据。</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/h2nBR0.jpg" alt="" /></p>
+
+<p>然后将 拿到的数据写进一个本地的<code class="language-plaintext highlighter-rouge">index.html</code>文件，用浏览器打开如下：</p>
+
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/TAXwLI.jpg" alt="" /></p>
+
+<p>Nice ！！！ 这就是我要的效果。</p>
+
+<hr />
+
+<h2 id="三解决">（三）、解决：</h2>
+<p>通过上面的步骤。才想到是应该吧参数设置到 <code class="language-plaintext highlighter-rouge">AFN</code> 的 <code class="language-plaintext highlighter-rouge">form-data</code> 在用 POST请求拿数据。</p>
+
+<p>于是是开始折腾怎么把参数写到<code class="language-plaintext highlighter-rouge">form-data</code>中了。经过一份查资料了解后。<br />
+封装了一个 <code class="language-plaintext highlighter-rouge">AFN</code>的 <code class="language-plaintext highlighter-rouge">post</code> 请求。专门用于将参数写到<code class="language-plaintext highlighter-rouge">form-data</code>中进行请求的接口</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fm_postWithFormData</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span>
+      <span class="nf">params</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">params</span>
+    <span class="nf">progress</span><span class="p">:(</span><span class="n">TDRequestProgress</span><span class="p">)</span><span class="nv">progress</span>
+     <span class="nf">success</span><span class="p">:(</span><span class="n">TDRequestSuccess</span><span class="p">)</span><span class="nv">success</span> <span class="nf">failure</span><span class="p">:(</span><span class="n">TDRequestFailure</span><span class="p">)</span><span class="nv">failure</span><span class="p">{</span>
+    
+    <span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[[</span><span class="n">AFHTTPRequestSerializer</span> <span class="nf">serializer</span><span class="p">]</span> <span class="nf">multipartFormRequestWithMethod</span><span class="p">:</span><span class="s">@"POST"</span> <span class="nf">URLString</span><span class="p">:</span><span class="n">url</span> <span class="n">parameters</span><span class="o">:</span><span class="nb">nil</span> <span class="n">constructingBodyWithBlock</span><span class="o">:^</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">AFMultipartFormData</span><span class="o">&gt;</span> <span class="n">formData</span><span class="p">)</span> <span class="p">{</span>
+    
+        <span class="k">for</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">key</span> <span class="k">in</span> <span class="n">params</span><span class="p">.</span><span class="n">allKeys</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 循环拿到所有参数进行拼接</span>
+            <span class="p">[</span><span class="n">formData</span> <span class="nf">appendPartWithFormData</span><span class="p">:[</span><span class="n">params</span><span class="p">[</span><span class="nf">key</span><span class="p">]</span> <span class="nf">dataUsingEncoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">]</span> <span class="nf">name</span><span class="p">:</span><span class="n">key</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+    
+    <span class="n">AFURLSessionManager</span> <span class="o">*</span><span class="n">manager</span> <span class="o">=</span> <span class="p">[[</span><span class="n">AFURLSessionManager</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithSessionConfiguration</span><span class="p">:[</span><span class="n">NSURLSessionConfiguration</span> <span class="nf">defaultSessionConfiguration</span><span class="p">]];</span>
+    <span class="n">AFHTTPResponseSerializer</span> <span class="o">*</span><span class="n">responseSerializer</span> <span class="o">=</span> <span class="p">[</span><span class="n">AFHTTPResponseSerializer</span> <span class="nf">serializer</span><span class="p">];</span>
+    <span class="n">responseSerializer</span><span class="p">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSSet</span> <span class="nf">setWithObjects</span><span class="p">:</span><span class="s">@"application/json"</span><span class="p">,</span> <span class="s">@"text/html"</span><span class="p">,</span>  <span class="s">@"text/json"</span><span class="p">,</span> <span class="s">@"text/javascript"</span><span class="p">,</span> <span class="s">@"text/plain"</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">responseSerializer</span> <span class="o">=</span> <span class="n">responseSerializer</span><span class="p">;</span>
+    
+    <span class="n">NSURLSessionUploadTask</span> <span class="o">*</span><span class="n">uploadTask</span><span class="p">;</span>
+    <span class="n">uploadTask</span> <span class="o">=</span> <span class="p">[</span><span class="n">manager</span> <span class="nf">uploadTaskWithStreamedRequest</span><span class="p">:</span><span class="n">request</span>  <span class="nf">progress</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSProgress</span> <span class="o">*</span> <span class="n">_Nonnull</span> <span class="n">uploadProgress</span><span class="p">)</span> <span class="p">{</span>
+        
+    <span class="p">}</span> <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="n">NSURLResponse</span> <span class="o">*</span> <span class="n">_Nonnull</span> <span class="n">response</span><span class="p">,</span> <span class="n">id</span>  <span class="n">_Nullable</span> <span class="n">responseObject</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span> <span class="n">_Nullable</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+              <span class="o">!</span><span class="n">failure</span><span class="p">?:</span><span class="n">failure</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+              <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="o">!</span><span class="n">success</span><span class="p">?:</span><span class="n">success</span><span class="p">(</span><span class="n">responseObject</span><span class="p">);</span>
+              <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ %@"</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">responseObject</span><span class="p">);</span>
+          <span class="p">}</span>
+    <span class="p">}];</span>   
+    <span class="p">[</span><span class="n">uploadTask</span> <span class="nf">resume</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>说明：</strong></p>
+
+<ul>
+  <li>
+    <p>此时用我刚才封装的接口请求拿到的是 <code class="language-plaintext highlighter-rouge">HTML</code>的二进制数据<code class="language-plaintext highlighter-rouge">NSData</code>数据。需要转成<code class="language-plaintext highlighter-rouge">HTML</code>字符数据。</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  NSString *result = [[NSString alloc] initWithData:obj  encoding:NSUTF8StringEncoding];
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>然后利用 <code class="language-plaintext highlighter-rouge">UIWebView</code> 的 <code class="language-plaintext highlighter-rouge">- (void)loadHTMLString:(NSString *)string baseURL:(nullable NSURL *)baseURL;
+</code>接口传入转化的<code class="language-plaintext highlighter-rouge">result</code></p>
+  </li>
+</ul>
+
+<p>经过这一系列的折腾后。满足了后台说的那一句话需求。才会得到如上图的菜谱列表。</p>
+
+<p>参考资料：<a href="https://www.jianshu.com/p/63ec9b0fadfb">iOS http的表单请求</a></p>
+
+:ET

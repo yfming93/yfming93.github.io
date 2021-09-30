@@ -1,0 +1,72 @@
+I"1<ul id="markdown-toc">
+  <li><a href="#6-1-从文章列表跳转到新闻详情页面组件自定义属性及获取属性" id="markdown-toc-6-1-从文章列表跳转到新闻详情页面组件自定义属性及获取属性">6-1 从文章列表跳转到新闻详情页面（组件自定义属性及获取属性）</a></li>
+  <li><a href="#注意" id="markdown-toc-注意">注意：</a></li>
+</ul>
+
+<!---->
+
+<p><a href="https://coding.imooc.com/class/75.html">微信小程序入门与实战 常用组件API开发技巧项目实战</a></p>
+
+<h2 id="6-1-从文章列表跳转到新闻详情页面组件自定义属性及获取属性">6-1 从文章列表跳转到新闻详情页面（组件自定义属性及获取属性）</h2>
+
+<ul>
+  <li>详情页面事件绑定</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;view</span> <span class="na">wx:for=</span><span class="s">"{{postList}}"</span> <span class="na">wx:key=</span><span class="s">"idx"</span> <span class="nt">&gt;</span>
+  <span class="nt">&lt;view</span> <span class="na">catchtap=</span><span class="s">"onPostTap"</span> <span class="nt">&gt;</span>
+      <span class="nt">&lt;template</span> <span class="na">is=</span><span class="s">"postItem"</span> <span class="na">data=</span><span class="s">"{{...item}}"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/view&gt;</span>
+<span class="nt">&lt;/view&gt;</span>
+</code></pre></div></div>
+
+<p><strong>注意：</strong></p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">catchtap="onPostTap"</code>    事件不能直接绑定到<code class="language-plaintext highlighter-rouge">template</code>标签中，<code class="language-plaintext highlighter-rouge">template</code>只是一个占位符，编译以后就不存在<code class="language-plaintext highlighter-rouge">template</code>标签了。</p>
+  </li>
+  <li>
+    <p>页面之间自定义传值</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;view</span> <span class="na">wx:for=</span><span class="s">"{{postList}}"</span> <span class="na">wx:key=</span><span class="s">"idx"</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;view</span> <span class="na">catchtap=</span><span class="s">"onPostTap"</span> <span class="na">data-postId=</span><span class="s">"{{item.postId}}"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;template</span> <span class="na">is=</span><span class="s">"postItem"</span> <span class="na">data=</span><span class="s">"{{...item}}"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/view&gt;</span>
+  <span class="nt">&lt;/view&gt;</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">data-自定义变量名称="{{要传入的值}}"</code></li>
+      <li>
+        <p>在自定义函数<code class="language-plaintext highlighter-rouge">onPostTap</code>中接收传过来的值：</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> onPostTap: function (event) {
+     var postId = event.currentTarget.dataset.postid;
+     console.log("onPostTap id is" + postId);
+ }
+</code></pre></div>        </div>
+      </li>
+      <li>使用<code class="language-plaintext highlighter-rouge">event.currentTarget.dataset.自定义变量名称</code>接收。<code class="language-plaintext highlighter-rouge">dataset</code>中包含多个传过来的值集合</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="注意">注意：</h2>
+
+<ul>
+  <li>出现问题：<strong>appservice:1187 pages/posts/post-detail/post-detail.js 出现脚本错误或者未正确调用 Page()</strong>
+    <ul>
+      <li>这是因为<code class="language-plaintext highlighter-rouge">post-detail.js</code>中未加入<code class="language-plaintext highlighter-rouge">Page({})</code>方法。</li>
+    </ul>
+  </li>
+  <li>出现问题：<strong>VM2947:2 pages/posts/post-detail/post-detail.json 文件解析错误  SyntaxError: Unexpected end of JSON input</strong>
+    <ul>
+      <li>这是因为新建<code class="language-plaintext highlighter-rouge">post-detail.json</code>后为加入<code class="language-plaintext highlighter-rouge">{}</code></li>
+    </ul>
+  </li>
+</ul>
+
+<!--  -->
+
+:ET

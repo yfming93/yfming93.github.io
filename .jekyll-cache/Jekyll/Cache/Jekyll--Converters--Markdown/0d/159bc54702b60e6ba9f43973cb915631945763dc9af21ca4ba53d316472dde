@@ -1,0 +1,958 @@
+I"j�<ul id="markdown-toc">
+  <li><a href="#vue20nodejsmongodb全栈打造商城系统第9章" id="markdown-toc-vue20nodejsmongodb全栈打造商城系统第9章">Vue2.0+Node.js+MongoDB全栈打造商城系统（第9章）</a></li>
+  <li><a href="#第9章-基于nodejs开发商品列表接口" id="markdown-toc-第9章-基于nodejs开发商品列表接口">第9章 基于Node.js开发商品列表接口</a>    <ul>
+      <li><a href="#9-1-node的启动和调试方式" id="markdown-toc-9-1-node的启动和调试方式">9-1 Node的启动和调试方式</a></li>
+      <li><a href="#9-2-基于express实现商品列表查询接口" id="markdown-toc-9-2-基于express实现商品列表查询接口">9-2 基于Express实现商品列表查询接口</a></li>
+      <li><a href="#9-3-商品列表分页和排序功能实现上" id="markdown-toc-9-3-商品列表分页和排序功能实现上">9-3 商品列表分页和排序功能实现(上)</a></li>
+      <li><a href="#9-4-商品列表分页和排序功能实现下" id="markdown-toc-9-4-商品列表分页和排序功能实现下">9-4 商品列表分页和排序功能实现（下）</a></li>
+      <li><a href="#9-5-价格过滤功能实现" id="markdown-toc-9-5-价格过滤功能实现">9-5 价格过滤功能实现</a>        <ul>
+          <li><a href="#imoocmallserverroutesgoodsjs代码" id="markdown-toc-imoocmallserverroutesgoodsjs代码"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/goods.js</code>代码：</a></li>
+          <li><a href="#imoocmallsrcviewsgoodslistvue代码" id="markdown-toc-imoocmallsrcviewsgoodslistvue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/GoodsList.vue</code>代码：</a></li>
+        </ul>
+      </li>
+      <li><a href="#9-6-加入购物车功能实现" id="markdown-toc-9-6-加入购物车功能实现">9-6 加入购物车功能实现</a>        <ul>
+          <li><a href="#imoocmallserverroutesgoodsjs中代码" id="markdown-toc-imoocmallserverroutesgoodsjs中代码"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/goods.js</code>中代码</a></li>
+          <li><a href="#imoocmallsrcviewsgoodslistvue中代码" id="markdown-toc-imoocmallsrcviewsgoodslistvue中代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/GoodsList.vue</code>中代码：</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="vue20nodejsmongodb全栈打造商城系统第9章">Vue2.0+Node.js+MongoDB全栈打造商城系统（第9章）</h1>
+<h1 id="第9章-基于nodejs开发商品列表接口">第9章 基于Node.js开发商品列表接口</h1>
+<h2 id="9-1-node的启动和调试方式">9-1 Node的启动和调试方式</h2>
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/SKMwiV.jpg" alt="" /></p>
+
+<ul>
+  <li><strong>node 方式启动：</strong><code class="language-plaintext highlighter-rouge">node ./server/bin/www</code>
+    <ul>
+      <li>(有时候 <code class="language-plaintext highlighter-rouge">node server/bin/www</code>启动报错)</li>
+    </ul>
+  </li>
+  <li><strong>pm2安装</strong> <code class="language-plaintext highlighter-rouge">cnpm i pm2 -g</code></li>
+  <li><strong>启动 pm2</strong> <code class="language-plaintext highlighter-rouge">start server/bin/www</code></li>
+  <li><strong>结束 pm2</strong> <code class="language-plaintext highlighter-rouge">pm2 stopall</code></li>
+</ul>
+
+<h2 id="9-2-基于express实现商品列表查询接口">9-2 基于Express实现商品列表查询接口</h2>
+<p><img src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/HXCyCL.jpg" alt="" /></p>
+
+<ul>
+  <li><strong>安装mongoose</strong> ：<code class="language-plaintext highlighter-rouge">cnpm i mongoose --save</code></li>
+</ul>
+
+<p><strong>注意：</strong></p>
+
+<ul>
+  <li><em>路由文件修改后 需要重新<code class="language-plaintext highlighter-rouge">node ./server/bin/www</code></em>。然后才能查看刷新页面：<code class="language-plaintext highlighter-rouge">http://localhost:3000/goods</code></li>
+  <li>设置好路由后，记得要在最后加<code class="language-plaintext highlighter-rouge">module.exports = router</code>输出</li>
+  <li>定义模型的时候，参数写<code class="language-plaintext highlighter-rouge">Good</code>，表的名字是goods，这里的<code class="language-plaintext highlighter-rouge">Good</code>会自动和带s的<code class="language-plaintext highlighter-rouge">goods</code>进行关联</li>
+</ul>
+
+<p>在<code class="language-plaintext highlighter-rouge">config/index.js</code>设置代理</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  proxyTable: {
+      '/goods':{
+        target:'http://localhost:3000'
+      }
+    },
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">models/goods.js</code>代码:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var mongoose = require('mongoose')
+var Schema = mongoose.Schema;
+
+var produtSchema = new Schema({
+  "productId":{type:String},
+  "productName":String,
+  "salePrice":Number,
+  "checked":String,
+  "productNum":Number,
+  "productImage":String
+});
+
+module.exports = mongoose.model('Good',produtSchema);
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">routes/goods.js</code>代码:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require('express');
+var router = express.Router();
+var mongoose = require('mongoose');
+var  Goods = require('../models/goods')
+
+
+//连接MongoDB数据库
+mongoose.connect('mongodb://127.0.0.1:27017/dumall');
+
+mongoose.connection.on("connected", function () {
+  console.log("MongoDB connected success.")
+});
+mongoose.connection.on("error", function () {
+  console.log("MongoDB connected fail.")
+});
+ mongoose.connection.on("disconnected", function () {
+  console.log("MongoDB connected disconnected.")
+});
+router.get("/",function (req,res,next) {
+  Goods.find({},function (err,doc) {
+    if (err) {
+      res.json ({
+        status:'1',
+        msg:err.mssage
+      });
+    }else {
+      res.json({
+        status:'0',
+        msg:'',
+        result:{
+          count:doc.length,
+          list:doc
+        }
+      });
+    }
+  })
+});
+module.exports = router;
+</code></pre></div></div>
+
+<h2 id="9-3-商品列表分页和排序功能实现上">9-3 商品列表分页和排序功能实现(上)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">server/routes/goods.js</code>分页功能：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require('express');
+var router = express.Router();
+var mongoose = require('mongoose');
+var  Goods = require('../models/goods')
+
+
+//连接MongoDB数据库
+mongoose.connect('mongodb://127.0.0.1:27017/dumall');
+
+mongoose.connection.on("connected", function () {
+  console.log("MongoDB connected success.")
+});
+
+mongoose.connection.on("error", function () {
+  console.log("MongoDB connected fail.")
+});
+
+mongoose.connection.on("disconnected", function () {
+  console.log("MongoDB connected disconnected.")
+});
+
+router.get("/",function (req,res,next) {
+  let page = parseInt(req.param("page"));
+  let pageSize = parseInt(req.param("pageSize"));
+  let sort = req.param("sort");
+  let skip = (page-1)*pageSize;
+  let params = {};
+  let goodsModel = Goods.find(params).skip(skip).limit(pageSize);
+  goodsModel.sort({'salePrice':sort});
+  goodsModel.exec(function (err,doc) {
+    if (err) {
+      res.json ({
+        status:'1',
+        msg:err.mssage
+      });
+    }else {
+      res.json({
+        status:'0',
+        msg:'',
+        result:{
+          count:doc.length,
+          list:doc
+        }
+      });
+    }
+  })
+});
+module.exports = router;
+</code></pre></div></div>
+
+<h2 id="9-4-商品列表分页和排序功能实现下">9-4 商品列表分页和排序功能实现（下）</h2>
+<ul>
+  <li><strong>滚动加载数据插件：</strong> <code class="language-plaintext highlighter-rouge">cnpm install vue-infinite-scroll --save
+</code>
+    <ul>
+      <li><strong>在 ImoocMall/src/main.js 导入：</strong>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">import infiniteScroll from  'vue-infinite-scroll'</code></li>
+        </ul>
+      </li>
+      <li><strong>使用：</strong> <code class="language-plaintext highlighter-rouge">Vue.use(infiniteScroll);</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">src/views/GoodsList.vue</code> 代码:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+	&lt;div&gt;
+    &lt;nav-header&gt;&lt;/nav-header&gt;
+    &lt;nav-bread&gt;
+      &lt;span&gt;Goods&lt;/span&gt;
+    &lt;/nav-bread&gt;
+    &lt;div class="accessory-result-page accessory-page"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="filter-nav"&gt;
+          &lt;span class="sortby"&gt;Sort by:&lt;/span&gt;
+          &lt;a href="javascript:void(0)" class="default cur"&gt;Default&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="price" @click="sortGoods"&gt;Price &lt;svg class="icon icon-arrow-short"&gt;&lt;use xlink:href="#icon-arrow-short"&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="filterby stopPop" v-on:click="showFilerPop"&gt;Filter by&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="accessory-result"&gt;
+          &lt;!-- filter --&gt;
+          &lt;div class="filter stopPop" id="filter" v-lazy="{'filterby-show':filerBy}"&gt;
+            &lt;dl class="filter-price"&gt;
+              &lt;dt&gt;Price:&lt;/dt&gt;
+              &lt;dd&gt;&lt;a href="javascript:void(0)" :class="{'cur':priceCheck=='all'}" @click="setPriceCheck('all')"&gt;All&lt;/a&gt;&lt;/dd&gt;
+              &lt;dd v-for="(price,index) in priceFilter"&gt;
+                &lt;a href="javascript:void(0)" @click="setPriceCheck(index)" :class="{'cur':priceCheck == index}"&gt; - &lt;/a&gt;
+              &lt;/dd&gt;
+
+            &lt;/dl&gt;
+          &lt;/div&gt;
+
+          &lt;!-- search result accessories list --&gt;
+          &lt;div class="accessory-list-wrap"&gt;
+            &lt;div class="accessory-list col-4"&gt;
+              &lt;ul&gt;
+                &lt;li v-for="(item,index) in goodslist"&gt;
+                  &lt;div class="pic"&gt;
+                    &lt;a href="#"&gt;&lt;img v-bind:src="'static/' + item.productImage" alt=""&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;div class="main"&gt;
+                    &lt;div class="name"&gt;&lt;/div&gt;
+                    &lt;div class="price"&gt;&lt;/div&gt;
+                    &lt;div class="btn-area"&gt;
+                      &lt;a href="javascript:;" class="btn btn--m"&gt;加入购物车&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;div class="load-more" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="30"&gt;
+                加载中...
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="md-overlay" v-show="overLayFlag" @click="closePop"&gt;&lt;/div&gt;
+    &lt;nav-footer&gt;&lt;/nav-footer&gt;
+	&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style &gt;
+.load-more {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+&lt;/style&gt;
+
+&lt;script &gt;
+  import './../assets/css/base.css'
+  import './../assets/css/product.css'
+  import NavHeader from './NavHeader.vue'
+  import NavFooter from './NavFooter.vue'
+  import NavBread from './NavBread.vue'
+  import axios from 'axios'
+
+
+  export default {
+		data (){
+			return {
+				goodslist:[],
+        sortFlag:true, //排序
+        priceFilter:[
+          {
+            startPrice:'0.00',
+            endPrice:'500.00'
+          },
+          {
+            startPrice:'500.00',
+            endPrice:'1000.00'
+          },
+          {
+            startPrice:'1000.00',
+            endPrice:'2000.00'
+          },
+        ],
+        priceCheck:'all',   //价格选中的状态
+        filerBy:false,      //小屏幕价格菜单显示
+        overLayFlag:false,   //遮罩显示
+        page:1,
+        pageSize:8,
+        busy:true       //默认禁止滚动加载
+			}
+		},
+    components:{
+		  NavHeader,
+      NavFooter,
+      NavBread
+    },
+    mounted:function () {
+        this.getGoodsList(false);
+    },
+    methods:{
+        getGoodsList:function (flag) {
+          var param = {
+            page:this.page,
+            pageSize:this.pageSize,
+            sort:this.sortFlag?1:-1
+//            priceLevel:this.priceChecked
+          };
+
+          axios.get("/goods",{
+            params:param
+          }).then((result)=&gt;{
+            var  res = result.data;
+            if (res.status=="0") {
+              if (flag) { //累加
+                this.goodslist = this.goodslist.concat(res.result.list);
+                if (res.result.count==0) {
+                  this.busy = true; //没数据时禁止滚动到底部自动请求
+                }else {
+                  this.busy = false;
+                }
+              }else { //不累加
+                this.goodslist = res.result.list;
+                this.busy = false; //首次请求成功后开启
+
+              }
+            }else {
+              this.goodslist = [];
+            };
+
+          })
+        },
+        showFilerPop() {
+           this.filerBy = true;
+           this.overLayFlag = true;
+
+        },
+        closePop(){
+          this.filerBy = false;
+          this.overLayFlag = false;
+        },
+        setPriceCheck(index){
+           this.priceCheck = index;
+           this.closePop();
+        },
+        sortGoods (){ //排序
+          this.sortFlag = !this.sortFlag;
+          this.page = 1;
+          this.getGoodsList();
+        },
+        loadMore () {
+          this.bus = true;
+          //第一请求完成后才会执行第二个请求，防止鼠标滚动时请求过多
+          setTimeout(()=&gt;{
+            this.page++;
+            this.getGoodsList(true); //传个true表示要列表数组累加
+          },500)
+        }
+    }
+	}
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h2 id="9-5-价格过滤功能实现">9-5 价格过滤功能实现</h2>
+
+<h4 id="imoocmallserverroutesgoodsjs代码"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/goods.js</code>代码：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require('express');
+var router = express.Router();
+var mongoose = require('mongoose');
+var  Goods = require('../models/goods')
+
+
+//连接MongoDB数据库
+mongoose.connect('mongodb://127.0.0.1:27017/dumall');
+
+mongoose.connection.on("connected", function () {
+  console.log("MongoDB connected success.")
+});
+
+mongoose.connection.on("error", function () {
+  console.log("MongoDB connected fail.")
+});
+
+mongoose.connection.on("disconnected", function () {
+  console.log("MongoDB connected disconnected.")
+});
+
+
+router.get("/",function (req,res,next) {
+  let page = parseInt(req.param("page"));
+  let pageSize = parseInt(req.param("pageSize"));
+  let priceLevel = req.param("priceLevel"); //价格级别
+  let sort = req.param("sort");
+  let skip = (page-1)*pageSize;
+  //条件查询
+  var priceGt = '',priceLte = '';
+  let params = {};
+  if(priceLevel!='all'){
+    switch (priceLevel){
+      case '0':priceGt = 0;priceLte=100;break;
+      case '1':priceGt = 100;priceLte=500;break;
+      case '2':priceGt = 500;priceLte=1000;break;
+      case '3':priceGt = 1000;priceLte=5000;break;
+    }
+    params = {
+      salePrice:{
+        $gt:priceGt,
+        $lte:priceLte
+      }
+    }
+  }
+  let goodsModel = Goods.find(params).skip(skip).limit(pageSize);
+  goodsModel.sort({'salePrice':sort});
+  goodsModel.exec(function (err,doc) {
+    if (err) {
+      res.json ({
+        status:'1',
+        msg:err.mssage
+      });
+    }else {
+      res.json({
+        status:'0',
+        msg:'',
+        result:{
+          count:doc.length,
+          list:doc
+        }
+      });
+    }
+  })
+});
+module.exports = router;
+</code></pre></div></div>
+
+<h4 id="imoocmallsrcviewsgoodslistvue代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/GoodsList.vue</code>代码：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+	&lt;div&gt;
+    &lt;nav-header&gt;&lt;/nav-header&gt;
+    &lt;nav-bread&gt;
+      &lt;span&gt;Goods&lt;/span&gt;
+    &lt;/nav-bread&gt;
+    &lt;div class="accessory-result-page accessory-page"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="filter-nav"&gt;
+          &lt;span class="sortby"&gt;Sort by:&lt;/span&gt;
+          &lt;a href="javascript:void(0)" class="default cur"&gt;Default&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="price" @click="sortGoods"&gt;Price &lt;svg class="icon icon-arrow-short"&gt;&lt;use xlink:href="#icon-arrow-short"&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="filterby stopPop" v-on:click="showFilerPop"&gt;Filter by&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="accessory-result"&gt;
+          &lt;!-- filter --&gt;
+          &lt;div class="filter stopPop" id="filter" v-lazy="{'filterby-show':filerBy}"&gt;
+            &lt;dl class="filter-price"&gt;
+              &lt;dt&gt;Price:&lt;/dt&gt;
+              &lt;dd&gt;&lt;a href="javascript:void(0)" :class="{'cur':priceCheck=='all'}" @click="setPriceCheck('all')"&gt;All&lt;/a&gt;&lt;/dd&gt;
+              &lt;dd v-for="(price,index) in priceFilter"&gt;
+                &lt;a href="javascript:void(0)" @click="setPriceCheck(index)" :class="{'cur':priceCheck == index}"&gt; - &lt;/a&gt;
+              &lt;/dd&gt;
+
+            &lt;/dl&gt;
+          &lt;/div&gt;
+
+          &lt;!-- search result accessories list --&gt;
+          &lt;div class="accessory-list-wrap"&gt;
+            &lt;div class="accessory-list col-4"&gt;
+              &lt;ul&gt;
+                &lt;li v-for="(item,index) in goodslist"&gt;
+                  &lt;div class="pic"&gt;
+                    &lt;a href="#"&gt;&lt;img v-bind:src="'static/' + item.productImage" alt=""&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;div class="main"&gt;
+                    &lt;div class="name"&gt;&lt;/div&gt;
+                    &lt;div class="price"&gt;&lt;/div&gt;
+                    &lt;div class="btn-area"&gt;
+                      &lt;a href="javascript:;" class="btn btn--m"&gt;加入购物车&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;!--// 利用 busy 控制隐藏加载HUD--&gt;
+              &lt;div v-show="!busy" class="load-more" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="30"&gt;
+                &lt;img src="static/loading-svg/loading-bubbles.svg" alt=""&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="md-overlay" v-show="overLayFlag" @click="closePop"&gt;&lt;/div&gt;
+    &lt;nav-footer&gt;&lt;/nav-footer&gt;
+	&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style &gt;
+.load-more {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+&lt;/style&gt;
+
+&lt;script &gt;
+  import './../assets/css/base.css'
+  import './../assets/css/product.css'
+  import NavHeader from './NavHeader.vue'
+  import NavFooter from './NavFooter.vue'
+  import NavBread from './NavBread.vue'
+  import axios from 'axios'
+
+
+  export default {
+		data (){
+			return {
+				goodslist:[],
+        sortFlag:true, //排序
+        priceFilter:[
+          {
+            startPrice:'0.00',
+            endPrice:'100.00'
+          },
+          {
+            startPrice:'100.00',
+            endPrice:'500.00'
+          },
+          {
+            startPrice:'500.00',
+            endPrice:'1000.00'
+          }, {
+            startPrice:'1000.00',
+            endPrice:'5000.00'
+          }
+        ],
+        priceCheck:'all',   //价格选中的状态
+        filerBy:false,      //小屏幕价格菜单显示
+        overLayFlag:false,   //遮罩显示
+        page:1,
+        pageSize:8,
+        busy:true       //默认禁止滚动加载
+
+			}
+		},
+    components:{
+		  NavHeader,
+      NavFooter,
+      NavBread
+    },
+    mounted:function () {
+        this.getGoodsList(false);
+    },
+    methods:{
+        getGoodsList:function (flag) {
+          var param = {
+            page:this.page,
+            pageSize:this.pageSize,
+            sort:this.sortFlag?1:-1,   //升降排序
+            priceLevel:this.priceCheck //价格级别
+          };
+
+          axios.get("/goods",{
+            params:param
+          }).then((result)=&gt;{
+            var  res = result.data;
+            if (res.status=="0") {
+              if (flag) { //累加
+                this.goodslist = this.goodslist.concat(res.result.list);
+                if (res.result.count==0) {
+                  this.busy = true; //没数据时禁止滚动到底部自动请求
+                }else {
+                  this.busy = false;
+                }
+              }else { //不累加
+                this.goodslist = res.result.list;
+                this.busy = false; //首次请求成功后开启
+
+              }
+            }else {
+              this.goodslist = [];
+            };
+
+          })
+        },
+        showFilerPop() {
+           this.filerBy = true;
+           this.overLayFlag = true;
+
+        },
+        closePop(){
+          this.filerBy = false;
+          this.overLayFlag = false;
+        },
+        setPriceCheck(index){
+           this.priceCheck = index;
+           this.closePop();
+           this.page = 1;
+           this.getGoodsList();
+        },
+        sortGoods (){ //排序
+          this.sortFlag = !this.sortFlag;
+          this.page = 1;
+          this.getGoodsList();
+        },
+        loadMore () {
+          this.bus = true;
+          //第一请求完成后才会执行第二个请求，防止鼠标滚动时请求过多
+          setTimeout(()=&gt;{
+            this.page++;
+            this.getGoodsList(true); //传个true表示要列表数组累加
+          },500)
+        }
+    }
+	}
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h2 id="9-6-加入购物车功能实现">9-6 加入购物车功能实现</h2>
+
+<h4 id="imoocmallserverroutesgoodsjs中代码"><code class="language-plaintext highlighter-rouge">ImoocMall/server/routes/goods.js</code>中代码</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require('express');
+var router = express.Router();
+var mongoose = require('mongoose');
+var  Goods = require('../models/goods')
+
+
+//连接MongoDB数据库
+mongoose.connect('mongodb://127.0.0.1:27017/dumall');
+
+mongoose.connection.on("connected", function () {
+  console.log("MongoDB connected success.")
+});
+
+mongoose.connection.on("error", function () {
+  console.log("MongoDB connected fail.")
+});
+
+mongoose.connection.on("disconnected", function () {
+  console.log("MongoDB connected disconnected.")
+});
+
+
+router.get("/",function (req,res,next) {
+  let page = parseInt(req.param("page"));
+  let pageSize = parseInt(req.param("pageSize"));
+  let priceLevel = req.param("priceLevel"); //价格级别
+  let sort = req.param("sort");
+  let skip = (page-1)*pageSize;
+  //条件查询
+  var priceGt = '',priceLte = '';
+  let params = {};
+  if(priceLevel!='all'){
+    switch (priceLevel){
+      case '0':priceGt = 0;priceLte=100;break;
+      case '1':priceGt = 100;priceLte=500;break;
+      case '2':priceGt = 500;priceLte=1000;break;
+      case '3':priceGt = 1000;priceLte=5000;break;
+    }
+    params = {
+      salePrice:{
+        $gt:priceGt,
+        $lte:priceLte
+      }
+    }
+  }
+  let goodsModel = Goods.find(params).skip(skip).limit(pageSize);
+  goodsModel.sort({'salePrice':sort});
+  goodsModel.exec(function (err,doc) {
+    if (err) {
+      res.json ({
+        status:'1',
+        msg:err.mssage
+      });
+    }else {
+      res.json({
+        status:'0',
+        msg:'',
+        result:{
+          count:doc.length,
+          list:doc
+        }
+      });
+    }
+  })
+});
+
+//加入到购物车
+router.post("/addCart", function (req,res,next) {
+  var userId = '100000077',productId = req.body.productId;
+  var User = require('../models/user');
+  User.findOne({userId:userId}, function (err,userDoc) {
+    if(err){
+      res.json({
+        status:"1",
+        msg:err.message
+      })
+    }else{
+      console.log("userDoc:"+userDoc);
+      if(userDoc){
+        var goodsItem = '';
+        userDoc.cartList.forEach(function (item) {
+          if(item.productId == productId){
+            goodsItem = item;
+            item.productNum ++;
+          }
+        });
+        if(goodsItem){
+          userDoc.save(function (err2,doc2) {
+            if(err2){
+              res.json({
+                status:"1",
+                msg:err2.message
+              })
+            }else{
+              res.json({
+                status:'0',
+                msg:'',
+                result:'suc'
+              })
+            }
+          })
+        }else{
+          Goods.findOne({productId:productId}, function (err1,doc) {
+            if(err1){
+              res.json({
+                status:"1",
+                msg:err1.message
+              })
+            }else{
+              if(doc){
+                doc.productNum = 1;
+                doc.checked = 1;
+                userDoc.cartList.push(doc);
+                userDoc.save(function (err2,doc2) {
+                  if(err2){
+                    res.json({
+                      status:"1",
+                      msg:err2.message
+                    })
+                  }else{
+                    res.json({
+                      status:'0',
+                      msg:'',
+                      result:'suc'
+                    })
+                  }
+                })
+              }
+            }
+          });
+        }
+      }
+    }
+  })
+});
+
+module.exports = router;
+
+</code></pre></div></div>
+
+<h4 id="imoocmallsrcviewsgoodslistvue中代码"><code class="language-plaintext highlighter-rouge">ImoocMall/src/views/GoodsList.vue</code>中代码：</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+	&lt;div&gt;
+    &lt;nav-header&gt;&lt;/nav-header&gt;
+    &lt;nav-bread&gt;
+      &lt;span&gt;Goods&lt;/span&gt;
+    &lt;/nav-bread&gt;
+    &lt;div class="accessory-result-page accessory-page"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="filter-nav"&gt;
+          &lt;span class="sortby"&gt;Sort by:&lt;/span&gt;
+          &lt;a href="javascript:void(0)" class="default cur"&gt;Default&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="price" @click="sortGoods"&gt;Price &lt;svg class="icon icon-arrow-short"&gt;&lt;use xlink:href="#icon-arrow-short"&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/a&gt;
+          &lt;a href="javascript:void(0)" class="filterby stopPop" v-on:click="showFilerPop"&gt;Filter by&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="accessory-result"&gt;
+          &lt;!-- filter --&gt;
+          &lt;div class="filter stopPop" id="filter" v-lazy="{'filterby-show':filerBy}"&gt;
+            &lt;dl class="filter-price"&gt;
+              &lt;dt&gt;Price:&lt;/dt&gt;
+              &lt;dd&gt;&lt;a href="javascript:void(0)" :class="{'cur':priceCheck=='all'}" @click="setPriceCheck('all')"&gt;All&lt;/a&gt;&lt;/dd&gt;
+              &lt;dd v-for="(price,index) in priceFilter"&gt;
+                &lt;a href="javascript:void(0)" @click="setPriceCheck(index)" :class="{'cur':priceCheck == index}"&gt; - &lt;/a&gt;
+              &lt;/dd&gt;
+
+            &lt;/dl&gt;
+          &lt;/div&gt;
+
+          &lt;!-- search result accessories list --&gt;
+          &lt;div class="accessory-list-wrap"&gt;
+            &lt;div class="accessory-list col-4"&gt;
+              &lt;ul&gt;
+                &lt;li v-for="(item,index) in goodslist"&gt;
+                  &lt;div class="pic"&gt;
+                    &lt;a href="#"&gt;&lt;img v-bind:src="'static/' + item.productImage" alt=""&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;div class="main"&gt;
+                    &lt;div class="name"&gt;&lt;/div&gt;
+                    &lt;div class="price"&gt;&lt;/div&gt;
+                    &lt;div class="btn-area"&gt;
+                      &lt;a href="javascript:;" class="btn btn--m" @click="addCart(item.productId)"&gt;加入购物车&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;!--// 利用 busy 控制隐藏加载HUD--&gt;
+              &lt;div v-show="!busy" class="load-more" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="30"&gt;
+                &lt;img src="static/loading-svg/loading-bubbles.svg" alt=""&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="md-overlay" v-show="overLayFlag" @click="closePop"&gt;&lt;/div&gt;
+    &lt;nav-footer&gt;&lt;/nav-footer&gt;
+	&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style &gt;
+.load-more {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+&lt;/style&gt;
+
+&lt;script &gt;
+  import './../assets/css/base.css'
+  import './../assets/css/product.css'
+  import NavHeader from './NavHeader.vue'
+  import NavFooter from './NavFooter.vue'
+  import NavBread from './NavBread.vue'
+  import axios from 'axios'
+
+
+  export default {
+		data (){
+			return {
+				goodslist:[],
+        sortFlag:true, //排序
+        priceFilter:[
+          {
+            startPrice:'0.00',
+            endPrice:'100.00'
+          },
+          {
+            startPrice:'100.00',
+            endPrice:'500.00'
+          },
+          {
+            startPrice:'500.00',
+            endPrice:'1000.00'
+          }, {
+            startPrice:'1000.00',
+            endPrice:'5000.00'
+          }
+        ],
+        priceCheck:'all',   //价格选中的状态
+        filerBy:false,      //小屏幕价格菜单显示
+        overLayFlag:false,   //遮罩显示
+        page:1,
+        pageSize:8,
+        busy:true       //默认禁止滚动加载
+
+			}
+		},
+    components:{
+		  NavHeader,
+      NavFooter,
+      NavBread
+    },
+    mounted:function () {
+        this.getGoodsList(false);
+    },
+    methods:{
+        getGoodsList:function (flag) {
+          var param = {
+            page:this.page,
+            pageSize:this.pageSize,
+            sort:this.sortFlag?1:-1,   //升降排序
+            priceLevel:this.priceCheck //价格级别
+          };
+
+          axios.get("/goods",{
+            params:param
+          }).then((result)=&gt;{
+            var  res = result.data;
+            if (res.status=="0") {
+              if (flag) { //累加
+                this.goodslist = this.goodslist.concat(res.result.list);
+                if (res.result.count==0) {
+                  this.busy = true; //没数据时禁止滚动到底部自动请求
+                }else {
+                  this.busy = false;
+                }
+              }else { //不累加
+                this.goodslist = res.result.list;
+                this.busy = false; //首次请求成功后开启
+
+              }
+            }else {
+              this.goodslist = [];
+            };
+
+          })
+        },
+        showFilerPop() {
+           this.filerBy = true;
+           this.overLayFlag = true;
+
+        },
+        closePop(){
+          this.filerBy = false;
+          this.overLayFlag = false;
+        },
+        setPriceCheck(index){
+           this.priceCheck = index;
+           this.closePop();
+           this.page = 1;
+           this.getGoodsList();
+        },
+        sortGoods (){ //排序
+          this.sortFlag = !this.sortFlag;
+          this.page = 1;
+          this.getGoodsList();
+        },
+        loadMore () {
+          this.bus = true;
+          //第一请求完成后才会执行第二个请求，防止鼠标滚动时请求过多
+          setTimeout(()=&gt;{
+            this.page++;
+            this.getGoodsList(true); //传个true表示要列表数组累加
+          },500)
+        },
+        addCart (productId){
+          axios.post("/goods/addCart",{
+            productId:productId
+          }).then((res)=&gt;{
+            var res = res.data;
+            if(res.status==0){
+//              this.mdShowCart = true;
+//              this.$store.commit("updateCartCount",1);
+              alert("加入购物车成功");
+            }else{
+//              this.mdShow = true;
+              alert("加入购物车失败");
+            }
+          });
+        }
+    }
+	}
+&lt;/script&gt;
+
+</code></pre></div></div>
+
+:ET

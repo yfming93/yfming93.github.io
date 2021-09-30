@@ -1,0 +1,12 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#一背景" id="markdown-toc-一背景">（一）、背景:</a></li>
+</ul>
+
+<hr />
+<h2 id="一背景">（一）、背景:</h2>
+<ul>
+  <li>后台返回一个菜谱网站<a href="https://m.meishij.net/html5/search.php">美食街：https://m.meishij.net/html5/search.php</a> 的主页地址。</li>
+  <li>APP 端根据用户给的关键字 自行将参数设置到对应的键<code class="language-plaintext highlighter-rouge">p</code>中。</li>
+  <li>后台解释说：将参数设置在 <code class="language-plaintext highlighter-rouge">Body</code> 中利用 <code class="language-plaintext highlighter-rouge">post</code> 请求自行拿数据。</li>
+</ul>
+:ET

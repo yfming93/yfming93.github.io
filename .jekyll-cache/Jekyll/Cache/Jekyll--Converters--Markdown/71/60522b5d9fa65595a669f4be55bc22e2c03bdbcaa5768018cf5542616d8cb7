@@ -1,0 +1,123 @@
+I"E,<ul id="markdown-toc">
+  <li><a href="#一引言" id="markdown-toc-一引言">（一）：引言</a></li>
+  <li><a href="#二什么是-font-awesome" id="markdown-toc-二什么是-font-awesome">（二）：什么是 Font Awesome？</a></li>
+  <li><a href="#三如何使用font-awesome" id="markdown-toc-三如何使用font-awesome">（三）：如何使用Font Awesome</a>    <ul>
+      <li><a href="#1-引入" id="markdown-toc-1-引入"><strong>1. 引入</strong></a></li>
+    </ul>
+  </li>
+  <li><a href="#2-控制icon" id="markdown-toc-2-控制icon"><strong>2. 控制icon</strong></a>    <ul>
+      <li><a href="#更详细的参考可以到官方网站-font-awesome-查阅" id="markdown-toc-更详细的参考可以到官方网站-font-awesome-查阅">更详细的参考可以到官方网站: Font Awesome 查阅。</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="一引言">（一）：引言</h2>
+
+<p><big>今天因为个人博客想加入网易云音乐的主页链接。于是对博客的JS文件粗略修改。在百度了一些资料后。还是有些许收获，根据这篇文章成功完成了需求。还加了知乎 和 网站主页的 图标链接 </big></p>
+
+<h2 id="二什么是-font-awesome">（二）：什么是 Font Awesome？</h2>
+
+<p><a href="http://fontawesome.io/icons/"><strong>Font Awesome</strong></a> 是一款开源的字体图标库，拥有大量简洁优雅的图标(Version 4.3.0已经拥有519个图标)，是一款强大、丰富、简单、好用的字体图标库。在项目中使用Font Awesome可以大大提高项目的进度。</p>
+
+<p>网页小图标处处可见，如果网页没有了小图标的点缀，那么在用户体验上就可能失去了一种优雅。想想看，下面的小图标，我们做设计是不是会经常会注意到？(分别选自QQ空间，豆瓣，淘宝)</p>
+
+<p><img src="http://7xjt8m.com1.z0.glb.clouddn.com/img.jpg" alt="" /></p>
+
+<p>icon 作为提高用户体验的重要手段，在网页设计中早已被广泛使用。但是在CSS3之前，多使用传统的“<em>CSS + 图片</em>”的方式来制作这些icon，即每个网站制定一套icon，放到透明的PNG图像上，然后通过CSS进行定位显示icon。但大多数的网页都要用到各种透明小图标，且要兼容各个浏览器，也可能会有多个尺寸，这样我们就要将这些小图标分别输出多种尺寸、颜色和文件格式。这种方法效率低，可移植性差，也不利于设计流程的优化。<br />
+　　</p>
+
+<p>还好，CSS3的出现为我们提供了解决的办法。CSS3的自定义字体(<em>@font-face</em>)已经被各大浏览器支持，那么对于网站中用到的icon，我们就可以使用<code class="language-plaintext highlighter-rouge">font-icon</code>来代替。<code class="language-plaintext highlighter-rouge">font-icon</code>(<code class="language-plaintext highlighter-rouge">fong-icon</code>这里先只简单的介绍下)通过字体编辑软件，将矢量的<code class="language-plaintext highlighter-rouge">icon</code>放到字体文件中，用<code class="language-plaintext highlighter-rouge">CSS3</code>的<em>@font-face</em>引入字体文件实现<code class="language-plaintext highlighter-rouge">icon</code>在网页上的展示。这种方法实现的icon缩放不会失真，更容易编辑和维护，尺寸、颜色也可以方便的用<code class="language-plaintext highlighter-rouge">CSS</code>来控制，这些都避免我们之前要对<code class="language-plaintext highlighter-rouge">icon</code>多次输出，有助于提高我们的设计效率。</p>
+
+<p><code class="language-plaintext highlighter-rouge">Font Awesome</code>就是这样的一款<code class="language-plaintext highlighter-rouge">font-icon</code>库，而且为我们提供了其它一些方便的特性，比如icon的一些简单动效、<code class="language-plaintext highlighter-rouge">icon</code>的叠加以生成新图标以及对<code class="language-plaintext highlighter-rouge">bootstrap</code>的支持等。<br />
+　　</p>
+<h2 id="三如何使用font-awesome">（三）：如何使用Font Awesome</h2>
+
+<p>使用Font Awesome非常简单，引入图标库后，在其网站上找到我们想要用的图标放入网页就可以了。</p>
+
+<h3 id="1-引入"><strong>1. 引入</strong></h3>
+
+<p>你可以通过CDN引入:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"&gt;
+</code></pre></div></div>
+
+<p>也可以通过下载[Font Awesome][fontawesome]的源码，将源码放到自己的网页项目中引入:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link rel="stylesheet" href="path/to/css/font-awesome.min.css"&gt;
+</code></pre></div></div>
+
+<p>注意：Font Awesome的font文件夹要跟其存放.css文件的文件夹在同一个目录下。*</p>
+
+<p>引入<code class="language-plaintext highlighter-rouge">Font Awesome</code>之后，我们就可以在<code class="language-plaintext highlighter-rouge">Font Awesome</code>的<code class="language-plaintext highlighter-rouge">icons</code>界面搜索我们想要的图标，找到我们想要的图标后，例如这个：<br />
+　　<br />
+<img src="http://7xjt8m.com1.z0.glb.clouddn.com/20150618230925.png" alt="" /></p>
+
+<p>通过在标签加上类名 <strong>fa</strong> 以及<code class="language-plaintext highlighter-rouge">fa-icon</code>名(这个例子中是<code class="language-plaintext highlighter-rouge">fa-bed</code>)，就可以将图标引入网页，如：<code class="language-plaintext highlighter-rouge">&lt;i class="fa fa-bed"&gt;&lt;/&gt;或&lt;span class="fa fa-bed"&gt;</code>。(<code class="language-plaintext highlighter-rouge">Font Awesome</code>被设计成跟内联的标签一起使用。)</p>
+
+<h2 id="2-控制icon"><strong>2. 控制icon</strong></h2>
+
+<p>通过类名fa和fa-icon名即可在页面中使用Font Awesome。而且Font Awesome的控制也很方便操作。下面是常见的一些操作。</p>
+
+<ul>
+  <li><strong>尺寸:</strong></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">fa-lg</code>, <code class="language-plaintext highlighter-rouge">fa-2x</code>, <code class="language-plaintext highlighter-rouge">fa-3x</code>, <code class="language-plaintext highlighter-rouge">fa-4x</code>, <code class="language-plaintext highlighter-rouge">fa-5x</code> 分别是将<code class="language-plaintext highlighter-rouge">icon</code>扩大到原来的133%, 2倍，3倍，4倍和5倍，如图：</p>
+
+<p><img src="http://7xjt8m.com1.z0.glb.clouddn.com/2015062705" alt="" /></p>
+
+<ul>
+  <li><strong>固定宽度：</strong></li>
+</ul>
+
+<p>通过<code class="language-plaintext highlighter-rouge">fa-fw</code>给<code class="language-plaintext highlighter-rouge">icon</code>一个固定宽度。当要使不同宽度的<code class="language-plaintext highlighter-rouge">icon</code>对齐时很管用，特别是在设计导航组和列表组的时候，如图：<br />
+<img src="http://7xjt8m.com1.z0.glb.clouddn.com/2015062706" alt="" /></p>
+
+<ul>
+  <li><strong>用于列表的 icon：</strong></li>
+</ul>
+
+<p>用<code class="language-plaintext highlighter-rouge">fa-ul</code>和<code class="language-plaintext highlighter-rouge">fa-li</code>可以方便的替换掉<code class="language-plaintext highlighter-rouge">ul</code>列表的默认样式，如图：</p>
+
+<p><img src="http://7xjt8m.com1.z0.glb.clouddn.com/2015062707" alt="" /></p>
+
+<ul>
+  <li><strong>边框和排版：</strong></li>
+</ul>
+
+<p>用<code class="language-plaintext highlighter-rouge">fa-border</code>，<code class="language-plaintext highlighter-rouge">pull-right</code>, <code class="language-plaintext highlighter-rouge">pull-left</code> 方便的排列用于引用或文字开头的图标(首字下沉效果)，如图：</p>
+
+<p><img src="http://7xjt8m.com1.z0.glb.clouddn.com/2015062702" alt="" /></p>
+
+<ul>
+  <li><strong>动画：</strong></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">fa-spin</code>和<code class="language-plaintext highlighter-rouge">fa-pulse</code>可以让图标旋转，两个有区别，第一个应该是不间断的旋转，第二个是以8步动画旋转的，可以自己实现看下，我这里可能描述的不准确。经常跟<code class="language-plaintext highlighter-rouge">fa fa-spinner</code>, <code class="language-plaintext highlighter-rouge">fa fa-refresh</code>, <code class="language-plaintext highlighter-rouge">fa fa-cog</code>一起使用。</p>
+
+<ul>
+  <li><strong>旋转和翻转：</strong></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">fa-rotate-90</code>, <code class="language-plaintext highlighter-rouge">fa-rotate-180</code>, <code class="language-plaintext highlighter-rouge">fa-rotate-270</code>分别让<code class="language-plaintext highlighter-rouge">icon</code>旋转 90°，180°， 270°；<code class="language-plaintext highlighter-rouge">fa-flip-horizontal</code>, <code class="language-plaintext highlighter-rouge">fa-flip-vertical</code>分别让<code class="language-plaintext highlighter-rouge">icon</code>水平翻转和垂直翻转，如图：<br />
+<img src="http://7xjt8m.com1.z0.glb.clouddn.com/2015062704" alt="" /></p>
+
+<ul>
+  <li><strong>组合：</strong></li>
+</ul>
+
+<p>组合<code class="language-plaintext highlighter-rouge">icon</code>要在父级标签加上<code class="language-plaintext highlighter-rouge">fa-stack</code>类，正常大小的图标用<code class="language-plaintext highlighter-rouge">fa-stack-1x</code>, 2倍正常大小的用<code class="language-plaintext highlighter-rouge">fa-stack-2x</code>(即用来做背景<code class="language-plaintext highlighter-rouge">icon</code>), 可以用<code class="language-plaintext highlighter-rouge">fa-inverse</code>翻转<code class="language-plaintext highlighter-rouge">icon</code>颜色，叠加的顺序就是标签的顺序，在父级添加<code class="language-plaintext highlighter-rouge">fa-lg</code>这类控制<code class="language-plaintext highlighter-rouge">icon</code>大小的类可以控制整个组合图标的大小，如图:<br />
+<img src="http://7xjt8m.com1.z0.glb.clouddn.com/20150627" alt="" /></p>
+
+<ul>
+  <li><strong>配合Bootstrap使用：</strong></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">Font Awesome</code>可以很好的跟<code class="language-plaintext highlighter-rouge">Bootstrap</code>一起工作，使用方法跟<code class="language-plaintext highlighter-rouge">Bootstrap</code>的<code class="language-plaintext highlighter-rouge">Glyphicons</code>也基本相同，但是可以控制的项更多了，下图是<code class="language-plaintext highlighter-rouge">Font Awesome</code>在<code class="language-plaintext highlighter-rouge">Bootstrap</code>组件中的效果：<br />
+<img src="http://7xjt8m.com1.z0.glb.clouddn.com/2015062701" alt="" /></p>
+
+<h3 id="更详细的参考可以到官方网站-font-awesome-查阅">更详细的参考可以到官方网站: <a href="http://fontawesome.io/icons/">Font Awesome</a> 查阅。</h3>
+
+<p>原文 <a href="http://www.jianshu.com/p/ba0e7ebd045c">Font Awesome 学习笔记</a></p>
+
+:ET
