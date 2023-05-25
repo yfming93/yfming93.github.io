@@ -1,19 +1,16 @@
 
+    {% include cloud-music.html %}
 
 
-    {% include cloud-music.html %}  
-
-
-<div class="link"></div> 
+<div class="link"></div>
 
 <div>
     <i class="fa fa-search"></i>
     Search
 </div>
 <div id="site_search">
-    <input type="text" id="search_box" placeholder="Search..." style="width:100% ;">
-    <ul class="content-ul" id="search_results" recent ></ul>
-
+    <input type="text" id="search_box" placeholder="Search any words..." style="width:100% ;">
+    <div class="content-ul" id="search_results"></div>
 </div>
 
 
@@ -29,7 +26,7 @@ SimpleJekyllSearch({
     searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
     noResultsText: 'No results found',
     limit: 10,
-    fuzzy: false,
+    fuzzy: true,
 })
 
 

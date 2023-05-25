@@ -43,16 +43,16 @@ header {
                         padding: 0 10px;
                         height: 52px;
                         &:hover {
-                            color: #4a86e8;
-
+                            color: #FFF;
                         }
                         i {
                             margin-right: 5px;
                         }
                     }
                     >.active {
-                        color: #980000;
-                         
+                        color: #FF3333;
+                        font-size: 16px;
+                        font-weight: bold;
                         box-shadow: 0 25px 25px -15px rgba(255,255,255,0.93);
                     }
                 }
