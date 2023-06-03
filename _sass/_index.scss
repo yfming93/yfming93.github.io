@@ -63,17 +63,21 @@
             }
         }
         .pagination {
+//             margin-bottom: 15px;
             text-align: center;
+            font-weight: 400;
             .previous,
             .next {
-                font-size: 20px;
+                font-size: 16px;
                 padding: 0 5px;
+                font-weight: 400;
             }
             .page_number {
                 padding: 0 5px;
+                font-weight: 400;
             }
             .disable {
-                color: #cbcbcb;
+                color: #cbcb;
             }
         }
     }

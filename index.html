@@ -23,7 +23,7 @@ layout: default
  
 <!--        <img style="display:block;width:100%;" src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/cb81ffe8gy1fgd9bb4pljg20dw05k1kx.gif"/>-->
 <!--        <small> <font color="#cccccc"> 若躺下偷懒，你的对手将会打得你毫无还手之力!</font> </small><br>-->
-        <img style="display:block;width:100%;" src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/20190519235637.png"/>
+        <img style="display:block;width:100%; border-radius: 15px" src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/20190519235637.png"/>
         <small> <font color="#000000"> 朝霞与稗草共影，湖水映秀山之色。晨风微凉，我可不可以在这里偷偷的等你...</font> </small><br>
 
 <!--        <div style="float:right;">-->
@@ -74,19 +74,19 @@ layout: default
         <!-- Pagination links -->
         <div class="pagination">
           {% if paginator.previous_page %}
-            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
-            <a href="{{ paginator.previous_page_path }}" class="previous"><i class="fa fa-angle-left"></i></a>
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i>首页</a>
+            <a href="{{ paginator.previous_page_path }}" class="previous"><i class="fa fa-angle-left"></i>上页</a>
           {% else %}
-            <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
-            <span class="previous disable"><i class="fa fa-angle-left"></i></span>
+            <span class="previous disable"><i class="fa fa-angle-double-left"></i>首页</span>
+            <span class="previous disable"><i class="fa fa-angle-left"></i>上页</span>
           {% endif %}
           <span class="page_number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
           {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path }}" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="{{ paginator.next_page_path }}" class="next">下页<i class="fa fa-angle-right"></i></a>
+            <a href="/page{{ paginator.total_pages }}" class="next">尾页<i class="fa fa-angle-double-right"></i></a>
           {% else %}
-            <span class="next disable"><i class="fa fa-angle-right"></i></span>
-            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+            <span class="next disable">下页<i class="fa fa-angle-right"></i></span>
+            <span class="next disable">尾页<i class="fa fa-angle-double-right"></i></span>
           {% endif %}
           共 {{ paginator.total_pages }} 页，有 {{ paginator.total_posts }} 篇文章
         </div>
@@ -198,5 +198,6 @@ layout: default
         </div>
     </div>
 </div>
-<!-- <script src="{{ "/js/scroll.min.js " | prepend: site.baseurl }}" charset="utf-8"></script> -->
-<!-- <script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script> -->
+
+<!-- <script src="{{ "/js/scroll.min.js " | prepend: site.baseurl }}" charset="utf-8"></script>-->
+<!-- <script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>-->
