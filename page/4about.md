@@ -11,71 +11,37 @@ type: page
 
 {% include banner.html %}
 
-### 喜欢的一段话:
-
-> [New York is 3 hours ahead of California 🎬](https://video.tudou.com/v/XMzYwOTY4NDA0NA==.html?spm=a2h0k.8191414.0.0&from=s1.8-1-1.2),
-> 
-> but it does not make California slow.
-> 
-> Someone graduated at the age of 22,
-> 
-> but waited 5 years before securing a good job!
-> 
-> Someone became a CEO at 25,
-> 
-> and died at 50.
-> 
-> While another became a CEO at 50,
-> 
-> and lived to 90 years.
-> 
-> Someone is still single,
-> 
-> while someone else got married.
-> 
-> Obama retires at 55,
-> 
-> but Trump starts at 70.
-> 
-> Absolutely everyone in this world works based on their Time Zone.
-> 
-> People around you might seem to go ahead of you,
-> 
-> some might see to behind you
-> 
-> But everyone is running their own RACE, in their own TIME.
-> 
-> Don’t envy them or mock them.
-> 
-> They are in their TIME ZONE, and you are in yours!
-> 
-> Life is about waiting for the right moment to act.
-> 
-> So, RELAX.
-> 
-> You’re not LATE.
-> 
-> You’re not EARLY.
-> 
-> You are very much ON TIME, and in your TIME ZONE Destiny set up for you.
-
 
 ## 关于我：
 
-Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。iOS开发者 & 业余设计师，会一些 H5（HTML、CSS、JS、Vue）基础。19年开始热衷于 flutter，从事 flutter 移动端（安卓和iOS）开发。 喜欢折腾一些新技术。
+----------
+
+Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。APP开发者（精通于iOS方向，安卓也能写写），业余设计师。熟悉 Object-c、Swift、Dart 等语言，会一些 H5（HTML、CSS、JS、Vue）基础，能写一些 Shell 脚本。19年开始热衷于 flutter，目前从事 flutter 移动端安卓和iOS开发。 
+喜欢折腾一些新技术。 各方面都搞搞看看，觉得好玩就不会放弃。生命不息，折腾不止！
 
 -------
 
 
 平时喜欢逛逛技术论坛，整理个人博客。常泡于 [Github](https://github.com/search?l=Objective-C&o=desc&q=stars%3A%3E100&s=updated&type=Repositories&utf8=%E2%9C%93)、[Raywenderlich](https://www.raywenderlich.com/category/ios)、[CocoaChina](http://www.cocoachina.com/ios/index.html)、[掘金](https://juejin.im/welcome/ios)、[简书](https://www.jianshu.com/c/e84a7722d673)、[博客园](https://www.cnblogs.com/cate/ios/)、等等技术社区。站在巨人的肩膀上去开发、去探索、去学习。经常去 [Stackoverflow](https://stackoverflow.com/questions/tagged/ios) 、[Github](https://github.com/search?l=Objective-C&o=desc&q=stars%3A%3E100&s=updated&type=Repositories&utf8=%E2%9C%93) 寻求解决方案。
 
-喜欢在黑夜中钻研技术，时常夜深人静的时候，我的精力值视乎爆满。于是就穿梭在各个技术论坛之间。同时喜欢听网易云里面的一些民谣歌曲和纯音乐，喜欢逛各大无损音乐论坛。每次找到一个自己的喜欢的音乐就会单曲循环好多天呃呃。
+喜欢在黑夜中钻研技术，时常夜深人静的时候，我的精力值视乎爆满，于是就穿梭在各个技术论坛之间。
+同时喜欢听一些民谣歌曲和纯音乐，喜欢逛各大无损音乐论坛。
 
 -------
 
-各方面都是辣鸡，但是觉得好玩就不会放弃。
+#### **自嘲标签:**
+音乐初烧、摄影爱好者、持续学习者、习惯性熬夜者
 
-<br/>
+
+> **喜欢的一句话:**
+>> **Not everything that counts can be counted, and not everything that’s counted truly counts! ------Einstein**
+
+> **喜欢的一视频:**
+>> #### **年轻人，别让任何人打乱你的人生节奏** [解读视频](https://www.bilibili.com/video/BV1Tp411Z7QP)
+>><iframe src="//player.bilibili.com/player.html?aid=23418031&bvid=BV1Tp411Z7QP&cid=39041012&t=9&page=1&as_wide=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height=600 width="100%" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" style="border-radius: 10px;"> </iframe>
+
+[//]: # (【年轻人，别让任何人打乱你的人生节奏（T君译）】 【精准空降到 00:09】 https://www.bilibili.com/video/BV1Tp411Z7QP/?share_source=copy_web&vd_source=2603c9368ecf5cfdd638e5e174d2d913&t=9)
+
 
 
 #### **开发过的一部分作品:**
@@ -107,8 +73,7 @@ Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。iOS开发者 & 业余
 	 - 南昌市的新闻头条资讯APP。
 
     
-#### **自嘲标签:**
-音乐初烧、摄影爱好者、持续学习者、习惯性熬夜者
+
         
 #### **联系方式:**  
 **邮箱：**yfmingo@163.com
