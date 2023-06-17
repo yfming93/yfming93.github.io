@@ -11,6 +11,36 @@ type: page
 
 {% include banner.html %}
 
+<html>
+
+    <head>
+
+    <style type="text/css">
+        .aspect-ratio {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%;
+        }
+    
+    .aspect-ratio iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+    </style>
+    
+        
+    </head>
+    
+    <body>
+
+    </body>
+</html>
+
+
 
 ## 关于我：
 
@@ -33,12 +63,15 @@ Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。APP开发者（精通
 音乐初烧、摄影爱好者、持续学习者、习惯性熬夜者
 
 
-> **喜欢的一句话:**
->> **Not everything that counts can be counted, and not everything that’s counted truly counts! ------Einstein**
 
-> **喜欢的一视频:**
->> #### **年轻人，别让任何人打乱你的人生节奏** [解读视频](https://www.bilibili.com/video/BV1Tp411Z7QP)
->><iframe src="//player.bilibili.com/player.html?aid=23418031&bvid=BV1Tp411Z7QP&cid=39041012&t=9&page=1&as_wide=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height=600 width="100%" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" style="border-radius: 10px;"> </iframe>
+**喜欢的一句话:**
+> **Not everything that counts can be counted, and not everything that’s counted truly counts! ------Einstein**
+
+**喜欢的一视频:**
+> **年轻人，别让任何人打乱你的人生节奏** 
+<div class="aspect-ratio" >
+	<iframe src="//player.bilibili.com/player.html?aid=23418031&bvid=BV1Tp411Z7QP&cid=39041012&t=9&page=1&as_wide=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600" width="100%" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" style="border-radius: 10px;"> </iframe>
+</div>
 
 [//]: # (【年轻人，别让任何人打乱你的人生节奏（T君译）】 【精准空降到 00:09】 https://www.bilibili.com/video/BV1Tp411Z7QP/?share_source=copy_web&vd_source=2603c9368ecf5cfdd638e5e174d2d913&t=9)
 
