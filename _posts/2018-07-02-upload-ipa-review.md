@@ -68,8 +68,6 @@ mathjax: true
 ### （四）、上传流程:
 
 #### 上传方法一  
-**注意：**
-**用 Application Loader 上传 ipa ,由于中国网络环境限制很可能卡在某一步骤长时间没进展，有 VPN 的请开启 VPN 环境上传。**
 
 
 将开发人员给的`ipa`包用 **application loader** 软件上传到 [iTunes connect 后台](https://itunesconnect.apple.com)

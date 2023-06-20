@@ -111,7 +111,8 @@ mathjax: true
 
 -------------------
 **详细操作记录：**
-``` Dart
+
+``` 
 mingo@macdembp-2 ~ % adb pair 192.168.192.59:33251
 Enter pairing code: 469301
 Successfully paired to 192.168.192.59:33251 [guid=adb-eeedefbd7c2441d0-bRW0iu]
@@ -120,7 +121,7 @@ failed to connect to '192.168.192.59:33251': Connection refused
 mingo@macdembp-2 ~ % adb connect 192.168.192.59:46281
 connected to 192.168.192.59:46281
 mingo@macdembp-2 ~ % adb shell 
-rk3568_mids:/ $ su                                                                                                     
+rk3568_mids:/ $ su 
 su: setgid failed: Operation not permitted
 1|rk3568_mids:/ $ sudo su
 /system/bin/sh: sudo: inaccessible or not found
@@ -128,7 +129,7 @@ su: setgid failed: Operation not permitted
 /system/bin/sh: adb: inaccessible or not found
 127|rk3568_mids:/ $ adb install -r /Users/mingo/Desktop/app-release.apk 
 /system/bin/sh: adb: inaccessible or not found
-127|rk3568_mids:/ $ %                                                                                                   mingo@macdembp-2 ~ % adb push /Users/mingo/Desktop/app-release.apk /data/local/tmp/
+127|rk3568_mids:/ $ % mingo@macdembp-2 ~ % adb push /Users/mingo/Desktop/app-release.apk /data/local/tmp/
 /Users/mingo/Desktop/app-release.apk: 1 file pushed, 0 skipped. 0.6 MB/s (56891298 bytes in 85.867s)
 mingo@macdembp-2 ~ % adb shell pm install /data/local/tmp/app-release.apk
 Failure [INSTALL_FAILED_TEST_ONLY: installPackageLI]

@@ -74,7 +74,7 @@ mathjax: true
 但是始终显示错误如下：
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/m61EXr.jpg)
 
-后来看了[这篇文章](https://github.com/vuejs/vue-hackernews-2.0/issues/98)才反应过来自己挂载着全局 `VPN`才使得不能正常访问。关闭全局`VPN`后就正常了。
+后来看了[这篇文章](https://github.com/vuejs/vue-hackernews-2.0/issues/98)才反应过来自己挂载着全局 `TZ`才使得不能正常访问。关闭全局`TZ`后就正常了。
 
 
 
