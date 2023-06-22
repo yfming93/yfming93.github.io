@@ -18,38 +18,25 @@ url: "https://www.yfmingo.cn" # the base hostname & protocol for your site
 permalink: /:year/:month/:day/:title/
 
 # other links
-twitter_username: #gaohaoyang126
-facebook_username: #gaohaoyang.water
 github_username:  yfming93
 email: yfmingo@163.com
 weibo_username: yfming
 zhihu_username: yfmingo
 wangyiyun_username: "278546999"
 linkedIn_username: #gaohaoyang
-dribbble_username:
-rss: feed.xml
-description_footer: 生命不息，折腾不止！
+#description_footer: 生命不息，折腾不止！
 
-
-# comments
-# two ways to comment, only choose one, and use your own short name
-# 两种评论插件，选一个就好了，使用自己的 short_name
-duoshuo_shortname: #hygblog
-disqus_shortname: fleeming
 
 # statistic analysis 统计代码
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
 # hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
-# xxxxx字符串
 baidu_tongji_id: 1b99a6addc30aac294cc600d2664427c
-google_analytics_id: UA-89635745-1 # google 分析追踪id
 
 # Build settings
 markdown: kramdown
 highlighter:    rouge
 kramdown:
   input:                     GFM
-  enable_coderay:            true
   auto_ids:                  true
   footnote_nr:               1
   entity_output:             as_char
@@ -79,7 +66,3 @@ plugins:
     - jekyll-seo-tag
 paginate: 6
 
-algolia:
-   application_id: 'KRITZR1P9L'
-   index_name:     'KRITZR1P9L'
-   search_only_api_key: '5fdcf330fc6ad3f56dff2fdf3a3f874d'
