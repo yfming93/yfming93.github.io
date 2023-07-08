@@ -59,7 +59,7 @@ type: page
                       {% else %}
                         {% assign color = 8 | minus: base %}
                       {% endif %}
-                      <a href="{{ root_url }}/{{ site.tag_dir }}#{{ tag[0] }}" style="font-size: {{ size }}pt; border-radius: 10px; padding: 5px ;border: 1px dashed #000 ; color: #{{ color}}{{ color }}{{ color }};  position: relative; margin-left: 10px; line-height: 40px; ">{{ tag[0] }}<sup> {{ tag[1].size }}</sup></a>
+                      <a href="{{ root_url }}/{{ site.tag_dir }}#{{ tag[0] }}" style="font-size: {{ size }}pt; border-radius: 10px; padding: 5px ;border: 1px solid #8e7cc3 ; color: #{{ color}}{{ color }}{{ color }};  position: relative; margin-left: 10px; line-height: 35px; ">{{ tag[0] }}<sup> {{ tag[1].size }}</sup></a>
                     {% endfor %}
                 </div>
         <hr>
