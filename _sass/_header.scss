@@ -32,7 +32,7 @@ header {
                 font-size: 0;
                 li {
                     list-style: none;
-                    font-size: 14px;
+                    font-size: 13px;
 //                     padding: 5px 0px;
                     display: inline-block;
                     -webkit-transition: 0.2s ease;
@@ -49,9 +49,9 @@ header {
                     }
                     >.active {
                         color: #FF3333;
-                        font-size: 15px;
+                        font-size: 13px;
                         font-weight: bold;
-                        padding: 0px 10px;
+                        padding: 0px 5px;
 //                         margin: 5px 5px;
                         border-radius:25px;
 //                         background:#FFF;
@@ -116,9 +116,9 @@ header {
                 ul {
                     li {
                         a {
-                            padding: 5px;
+                            padding: 3px;
                             i {
-                                margin-right: 10px;
+                                margin-right: 3px;
                             }
                         }
                     }

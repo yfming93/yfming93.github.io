@@ -149,12 +149,15 @@
     .page {
         width: 90%;
         background-color: #f8f8fd;
+        border-radius: 10px;
+
     }
 }
 @media screen and (max-width: 770px) {
     .page {
         width: 95%;
         background-color: #f8f8fd;
+        border-radius: 10px;
         .left {
             width: 100%;
             float: left;
