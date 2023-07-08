@@ -1,9 +1,9 @@
 
 
 
-    <div class="side content" >
-        {% include cloud-music.html %}
-    </div>
+<div class="side content" >
+    {% include cloud-music.html %}
+</div>
 
 
 <div class="side content" id="search-div">
@@ -13,10 +13,11 @@
     </div>
 
     <div id="site_search">
-        <input type="text" id="search_box" placeholder="Search any words..." style="width:98%; border-radius: 15px; padding: 5px; >
+        <input type="text" id="search_box" placeholder="Search any words..." style="width:93%; border-radius: 17px; padding: 7px 10px;>
+        <ul class="content-ul" ></ul>
     </div>
 
-    <div class="content-ul" id="search_results"></div>
+    <p class="content-ul" id="search_results"></p>
 </div>
 
 
@@ -36,7 +37,7 @@ SimpleJekyllSearch({
     json: '{{ site.baseurl }}/search_data.json',
     searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
     noResultsText: 'No results found',
-    limit: 10,
+    limit: 20,
     fuzzy: true,
 })
 
