@@ -42,45 +42,44 @@ type: page
 
 
 
-## 关于我：
+#### **我的简介：**
 
-----------
-
-Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。APP开发者（精通于iOS方向，安卓也能写写），业余设计师。熟悉 Object-c、Swift、Dart 等语言，会一些 H5（HTML、CSS、JS、Vue）基础，能写一些 Shell 脚本。19年开始热衷于 flutter，目前从事 flutter 移动端安卓和iOS开发。 
+Hey，我是 **袁凤鸣**，网络常用名：`Fleeming`  和  `Mingo`。毕业于武汉纺织大学。APP开发者（精通于iOS方向，安卓也能写写），业余设计师。熟悉 Object-c、Swift、Dart 等语言，会一些 H5（HTML、CSS、JS、Vue）基础，能写一些 Shell 脚本。16年开始搞iOS开发。19年开始热衷于 flutter，目前从事移动端软件安卓和iOS开发。 
 喜欢折腾一些新技术。 各方面都搞搞看看，觉得好玩就不会放弃。生命不息，折腾不止！
 
 -------
 
 
-平时喜欢逛逛技术论坛，整理个人博客。常泡于 [Github](https://github.com/search?l=Objective-C&o=desc&q=stars%3A%3E100&s=updated&type=Repositories&utf8=%E2%9C%93)、[Raywenderlich](https://www.raywenderlich.com/category/ios)、[CocoaChina](http://www.cocoachina.com/ios/index.html)、[掘金](https://juejin.im/welcome/ios)、[简书](https://www.jianshu.com/c/e84a7722d673)、[博客园](https://www.cnblogs.com/cate/ios/)、等等技术社区。站在巨人的肩膀上去开发、去探索、去学习。经常去 [Stackoverflow](https://stackoverflow.com/questions/tagged/ios) 、[Github](https://github.com/search?l=Objective-C&o=desc&q=stars%3A%3E100&s=updated&type=Repositories&utf8=%E2%9C%93) 寻求解决方案。
+平时喜欢逛逛技术论坛，写写博客。常泡于 [Github](https://github.com/trending)、[Stackoverflow](https://stackoverflow.com/questions/tagged/ios)、[Raywenderlich](https://www.raywenderlich.com/category/ios)、[吾爱破解](https://www.52pojie.cn/forum.php)、[掘金](https://juejin.im/welcome/ios)、[简书](https://www.jianshu.com/c/e84a7722d673)、[博客园](https://www.cnblogs.com/cate/ios/)、等等技术社区。站在巨人的肩膀上去开发、去学习、去探索。
 
-喜欢在黑夜中钻研技术，时常夜深人静的时候，我的精力值视乎爆满，于是就穿梭在各个技术论坛之间。
-同时喜欢听一些民谣歌曲和纯音乐，喜欢逛各大无损音乐论坛。
+喜欢在黑夜中钻研技术，时常夜深人静的时候，我就穿梭在各个技术论坛之间。
+同时喜欢听一些民谣歌曲和纯音乐，逛各大无损音乐论坛。
+
+
+##### **自嘲标签:**
+音乐初烧、摄影爱好者、持续学习者、习惯性熬夜者
 
 -------
 
-#### **自嘲标签:**
-音乐初烧、摄影爱好者、持续学习者、习惯性熬夜者
 
 
+喜欢的句子:
+> **Not everything that counts can be counted, and not everything that’s counted truly counts!**
 
-**喜欢的一句话:**
-> **Not everything that counts can be counted, and not everything that’s counted truly counts! ------Einstein**
+喜欢的视频:
 
-[//]: # (**喜欢的一视频:**)
+> **年轻人，别让任何人打乱你的人生节奏** 
 
-[//]: # (> **年轻人，别让任何人打乱你的人生节奏** )
+<div class="aspect-ratio" >
 
-[//]: # (<div class="aspect-ratio" >)
+	<iframe src="//player.bilibili.com/player.html?aid=23418031&bvid=BV1Tp411Z7QP&cid=39041012&t=9&page=1&as_wide=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600" width="100%" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" style="border-radius: 10px;"> </iframe>
 
-[//]: # (	<iframe src="//player.bilibili.com/player.html?aid=23418031&bvid=BV1Tp411Z7QP&cid=39041012&t=9&page=1&as_wide=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600" width="100%" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" style="border-radius: 10px;"> </iframe>)
-
-[//]: # (</div>)
+</div>
 
 
 
 
-#### **开发过的一部分作品:**
+#### **开发过的部分作品:**
  
  - <a target="_blank" href="https://itunes.apple.com/cn/app/id1241200980?mt=8"> 蓝牙小精灵      </a>
 	 - 蓝牙小精灵是一个人工智能创造的机器人，她能陪你聊天，讲故事，帮你订机票，同时具备自主学习的能力，做你24小时的贴心助理。 支持32个领域，在App上以不同的形式进行展示，支持文本发送，单击发送语音，长按发送语音三种交互方式。
@@ -111,26 +110,25 @@ Hey，我是 **袁凤鸣**，毕业于武汉纺织大学。APP开发者（精通
     
 
         
-#### **联系方式:**  
+#### **联系方式：**  
 **邮箱：**yfmingo@163.com
 **网站：**[www.yfmingo.cn](https://www.yfmingo.cn/)
 **Q Q：**928289877
 
 
 
-## 友情链接
+#### **常用链接：**
  
-[我的博客园](http://www.cnblogs.com/yfming/) \|[简书专题：iOS 技术文集](http://www.jianshu.com/c/8554d4ccb9b9) \| [简书专题：iOS Developer ](http://www.jianshu.com/c/e84a7722d673) 、[Code4App](http://www.code4app.com/forum-2-1-117-118.html)
+[我的博客园](http://www.cnblogs.com/yfming/) \|[简书专题：iOS 技术文集](http://www.jianshu.com/c/8554d4ccb9b9) \| [简书专题：iOS Developer ](http://www.jianshu.com/c/e84a7722d673) 
 
 
-[掘金](https://gold.xitu.io/timeline/ios) \| [在线开发者工具集](http://tool.lu/c/developer) \| [菜鸟学习网](http://www.runoob.com/) \| [V2EX](https://www.v2ex.com/) \| [code4app](http://code4app.qiniudn.com/) \| [oschina](http://www.oschina.net/ios/home) \| [伯乐在线](http://ios.jobbole.com/category/ios-dev/) \| [stackoverflow](http://stackoverflow.com/) \| [dribbble](https://dribbble.com/shots?list=teams) \| [QMUI 团队](https://github.com/QMUI) \| [swift51](http://www.swift51.com/) \| [swift.gg](http://swift.gg/) \| 
+[掘金](https://gold.xitu.io/timeline/ios) \| [在线开发者工具集](http://tool.lu/c/developer) \| [V2EX](https://www.v2ex.com/) \| [oschina](http://www.oschina.net/ios/home) \| [伯乐在线](http://ios.jobbole.com/category/ios-dev/) \| [stackoverflow](http://stackoverflow.com/) \| [dribbble](https://dribbble.com/shots?list=teams) \| [QMUI 团队](https://github.com/QMUI) \| [swift51](http://www.swift51.com/) \| [swift.gg](http://swift.gg/) \| 
 
 
 [王巍的博客](https://onevcat.com/#blog) \| [sunnyxx的博客](http://blog.sunnyxx.com/) \| [唐巧的博客](http://blog.devtang.com/) \| [TBOOX](http://www.tboox.org/cn/) 
 
  
 
-## 评论 😂
-{% include comments.html %}
-
+[//]: # (## 评论 😂)
+[//]: # ({% include comments.html %}
 

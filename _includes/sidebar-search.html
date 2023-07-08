@@ -1,17 +1,28 @@
 
-    {% include cloud-music.html %}
 
 
-<div class="link"></div>
+    <div class="side content" >
+        {% include cloud-music.html %}
+    </div>
 
-<div>
-    <i class="fa fa-search"></i>
-    Search
-</div>
-<div id="site_search">
-    <input type="text" id="search_box" placeholder="Search any words..." style="width:100% ;">
+
+<div class="side content" id="search-div">
+    <div  >
+        <i class="fa fa-search"></i>
+        Search
+    </div>
+
+    <div id="site_search">
+        <input type="text" id="search_box" placeholder="Search any words..." style="width:98%; border-radius: 15px; padding: 5px; >
+    </div>
+
     <div class="content-ul" id="search_results"></div>
 </div>
+
+
+
+
+
 
 
 <!-- <link rel="stylesheet" type="text/css" href="{{ site.url }}/css/main.css"> -->

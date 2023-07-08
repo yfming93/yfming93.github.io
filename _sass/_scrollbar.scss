@@ -1,7 +1,7 @@
 .content-ul {
     &::-webkit-scrollbar {
-        width: 7px;
-        height: 6px;
+        width: 10px;
+        height: 10px;
     }
     &::-webkit-scrollbar-button {
         width: 0;
@@ -19,7 +19,7 @@
         background: #787878;
     }
     &::-webkit-scrollbar-track {
-        background: #F1F1F1;
+        background: transparent;
         // border: 1 solid #ffffff;
         border-radius: 50px;
     }
@@ -32,4 +32,5 @@
     &::-webkit-scrollbar-corner {
         background: transparent;
     }
+
 }

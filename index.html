@@ -6,32 +6,25 @@ layout: default
     <div class="left">
         <h1>Welcome to Fleeming's Blog!</h1>
         <br>
-        
+
+        <a href="http://www.yfmingo.cn/repos/" style="color:#003399;" >
+            <marquee>Fleeming's Github-iOS 资源收集录</marquee>
+        </a>
+        <br>
+
         <small>这里记录着我的大前端学习之路!</small> <br>
-        <small>最好的学习时间是十年前。其次，是你看到的现在!</small><br><br>
-<!--         <div class="wrapper" style=" text-align:center;">-->
-<!--            <span >-->
-<!--                <a href="http://www.yfmingo.cn/repos/">-->
-<!--                    <span style="color:#003399;" >-->
-<!--                        <big><marquee>点击进入： Fleeming's Github-iOS 资源收集录</marquee></big>-->
-<!--                    </span>-->
-<!--                </a>-->
-<!--            </span>-->
-<!--         </div>-->
+        <small>最好的学习时间是十年前。其次，是你看到的现在!</small>
+        <br>
+        <br>
+        <small color="#000000"> 朝霞与稗草共影，湖水映秀山之色。晨风微凉，我可不可以在这里偷偷的等你......</small>
 
          <br>
- 
-<!--        <img style="display:block;width:100%;" src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/cb81ffe8gy1fgd9bb4pljg20dw05k1kx.gif"/>-->
-<!--        <small> <font color="#cccccc"> 若躺下偷懒，你的对手将会打得你毫无还手之力!</font> </small><br>-->
+         <br>
         <img style="display:block;width:100%; border-radius: 15px" src="https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202306051002204.jpg"/>
-        <small> <font color="#000000"> 朝霞与稗草共影，湖水映秀山之色。晨风微凉，我可不可以在这里偷偷的等你...</font> </small><br>
-
-<!--        <div style="float:right;">-->
-<!--            <small> <i> <font color="#cccccc"> Some things like that above. </font> </i> </small> -->
-<!--        </div>-->
-<!--        <br><br>-->
 
         <hr>
+        <hr>
+
         <ul>
             {% for post in paginator.posts %}
               <li>
@@ -70,7 +63,6 @@ layout: default
         </ul>
 
 
-
         <!-- Pagination links -->
         <div class="pagination">
           {% if paginator.previous_page %}
@@ -96,9 +88,7 @@ layout: default
     <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
     <div class="right">
         <div class="wrap">
-            <div class="side">
-                {% include sidebar-search.html %}
-            </div>
+            {% include sidebar-search.html %}
 
             <div class="side">
                 <div>
@@ -176,28 +166,14 @@ layout: default
                 </div>
             </div>
 
-<!--              <div class="side">
-                <div>
-                    <i class="fa fa-external-link"></i>
-                    喂下小松鼠吧
-                </div>
-                <ul  class="content-ul" style="padding-left: 3px;padding-right: 0px;">
-                    <object type="application/x-shockwave-flash" style="outline:none;" data="https://cdn.abowman.com/widgets/hamster/hamster.swf?" width="260" height="205"><param name="movie" value="https://cdn.abowman.com/widgets/hamster/hamster.swf?"></param><param name="AllowScriptAccess" value="always"></param><param name="wmode" value="opaque"></param></object>
-                </ul>
-            </div> -->
-
             <!-- <div class="side">
                 <div>
                     <i class="fa fa-external-link"></i>
                     Links
                 </div>
                 <ul  class="content-ul">
-
                 </ul>
             </div> -->
         </div>
     </div>
 </div>
-
-<!-- <script src="{{ "/js/scroll.min.js " | prepend: site.baseurl }}" charset="utf-8"></script>-->
-<!-- <script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>-->
