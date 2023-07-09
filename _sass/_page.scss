@@ -150,7 +150,6 @@
         width: 90%;
         background-color: #f8f8fd;
         border-radius: 10px;
-
     }
 }
 @media screen and (max-width: 770px) {
@@ -198,14 +197,16 @@
             visibility: visible;
             position: fixed;
             top: 130px;
-            right: 2.5%;
-            padding: 5px 10px;
+            right: 3%;
+            padding: 8px 12px;
+            margin: 100px 10px;
             color: #333;
             font-size: 15px;
             background-color: #f8f8fd;
-            box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3), 0 0 30px rgba(10, 10, 0, 0.1) inset;
+            border-radius: 20px;
+            box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3), 0 0 30px rgba(10, 10, 0, 0.1) inset;
             opacity: 0.7;
-            transition: 0.2s cubic-bezier(0.5, 0.1, 0.51, 1.38);
+            transition: 0.5s cubic-bezier(0.5, 0.1, 0.51, 1.38);
         }
         .anchor-hide {
             opacity: 0;

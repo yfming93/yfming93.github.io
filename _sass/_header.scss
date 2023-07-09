@@ -31,12 +31,13 @@ header {
             ul {
                 font-size: 0;
                 li {
-                    list-style: none;
+//                     list-style: none;
                     font-size: 13px;
 //                     padding: 5px 0px;
                     display: inline-block;
                     -webkit-transition: 0.2s ease;
                     transition: 0.2s ease;
+
                     a {
                         display: inline-block;
                         margin: 0px 5px;
@@ -50,13 +51,14 @@ header {
                     >.active {
                         color: #FF3333;
                         font-size: 13px;
-                        font-weight: bold;
+//                         font-weight: bold;
                         padding: 0px 5px;
-//                         margin: 5px 5px;
-                        border-radius:25px;
-//                         background:#FFF;
+                        border-radius: 0px 0px 30px 30px;
+//                         background:#eee;
 //                         height: 35px;
+//                         box-shadow: 0 25px 25px 15px rgba(255,255,255,0.93);
                         box-shadow: 1px 25px 25px 1px rgba(255,255,255,0.93);
+//                         box-shadow: 0 25px 25px -15px rgba(255,255,255,0.93);
                     }
                 }
             }
@@ -67,14 +69,14 @@ header {
     header {
         height: 52px;
         .wrapper {
-            width: 90%;
+            width: 100%;
             line-height: 52px;
             .brand {
-                font-size: 16px;
+                font-size: 12px;
             }
             small {
                 margin-left: 15px;
-                font-size: 12px;
+                font-size: 10px;
             }
             .menu{
                 display: none;
@@ -83,9 +85,9 @@ header {
                 ul {
                     li {
                         a {
-                            padding: 8px;
+                            padding: 5px;
                             i {
-                                margin-right: 10px;
+                                margin-right: 1px;
                             }
                         }
                     }
@@ -100,10 +102,11 @@ header {
       header {
         height: 110px;
         .wrapper {
-            width: 90%;
+            width: 100%;
             line-height: 52px;
+            padding-right:10px;
             .brand {
-                font-size: 12px;
+                font-size: 10px;
             }
             small {
                 margin-left: 10px;
@@ -116,9 +119,10 @@ header {
                 ul {
                     li {
                         a {
-                            padding: 3px;
+//                             padding: 3px;
                             i {
-                                margin-right: 3px;
+                                font-size: 8px;
+                                margin-right: 1px;
                             }
                         }
                     }
