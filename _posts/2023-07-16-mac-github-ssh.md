@@ -16,8 +16,6 @@ mathjax: true
 {:toc}
 ---
 
-# Mac电脑 GitHub 配置SSH Key
-
 ## 原因
 之前一直使用https的仓库链接进行提交`Github`仓库。但是最近一直动不动403无响应。经常链接不上。现在采用`SSH`链接仓库。记录下方便查询。
 
