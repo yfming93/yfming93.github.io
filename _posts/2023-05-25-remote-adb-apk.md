@@ -19,6 +19,51 @@ mathjax: true
 
 # 远程异地adb调试并配置Android为kiosk霸屏
 
+### 0x0B 更新 2023年07月16日23:13:58
+- 后发现 `LADB`可以在安卓设备中进行本地调试`adb`，自己`adb`自己。也是需要`WiFi`模块的。
+- 我用的版本 `LADB_v2.2.1_Mod_Armeabi_v7a_Dlpure.com`，可去`Github`搜索下载。
+
+**还有`termux`也是可以完成本地环境adb。**
+- `termux-app_v0.118.0+github-debug_universal.apk`
+- `termux`其实就是安卓设备的本地终端，需要找个教程利用这个终端按照安卓设备本地的`adb`环境。再通过如下操作链接:
+    - 安卓设备开启`USB调试`
+    - `adb tcpip 5555`
+    - `adb connect 192.168.0.168:5555`
+        - `192.168.0.168`是本地设备内网`IP`
+        - 这时候安卓新设备那边会提示授权弹窗，点击同意授权。
+        - `adb devices` 连接好后可查看设备状态。是`device` 状态就可以操作其他的一些列`adb`流程命令。
+- **说明：**   可以研究下`scrcpy`这个进行远程显示安卓设备到本地的电脑。
+    - 其实也可以进行废旧手机利用。如果手机屏幕碎屏了，黑屏无法使用屏幕了。 也是可以使用`scrcpy`实时展示手机画面的。
+
+   
+**常用命名:** 
+```
+复制安装包到设备
+adb shell cp /storage/emulated/0/app.apk /data/local/tmp/
+
+安装 
+adb shell pm install -r -t -d -g /data/local/tmp/app.apk
+
+设置管理者 
+adb shell dpm set-device-owner com.shidai.app.runway/com.kalemba128.flutter_kiosk_android.FlutterKioskAndroidPlugin
+
+移除管理者 
+adb shell dpm remove-active-admin com.shidai.app.runway/com.kalemba128.flutter_kiosk_android.FlutterKioskAndroidPlugin
+
+卸载
+adb shell pm uninstall com.shidai.app.runway
+
+启动
+adb shell am start -n com.shidai.app.runway/.MainActivity
+
+
+```
+
+
+---------------------
+---------------------
+
+
 ### 0x00 背景
 - 公司有多个公园大屏的项目在其他外省城市，各大屏均采用`Android`系统。
 - 这种室外大屏就必须达到霸屏的效果。整个设备开机启动只能霸屏显示我们的App。用户无法退出当前App，也不能进行其他操作。
