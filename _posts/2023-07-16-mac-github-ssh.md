@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Mac电脑 GitHub 配置SSH Key"
-date:   2023-07-16
+date:   2024-01-16
 author: "袁凤鸣"
 excerpt: 
 
@@ -15,6 +15,30 @@ mathjax: true
 * content
 {:toc}
 ---
+
+## 2024-01-20 00:01:22 补充更新
+最近Mac的SourceTree提交SSH仓库经常出现：
+
+    ssh:connect to host github.com port 22: Connection timed out
+    
+查阅相关资料后明白22端口无法使用了。因此想到修改端口试试。一般默认端口都是443
+
+- cd 进入`~/.ssh`下    
+- 使用`vim config`打开 编辑 config文件
+- 输入`I`后可以编写。粘贴如下：
+
+        Host github.com
+        User git
+        Hostname ssh.github.com
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/id_rsa
+        Port 443
+- 然后`WQ`保存退出，并使用如下检查是否成功
+
+        ssh -T git@github.com
+
+- 按照提示操作，成功后如图。然后可以去提交了
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202401200008609.png)
 
 ## 原因
 之前一直使用https的仓库链接进行提交`Github`仓库。但是最近一直动不动403无响应。经常链接不上。现在采用`SSH`链接仓库。记录下方便查询。
