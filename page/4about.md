@@ -65,14 +65,16 @@ Hey，我是 **袁凤鸣**，网络常用名：`Fleeming`  和  `Mingo`。毕业
 
 喜欢的句子:
 > **Not everything that counts can be counted, and not everything that’s counted truly counts!**
+> **不是所有有价值的东西都能被计算，也不是所有有价值的东西都真正有价值！** 
 
 喜欢的视频:
 
-> **年轻人，别让任何人打乱你的人生节奏** 
 
 <div class="aspect-ratio" >
 
-	<iframe src="//player.bilibili.com/player.html?aid=23418031&bvid=BV1Tp411Z7QP&cid=39041012&t=9&page=1&as_wide=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600" width="100%" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" style="border-radius: 10px;"> </iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=1155830341&bvid=BV17Z421M77F&cid=1582901749&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600" width="100%" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" style="border-radius: 10px;"></iframe>
+
+	<!-- <iframe src="//player.bilibili.com/player.html?aid=23418031&bvid=BV1Tp411Z7QP&cid=39041012&t=9&page=1&as_wide=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600" width="100%" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" style="border-radius: 10px;"> </iframe> -->
 
 </div>
 
