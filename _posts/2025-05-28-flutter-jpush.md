@@ -220,8 +220,8 @@ mathjax: true
 ### flutter 端的推送代码
 
 - 以下`AppKey.appKeyJPush`就是极光申请的key。
-    ``` dart
-        // 接入文档 https://github.com/jpush/jpush-flutter-plugin
+``` dart
+    // 接入文档 https://github.com/jpush/jpush-flutter-plugin
     // https://github.com/jpush/jpush-flutter-plugin/blob/master/documents/APIs.md
     // 各厂商集成参考 https://docs.jiguang.cn/jpush/client/Android/android_3rd_guide
     // import 'package:jpush_flutter/jpush_flutter.dart';
@@ -354,7 +354,7 @@ mathjax: true
       }
     }
 
-    ```    
+```    
          
 - 一些文档
     
@@ -389,7 +389,7 @@ mathjax: true
      
  我的解决是：在安卓`MainActivity`中
      
-     ``` Kotlin
+ ``` Kotlin
     package com.xxx.app
     import android.annotation.TargetApi
     import android.app.ActivityManager
@@ -474,17 +474,18 @@ mathjax: true
     
         }
     }
-     ```
+```
      
      
-     在`onStart`中先`JCollectionAuth.setAuth(context, false);`。还要写flutter和原生交互方法（不会自己去学）。然后等用户在`APP`在`flutter` 端用户点击同意隐私协议后，进行和原生安卓交互，回调到原生安卓，重新初始化
+ 
+ 在`onStart`中先`JCollectionAuth.setAuth(context, false);`。还要写flutter和原生交互方法（不会自己去学）。然后等用户在`APP`在`flutter` 端用户点击同意隐私协议后，进行和原生安卓交互，回调到原生安卓，重新初始化
          
         JPushInterface.init(this)
         JPushInterface.setDebugMode(false)
         JCollectionAuth.setAuth(context, true)
 
 **如果学不会就看我封装的app_native.dart**
-```
+``` dart
 import 'package:app/core/app_export.dart';
 import 'package:app/https/env.dart';
 
@@ -689,17 +690,19 @@ public class SignaturesUtils {
 ### 坑11 推送消息处理。安卓和iOS的不一样
    
    
-    // 点击通知回调方法。
-      onOpenNotification: (Map<String, dynamic> message) async {
-        //     {alert: 推送内容2, extras: {cn.jpush.android.ALERT_TYPE: 7, cn.jpush.android.NOTIFICATION_ID: 518325105, cn.jpush.android.MSG_ID: 18100827735900274, cn.jpush.android.ALERT: 推送内容2, cn.jpush.android.EXTRA: {"route_path":"\/problems"}}, title: 推送标题2}
-        logs('----jpush-onOpenNotification-:$message');
-        jpush.setBadge(0);
-          // 业务字段都在 extras下的cn.jpush.android.EXTRA 中。
-        var  msg ;
-        if (isAndroid) msg = message['extras']['cn.jpush.android.EXTRA'];
-        if (isIOS)  msg = message['extras']; 
-     },
+``` dart
+  // 点击通知回调方法。
+  onOpenNotification: (Map<String, dynamic> message) async {
+    //     {alert: 推送内容2, extras: {cn.jpush.android.ALERT_TYPE: 7, cn.jpush.android.NOTIFICATION_ID: 518325105, cn.jpush.android.MSG_ID: 18100827735900274, cn.jpush.android.ALERT: 推送内容2, cn.jpush.android.EXTRA: {"route_path":"\/problems"}}, title: 推送标题2}
+    logs('----jpush-onOpenNotification-:$message');
+    jpush.setBadge(0);
+      // 业务字段都在 extras下的cn.jpush.android.EXTRA 中。
+    var  msg ;
+    if (isAndroid) msg = message['extras']['cn.jpush.android.EXTRA'];
+    if (isIOS)  msg = message['extras']; 
+ },
       
+```
    
 ### 坑12 APP 的极光SDK有生产环境和测试环境，后台接口也有生产环境和测试环境
 
@@ -714,6 +717,7 @@ public class SignaturesUtils {
    
    去各家厂商后台申请厂商消息分类：得到如下
 
+    ``` JSON
     {
         "options": {
             "classification": 1,
@@ -740,6 +744,7 @@ public class SignaturesUtils {
             }
         }
     }
+    ```
 
    如下是后台按照我申请配置的厂商消息分类：
    
@@ -800,3 +805,19 @@ public class SignaturesUtils {
 
 并不是原生SDK文档中对应的版本
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281747025.png)    
+
+### 坑17 小米 错误码:27001--channel相关信息不匹配
+
+小米 27001#invalid channel info!
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281757995.png)
+
+服务端推送时AndroidNotificationXiaomiChannel参数是否正确配置， 小米开放平台消息渠道是否成功申请。[https://dev.mi.com/console/doc/detail?pId=2422#_2](https://dev.mi.com/console/doc/detail?pId=2422#_2)
+
+申请后 回到 `坑14 ` 让后台接口配置
+
+    "xiaomi": {
+        "channel_id": "xxx"
+    },
+                
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281758879.png)
+
