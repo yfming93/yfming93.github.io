@@ -797,3 +797,6 @@ public class SignaturesUtils {
     implementation 'cn.jiguang.sdk.plugin:oppo:5.7.0'
     implementation 'cn.jiguang.sdk.plugin:vivo:5.7.0'
     implementation 'cn.jiguang.sdk.plugin:honor:5.7.0'
+
+并不是原生SDK文档中对应的版本
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281747025.png)    
