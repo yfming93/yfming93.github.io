@@ -209,130 +209,119 @@ tasks.register("clean", Delete) {
 ## flutter 端的推送代码
 
 - 以下`AppKey.appKeyJPush`就是极光申请的key。
-- 有个文件`app_export.dart`，`im_talk.dart`，`im_chat_page.dart`，`im_socket.dart`，`kit_view.dart`都是我的业务文件。你复制过去报错删除即可。
+- 有个文件`app_export.dart`，`im_talk.dart`，`im_chat_page.dart`，`im_socket.dart`，`kit_view.dart`,`ImSocket`都是我的业务文件。你复制过去报错删除即可。
+
 ``` dart
-    // 接入文档 https://github.com/jpush/jpush-flutter-plugin
-    // https://github.com/jpush/jpush-flutter-plugin/blob/master/documents/APIs.md
-    // 各厂商集成参考 https://docs.jiguang.cn/jpush/client/Android/android_3rd_guide
-    // import 'package:jpush_flutter/jpush_flutter.dart';
+// 接入文档 https://github.com/jpush/jpush-flutter-plugin
+// https://github.com/jpush/jpush-flutter-plugin/blob/master/documents/APIs.md
+// 各厂商集成参考 https://docs.jiguang.cn/jpush/client/Android/android_3rd_guide
+// import 'package:jpush_flutter/jpush_flutter.dart';
     
-    import 'dart:developer';
-    import 'package:app/core/app_export.dart';
-    import 'package:app/models/im/im_talk.dart';
-    import 'package:app/pages/im/im_chat_page.dart';
-    import 'package:app/pages/im/im_socket.dart';
-    import 'package:app/widgets/kit_view.dart';
-    import 'package:jpush_flutter/android_ios/jpush_flutter_a_i.dart';
-    import 'package:jpush_flutter/jpush_interface.dart';
-    import '../core/app_key.dart';
+import 'dart:developer';
+import 'package:app/core/app_export.dart';
+import 'package:app/models/im/im_talk.dart';
+import 'package:app/pages/im/im_chat_page.dart';
+import 'package:app/pages/im/im_socket.dart';
+import 'package:app/widgets/kit_view.dart';
+import 'package:jpush_flutter/android_ios/jpush_flutter_a_i.dart';
+import 'package:jpush_flutter/jpush_interface.dart';
+import '../core/app_key.dart';
     
-    class AppPush {
-      static AppPush? _instance;
-      AppPush._internal() {
-        _instance = this;
-        jpush =  JPush_A_I();
-      }
-      factory AppPush() => _instance ?? AppPush._internal();   ///判空符??
+class AppPush {
+  static AppPush? _instance;
+  AppPush._internal() {
+    _instance = this;
+    jpush =  JPush_A_I();
+  }
+  factory AppPush() => _instance ?? AppPush._internal();   ///判空符??
     
-      late JPush_A_I jpush;
+  late JPush_A_I jpush;
     
-      Future<void> init() async {
-        logs('---dao.token--${dao.token}');
-        // if (dao.token.isEmpty) return;
-        // 之前提审因为极光被拒，就操作提审日之后延迟5天才初始化极光。现在不需要了
-        // var t1 = DateTime.tryParse(Env.time);
-        // logs('---t1--$t1');
-        // var t2 = DateTime.now();
-        // if(t1 != null) {
-        //   if(t2.difference(t1).inDays <= 5) {
-        //     return;
-        //   }
-        // }
+  Future<void> init() async {
+    logs('---dao.token--${dao.token}');
+    // if (dao.token.isEmpty) return;
+    // 之前提审因为极光被拒，就操作提审日之后延迟5天才初始化极光。现在不需要了
+    // var t1 = DateTime.tryParse(Env.time);
+    // logs('---t1--$t1');
+    // var t2 = DateTime.now();
+    // if(t1 != null) {
+    //   if(t2.difference(t1).inDays <= 5) {
+    //     return;
+    //   }
+    // }
     
-        jpush.addEventHandler(
-          // 接收通知回调方法。
-          onReceiveNotification: (Map<String, dynamic> message) async {
-            // logs("----jpush-onReceiveNotification: $message");
-            logs('--jsonDecode--:${jsonEncode(message)}');
-          },
+    jpush.addEventHandler(
+      // 接收通知回调方法。
+      onReceiveNotification: (Map<String, dynamic> message) async {
+        // logs("----jpush-onReceiveNotification: $message");
+        logs('--jsonDecode--:${jsonEncode(message)}');
+      },
     
-          // onConnected: (Map<String, dynamic> message) async {
-          //   logs("----jpush-onConnected: $message");
-          // },
-          // onReceiveNotificationAuthorization: (Map<String, dynamic> message) async {
-          //   logs("----jpush-onReceiveNotificationAuthorization: $message");
-          // },
-          // onInAppMessageShow: (Map<String, dynamic> message) async {
-          //   logs("----jpush-onInAppMessageShow: $message");
-          // },
-          // onNotifyMessageUnShow: (Map<String, dynamic> message) async {
-          //   logs("----jpush-onNotifyMessageUnShow: $message");
-          // },
-          // 点击通知回调方法。
-          onOpenNotification: (Map<String, dynamic> message) async {
-            //     {alert: 推送内容2, extras: {cn.jpush.android.ALERT_TYPE: 7, cn.jpush.android.NOTIFICATION_ID: 518325105, cn.jpush.android.MSG_ID: 18100827735900274, cn.jpush.android.ALERT: 推送内容2, cn.jpush.android.EXTRA: {"route_path":"\/problems"}}, title: 推送标题2}
-            logs('----jpush-onOpenNotification-:$message');
-            jpush.setBadge(0);
-            Future.delayed(Duration(milliseconds: 1000),(){
-              _do_message(message);
-            });
-          },
-          // 接收自定义消息回调方法。
-          onReceiveMessage: (Map<String, dynamic> message) async {
-            logs("----jpush-onReceiveMessage: $message");
+      // onConnected: (Map<String, dynamic> message) async {
+      //   logs("----jpush-onConnected: $message");
+      // },
+      // onReceiveNotificationAuthorization: (Map<String, dynamic> message) async {
+      //   logs("----jpush-onReceiveNotificationAuthorization: $message");
+      // },
+      // onInAppMessageShow: (Map<String, dynamic> message) async {
+      //   logs("----jpush-onInAppMessageShow: $message");
+      // },
+      // onNotifyMessageUnShow: (Map<String, dynamic> message) async {
+      //   logs("----jpush-onNotifyMessageUnShow: $message");
+      // },
+      // 点击通知回调方法。
+      onOpenNotification: (Map<String, dynamic> message) async {
+        //     {alert: 推送内容2, extras: {cn.jpush.android.ALERT_TYPE: 7, cn.jpush.android.NOTIFICATION_ID: 518325105, cn.jpush.android.MSG_ID: 18100827735900274, cn.jpush.android.ALERT: 推送内容2, cn.jpush.android.EXTRA: {"route_path":"\/problems"}}, title: 推送标题2}
+        logs('----jpush-onOpenNotification-:$message');
+        jpush.setBadge(0);
+        Future.delayed(Duration(milliseconds: 1000),(){
+          _do_message(message);
+        });
+      },
+      // 接收自定义消息回调方法。
+      onReceiveMessage: (Map<String, dynamic> message) async {
+        logs("----jpush-onReceiveMessage: $message");
+      },
+    );
+    // jpush.setup(appKey: AppKey.appKeyJPush, channel: Env.channel, production: Env.indexUrl == 0, debug: isDebug,);
+    jpush.setup(appKey: AppKey.appKeyJPush, channel: '', production: true, debug: true,);
+    jpush.applyPushAuthority(const NotificationSettingsIOS(sound: true, alert: true, badge: true));
+    jpush.setAuth(enable: true);
+    if(user.info.mobile.isNotEmpty) jpush.setAlias(user.info.mobile);
+    jpush.getRegistrationID().then((rid) {
+      AppRun().registration_id = rid;
+      log('---registration_id--$rid');
+    });
+    jpush.isNotificationEnabled().then((bool value) {
+      print("通知授权是否打开: $value");
+      if (!value) {
+        Get.snackbar(
+          "提示",
+          "没有通知权限,点击跳转打开通知设置界面",
+          duration: const Duration(seconds: 6),
+          onTap: (_) {
+            jpush.openSettingsForNotification();
           },
         );
-        // jpush.setup(appKey: AppKey.appKeyJPush, channel: Env.channel, production: Env.indexUrl == 0, debug: isDebug,);
-        jpush.setup(appKey: AppKey.appKeyJPush, channel: '', production: true, debug: true,);
-        jpush.applyPushAuthority(const NotificationSettingsIOS(sound: true, alert: true, badge: true));
-        jpush.setAuth(enable: true);
-        if(user.info.mobile.isNotEmpty) jpush.setAlias(user.info.mobile);
-        jpush.getRegistrationID().then((rid) {
-          AppRun().registration_id = rid;
-          log('---registration_id--$rid');
-        });
-        jpush.isNotificationEnabled().then((bool value) {
-          print("通知授权是否打开: $value");
-          if (!value) {
-            Get.snackbar(
-              "提示",
-              "没有通知权限,点击跳转打开通知设置界面",
-              duration: const Duration(seconds: 6),
-              onTap: (_) {
-                jpush.openSettingsForNotification();
-              },
-            );
-          }
-        }).catchError((onError) {
-          print("通知授权是否打开: ${
-              onError.toString()}");
-        });
-        jpush.enableAutoWakeup(enable: true);
-        if(isAndroid) jpush.setWakeEnable(enable: false);
       }
+    }).catchError((onError) {
+      print("通知授权是否打开: ${
+          onError.toString()}");
+    });
+    jpush.enableAutoWakeup(enable: true);
+    if(isAndroid) jpush.setWakeEnable(enable: false);
+  }
     
-      Future<void> _do_message(Map<String, dynamic> message) async {
-        // 业务字段都在 extras下的cn.jpush.android.EXTRA 中。
-        var  msg ;
-        if (isAndroid) msg = message['extras']['cn.jpush.android.EXTRA'];
-        if (isIOS)  msg = message['extras'];
-        logs('--map-msg-:${jsonEncode(msg)}');
+  Future<void> _do_message(Map<String, dynamic> message) async {
+    // 业务字段都在 extras下的cn.jpush.android.EXTRA 中。
+    var  msg ;
+    if (isAndroid) msg = message['extras']['cn.jpush.android.EXTRA'];
+    if (isIOS)  msg = message['extras'];
+    logs('--map-msg-:${jsonEncode(msg)}');
     
-        ImTalkItems mo = ImTalkItems.fromJson(Map<String, dynamic>.from(msg));
-        ImSocket().talk_type.value = mo.talk_type;
-        ImSocket().receiver_id.value = mo.receiver_id;
-        ImSocket().toName.value = mo.name;
-    
-        if ((mo.talk_type > 0 ) && (mo.receiver_id > 0 ))  {
-          Get.to(()=>ImChatPage(talk_type: mo.talk_type,receiver_id: mo.receiver_id,showInput: mo.key != '1_1',group_id: mo.talk_type == 2? mo.receiver_id.toString():'',code: mo.enterprise_case_code,))?.then((x) {
-            ImSocket().toName.value = '';
-            ImSocket().talk_type.value = 0;
-            ImSocket().receiver_id.value = 0;
-            ImSocket().msgs.clear();
-          });
-        }
-      }
-    }
+    ImTalkItems mo = ImTalkItems.fromJson(Map<String, dynamic>.from(msg));
+  }
+}
 
 ```    
          
@@ -352,8 +341,6 @@ tasks.register("clean", Delete) {
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281503144.png)
 呀呀呀，APP成功收到了消息。激动万分。
 
-
-
 然而。![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281510065.png)
 少年还是太年轻了。缺少社会的鞭打，极光怎么会让你这么容易就搞成呢。发个问题都不叼的人。。
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281508493.png)
@@ -369,96 +356,97 @@ tasks.register("clean", Delete) {
      
  我的解决是：在安卓`MainActivity`中
      
- ``` Kotlin
-package com.xxx.app
-import android.annotation.TargetApi
-import android.app.ActivityManager
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.os.Build
-import android.os.Bundle
-import android.widget.Toast
-import cn.jiguang.api.utils.JCollectionAuth
-import cn.jpush.android.api.JPushInterface
-import com.yuesutech.app.nsp.R
-import io.flutter.embedding.android.FlutterActivity
-import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.plugin.common.MethodChannel
-import java.util.Timer
-import kotlin.concurrent.schedule
-    
-class MainActivity: FlutterActivity() {
-    private val CHANNEL = "flutter.app.method.plugin"
-    
-//    lateinit var resultCallback: MethodChannel.Result;
-    
-    override fun onStart() {
-        super.onStart()
-    
-//        https://github.com/jpush/jpush-flutter-plugin/issues/383
-        JCollectionAuth.setAuth(context, false);
-    
-    }
-    
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    
-        Timer("ChangingTaskDescriptionColor", false).schedule(1000) {
-            val taskDescription: ActivityManager.TaskDescription =
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    //android 9.0
-                    setTaskDescriptionP()
-                } else {
-                    setTaskDescriptionBeforeP()
-                }
-            setTaskDescription(taskDescription)
+     
+    ``` Kotlin
+    package com.xxx.app
+    import android.annotation.TargetApi
+    import android.app.ActivityManager
+    import android.graphics.BitmapFactory
+    import android.graphics.Color
+    import android.os.Build
+    import android.os.Bundle
+    import android.widget.Toast
+    import cn.jiguang.api.utils.JCollectionAuth
+    import cn.jpush.android.api.JPushInterface
+    import app包名.nsp.R
+    import io.flutter.embedding.android.FlutterActivity
+    import io.flutter.embedding.engine.FlutterEngine
+    import io.flutter.plugin.common.MethodChannel
+    import java.util.Timer
+    import kotlin.concurrent.schedule
+        
+    class MainActivity: FlutterActivity() {
+        private val CHANNEL = "flutter.app.method.plugin"
+        
+    //    lateinit var resultCallback: MethodChannel.Result;
+        
+        override fun onStart() {
+            super.onStart()
+        
+    //        https://github.com/jpush/jpush-flutter-plugin/issues/383
+            JCollectionAuth.setAuth(context, false);
+        
         }
+        
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+        
+            Timer("ChangingTaskDescriptionColor", false).schedule(1000) {
+                val taskDescription: ActivityManager.TaskDescription =
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        //android 9.0
+                        setTaskDescriptionP()
+                    } else {
+                        setTaskDescriptionBeforeP()
+                    }
+                setTaskDescription(taskDescription)
+            }
+        
+        }
+        
+        override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+            super.configureFlutterEngine(flutterEngine)
+            MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
+    //            resultCallback = result;
+    //            resultCallback.success("Android 调用成功")  ;
+                if (call.method == "AppMethod") {
+    //                showToast("Flutter 调用了通道: ${call.arguments as String}")
+                    System.out.println("channel=1==" + call.arguments.toString())
     
-    }
-    
-    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
-        super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
-//            resultCallback = result;
-//            resultCallback.success("Android 调用成功")  ;
-            if (call.method == "AppMethod") {
-//                showToast("Flutter 调用了通道: ${call.arguments as String}")
-                System.out.println("channel=1==" + call.arguments.toString())
-
-                JPushInterface.init(this)
-                JPushInterface.setDebugMode(false)
-                JCollectionAuth.setAuth(context, true)
-                result.success("Android ${call.arguments}")
-            } else {
-                result.notImplemented()
+                    JPushInterface.init(this)
+                    JPushInterface.setDebugMode(false)
+                    JCollectionAuth.setAuth(context, true)
+                    result.success("Android ${call.arguments}")
+                } else {
+                    result.notImplemented()
+                }
             }
         }
+        
+        private fun showToast(message: String) {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
+        
+        // 和推送无关，适配华为提审被拒：APP后台看不见图标和APP名称
+        private fun setTaskDescriptionBeforeP(): ActivityManager.TaskDescription {
+            val bitmapIcon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
+            return ActivityManager.TaskDescription("APP名称", bitmapIcon, Color.RED)
+        }
+        
+        // 和推送无关，适配华为提审被拒：APP后台看不见图标和APP名称
+        @TargetApi(Build.VERSION_CODES.P)
+        private fun setTaskDescriptionP(): ActivityManager.TaskDescription {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                ActivityManager.TaskDescription.Builder().setLabel("APP名称")
+                    .setIcon(R.mipmap.ic_launcher)
+                    .setPrimaryColor(Color.RED).build()
+            } else ActivityManager.TaskDescription("APP名称", R.mipmap.ic_launcher, Color.RED)
+        
+        }
     }
-    
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-    
-    private fun setTaskDescriptionBeforeP(): ActivityManager.TaskDescription {
-        val bitmapIcon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
-        return ActivityManager.TaskDescription("悦诉", bitmapIcon, Color.RED)
-    }
-    
-    @TargetApi(Build.VERSION_CODES.P)
-    private fun setTaskDescriptionP(): ActivityManager.TaskDescription {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            ActivityManager.TaskDescription.Builder().setLabel("悦诉")
-                .setIcon(R.mipmap.ic_launcher)
-                .setPrimaryColor(Color.RED).build()
-        } else ActivityManager.TaskDescription("悦诉", R.mipmap.ic_launcher, Color.RED)
-    
-    }
-}
-```
+    ```
      
-     
- 
- 在`onStart`中先`JCollectionAuth.setAuth(context, false);`。初始化但不验证。还要写flutter和原生交互方法（不会自己去学）。然后等用户在`APP`在`flutter` 端用户点击同意隐私协议后，进行和原生安卓交互，回调到原生安卓，重新初始化极光，如上重新初始化核心代码就这三行。在上面整个文件中也有。
+在`onStart`中先`JCollectionAuth.setAuth(context, false);`。初始化但不验证。还要写flutter和原生交互方法（不会自己去学）。然后等用户在`APP`在`flutter` 端用户点击同意隐私协议后，进行和原生安卓交互，回调到原生安卓，重新初始化极光，如上重新初始化核心代码就这三行。在上面整个文件中也有。
          
     JPushInterface.init(this)
     JPushInterface.setDebugMode(false)
@@ -559,7 +547,7 @@ class AppNative{
  **《错误码：6003》**
  https://go48pg.yuque.com/go48pg/pa41sm/xi17ah?singleDoc# 
  
-### 坑8 mac 无法查看 查看签名的SHA256
+### 坑8:  mac 无法查看 查看签名的SHA256
   你在坑7 这一步时候可能不是和文档那样顺利。
   
   ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281601517.png)
@@ -571,7 +559,7 @@ class AppNative{
   接着查资料知道是非`JDK8`，高版本的就会这样。于是曲线救国。找到网友封装的`SignaturesUtils.java`
   
 ``` java
-package com.yuesutech.app;
+package app包名;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -656,14 +644,14 @@ public class SignaturesUtils {
 **特别注意：**
 **指纹配置成功后大约10分钟左右生效，请您耐心等待。**。这里坑了我配置了无效了质疑自己半天。
 
-### 坑9 并不是所有荣耀手机都走荣耀推送。
+### 坑9:  并不是所有荣耀手机都走荣耀推送。
   
   这个是荣耀官网所述支持的设备：[https://developer.honor.com/cn/docs/11002/guides/introduction](https://developer.honor.com/cn/docs/11002/guides/introduction)
   ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281612175.png)
   
   我的荣耀20pro，走的是华为推送。
   
-### 坑10  离线推送，消息到了通知栏，点击通知栏拉不起来APP。
+### 坑10:   离线推送，消息到了通知栏，点击通知栏拉不起来APP。
    
     当安卓端app程序处于后台时，通知收到了，点击通知无法成功把app拉回前台。
     杀死APP离线通知可以收到了，点击通知无法成功把app拉起冷启动
@@ -678,7 +666,7 @@ public class SignaturesUtils {
     
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281632423.png)
 
-### 坑11 推送消息处理。安卓和iOS的不一样
+### 坑11:  推送消息处理。安卓和iOS的不一样
    
    
 ``` dart
@@ -695,17 +683,17 @@ onOpenNotification: (Map<String, dynamic> message) async {
       
 ```
    
-### 坑12 APP 的极光SDK有生产环境和测试环境，后台接口也有生产环境和测试环境
+### 坑12:  APP 的极光SDK有生产环境和测试环境，后台接口也有生产环境和测试环境
 
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281637464.png)
  - 两端的环境要一样。之前后台接口都是一直是生产环境调试的。
  - `iOS`是`AppStore`的才是生产环境，非`AppStore`的就是测试环境。之前跑真机调试（测试环境）接口一直是生产环境，导致推送消息不成功。
  ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505291507807.png)
 
-### 坑13 一定需要后台出一个测试推送的接口。不然不好及时触发推送调试。
+### 坑13:  一定需要后台出一个测试推送的接口。不然不好及时触发推送调试。
    - 推送的测试接口需要返回`msg_id`。`msg_id`和`registration_id`可以在开会员后在极光后台排查问题。
    
-### 坑14 厂商消息分类完成后，才可以针对目前配置好的厂商做下推送测试
+### 坑14:  厂商消息分类完成后，才可以针对目前配置好的厂商做下推送测试
    
    去各家厂商后台申请厂商消息分类：得到如下
 
@@ -769,13 +757,13 @@ onOpenNotification: (Map<String, dynamic> message) async {
  厂商消息分类使用指南    
  [https://docs.jiguang.cn/jpush/client/Android/android_channel_id](https://docs.jiguang.cn/jpush/client/Android/android_channel_id)
 
-### 坑15 需要和后台约定，每次APP登录后，需要把得到的极光`registration_id`存到用户表。
+### 坑15:  需要和后台约定，每次APP登录后，需要把得到的极光`registration_id`存到用户表。
 
 - `registration_id`处理逻辑。：
     - 每次登录，在登录接口一起上报`registration_id`给后台，后台拿到覆盖更新当前用户的`registration_id`字段。用于当前用户触发业务消息需要推送时候找到设备id。
 
 
-### 坑16 build.gradle 中的各厂商SDK的版本号码需要和jpush_flutter 对应一致。
+### 坑16:  build.gradle 中的各厂商SDK的版本号码需要和jpush_flutter 对应一致。
 比如查jpush_flutter 3.2.7源码知道对应的是
 
     implementation ('cn.jiguang.sdk:jpush:5.7.0'){
@@ -798,7 +786,7 @@ onOpenNotification: (Map<String, dynamic> message) async {
 并不是原生SDK文档中对应的版本
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281747025.png)    
 
-### 坑17 小米 错误码:27001--channel相关信息不匹配
+### 坑17:  小米 错误码:27001--channel相关信息不匹配
 
 小米 27001#invalid channel info!
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281757995.png)
@@ -813,24 +801,24 @@ onOpenNotification: (Map<String, dynamic> message) async {
                 
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281758879.png)
 
-### 坑18 小米需要在 AndroidManifest 的 `application`标签下添加配置
+### 坑18:  小米需要在 AndroidManifest 的 `application`标签下添加配置
 
 
     <!--        xiaomi start-->
-        <receiver
-            android:name="cn.jpush.android.service.PushReceiver"
-            android:exported="true"
-            tools:node="replace"
-            android:enabled="false">
-            <intent-filter android:priority="1000">
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <!--Required  显示通知栏 -->
-                <category android:name="${applicationId}" />
-            </intent-filter>
-        </receiver>
+    <receiver
+        android:name="cn.jpush.android.service.PushReceiver"
+        android:exported="true"
+        tools:node="replace"
+        android:enabled="false">
+        <intent-filter android:priority="1000">
+            <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+            <!--Required  显示通知栏 -->
+            <category android:name="${applicationId}" />
+        </intent-filter>
+    </receiver>
     <!--        xiaomi end-->
     
-### 坑19 荣耀需要在 AndroidManifest 的 `application`标签下添加配置    
+### 坑19:  荣耀需要在 AndroidManifest 的 `application`标签下添加配置    
 
     //Honor所需要的权限
       <queries>
@@ -852,15 +840,15 @@ onOpenNotification: (Map<String, dynamic> message) async {
              android:value="您的应用对应的Honor的APP ID" />
      </application>
      
- ### 坑20 华为收到离线推送，点击拉起APP报错
+### 坑20:  华为收到离线推送，点击拉起APP报错
  
-     A GlobalKey was used multiple times inside one widget's child list. The offending GlobalKey was： ［Label edGlobalKey<NavigatorState>#55a59］ The parent of the widgets with that key was：
-    
-    _FocusInheritedScope The first Child to get instantlated with that key became：
-    
-    Navigator-［LabeledGlobalKey<Navig atorState>#55a59］
-    The second child that was to be instantiated with that key was： FocusInheritedScope A GlobalKey can only be specified on one widget at a time in the widget tree.
-    See also: https://docs.flutter.dev/ testing/errors
+>      A GlobalKey was used multiple times inside one widget's child list. The offending GlobalKey was： ［Label edGlobalKey<NavigatorState>#55a59］ The parent of the widgets with that key was：
+>     
+>     _FocusInheritedScope The first Child to get instantlated with that key became：
+>     
+>     Navigator-［LabeledGlobalKey<Navig atorState>#55a59］
+>     The second child that was to be instantiated with that key was： FocusInheritedScope A GlobalKey can only be specified on one widget at a time in the widget tree.
+>     See also: https://docs.flutter.dev/ testing/errors
     
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505291152990.png)
 
@@ -885,7 +873,7 @@ onOpenNotification: (Map<String, dynamic> message) async {
 解决了问题。
 
 
- ### 坑21 桌面logo角标设置
+### 坑21: 桌面logo角标设置
  
 [看文档解决：https://docs.jiguang.cn/jpush/practice/set_badge](https://docs.jiguang.cn/jpush/practice/set_badge)
  
@@ -896,26 +884,25 @@ onOpenNotification: (Map<String, dynamic> message) async {
 
     //服务端发送 json 消息串
     {
-    "notification": {
-        "android": {
-            "alert": "hello, JPush!",
-            "badge_add_num": 1, //角标增加值，取值范围1-99
-            "badge_set_num": 1, //角标固定值，取值范围0-99
-            "badge_class": "com.test.badge.MainActivity", //默认为 APP 的主 Activity
+        "notification": {
+            "android": {
+                "alert": "hello, JPush!",
+                "badge_add_num": 1, //角标增加值，取值范围1-99
+                "badge_set_num": 1, //角标固定值，取值范围0-99
+                "badge_class": "com.test.badge.MainActivity", //默认为 APP 的主 Activity
+            }
         }
-    }
     }
 
 关键是
     
-    "badge_class": "com.yuesutech.app.MainActivity", //默认为 APP 的主 Activity
+    "badge_class": "app包名.MainActivity", //默认为 APP 的主 Activity
 
-### 坑22 小米角标 无效。需要人工开启才生效。
+### 坑22:  小米角标 无效。需要人工开启才生效。
 
 > 小米角标
 > 小米 MIUI 6 及以上设备支持数字角标，小米系统自动处理数字角标展示功能，默认收到通知+1处理，打开 App 清零。
 
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505291518689.png)
 
-**总结，遇坑填坑，多看文档，有的文档良心介绍了注意事项可以闭坑。遇到报错，根据报错信息多思考。   
-**
+**总结，遇坑填坑，多看文档，有的文档良心介绍了注意事项可以闭坑。遇到报错，根据报错信息多思考。**
