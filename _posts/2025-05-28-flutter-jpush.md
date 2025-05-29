@@ -859,3 +859,44 @@ public class SignaturesUtils {
              android:name="com.hihonor.push.app_id"
              android:value="您的应用对应的Honor的APP ID" />
      </application>
+     
+ ### 坑20 华为收到离线推送，点击拉起APP报错
+ 
+     A GlobalKey was used multiple times inside one widget's child list. The offending GlobalKey was： ［Label edGlobalKey<NavigatorState>#55a59］ The parent of the widgets with that key was：
+    
+    _FocusInheritedScope The first Child to get instantlated with that key became：
+    
+    Navigator-［LabeledGlobalKey<Navig atorState>#55a59］
+    The second child that was to be instantiated with that key was： FocusInheritedScope A GlobalKey can only be specified on one widget at a time in the widget tree.
+    See also: https://docs.flutter.dev/ testing/errors
+    
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505291152990.png)
+
+看到这真的把劳资搞麻木了。
+
+遂根据报错信息。找到资料如下：
+[https://stackoverflow.com/questions/78526585/a-globalkey-was-used-multiple-times-in-my-flutter-project](https://stackoverflow.com/questions/78526585/a-globalkey-was-used-multiple-times-in-my-flutter-project)
+
+按照资料提示设置
+
+    unknownRoute: GetPage(
+      name: "/splash",
+      page: () => SplashView(),
+      binding: SplashBinding(),
+    ),
+    
+然鹅，对我没有卵用，还是报错。最终思考应该是启动初始化 Getx的时候报错。
+故尝试屏蔽
+    
+    // getPages: AppPages.pages,    
+    
+解决了问题。
+
+
+ ### 坑21 桌面logo角标设置
+ 
+[看文档解决：https://docs.jiguang.cn/jpush/practice/set_badge](https://docs.jiguang.cn/jpush/practice/set_badge)
+ 
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505291438798.png)
+
+总结，多看文档，有的文档良心介绍了注意事项可以闭坑。遇到报错，根据报错信息多思考。    
