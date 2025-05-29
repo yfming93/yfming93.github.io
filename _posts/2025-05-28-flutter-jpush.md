@@ -821,3 +821,41 @@ public class SignaturesUtils {
                 
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281758879.png)
 
+### 坑18 小米需要在 AndroidManifest 的 `application`标签下添加配置
+
+
+    <!--        xiaomi start-->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:exported="true"
+            tools:node="replace"
+            android:enabled="false">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!--Required  显示通知栏 -->
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+    <!--        xiaomi end-->
+    
+### 坑19 荣耀需要在 AndroidManifest 的 `application`标签下添加配置    
+
+    //Honor所需要的权限
+      <queries>
+         <intent>
+             <action android:name="com.hihonor.push.action.BIND_PUSH_SERVICE" />
+         </intent>
+     </queries>
+     <application>
+         <service
+             android:name="cn.jpush.android.service.JHonorService"
+             android:exported="false">
+             <intent-filter>
+                 <action android:name="com.hihonor.push.action.MESSAGING_EVENT" />
+             </intent-filter>
+         </service>
+ 
+         <meta-data
+             android:name="com.hihonor.push.app_id"
+             android:value="您的应用对应的Honor的APP ID" />
+     </application>
