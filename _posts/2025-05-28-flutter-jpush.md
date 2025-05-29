@@ -16,21 +16,15 @@ mathjax: true
 * content
 {:toc}
 ---
-
 ## 0x000 背景 
 最近`flutter`项目需要接入极光推送。接入过程中是艰难险阻一大堆。极光官网的文档都是`Android` 和 `iOS` 原生接入的文档。对于`flutter`的朋友接入太过艰难。官网勉强出了[jpush_flutter: ^3.2.7](https://pub.dev/packages/jpush_flutter)。但是文档也是草草敷衍。里面的`issues`一大堆，官方不管。
-
-![官方issues](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281030385.png)
- 
+![官方issues](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281030385.png) 
 遂经历艰难险阻后，故写这篇文章，以方便后续自己和其他的网友避坑。
- 
- 
- 
- 
- 
- 
+
+
+
+
 ## 0x001 接入前期准备。
- 
  **有些接入基础前期准备，就不过多细嗦了。一笔带过。**
  - 极光平台 创建安卓和`iOS`应用 得到`AppKey`和 `Master Secret`
  - 申请各家安卓厂商的推送 `key`。每家的`key`不同，
@@ -89,11 +83,8 @@ mathjax: true
 - 在[极光厂商接入文档](https://docs.jiguang.cn/jpush/client/Android/android_3rd_guide#vivo-%25E9%2580%259A%25E9%2581%2593%25E9%259B%2586%25E6%2588%2590%25E6%258C%2587%25E5%258D%2597)下载极光原生SDk备用，当前是5.7.0版本
  ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281419604.png)
      
- 
 ## 0x002 接入代码
 ### 安卓代码
-
- 
  - 在`flutter` 项目先集成 [jpush_flutter: ^3.2.7](https://pub.dev/packages/jpush_flutter)。执行 `flutter pub get`
  - 在`App`下的`build.gradle`中添加上面获取的各个厂商`key`
      - 红框的不需要我忘记删除了，绿框的就刚刚下载备用的原生SDK的example中demo中的`libs`下的
@@ -103,118 +94,112 @@ mathjax: true
      ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281428323.png)
        
 ### `App`下的`build.gradle`中`dependencies`
- 
-     ``` gradle
-     dependencies {
-        implementation fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
-    //    implementation(name: 'HiPushSdk-v8.0.12.307', ext: 'aar')
-        // only for demo
-        implementation 'androidx.appcompat:appcompat:1.2.0'
-        implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-        implementation 'com.google.android.material:material:1.2.1'
-        implementation 'org.conscrypt:conscrypt-android:2.2.1'
-        implementation 'androidx.multidex:multidex:2.0.1'
-        implementation 'com.hjq:toast:8.8'
-        implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
-        implementation 'com.tencent:mmkv-static:1.2.4'
+ ``` gradle
+ dependencies {
+    implementation fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
+//    implementation(name: 'HiPushSdk-v8.0.12.307', ext: 'aar')
+    // only for demo
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'org.conscrypt:conscrypt-android:2.2.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.hjq:toast:8.8'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    implementation 'com.tencent:mmkv-static:1.2.4'
     
-        coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
-        implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'
-        implementation 'cn.jiguang.sdk:jpush:5.7.0'
-        implementation 'cn.jiguang.sdk:jcore:4.9.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'
+    implementation 'cn.jiguang.sdk:jpush:5.7.0'
+    implementation 'cn.jiguang.sdk:jcore:4.9.1'
     
-        implementation 'com.huawei.hms:push:6.12.0.300'  // 华为 HMS Push SDK
-        implementation 'cn.jiguang.sdk.plugin:huawei:5.7.0'  // 极光华为通道插件
-        implementation 'com.huawei.agconnect:agconnect-core:1.8.0.300' // 核心库
+    implementation 'com.huawei.hms:push:6.12.0.300'  // 华为 HMS Push SDK
+    implementation 'cn.jiguang.sdk.plugin:huawei:5.7.0'  // 极光华为通道插件
+    implementation 'com.huawei.agconnect:agconnect-core:1.8.0.300' // 核心库
     
     
-        implementation 'cn.jiguang.sdk.plugin:xiaomi:5.7.0'
-        implementation 'cn.jiguang.sdk.plugin:oppo:5.7.0'
-        implementation 'cn.jiguang.sdk.plugin:vivo:5.7.0'
-        implementation 'cn.jiguang.sdk.plugin:honor:5.7.0'
-        //厂商版本和 JPush SDK 版本保持一致
-    //    implementation 'cn.jiguang.sdk.plugin:huawei:5.7.0'
+    implementation 'cn.jiguang.sdk.plugin:xiaomi:5.7.0'
+    implementation 'cn.jiguang.sdk.plugin:oppo:5.7.0'
+    implementation 'cn.jiguang.sdk.plugin:vivo:5.7.0'
+    implementation 'cn.jiguang.sdk.plugin:honor:5.7.0'
+    //厂商版本和 JPush SDK 版本保持一致
+//    implementation 'cn.jiguang.sdk.plugin:huawei:5.7.0'
     
-        implementation 'com.google.code.gson:gson:2.6.2'
-        implementation 'commons-codec:commons-codec:1.6'
-        implementation 'androidx.annotation:annotation:1.1.0'
-    }
-     ```
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'commons-codec:commons-codec:1.6'
+    implementation 'androidx.annotation:annotation:1.1.0'
+}
+ ```
 
-- `android`下`build.gradle`的`dependencies`
+### `android`下`build.gradle`的`dependencies`
 
-     ```
-     buildscript {
-        ext.kotlin_version = '1.9.24'
-        repositories {
-            google()
-            mavenCentral()
-            maven {url 'https://developer.huawei.com/repo/'}
-            maven {url 'https://developer.hihonor.com/repo'}
-            maven { url 'https://maven.aliyun.com/repository/google' }
-            maven { url 'https://maven.aliyun.com/repository/jcenter' }
-            maven { url 'https://maven.aliyun.com/repository/public' }
-        }
-    
-        dependencies {
-            classpath 'com.android.tools.build:gradle:8.8.0'
-            classpath 'com.huawei.agconnect:agcp:1.9.1.301' // 确保版本与 HMS SDK 兼容
-    
-    //        classpath 'com.google.gms:google-services:4.3.14'
-    //        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
-    //        classpath 'com.hihonor.mcs:asplugin:2.0.1.300'
-    
-        }
+ ```
+ buildscript {
+    ext.kotlin_version = '1.9.24'
+    repositories {
+        google()
+        mavenCentral()
+        maven {url 'https://developer.huawei.com/repo/'}
+        maven {url 'https://developer.hihonor.com/repo'}
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
     }
     
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.8.0'
+        classpath 'com.huawei.agconnect:agcp:1.9.1.301' // 确保版本与 HMS SDK 兼容
     
-    allprojects {
-        repositories {
-    //        google()
-    //        mavenCentral()
-    //        maven {url 'https://developer.huawei.com/repo/'}
-    //        maven {url 'https://developer.hihonor.com/repo'}
-            mavenCentral()
-    
-    //        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
-            // 配置HMS Core SDK的Maven仓地址。
-            maven {url 'https://developer.huawei.com/repo/'}
-            maven {url 'https://developer.hihonor.com/repo'}
-            maven { url 'https://maven.aliyun.com/repository/google' }
-            maven { url 'https://maven.aliyun.com/repository/jcenter' }
-            maven { url 'https://maven.aliyun.com/repository/public' }
-            maven { url "https://maven.jiguang.cn/repository/public" }
-        }
+//        classpath 'com.google.gms:google-services:4.3.14'
+//        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+//        classpath 'com.hihonor.mcs:asplugin:2.0.1.300'
     }
-    // This is updated Code .
-     rootProject.buildDir = "../build"
+}  
+allprojects {
+    repositories {
+//        google()
+//        mavenCentral()
+//        maven {url 'https://developer.huawei.com/repo/'}
+//        maven {url 'https://developer.hihonor.com/repo'}
+        mavenCentral()
+//        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+        // 配置HMS Core SDK的Maven仓地址。
+        maven {url 'https://developer.huawei.com/repo/'}
+        maven {url 'https://developer.hihonor.com/repo'}
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url "https://maven.jiguang.cn/repository/public" }
+    }
+}
+// This is updated Code .
+ rootProject.buildDir = "../build"
     
-    subprojects {
-        afterEvaluate {
-            if (it.hasProperty('android')) {
-                it.android.compileSdkVersion = 35
-                it.android.defaultConfig.targetSdkVersion = 35
-                it.android.compileOptions.sourceCompatibility = JavaVersion.VERSION_21
-                it.android.compileOptions.targetCompatibility = JavaVersion.VERSION_21
-                tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-                    kotlinOptions.jvmTarget = JavaVersion.VERSION_21
-                }
-                if (it.android.namespace == null) {
-                    def manifest = new XmlSlurper().parse(file(it.android.sourceSets.main.manifest.srcFile))
-                    def packageName = manifest.@package.text()
-                    android.namespace = packageName
-                    println("Updating namespace ${packageName}")
-                }
+subprojects {
+    afterEvaluate {
+        if (it.hasProperty('android')) {
+            it.android.compileSdkVersion = 35
+            it.android.defaultConfig.targetSdkVersion = 35
+            it.android.compileOptions.sourceCompatibility = JavaVersion.VERSION_21
+            it.android.compileOptions.targetCompatibility = JavaVersion.VERSION_21
+            tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+                kotlinOptions.jvmTarget = JavaVersion.VERSION_21
+            }
+            if (it.android.namespace == null) {
+                def manifest = new XmlSlurper().parse(file(it.android.sourceSets.main.manifest.srcFile))
+                def packageName = manifest.@package.text()
+                android.namespace = packageName
+                println("Updating namespace ${packageName}")
             }
         }
-        project.buildDir = "${rootProject.buildDir}/${project.name}"
     }
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
     
-    tasks.register("clean", Delete) {
-        delete rootProject.buildDir
-    }
-    
-     ```
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}    
+```
      
  - 还有华为和荣耀的`services.json`离线文件，都放在 `res`同级目录
  - 混淆`proguard-rules.pro`按照[极光厂商配置代码混淆的文档](https://docs.jiguang.cn/jpush/client/Android/android_3rd_guide)进行配置。
@@ -291,13 +276,11 @@ mathjax: true
             Future.delayed(Duration(milliseconds: 1000),(){
               _do_message(message);
             });
-    
           },
           // 接收自定义消息回调方法。
           onReceiveMessage: (Map<String, dynamic> message) async {
             logs("----jpush-onReceiveMessage: $message");
           },
-    
         );
         // jpush.setup(appKey: AppKey.appKeyJPush, channel: Env.channel, production: Env.indexUrl == 0, debug: isDebug,);
         jpush.setup(appKey: AppKey.appKeyJPush, channel: '', production: true, debug: true,);
@@ -387,90 +370,90 @@ mathjax: true
  我的解决是：在安卓`MainActivity`中
      
  ``` Kotlin
-    package com.xxx.app
-    import android.annotation.TargetApi
-    import android.app.ActivityManager
-    import android.graphics.BitmapFactory
-    import android.graphics.Color
-    import android.os.Build
-    import android.os.Bundle
-    import android.widget.Toast
-    import cn.jiguang.api.utils.JCollectionAuth
-    import cn.jpush.android.api.JPushInterface
-    import com.yuesutech.app.nsp.R
-    import io.flutter.embedding.android.FlutterActivity
-    import io.flutter.embedding.engine.FlutterEngine
-    import io.flutter.plugin.common.MethodChannel
-    import java.util.Timer
-    import kotlin.concurrent.schedule
+package com.xxx.app
+import android.annotation.TargetApi
+import android.app.ActivityManager
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.os.Build
+import android.os.Bundle
+import android.widget.Toast
+import cn.jiguang.api.utils.JCollectionAuth
+import cn.jpush.android.api.JPushInterface
+import com.yuesutech.app.nsp.R
+import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.MethodChannel
+import java.util.Timer
+import kotlin.concurrent.schedule
     
-    class MainActivity: FlutterActivity() {
-        private val CHANNEL = "flutter.app.method.plugin"
+class MainActivity: FlutterActivity() {
+    private val CHANNEL = "flutter.app.method.plugin"
     
-    //    lateinit var resultCallback: MethodChannel.Result;
+//    lateinit var resultCallback: MethodChannel.Result;
     
-        override fun onStart() {
-            super.onStart()
+    override fun onStart() {
+        super.onStart()
     
-    //        https://github.com/jpush/jpush-flutter-plugin/issues/383
-            JCollectionAuth.setAuth(context, false);
+//        https://github.com/jpush/jpush-flutter-plugin/issues/383
+        JCollectionAuth.setAuth(context, false);
     
-        }
+    }
     
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     
-            Timer("ChangingTaskDescriptionColor", false).schedule(1000) {
-                val taskDescription: ActivityManager.TaskDescription =
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                        //android 9.0
-                        setTaskDescriptionP()
-                    } else {
-                        setTaskDescriptionBeforeP()
-                    }
-                setTaskDescription(taskDescription)
-            }
-    
-        }
-    
-        override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
-            super.configureFlutterEngine(flutterEngine)
-            MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
-    //            resultCallback = result;
-    //            resultCallback.success("Android 调用成功")  ;
-                if (call.method == "AppMethod") {
-    //                showToast("Flutter 调用了通道: ${call.arguments as String}")
-                    System.out.println("channel=1==" + call.arguments.toString())
-
-                    JPushInterface.init(this)
-                    JPushInterface.setDebugMode(false)
-                    JCollectionAuth.setAuth(context, true)
-                    result.success("Android ${call.arguments}")
+        Timer("ChangingTaskDescriptionColor", false).schedule(1000) {
+            val taskDescription: ActivityManager.TaskDescription =
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    //android 9.0
+                    setTaskDescriptionP()
                 } else {
-                    result.notImplemented()
+                    setTaskDescriptionBeforeP()
                 }
+            setTaskDescription(taskDescription)
+        }
+    
+    }
+    
+    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+        super.configureFlutterEngine(flutterEngine)
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
+//            resultCallback = result;
+//            resultCallback.success("Android 调用成功")  ;
+            if (call.method == "AppMethod") {
+//                showToast("Flutter 调用了通道: ${call.arguments as String}")
+                System.out.println("channel=1==" + call.arguments.toString())
+
+                JPushInterface.init(this)
+                JPushInterface.setDebugMode(false)
+                JCollectionAuth.setAuth(context, true)
+                result.success("Android ${call.arguments}")
+            } else {
+                result.notImplemented()
             }
-        }
-    
-        private fun showToast(message: String) {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        }
-    
-        private fun setTaskDescriptionBeforeP(): ActivityManager.TaskDescription {
-            val bitmapIcon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
-            return ActivityManager.TaskDescription("悦诉", bitmapIcon, Color.RED)
-        }
-    
-        @TargetApi(Build.VERSION_CODES.P)
-        private fun setTaskDescriptionP(): ActivityManager.TaskDescription {
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                ActivityManager.TaskDescription.Builder().setLabel("悦诉")
-                    .setIcon(R.mipmap.ic_launcher)
-                    .setPrimaryColor(Color.RED).build()
-            } else ActivityManager.TaskDescription("悦诉", R.mipmap.ic_launcher, Color.RED)
-    
         }
     }
+    
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+    
+    private fun setTaskDescriptionBeforeP(): ActivityManager.TaskDescription {
+        val bitmapIcon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
+        return ActivityManager.TaskDescription("悦诉", bitmapIcon, Color.RED)
+    }
+    
+    @TargetApi(Build.VERSION_CODES.P)
+    private fun setTaskDescriptionP(): ActivityManager.TaskDescription {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityManager.TaskDescription.Builder().setLabel("悦诉")
+                .setIcon(R.mipmap.ic_launcher)
+                .setPrimaryColor(Color.RED).build()
+        } else ActivityManager.TaskDescription("悦诉", R.mipmap.ic_launcher, Color.RED)
+    
+    }
+}
 ```
      
      
@@ -700,7 +683,7 @@ public class SignaturesUtils {
    
 ``` dart
   // 点击通知回调方法。
-  onOpenNotification: (Map<String, dynamic> message) async {
+onOpenNotification: (Map<String, dynamic> message) async {
     //     {alert: 推送内容2, extras: {cn.jpush.android.ALERT_TYPE: 7, cn.jpush.android.NOTIFICATION_ID: 518325105, cn.jpush.android.MSG_ID: 18100827735900274, cn.jpush.android.ALERT: 推送内容2, cn.jpush.android.EXTRA: {"route_path":"\/problems"}}, title: 推送标题2}
     logs('----jpush-onOpenNotification-:$message');
     jpush.setBadge(0);
