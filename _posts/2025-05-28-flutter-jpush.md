@@ -18,69 +18,73 @@ mathjax: true
 ---
 
 ## 0x000 背景 
- 最近`flutter`项目需要接入极光推送。接入过程中是艰难险阻一大堆。极光官网的文档都是`Android` 和 `iOS` 原生接入的文档。对于`flutter`的朋友接入太过艰难。官网勉强出了[jpush_flutter: ^3.2.7](https://pub.dev/packages/jpush_flutter)。但是文档也是草草敷衍。里面的`issues`一大堆，官方不管。
+最近`flutter`项目需要接入极光推送。接入过程中是艰难险阻一大堆。极光官网的文档都是`Android` 和 `iOS` 原生接入的文档。对于`flutter`的朋友接入太过艰难。官网勉强出了[jpush_flutter: ^3.2.7](https://pub.dev/packages/jpush_flutter)。但是文档也是草草敷衍。里面的`issues`一大堆，官方不管。
 
 ![官方issues](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281030385.png)
-
  
- 遂经历艰难险阻后，故写这篇文章，以方便后续自己和其他的避坑。
+遂经历艰难险阻后，故写这篇文章，以方便后续自己和其他的网友避坑。
+ 
+ 
+ 
+ 
+ 
  
 ## 0x001 接入前期准备。
  
  **有些接入基础前期准备，就不过多细嗦了。一笔带过。**
  - 极光平台 创建安卓和`iOS`应用 得到`AppKey`和 `Master Secret`
- - 申请各家安卓厂商的推送 key。每家的key不同，
+ - 申请各家安卓厂商的推送 `key`。每家的`key`不同，
      - 可参考极光文档申请：[https://docs.jiguang.cn/jpush/client/Android/android_3rd_param](https://docs.jiguang.cn/jpush/client/Android/android_3rd_param)
      申请后填入极光后台下图：
      ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281037867.png)
           
-    -  **【坑】而且大多需要APP已经上线他们家的应用商店才能申请推送key**
+    -  **【注意坑】大多需要APP已经上线他们家的应用商店才能申请推送key**
 部分厂商要求必须上架应用市场才可以正常使用推送服务，详情参考下表：
 
-    <table>
-    <thead>
-    <tr>
-    <th style="text-align:left">厂商通道</th>
-    <th style="text-align:left">是否需要上架</th>
-    <th style="text-align:left">说明</th>
-    </tr>
-    </thead>
-    <tbody><tr>
-    <td style="text-align:left">小米</td>
-    <td style="text-align:left"><strong>是</strong></td>
-    <td style="text-align:left">需要注册企业开发者账号，详见 <a href="/jpush/client/Android/android_3rd_param#%E5%B0%8F%E7%B1%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">小米参数获取</a>。</td>
-    </tr>
-    <tr>
-    <td style="text-align:left">华为</td>
-    <td style="text-align:left">否</td>
-    <td style="text-align:left">个人开发者账号即可，详见 <a href="/jpush/client/Android/android_3rd_param#%E5%8D%8E%E4%B8%BA%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">华为参数获取</a>。</td>
-    </tr>
-    <tr>
-    <td style="text-align:left">魅族</td>
-    <td style="text-align:left">否</td>
-    <td style="text-align:left">个人开发者账号即可，详见 <a href="/jpush/client/Android/android_3rd_param#%E9%AD%85%E6%97%8F%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">魅族参数获取</a>。</td>
-    </tr>
-    <tr>
-    <td style="text-align:left">vivo</td>
-    <td style="text-align:left"><strong>是</strong></td>
-    <td style="text-align:left">需要注册企业开发者账号，详见 <a href="/jpush/client/Android/android_3rd_param#vivo-%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">vivo 参数获取</a>。</td>
-    </tr>
-    <tr>
-    <td style="text-align:left">OPPO</td>
-    <td style="text-align:left"><strong>是</strong></td>
-    <td style="text-align:left">需要注册企业开发者账号，详见 <a href="/jpush/client/Android/android_3rd_param#oppo-%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">OPPO 参数获取</a>。</td>
-    </tr>
-    <tr>
-    <td style="text-align:left">FCM</td>
-    <td style="text-align:left">否</td>
-    <td style="text-align:left">个人开发者账号即可，详见 <a href="/jpush/client/Android/android_3rd_param#fcm-%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">FCM 参数获取</a>。</td>
-    </tr>
-    <tr>
-    <td style="text-align:left">荣耀</td>
-    <td style="text-align:left">否</td>
-    <td style="text-align:left">需要注册企业开发者账号，详见 <a href="/jpush/client/Android/android_3rd_param#%E8%8D%A3%E8%80%80%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">荣耀参数获取</a>。</td>
-    </tr>
-    </tbody></table>
+        <table>
+        <thead>
+        <tr>
+        <th style="text-align:left">厂商通道</th>
+        <th style="text-align:left">是否需要上架</th>
+        <th style="text-align:left">说明</th>
+        </tr>
+        </thead>
+        <tbody><tr>
+        <td style="text-align:left">小米</td>
+        <td style="text-align:left"><strong>是</strong></td>
+        <td style="text-align:left">需要注册企业开发者账号，详见 <a href="/jpush/client/Android/android_3rd_param#%E5%B0%8F%E7%B1%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">小米参数获取</a>。</td>
+        </tr>
+        <tr>
+        <td style="text-align:left">华为</td>
+        <td style="text-align:left">否</td>
+        <td style="text-align:left">个人开发者账号即可，详见 <a href="/jpush/client/Android/android_3rd_param#%E5%8D%8E%E4%B8%BA%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">华为参数获取</a>。</td>
+        </tr>
+        <tr>
+        <td style="text-align:left">魅族</td>
+        <td style="text-align:left">否</td>
+        <td style="text-align:left">个人开发者账号即可，详见 <a href="/jpush/client/Android/android_3rd_param#%E9%AD%85%E6%97%8F%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">魅族参数获取</a>。</td>
+        </tr>
+        <tr>
+        <td style="text-align:left">vivo</td>
+        <td style="text-align:left"><strong>是</strong></td>
+        <td style="text-align:left">需要注册企业开发者账号，详见 <a href="/jpush/client/Android/android_3rd_param#vivo-%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">vivo 参数获取</a>。</td>
+        </tr>
+        <tr>
+        <td style="text-align:left">OPPO</td>
+        <td style="text-align:left"><strong>是</strong></td>
+        <td style="text-align:left">需要注册企业开发者账号，详见 <a href="/jpush/client/Android/android_3rd_param#oppo-%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">OPPO 参数获取</a>。</td>
+        </tr>
+        <tr>
+        <td style="text-align:left">FCM</td>
+        <td style="text-align:left">否</td>
+        <td style="text-align:left">个人开发者账号即可，详见 <a href="/jpush/client/Android/android_3rd_param#fcm-%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">FCM 参数获取</a>。</td>
+        </tr>
+        <tr>
+        <td style="text-align:left">荣耀</td>
+        <td style="text-align:left">否</td>
+        <td style="text-align:left">需要注册企业开发者账号，详见 <a href="/jpush/client/Android/android_3rd_param#%E8%8D%A3%E8%80%80%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">荣耀参数获取</a>。</td>
+        </tr>
+        </tbody></table>
     
 - 在[极光厂商接入文档](https://docs.jiguang.cn/jpush/client/Android/android_3rd_guide#vivo-%25E9%2580%259A%25E9%2581%2593%25E9%259B%2586%25E6%2588%2590%25E6%258C%2587%25E5%258D%2597)下载极光原生SDk备用，当前是5.7.0版本
  ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281419604.png)
@@ -90,15 +94,15 @@ mathjax: true
 ### 安卓代码
 
  
- - 在`flutter` 项目先集成 [jpush_flutter: ^3.2.7](https://pub.dev/packages/jpush_flutter)
+ - 在`flutter` 项目先集成 [jpush_flutter: ^3.2.7](https://pub.dev/packages/jpush_flutter)。执行 `flutter pub get`
  - 在`App`下的`build.gradle`中添加上面获取的各个厂商`key`
      - 红框的不需要我忘记删除了，绿框的就刚刚下载备用的原生SDK的example中demo中的`libs`下的
      ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281616506.png)
-     - 还有` id "com.huawei.agconnect"`。
+ - 还有` id "com.huawei.agconnect"`。
       - 一些老的资料可能会是`apply plugin: 'com.huawei.agconnect' `这个在高版本`gradle`过时了会报错。
      ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281428323.png)
        
-- `App`下的`build.gradle`中`dependencies`
+### `App`下的`build.gradle`中`dependencies`
  
      ``` gradle
      dependencies {
@@ -217,9 +221,10 @@ mathjax: true
      
     ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281436491.png)
     
-### flutter 端的推送代码
+## flutter 端的推送代码
 
 - 以下`AppKey.appKeyJPush`就是极光申请的key。
+- 有个文件`app_export.dart`，`im_talk.dart`，`im_chat_page.dart`，`im_socket.dart`，`kit_view.dart`都是我的业务文件。你复制过去报错删除即可。
 ``` dart
     // 接入文档 https://github.com/jpush/jpush-flutter-plugin
     // https://github.com/jpush/jpush-flutter-plugin/blob/master/documents/APIs.md
@@ -249,12 +254,12 @@ mathjax: true
       Future<void> init() async {
         logs('---dao.token--${dao.token}');
         // if (dao.token.isEmpty) return;
-    
+        // 之前提审因为极光被拒，就操作提审日之后延迟5天才初始化极光。现在不需要了
         // var t1 = DateTime.tryParse(Env.time);
         // logs('---t1--$t1');
         // var t2 = DateTime.now();
         // if(t1 != null) {
-        //   if(t2.difference(t1).inDays <= 7) {
+        //   if(t2.difference(t1).inDays <= 5) {
         //     return;
         //   }
         // }
@@ -301,14 +306,9 @@ mathjax: true
         if(user.info.mobile.isNotEmpty) jpush.setAlias(user.info.mobile);
         jpush.getRegistrationID().then((rid) {
           AppRun().registration_id = rid;
-          KitView.alert(title: 'Jpush_registration_id',content: rid,sureName: '点击复制',sure: (){
-            rid.copyToClipboard;
-          },noCancel: true);
-          // KitView.alert(content: rid);
           log('---registration_id--$rid');
         });
         jpush.isNotificationEnabled().then((bool value) {
-    
           print("通知授权是否打开: $value");
           if (!value) {
             Get.snackbar(
@@ -316,18 +316,15 @@ mathjax: true
               "没有通知权限,点击跳转打开通知设置界面",
               duration: const Duration(seconds: 6),
               onTap: (_) {
-    
                 jpush.openSettingsForNotification();
               },
             );
           }
         }).catchError((onError) {
-    
           print("通知授权是否打开: ${
               onError.toString()}");
         });
         jpush.enableAutoWakeup(enable: true);
-    
         if(isAndroid) jpush.setWakeEnable(enable: false);
       }
     
@@ -365,7 +362,7 @@ mathjax: true
     
 ## 0x003 试运行了
  
- 经过上面步骤。可以试运行了。运行好发现在`jpush.getRegistrationID()`得到了`registration_id`。
+ 经过上面步骤。可以试运行了。运行后发现在`jpush.getRegistrationID()`得到了`registration_id`。
  
  没座。![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281506170.png)![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281507139.png)
  得到的`registration_id`就是当前设备的唯一标识。欣喜若狂。去极光后台控制台操作推送。
@@ -380,9 +377,9 @@ mathjax: true
 
 这只是第一步。下面开始介绍各种坑了。
 
-## 0x004 坑专辑
+## 0x004 整个过程遇到的坑专辑
  
-### 坑1：极光的初始化需要在Android端完成。在Dart端完成会在提审的时候被各家安卓拒审
+### 坑1：极光的初始化需要在Android端完成。在Dart端完成初始化会在提审的时候被各家安卓拒审
   原因如下：[https://github.com/jpush/jpush-flutter-plugin/issues/494](https://github.com/jpush/jpush-flutter-plugin/issues/494%0A)
  
  ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281515226.png)
@@ -478,13 +475,13 @@ mathjax: true
      
      
  
- 在`onStart`中先`JCollectionAuth.setAuth(context, false);`。还要写flutter和原生交互方法（不会自己去学）。然后等用户在`APP`在`flutter` 端用户点击同意隐私协议后，进行和原生安卓交互，回调到原生安卓，重新初始化
+ 在`onStart`中先`JCollectionAuth.setAuth(context, false);`。初始化但不验证。还要写flutter和原生交互方法（不会自己去学）。然后等用户在`APP`在`flutter` 端用户点击同意隐私协议后，进行和原生安卓交互，回调到原生安卓，重新初始化极光，如上重新初始化核心代码就这三行。在上面整个文件中也有。
          
-        JPushInterface.init(this)
-        JPushInterface.setDebugMode(false)
-        JCollectionAuth.setAuth(context, true)
+    JPushInterface.init(this)
+    JPushInterface.setDebugMode(false)
+    JCollectionAuth.setAuth(context, true)
 
-**如果学不会就看我封装的app_native.dart**
+**如果学不会flutter原生交互就看我封装的app_native.dart**
 ``` dart
 import 'package:app/core/app_export.dart';
 import 'package:app/https/env.dart';
@@ -517,13 +514,16 @@ class AppNative{
 }
 ```
 
-### 坑2：前门提到的获得了。registration_id只是集成了极光的flutterSDK，没有集成厂商推送通道。
+`sendToNative` 在用户点击同意隐私协议后调用。
+
+### 坑2：前面提到的获得了registration_id 仅是集成了极光的flutterSDK，没有集成厂商推送通道。
  
- - 这个会导致：只有在APP打开的时候才能收到推送。下次冷启动后上次没收到的消息就会过来，这是极光通道保存的离线消息过来了。因为没有集成厂商通道，在APP离线的时候不能及时收到推送消息。
+ - 这个会导致：只有在APP打开的时候才能收到推送。下次冷启动后上次没收到的消息就会过来（默认一天离线等待时间），这是极光通道保存的离线消息过来了。因为没有集成厂商通道，在APP离线的时候不能及时收到推送消息。
 
 ### 坑3：没有开通极光会员。调试排查的机会都没有。
+ 红框这些都是需要会员才能操作的。记得之前集成原生iOS的时候都是免费使用的。现在飘了不付费都不好调试。
  ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281541679.png)
- 可以联系极光销售人员，给7天的试用会员接入调试。（建议合理时期申请，在前期各个厂商的key申请好了。厂商消息分类完成后，可以申请试用会员针对目前配置好的厂商做下推送测试）
+ 可以联系极光销售人员，给7天的试用会员接入调试。（建议合理时期申请，在前期各个厂商的key申请好了。而且[厂商消息分类](https://docs.jiguang.cn/jpush/client/Android/android_channel_id)完成后，可以申请试用会员针对目前配置好的厂商做下推送测试）
  
 ### 坑4：OPPO错误码:67--分类错误(包含强提醒所有异常)。
   
@@ -531,14 +531,22 @@ class AppNative{
     
  解决：可以参考文档看看
 [https://go48pg.yuque.com/go48pg/pa41sm/fytwgsthan0o4d0x](https://go48pg.yuque.com/go48pg/pa41sm/fytwgsthan0o4d0x)
-注意：旧通道配置并不表示已经申请消息分类成功，同时还需要发邮件给oppo官方，等待邮件审核通过后并且配置旧通道才表示申请消息分类成功，可以正常使用不受限的服务类消息，服务端需要配置的字段是channel_id（如果使用的是旧版消息分类，category和notify_level一定不要配置！！！！），仔细看上面文档解决。
+注意：旧通道配置并不表示已经申请消息分类成功，同时还需要发邮件给oppo官方，等待邮件审核通过后并且配置旧通道才表示申请消息分类成功，可以正常使用不受限的服务类消息，服务端需要配置的字段是`channel_id`（如果使用的是旧版消息分类，`category` 和`notify_level` 一定不要配置！！！！），仔细看上面文档解决。
+
+最终审核通过了。我的是IM及时通讯。需要后台推送接口配置如下。最终才能收到离线推送消息。
+
+    "oppo": {
+        "channel_id": "push_oplus_category_service",
+        "category": "IM",
+        "notify_level": 2
+    },
 
 ### 坑5：无厂商token:就是没有集成成功。仅集成了极光端，没有集成厂商通道，不能离线推送消息。
  
  ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281554917.png)
  
- - 如图右下角红框也验证了。无厂商token，下次APP启动时候得到的消息其实还是极光推送过来的，不是厂商的推送的。
- -  无厂商token:就是没有集成成功。需要在[厂商通道集成指南](https://docs.jiguang.cn/jpush/client/Android/android_3rd_guide)的每个厂商的集成结果判断一直才是集成了厂商通道。
+ - 如图右下角红框也验证了。无厂商`token`，下次`APP`启动时候得到的消息其实还是极光推送过来的，不是厂商的推送的。
+ -  无厂商`token`:就是没有集成成功。需要在[厂商通道集成指南](https://docs.jiguang.cn/jpush/client/Android/android_3rd_guide)的每个厂商的集成结果判断一直才是集成了厂商通道。
 
 -  如下才是集成厂商通道的标志性打印信息
     
@@ -577,7 +585,7 @@ class AppNative{
   看到这样，顿时劳资猫当丁就不想说话了。
   ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281604471.png)
   
-  接着查资料知道是非JDK8，高版本的就会这样。于是曲线救国。找到网友封装的`SignaturesUtils.java`
+  接着查资料知道是非`JDK8`，高版本的就会这样。于是曲线救国。找到网友封装的`SignaturesUtils.java`
   
 ``` java
 package com.yuesutech.app;
@@ -708,7 +716,8 @@ public class SignaturesUtils {
 
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505281637464.png)
  - 两端的环境要一样。之前后台接口都是一直是生产环境调试的。
- - iOS是AppStore的才是生产环境，非AppStore的就是测试环境。之前跑真机调试（测试环境）接口一直是生产环境，导致推送消息不成功。
+ - `iOS`是`AppStore`的才是生产环境，非`AppStore`的就是测试环境。之前跑真机调试（测试环境）接口一直是生产环境，导致推送消息不成功。
+ ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505291507807.png)
 
 ### 坑13 一定需要后台出一个测试推送的接口。不然不好及时触发推送调试。
    - 推送的测试接口需要返回`msg_id`。`msg_id`和`registration_id`可以在开会员后在极光后台排查问题。
@@ -899,4 +908,31 @@ public class SignaturesUtils {
  
 ![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505291438798.png)
 
-总结，多看文档，有的文档良心介绍了注意事项可以闭坑。遇到报错，根据报错信息多思考。    
+需要Android原生配置一波，按照文档配置即可。
+需要后台接口配置：
+
+    //服务端发送 json 消息串
+    {
+    "notification": {
+        "android": {
+            "alert": "hello, JPush!",
+            "badge_add_num": 1, //角标增加值，取值范围1-99
+            "badge_set_num": 1, //角标固定值，取值范围0-99
+            "badge_class": "com.test.badge.MainActivity", //默认为 APP 的主 Activity
+        }
+    }
+    }
+
+关键是
+    
+    "badge_class": "com.yuesutech.app.MainActivity", //默认为 APP 的主 Activity
+
+### 坑22 小米角标 无效。需要人工开启才生效。
+
+> 小米角标
+> 小米 MIUI 6 及以上设备支持数字角标，小米系统自动处理数字角标展示功能，默认收到通知+1处理，打开 App 清零。
+
+![](https://yfmingo.oss-cn-beijing.aliyuncs.com/images/202505291518689.png)
+
+**总结，遇坑填坑，多看文档，有的文档良心介绍了注意事项可以闭坑。遇到报错，根据报错信息多思考。   
+**
