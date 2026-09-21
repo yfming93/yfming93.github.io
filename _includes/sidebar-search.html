@@ -13,33 +13,42 @@
     </div>
 
     <div id="site_search">
-        <input type="text" id="search_box" placeholder="Search any words..." style="width:93%; border-radius: 17px; padding: 7px 10px;>
+        <input type="text" id="search_box" placeholder="Search any words..." style="width:93%; border-radius: 17px; padding: 7px 10px;">
         <ul class="content-ul" ></ul>
     </div>
 
     <p class="content-ul" id="search_results"></p>
 </div>
 
-
-
-
-
-
-
 <!-- <link rel="stylesheet" type="text/css" href="{{ site.url }}/css/main.css"> -->
 <script type="text/javascript" src="{{ site.url }}/js/search.js"></script>
 <script src="{{ site.url }}/js/jekyll-search.min.js"></script>
 
 <script type="text/javascript">
-SimpleJekyllSearch({
-    searchInput: document.getElementById('search_box'),
-    resultsContainer: document.getElementById('search_results'),
-    json: '{{ site.baseurl }}/search_data.json',
-    searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
-    noResultsText: 'No results found',
-    limit: 20,
-    fuzzy: true,
-})
+(function() {
+    var searchInited = false;
+    var searchBox = document.getElementById('search_box');
+    var searchDiv = document.getElementById('search-div');
 
+    function initSearch() {
+        if (searchInited) return;
+        searchInited = true;
+        SimpleJekyllSearch({
+            searchInput: searchBox,
+            resultsContainer: document.getElementById('search_results'),
+            json: '{{ site.baseurl }}/search_data.json',
+            searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
+            noResultsText: 'No results found',
+            limit: 20,
+            fuzzy: true,
+        });
+    }
 
+    if (searchBox) {
+        searchBox.addEventListener('focus', initSearch, { once: true });
+    }
+    if (searchDiv) {
+        searchDiv.addEventListener('mouseenter', initSearch, { once: true });
+    }
+})();
 </script>

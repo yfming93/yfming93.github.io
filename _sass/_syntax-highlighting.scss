@@ -97,3 +97,46 @@ pre {
     .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
     .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
 }
+
+/* 代码块一键复制按钮样式 */
+.code-block-wrapper {
+  position: relative;
+
+  &:hover .code-copy-btn {
+    opacity: 0.9;
+  }
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  line-height: 1;
+  color: #c0c5ce;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.35;
+  transition: all 0.2s ease;
+  user-select: none;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.24);
+    opacity: 1;
+  }
+
+  &.copied {
+    color: #a6e22e;
+    border-color: #a6e22e;
+    background: rgba(166, 226, 46, 0.18);
+    opacity: 1;
+  }
+}
+

@@ -139,11 +139,10 @@
     </div>
 </div>
 
-<script src="//cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript">
     $('.dashang-modal .tab span').on('click',function(){
-        var $this = $(this)
-        dashang = $this.attr('dashang');
+        var $this = $(this);
+        var dashang = $this.attr('dashang');
         $('.dashang-modal .img img').hide(200);
         $('#dashang-'+dashang).show(200);
 
@@ -154,7 +153,6 @@
     $('.dashang-modal .close,.dashang-modal .bg').on('click',function(){
         $('.dashang-modal').hide(200);
     });
-
 
     $('.dashang .button').on('click',function(){
         $('.dashang-modal').show(200);
