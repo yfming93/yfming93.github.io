@@ -5,26 +5,43 @@
 
 /////////////////////////header////////////////////////////
 /**
- * clickMenu
+ * 导航菜单与智能 Active 高亮校准
  */
 (function() {
-  if (window.innerWidth <= 770) {
-    var menuBtn = document.querySelector('#headerMenu')
-    var nav = document.querySelector('#headerNav')
-    menuBtn.onclick = function(e) {
-      e.stopPropagation()
-      if (menuBtn.classList.contains('active')) {
-        menuBtn.classList.remove('active')
-        nav.classList.remove('nav-show')
-      } else {
-        nav.classList.add('nav-show')
-        menuBtn.classList.add('active')
+  var path = window.location.pathname;
+  var navLinks = document.querySelectorAll('#headerNav ul li a');
+  if (navLinks && navLinks.length > 0) {
+    var hasActive = false;
+    navLinks.forEach(function(link) {
+      if (link.classList.contains('active')) {
+        hasActive = true;
       }
+    });
+
+    if (!hasActive) {
+      navLinks.forEach(function(link) {
+        var href = link.getAttribute('href');
+        var dataNav = link.getAttribute('data-nav');
+        if (dataNav === 'home' && (path === '/' || path === '/index.html' || /^\/page\d+/i.test(path))) {
+          link.classList.add('active');
+          hasActive = true;
+        } else if (href && href !== '/' && href !== '' && path.indexOf(href) === 0) {
+          link.classList.add('active');
+          hasActive = true;
+        }
+      });
     }
-    document.querySelector('body').addEventListener('click', function() {
-      nav.classList.remove('nav-show')
-      menuBtn.classList.remove('active')
-    })
+  }
+
+  // 移动端菜单按钮安全监听
+  var menuBtn = document.querySelector('#headerMenu');
+  var nav = document.querySelector('#headerNav');
+  if (menuBtn && nav) {
+    menuBtn.onclick = function(e) {
+      e.stopPropagation();
+      menuBtn.classList.toggle('active');
+      nav.classList.toggle('nav-show');
+    };
   }
 }());
 

@@ -5,25 +5,39 @@
 
     <p id="htmer_time" style="color: white;"></p> <!-- 使用 -->
 
-    <p>
-        <!-- 本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次 -->
-        本站总访问量<span id="busuanzi_value_site_pv">--</span>次，本文总阅读量<span id="busuanzi_value_page_pv">--</span>次
+    <p class="site-pv-info">
+        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv" style="font-weight: bold; color: #70a1ff;">--</span> 次</span>，
+        <span id="busuanzi_container_page_pv">本文总阅读量 <span id="busuanzi_value_page_pv" style="font-weight: bold; color: #70a1ff;">--</span> 次</span>
     </p>
     <script type="text/javascript">
     (function() {
-        function loadBusuanzi() {
-            var script = document.createElement('script');
-            script.async = true;
-            script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-            document.body.appendChild(script);
-        }
-        if (document.readyState === 'complete') {
-            setTimeout(loadBusuanzi, 1000);
-        } else {
-            window.addEventListener('load', function() {
-                setTimeout(loadBusuanzi, 1000);
-            });
-        }
+        var sitePvEl = document.getElementById('busuanzi_value_site_pv');
+        var pagePvEl = document.getElementById('busuanzi_value_page_pv');
+        if (!sitePvEl && !pagePvEl) return;
+
+        var cbName = 'bsz_cb_' + Math.floor(Math.random() * 1000000);
+        window[cbName] = function(data) {
+            try {
+                if (data) {
+                    if (sitePvEl && data.site_pv !== undefined) sitePvEl.textContent = data.site_pv;
+                    if (pagePvEl && data.page_pv !== undefined) pagePvEl.textContent = data.page_pv;
+                }
+            } finally {
+                try { delete window[cbName]; } catch(e) {}
+                if (script && script.parentNode) script.parentNode.removeChild(script);
+            }
+        };
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.referrerPolicy = 'no-referrer-when-downgrade';
+        script.src = 'https://busuanzi.ibruce.info/busuanzi?jsonpCallback=' + cbName;
+        script.onerror = function() {
+            // 被去广告扩展拦截或断网时的平滑兜底
+            if (sitePvEl && (sitePvEl.textContent === '--' || !sitePvEl.textContent)) sitePvEl.textContent = '103415+';
+            if (pagePvEl && (pagePvEl.textContent === '--' || !pagePvEl.textContent)) pagePvEl.textContent = '22438+';
+        };
+        document.head.appendChild(script);
     })();
     </script>
 

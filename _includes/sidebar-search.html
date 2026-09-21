@@ -7,18 +7,39 @@
 
 
  <div class="side content" id="search-div">
-    <div  >
-        <i class="fa fa-search"></i>
+    <div>
+        <i class="fa fa-search" aria-hidden="true" style="margin-right: 6px; color: #4d6dad;"></i>
         Search
     </div>
 
-    <div id="site_search">
-        <input type="text" id="search_box" placeholder="Search any words..." style="width:93%; border-radius: 17px; padding: 7px 10px;">
+    <div id="site_search" style="padding: 10px 12px 6px;">
+        <input type="text" id="search_box" placeholder="Search any words..." class="search-input">
         <ul class="content-ul" ></ul>
     </div>
 
     <p class="content-ul" id="search_results"></p>
 </div>
+
+<style>
+.search-input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border: 1px solid #d0d7de !important;
+    border-radius: 20px !important;
+    padding: 8px 14px !important;
+    outline: none !important;
+    background: #ffffff !important;
+    font-size: 13px !important;
+    color: #333333 !important;
+    line-height: 1.4 !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+.search-input:focus {
+    border-color: #4d88ff !important;
+    box-shadow: 0 0 0 3px rgba(77, 136, 255, 0.2) !important;
+}
+</style>
 
 <!-- <link rel="stylesheet" type="text/css" href="{{ site.url }}/css/main.css"> -->
 <script type="text/javascript" src="{{ site.url }}/js/search.js"></script>
