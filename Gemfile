@@ -10,7 +10,13 @@ source 'https://rubygems.org'
 #      # gem 'jekyll-algolia'
 # end
 
-# # gem "webrick", "~> 1.7"
+gem "webrick", "~> 1.8"
+gem "logger"
+gem "csv"
+gem "base64"
+gem "ostruct"
+gem "mutex_m"
+gem "bigdecimal"
 
 gem 'jekyll-paginate', "~> 1.1.0" 
 gem 'jekyll-seo-tag', "~> 2.8.0" 
