@@ -7,9 +7,25 @@
 
     <p>
         <!-- 本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次 -->
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        本站总访问量<span id="busuanzi_value_site_pv"></span>次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        本站总访问量<span id="busuanzi_value_site_pv">--</span>次，本文总阅读量<span id="busuanzi_value_page_pv">--</span>次
     </p>
+    <script type="text/javascript">
+    (function() {
+        function loadBusuanzi() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+            document.body.appendChild(script);
+        }
+        if (document.readyState === 'complete') {
+            setTimeout(loadBusuanzi, 1000);
+        } else {
+            window.addEventListener('load', function() {
+                setTimeout(loadBusuanzi, 1000);
+            });
+        }
+    })();
+    </script>
 
     <p class="description">
         {% if site.description_footer %} {{site.description_footer}} {% endif %}

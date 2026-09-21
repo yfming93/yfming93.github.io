@@ -133,28 +133,63 @@
         <div class="tab"> <span class="curr" dashang="wechat">微信</span>  <span dashang="alipay" class="">支付宝</span> 
         </div>
         <div class="img">
-            <img alt="袁凤鸣的博客 | Fleeming's Blog 微信打赏二维码" src="/resources/wechat.png" id="dashang-wechat" style="display: inline-block;">
-            <img alt="袁凤鸣的博客 | Fleeming's Blog 支付宝打赏二维码" src="/resources/alipay.png" id="dashang-alipay" style="display: none;">
+            <img alt="袁凤鸣的博客 | Fleeming's Blog 微信打赏二维码" src="{{ "/resources/wechat.png" | prepend: site.baseurl }}" id="dashang-wechat" style="display: inline-block; max-width: 250px; height: auto;">
+            <img alt="袁凤鸣的博客 | Fleeming's Blog 支付宝打赏二维码" src="{{ "/resources/alipay.png" | prepend: site.baseurl }}" id="dashang-alipay" style="display: none; max-width: 250px; height: auto;">
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $('.dashang-modal .tab span').on('click',function(){
-        var $this = $(this);
-        var dashang = $this.attr('dashang');
-        $('.dashang-modal .img img').hide(200);
-        $('#dashang-'+dashang).show(200);
+(function() {
+    function initDashang() {
+        var openBtn = document.querySelector('.dashang .button');
+        var modal = document.querySelector('.dashang-modal');
+        var closeBtn = document.querySelector('.dashang-modal .close');
+        var bg = document.querySelector('.dashang-modal .bg');
+        var tabs = document.querySelectorAll('.dashang-modal .tab span');
+        var imgWechat = document.getElementById('dashang-wechat');
+        var imgAlipay = document.getElementById('dashang-alipay');
 
-        $('.dashang-modal .tab span').removeClass('curr');
-        $this.addClass('curr');
-    });
+        if (openBtn && modal) {
+            openBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+            });
+        }
 
-    $('.dashang-modal .close,.dashang-modal .bg').on('click',function(){
-        $('.dashang-modal').hide(200);
-    });
+        function closeModal() {
+            if (modal) modal.style.display = 'none';
+        }
 
-    $('.dashang .button').on('click',function(){
-        $('.dashang-modal').show(200);
-    });
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (bg) bg.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                var type = tab.getAttribute('dashang');
+                tabs.forEach(function(t) { t.classList.remove('curr'); });
+                tab.classList.add('curr');
+                if (type === 'alipay') {
+                    if (imgWechat) imgWechat.style.display = 'none';
+                    if (imgAlipay) imgAlipay.style.display = 'inline-block';
+                } else {
+                    if (imgAlipay) imgAlipay.style.display = 'none';
+                    if (imgWechat) imgWechat.style.display = 'inline-block';
+                }
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDashang);
+    } else {
+        initDashang();
+    }
+})();
 </script>
